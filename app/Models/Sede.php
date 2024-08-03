@@ -8,6 +8,12 @@ use Illuminate\Database\Eloquent\Model;
 class Sede extends Model
 {
     use HasFactory;
+    protected $fillable = ['codigo', 'name', 'abrev', 'url', 'active', 'type', 'direc', 'phone', 'city', 'headquarters'];
+
+    public function personals() 
+    {
+        return $this->hasMany(Personal::class);
+    }
 
 
 }

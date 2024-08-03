@@ -1,0 +1,67 @@
+footer{
+    background-color: #050336;
+    width:100%;   height: auto;
+    position: absolute; bottom: 0;
+
+
+}
+.body-footer{
+    font-family: Arial, sans-serif;
+    font-size: 12px;
+    font-weight: bold;
+    padding: 20px;
+    color: rgb(228, 222, 222);
+  
+}
+.a-footer{
+    float: right;
+    
+} 
+.img-footer{
+    width: 5%;
+}
+
+.backg{
+    font-family: Helvetica, Sans-Serif;
+    color: #444444;
+    font-size: 16px;
+    background-color: #FAFAFA;
+    width:100%;   height: auto;
+    position: absolute; bottom: 0;
+    background-color: #61CE70;
+}
+.backg-adm{
+    font-family: Helvetica, Sans-Serif;
+    color: #444444;
+    font-size: 16px;
+    background-color: #FAFAFA;
+    width:100%;   height: auto;
+    position: absolute; bottom: 0;
+    background-color: #61CE70;
+}
+.imgHome{
+    /* background-color: pink; */
+    background: url("/images/Backs/patio.jpg") ;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.imgLogin{
+    /* background-color: pink; */
+    background: url("/images/Backs/ipm.jpg") ;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.imgAdm{
+    /* background-color: pink; */
+    background: url("/images/Backs/backAdm.jpEg") ;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+
+
+
+

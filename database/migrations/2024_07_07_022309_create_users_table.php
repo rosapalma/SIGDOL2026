@@ -12,21 +12,21 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('users', function (Blueprint $table) {
-            $table->engine = 'InnoDB';
+            $table->engine = 'InnoDB';            
             $table->bigIncrements('id');
-            $table->unsignedBigInteger('personal_id')->unique();           
-            $table->string('email')->unique(); // //'required|email|unique:users',
-            $table->integer('privilege');
+            $table->unsignedBigInteger('personal_id');
+            $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
-            $table->string('password'); // 'required|confirmed|min:8',
+            $table->string('password');
+            $table->integer('privilege');
             $table->integer('statud');
-            $table->integer('user_created')->nullable();
             $table->rememberToken();
+            // $table->foreignId('current_team_id')->nullable();
+            // $table->string('profile_photo_path', 2048)->nullable();
+            $table->integer('user_created')->nullable();
             $table->timestamps();
 
             $table->foreign('personal_id')->references('id')->on('personals');
-
-           
         });
     }
 

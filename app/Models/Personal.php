@@ -13,4 +13,18 @@ class Personal extends Model
     'porcentaje_jub_pens','sede_id'];
 	protected $table = 'personals';
 	protected $primaryKey = 'id';
+
+
+    
+    public function sede()
+    {
+        return $this->belongsTo(Sede::class);
+    }
+
+    public function user()
+    {
+        return $this->hasOne(User::class);
+    }
+
+
 }

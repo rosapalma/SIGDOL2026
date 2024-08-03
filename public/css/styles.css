@@ -1,0 +1,32 @@
+.d-lg-none {
+    display: none !important;
+  }
+@media screen and (max-width:800px) {
+  .d-lg-none {
+    display: none !important;
+  }
+}
+/* **********FOOTER******* */
+footer{
+  font-family: Helvetica, Sans-Serif;
+  color: #444444;
+  font-size: 16px;
+  background-color: #FAFAFA;
+  width:100%;   height: auto;
+  position: absolute; bottom: 0;
+  background-color: #61CE70;
+}
+
+.bg-body-tertiary {
+  background-color: #050336;
+  font-family: Arial, sans-serif;
+  font-size: 12px;
+  font-weight: bold;
+  padding: 20px;
+  line-height: 2;
+  color: rgb(228, 222, 222);
+}
+.a_url{
+  float: right;
+   margin-right:2%
+}
