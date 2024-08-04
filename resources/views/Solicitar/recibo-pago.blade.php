@@ -1,0 +1,59 @@
+
+<!-----MODAL RECIBO DE PAGO-->
+<div class="modal fade" id="RecPagModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header" align="center">
+        <h5 class="modal-title" id="exampleModalLabel">Solicitar Recibo de Pago </h5>
+          {{-- <img src="{{asset('images/Modals/pago-peq.jpeg')}}"  style="width: 60%; height: 20%"></h5> --}}
+         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+           <span aria-hidden="true close-btn"><img src="{{asset('images/ICONS/close.png')}}"  width="30" title="Cerrar"></span>
+        </button>
+      </div>
+      <div>
+
+       <div class="modal-body">
+{{-- 
+        <form class="form-horizontal" method="post" action="{{ route('GeneralRecibo') }}" name="formulario" id="Miform">
+              {{ csrf_field() }}
+           <div align="center" >
+            <input type="text"  name="cedula"  class="" style="font-size: 2rem" onkeyUp="return ValNumero(this);" placeholder="Cédula de Identidad" autofocus required >
+           </div><br>
+           <div align="center" required class="form-group">
+             <select name="anio" class=" form-select-lg mb-3" aria-label=".form-select-lg example" required>
+                <option value="">Año</option>
+                <option value="2024">2024</option>
+             </select>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+                <select name="mes" class="form-select-lg mb-3" aria-label=".form-select-lg example" required>
+                  <option value="">Mes</option>
+                  <option value="1">Enero</option>
+                  <option value="2">Febrero</option>
+                  <option value="3">Marzo</option>
+                  <option value="4">Abril</option>
+                  <option value="5">Mayo</option>
+                  <option value="6">Junio</option>
+                  <option value="7">Julio</option>
+                  <option value="8">Agosto</option>
+                  <option value="9">Septiembre</option>
+                  <option value="10">Octubre</option>
+                  <option value="11">Noviembre</option>
+                  <option value="12">Diciembre</option>
+                </select>
+           </div><br>
+
+           <div class="form-group">
+              <div class="col-md-12 text-center">
+                <button type="submit" name="btnsave" class="btn-text btn btn-primary btn-block" style="font-size: 2rem" >Ver | Descargar | imprimir</button>
+              </div>
+           </div>
+
+       </form> --}}
+
+      </div>
+
+        </div>
+
+    </div>
+  </div>
+</div>
