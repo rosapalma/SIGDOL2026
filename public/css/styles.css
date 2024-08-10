@@ -30,3 +30,20 @@ footer{
   float: right;
    margin-right:2%
 }
+.img-close{
+  width: 40%;
+ 
+}
+.solicitar{
+  display: flex; 
+  margin-top: 3%;
+}
+.solicitar-img{
+  cursor: pointer; border-radius: 40px; box-shadow: 0 15px 15px 0 #000000
+}
+@media screen and (min-width: 800px) {
+  /* .container {
+    margin: 1em 2em; 
+  }*/
+ 
+}

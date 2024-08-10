@@ -14,9 +14,9 @@ use Auth;
 class HomeController extends Controller
 {
     public function index()
-    { //invesigar como llamar a view homw
+    { // desde /config.fortify.php
         $user = Auth::User(); 
-       return view('dashboard', compact ('user'));
+       return view('home', compact ('user'));
       
     }
 

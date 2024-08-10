@@ -5,7 +5,9 @@
     <div class="modal-content">
       <div class="modal-header" align="center">
         <h5 class="modal-title" id="exampleModalLabel">Solicitar Constancia de Trabajo</h5>
-      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+          <img src="{{asset('images/ICONS/close.png')}}"  class="img-close"  align="right"title="Cerrar"></span>
+        </button>
 
       </div>
 
@@ -13,11 +15,11 @@
       {{-- {{ route('GeneralConst') }} --}}
 
         <form class="form-horizontal" method="post" action="">
-           {{--  {{ csrf_field() }} --}}
+        {{--  {{ csrf_field() }} --}}
             <div>
 
 
-         </div>
+          </div>
             <div align="center">
               <input type="text" id="inputname" name="cedula"  class="" style="font-size: 2rem" onkeyUp="return ValNumero(this);" placeholder="Cédula de Identidad" autofocus required>
             </div>  <br>
@@ -36,13 +38,13 @@
               <label>&nbsp;&nbsp;<b>TIEMPO DE SERVICIO</b></label>
             </div>
             <br>
-               <div class="form-group">
-                 <div class="col-md-12 text-center">
-                   <button type="submit" name="btnsave" class="btn btn-primary btn-block" style="font-size: 2rem">Ver | Descargar | imprimir </button>
-                 </div>
+              <div class="form-group">
+                <div class="col-md-12 text-center">
+                  <button type="submit" name="btnsave" class="btn btn-primary btn-block" style="font-size: 2rem">Ver | Descargar | imprimir </button>
+                </div>
               </div>
         </form> 
-         </div><!--close Body-->
+        </div><!--close Body-->
 
 
     </div> <!--close conter-->

@@ -26,12 +26,17 @@ Route::middleware([
     config('jetstream.auth_session'),
     'verified',
 ])->group(function () {
-    //Route::get('/home', function () {
-      // $user = Auth::User();
-      //return view('home', compact('user'));
-    //})->name('dashboard');
+    // Route::get('/dashboard', function () {
+    //   return view('dashboard');
+    // })->name('dashboard');
     
-   
-    Route::get('/dashboard', [HomeController::class, 'index'])->name('dashboard');
+  
+    Route::get('/home', [HomeController::class, 'index'])->name('home');
+    
+
+     Route::get('/users', function () {
+      $users = Auth::User();
+      return view('users', compact('users'));
+    })->name('users');
 });
 

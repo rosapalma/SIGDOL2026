@@ -6,15 +6,15 @@
       <div class="modal-header" align="center">
         <h5 class="modal-title" id="exampleModalLabel">Solicitar Recibo de Pago </h5>
           {{-- <img src="{{asset('images/Modals/pago-peq.jpeg')}}"  style="width: 60%; height: 20%"></h5> --}}
-         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-           <span aria-hidden="true close-btn"><img src="{{asset('images/ICONS/close.png')}}"  width="30" title="Cerrar"></span>
+             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+          <img src="{{asset('images/ICONS/close.png')}}"  class="img-close"  align="right"title="Cerrar"></span>
         </button>
       </div>
       <div>
 
        <div class="modal-body">
-{{-- 
-        <form class="form-horizontal" method="post" action="{{ route('GeneralRecibo') }}" name="formulario" id="Miform">
+{{-- {{ route('GeneralRecibo') }}" --}}
+        <form class="form-horizontal" method="post" action=" name="formulario" id="Miform">
               {{ csrf_field() }}
            <div align="center" >
             <input type="text"  name="cedula"  class="" style="font-size: 2rem" onkeyUp="return ValNumero(this);" placeholder="Cédula de Identidad" autofocus required >
@@ -48,7 +48,7 @@
               </div>
            </div>
 
-       </form> --}}
+       </form>
 
       </div>
 
