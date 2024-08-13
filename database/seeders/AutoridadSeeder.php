@@ -19,8 +19,8 @@ class AutoridadSeeder extends Seeder
 
         DB::table('autoridads')->insert(
             [
-                'spacework_id' => '3',//unidad de personal id 3
-                'personal_id' => '1',
+                'spacework_id' => '3',//unidad de personal
+                'personal_id' => '2',
                 'statud' => '1', //activo
             ],);
     }

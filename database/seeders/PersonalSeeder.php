@@ -32,5 +32,20 @@ class PersonalSeeder extends Seeder
             'condicionlaboral_id'=>1,
             'sede_id'=>2,
         ],);
+
+
+        DB::table('personals')->insert([
+            'cedula' => '11111111',
+            'name' => 'Cesar',
+            'last_name' => 'Moreno',
+            'email' => 'moreno.cesar.ipm@upel.edu.ve',
+            'fec_ing' => '2010-05-05',
+            'sexo' => 'M',
+            'spacework_id' => 3,
+            'cargo_id'=>5,
+            'typepers_id'=>2,
+            'condicionlaboral_id'=>1,
+            'sede_id'=>2,
+        ],);
     }
 }

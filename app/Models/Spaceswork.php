@@ -8,4 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class Spaceswork extends Model
 {
     use HasFactory;
+    public function empleados() 
+    {
+        return $this->hasMany(Personal::class);
+    }
 }

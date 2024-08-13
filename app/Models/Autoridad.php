@@ -8,4 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class Autoridad extends Model
 {
     use HasFactory;
+    protected $fillable = ['unidad', 'personal_id', 'statud'];
+
+
+    public function personal() 
+    {
+        return $this->belongsTo(Personal::class);
+    }
 }

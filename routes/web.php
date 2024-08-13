@@ -3,17 +3,14 @@
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\HomeController; 
+use App\Http\Controllers\ConstanciaController;
+use App\Http\Controllers\ReciboController;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider and all of them will
-| be assigned to the "web" middleware group. Make something great!
-|
-*/
+use App\Http\Controllers\PDFController;
+use Illuminate\Http\Request;
+
+
+
 
 Route::get('/', function () {
     return view('welcome');
@@ -30,13 +27,24 @@ Route::middleware([
     //   return view('dashboard');
     // })->name('dashboard');
     
-  
     Route::get('/home', [HomeController::class, 'index'])->name('home');
     
 
-     Route::get('/users', function () {
-      $users = Auth::User();
-      return view('users', compact('users'));
+    Route::get('/users', function () {
+    $users = Auth::User();
+    return view('users', compact('users'));
     })->name('users');
+
+    //SOLICITAR (modal) Y GENERAL Docs
+    Route::post('/contancia-de-trabajo', [ConstanciaController::class, 'Const'])->name('GeneralConst');
+    Route::post('/recibo-de-pago', [ReciboController::class, 'Recibo'])->name('GeneralRecibo');
+
 });
+
+Route::get('/salir', function(){
+    Auth::logout();
+    return Redirect::to('/')->with('msj', 'Gracias por visitarnos!.');
+});
+
+
 

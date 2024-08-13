@@ -12,21 +12,19 @@
       </div>
 
       <div class="modal-body">
-      {{-- {{ route('GeneralConst') }} --}}
+      
+  
 
-        <form class="form-horizontal" method="post" action="">
-        {{--  {{ csrf_field() }} --}}
-            <div>
-
-
-          </div>
+          <form method="POST" action="/contancia-de-trabajo" class="form-horizontal">
+            @csrf
+      
             <div align="center">
               <input type="text" id="inputname" name="cedula"  class="" style="font-size: 2rem" onkeyUp="return ValNumero(this);" placeholder="Cédula de Identidad" autofocus required>
             </div>  <br>
             <div align="center">
               <select name="tipo"  class="form-select-lg mb-3" aria-label=".form-select-lg example" required>
                 <option value="">Tipo de Constancia.</option>
-                <option value="1">Básica</option>
+                <option value="6">Básica</option>
                 <option value="2">Con Sueldo Base</option>
                 <option value="3">Con Sueldo Integral</option>
                 <option value="4">Para Jubilado(a) || Pensionado</option>
@@ -35,12 +33,15 @@
             </div>
             <div>
               <input type="checkbox" id="TS" name="TS"  class="check" value="1"/>
-              <label>&nbsp;&nbsp;<b>TIEMPO DE SERVICIO</b></label>
+              <label style="margin-left:2%"><b>TIEMPO DE SERVICIO</b></label>
             </div>
-            <br>
+            <br> 
               <div class="form-group">
                 <div class="col-md-12 text-center">
-                  <button type="submit" name="btnsave" class="btn btn-primary btn-block" style="font-size: 2rem">Ver | Descargar | imprimir </button>
+                     <x-button class="ms-4">
+                    {{ __('Ver | Descargar | imprimir ') }}
+                </x-button>
+                  {{-- <button type="submit" name="btnsave" class="btn btn-primary btn-block" style="font-size: 2rem">Ver | Descargar | imprimir </button> --}}
                 </div>
               </div>
         </form> 

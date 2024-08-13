@@ -15,14 +15,11 @@ return new class extends Migration
             $table->engine = 'InnoDB';
             $table->bigIncrements('id');
             $table->string('codigo');
-            $table->integer('nro'); //GUARDA ENTERO SIN CEROS A LA IZQUIERDA
             $table->date('fechaEmi'); //fecha de emision
-            $table->unsignedBigInteger('nomina_id');
+            $table->integer('typeConst');
             $table->unsignedBigInteger('personal_id');
             $table->unsignedBigInteger('user_id');
             $table->timestamps();
-
-            $table->foreign('nomina_id')->references('id')->on('nomina_excels');
             $table->foreign('personal_id')->references('id')->on('personals');
             $table->foreign('user_id')->references('id')->on('users');
 

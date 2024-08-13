@@ -10,4 +10,9 @@ class Condicionlaboral extends Model
     use HasFactory;
     protected $table = 'condicionlaborals';
     protected $fillable = [	'name','abrev',	];
+
+    public function empleados() 
+    {
+        return $this->hasMany(Personal::class);
+    }
 }

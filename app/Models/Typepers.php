@@ -8,4 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Typepers extends Model
 {
     use HasFactory;
+
+    public function empleados() 
+    {
+        return $this->hasMany(Personal::class);
+    }
 }

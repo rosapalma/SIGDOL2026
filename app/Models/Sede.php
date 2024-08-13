@@ -15,5 +15,11 @@ class Sede extends Model
         return $this->hasMany(Personal::class);
     }
 
+    public function UserSede()
+    {
+        return $this->hasOneThrough(User::class, Personal::class);
+    }
+       // hasManyThrough
+
 
 }
