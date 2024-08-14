@@ -45,10 +45,10 @@ class User extends Authenticatable implements MustVerifyEmail
         return $this->belongsTo(Personal::class);
     }
 
-    public function sede()
-    {
-        return $this->hasOneThrough(Personal::class, Sede::class);
-    }
+    // public function sede()
+    // {
+    //     return $this->hasOneThrough(Personal::class, Sede::class);
+    // }
 
 
 }

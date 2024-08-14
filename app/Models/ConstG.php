@@ -14,7 +14,7 @@ class ConstG extends Model
         'codigo','personal_id','fechaEmi','typeConst','user_id',
     ];
 
-    public function personal()
+    public function empleado()
     {
     return $this->belongsTo(Personal::class);
     }

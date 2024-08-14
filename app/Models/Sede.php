@@ -10,7 +10,7 @@ class Sede extends Model
     use HasFactory;
     protected $fillable = ['codigo', 'name', 'abrev', 'url', 'active', 'type', 'direc', 'phone', 'city', 'headquarters'];
 
-    public function personals() 
+    public function empleados() 
     {
         return $this->hasMany(Personal::class);
     }

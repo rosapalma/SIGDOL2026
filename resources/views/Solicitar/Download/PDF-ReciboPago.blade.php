@@ -4,21 +4,18 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         <title>Recibo de pago</title>
     <style type="text/css">
-        body{
-         background-image: url("images/fond.jpg");
-        }
+        body{background-image: url("images/Backs/docs/fond.jpg"); margin:0;padding:0  }
         table{ border: 0.5px solid  #222425; width: 100%; }
         .title{ font-weight: bold; font-size: 1.5rem; font-variant:small-caps;text-transform:uppercase;
                 align-content: center;}
         .title2{ font-size: 1.5rem; margin-top: 2%; color:  #8f9294;}
         /*.celda{		height: auto;		width: 200px;	}*/
-       .firma{ align-content: center; font-weight: bold; font-size: 1rem;}
+        .firma{ align-content: center; font-weight: bold; font-size: 1rem;}
         footer {position: relative; text-align: right; margin-top: 2%; font-size: 0.5rem;  }
-
     </style>
     </head>
 <body>
-    <div style="margin-top: 25%; margin-left: 12%;">
+    <div style="margin-top: 25%; margin-left: 10%;">
         <div align="center"  class="title">Recibo de pago</div>
         <div align="center"  class="title2">Datos Personales | Laborales</div>
     </div>
@@ -43,9 +40,6 @@
     <div style="margin-left: 12%;">
 
 	<!-- ASIGNACIONES -->
-    {{-- ENERA NUMERO DE 3 DIGITOR --}}
-
-
 
     <div>
         <table style="width: 100%"><?php $Ttasign=0; ?>
@@ -55,9 +49,8 @@
                 <th class="">Monto</th>
 			</tr>
 			</thead>
-            <tbody align="left" >
-                <tr><td><b><?php $number=1; $length = 3;
-                    $string = substr(str_repeat(0, $length).$number, - $length);
+            <tbody align="left" >     {{-- GENERA NUMERO DE 3 DIGITOR --}}
+                <tr><td><b><?php $number=1; $length = 3; $string = substr(str_repeat(0, $length).$number, - $length);
                     echo $codAsig='A'.$string;?></b>&nbsp;&nbsp;Salario Básico </td>
                     <td><?php  echo number_format($arraynomina['salario_basico'],2); $Ttasign = $arraynomina['salario_basico'] + $Ttasign;?></td></tr>
                 @if($arraynomina['prima_fliar'] > 0)
@@ -216,8 +209,8 @@
 		<span>Jefe de la Unidad de Personal</span>
 	</div>
     <footer>
-        <p>{{$direc}}</p>
-        <p>{{$phone}}</p>
+        <p>{{$sedeEmp['direc'] }}</p>
+        <p>{{$sedeEmp['phone']}}</p>
     </footer>
 </div>
 

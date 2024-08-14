@@ -38,7 +38,7 @@
             <br> 
               <div class="form-group">
                 <div class="col-md-12 text-center">
-                     <x-button class="ms-4">
+                <x-button class="ms-4">
                     {{ __('Ver | Descargar | imprimir ') }}
                 </x-button>
                   {{-- <button type="submit" name="btnsave" class="btn btn-primary btn-block" style="font-size: 2rem">Ver | Descargar | imprimir </button> --}}

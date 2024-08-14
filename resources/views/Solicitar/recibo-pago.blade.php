@@ -14,18 +14,18 @@
 
        <div class="modal-body">
 {{-- {{ route('GeneralRecibo') }}" --}}
-        <form class="form-horizontal" method="post" action=" name="formulario" id="Miform">
+        <form class="form-horizontal" method="post" action="/recibo-de-pago" name="formulario" id="Miform">
               {{ csrf_field() }}
            <div align="center" >
-            <input type="text"  name="cedula"  class="" style="font-size: 2rem" onkeyUp="return ValNumero(this);" placeholder="Cédula de Identidad" autofocus required >
+            <input type="text"  name="cedula"  class="" style="font-size: 2rem" onkeyUp="return ValNumero(this);" placeholder="Cédula de Identidad" autofocus>
            </div><br>
            <div align="center" required class="form-group">
-             <select name="anio" class=" form-select-lg mb-3" aria-label=".form-select-lg example" required>
+             <select name="anio" class=" form-select-lg mb-3" aria-label=".form-select-lg example" >
                 <option value="">Año</option>
                 <option value="2024">2024</option>
              </select>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
-                <select name="mes" class="form-select-lg mb-3" aria-label=".form-select-lg example" required>
+                <select name="mes" class="form-select-lg mb-3" aria-label=".form-select-lg example" >
                   <option value="">Mes</option>
                   <option value="1">Enero</option>
                   <option value="2">Febrero</option>
@@ -43,9 +43,9 @@
            </div><br>
 
            <div class="form-group">
-              <div class="col-md-12 text-center">
-                <button type="submit" name="btnsave" class="btn-text btn btn-primary btn-block" style="font-size: 2rem" >Ver | Descargar | imprimir</button>
-              </div>
+              <x-button class="ms-4">
+                    {{ __('Ver | Descargar | imprimir ') }}
+              </x-button>
            </div>
 
        </form>

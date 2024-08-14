@@ -21,7 +21,7 @@ class SedesSeeder extends Seeder
         DB::table('sedes')->insert(
             ['codigo' => '0100',
             'name' => 'Instituto Pedagógico de Caracas',
-            'ShortName'=>'IPC', //nombre corto
+            'abrev'=>'IPC', //nombre corto
             'tipo' => 'SEDE',
             'logo' => 'images/Logos/IPC.png',
             'city' => 'Caracas',

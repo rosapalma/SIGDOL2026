@@ -16,8 +16,7 @@ return new class extends Migration
             $table->bigIncrements('id');
             $table->string('codigo')->nullable(); // cod_sede
             $table->string('name')->nullable(); //nombsede
-            $table->string('ShortName')->nullable(); //nombre corto
-            $table->string('abrev')->nullable(); // nomcorto
+            $table->string('abrev')->nullable(); //nombre corto
             $table->string('tipo')->nullable(); // EXT O SEDE
             $table->string('logo')->nullable(); //logo
             $table->string('url')->nullable(); //nombsede

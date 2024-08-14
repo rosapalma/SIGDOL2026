@@ -15,7 +15,6 @@ return new class extends Migration
             $table->engine = 'InnoDB';
             $table->bigIncrements('id');
             $table->string('codigo');
-            $table->integer('nro'); //GUARDA ENTERO SIN CEROS A LA IZQUIERDA
             $table->date('fechaEmi'); //fecha de emision
             $table->unsignedBigInteger('nomina_id');
             $table->unsignedBigInteger('personal_id');
