@@ -1,3 +1,18 @@
+label{
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    font-weight: bold;
+}
+.title{
+    font-family: Arial, sans-serif;
+    font-size: 24px;
+    font-weight: bold;  
+}
+.title-nota{
+    font-family: Arial, sans-serif;
+    font-size: 12px;
+    color:#444444;  
+}
 .footer{
     font-family: Arial, sans-serif;
     font-size: 12px;

@@ -1,34 +1,32 @@
 <x-app-layout>
-    <x-slot name="page">
+    {{-- <x-slot name="page">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
             {{ __('Mi Cuenta') }}
         </h2>
-    </x-slot>
+    </x-slot> --}}
 
-    <div>
-        <div class="max-w-7xl mx-auto py-10 sm:px-6 lg:px-8" style="background-color: #ece8e7">
-            @if (Laravel\Fortify\Features::canUpdateProfileInformation())
-                @livewire('profile.update-profile-information-form')
+<div class="container" style="background-color: rgba(0, 0, 0, 0.2); margin-top:1%;">
+    <div class="row justify-content-center" >
+        <div class="col-md-8" style="background-color: rgba(0, 0, 0, 0.2);">
+            <div class="card">
+                @if (Laravel\Fortify\Features::canUpdateProfileInformation())
+                    @livewire('profile.update-profile-information-form')
+                @endif
 
-                <x-section-border />
-            @endif
-
-            @if (Laravel\Fortify\Features::enabled(Laravel\Fortify\Features::updatePasswords()))
-                <div class="mt-10 sm:mt-0">
+                @if (Laravel\Fortify\Features::enabled(Laravel\Fortify\Features::updatePasswords()))
                     @livewire('profile.update-password-form')
-                </div>
-
-                <x-section-border />
-            @endif
+                @endif
 
 {{--       eliminar cuenta
             @if (Laravel\Jetstream\Jetstream::hasAccountDeletionFeatures())
                 <x-section-border />
-
                 <div class="mt-10 sm:mt-0">
                     @livewire('profile.delete-user-form')
                 </div>
             @endif --}}
+            </div>
         </div>
     </div>
+</div>
+
 </x-app-layout>

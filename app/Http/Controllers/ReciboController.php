@@ -58,11 +58,11 @@ class ReciboController extends Controller
         //    'mes' => 'required',
         //    'anio' => 'required'
         // ]);
-        $cedula = 17708149;
-        $mes_selc = 02;
-        $anio_selc = 2024;
-        // $mes_selc = (int) $request->mes;
-        // $anio_selc = (int) $request->anio;
+        //$cedula = 17708149;
+        // $mes_selc = 02;
+        // $anio_selc = 2024;
+        $mes_selc = (int) $request->mes;
+        $anio_selc = (int) $request->anio;
         $user = $this->User();
         $sedeEmp=$this->Sede();
         $IdEmp = $user['personal_id'];

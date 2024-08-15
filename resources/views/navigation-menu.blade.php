@@ -60,12 +60,12 @@
 
                         <x-slot name="content">
                             <!-- Account Management -->
-                            <div class="block px-4 py-2 text-xs text-gray-400">
+                            <div class="block px-4 py-2 text-xs text-gray-400" align="center">
                                 {{ __('Mi uenta') }}
                             </div>
 
                             <x-dropdown-link href="{{ route('profile.show') }}">
-                                {{ __('Perfil') }}
+                                {{ __('Perfil | Contraseña') }}
                             </x-dropdown-link>
 
                             <div class="border-t border-gray-200"></div>
@@ -75,7 +75,7 @@
                                 @csrf
 
                                 <x-dropdown-link href="{{ route('logout') }}"
-                                         @click.prevent="$root.submit();">
+                                    @click.prevent="$root.submit();">
                                     {{ __('Cerrar seccion') }}
                                 </x-dropdown-link>
                             </form>
