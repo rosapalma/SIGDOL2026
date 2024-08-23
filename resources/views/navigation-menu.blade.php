@@ -4,14 +4,14 @@
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     
         <div class="flex justify-between h-16">
-           @if((Auth::user()->privilege == 3))
-            <label class="display-5">{{ __('Bienvenido a nuestro portar... ') }}</label>
-           @endif
+            @if((Auth::user()->privilege == 3))
+                <label class="display-5">{{ __('Bienvenido a nuestro portar... ') }}</label>
+            @endif
             <div class="flex">
                 <!-- Logo -->
                 @if ((Auth::user()->privilege!=3))
                     <div class="shrink-0 flex items-center">
-                      <x-application-mark class="block h-9 w-auto" />               
+                        <x-application-mark class="block h-9 w-auto" />               
                     </div>
                     <!-- Navigation Links -->
                     <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
@@ -20,7 +20,7 @@
                         </x-nav-link>
                     </div>
                     <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                        <x-nav-link href="{{ route('users') }}" :active="request()->routeIs('users')">
+                        <x-nav-link href="{{ url('/viewimport') }}" :active="request()->routeIs('users')">
                             {{ __('Import Data') }}
                         </x-nav-link>
                     </div>
@@ -43,7 +43,7 @@
             </div>
 
             <div class="hidden sm:flex sm:items-center sm:ms-6">
-               <!-- Settings Dropdown -->
+                <!-- Settings Dropdown -->
                 <div class="ms-3 relative">
                     <x-dropdown align="right" width="48">
                         <x-slot name="trigger">                           

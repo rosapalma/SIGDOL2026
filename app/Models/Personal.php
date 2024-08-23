@@ -57,6 +57,25 @@ class Personal extends Model
         return $this->hasMany(Contrato::class);
     }
 
+    public function beneficiarios()
+    {
+        return $this->hasMany(Beneficiario::class);
+    }
+
+
+
+    //********RELACION IMPORT EXCEL******************
+
+    public function salario() //+ detalles que hacen incidencia en sueldo basico y sueldo integral
+    {
+        return $this->hasOne(Pers_Sueldo::class);
+    }
+
+    public function nominas() //nominas de excel con conceptos 
+    {
+        return $this->hasMany(NominaExcel::class);
+    }
+
     public function constGs()
     {
         return $this->hasMany(ConstG::class);
@@ -66,26 +85,6 @@ class Personal extends Model
     {
         return $this->hasMany(RecibosG::class);
     }
-
-    public function beneficiarios()
-    {
-        return $this->hasMany(Beneficiarios::class);
-    }
-
-
-
-    //********RELACION IMPORT EXCEL******************
-
-    public function salario() //+ detalles que hacen incidencia en sueldo basico y sueldo integral
-    {
-        return $this->belongsTo(Emple_Sueldo::class);
-    }
-
-    public function nominasExcel() //nominas con conceptos
-    {
-        return $this->hasMany(NominaExcel::class);
-    }
-
 
 
 }

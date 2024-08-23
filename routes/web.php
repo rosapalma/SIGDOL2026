@@ -5,6 +5,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController; 
 use App\Http\Controllers\ConstanciaController;
 use App\Http\Controllers\ReciboController;
+use App\Http\Controllers\ImportController;
+use App\Http\Controllers\UsersController; // pruebas import
 
 use App\Http\Controllers\PDFController;
 use Illuminate\Http\Request;
@@ -38,8 +40,27 @@ Route::middleware([
     //SOLICITAR (modal) Y GENERAL Docs
     Route::post('/contancia-de-trabajo', [ConstanciaController::class, 'Const'])->name('GeneralConst');
     Route::post('/recibo-de-pago', [ReciboController::class, 'Recibo'])->name('GeneralRecibo');
+    
+    Route::get('/viewimport',[App\Http\Controllers\ImportController::class, 'index']);
+    Route::post('/importpers',[App\Http\Controllers\ImportController::class, 'UpdateDataPers']);
+    Route::post('/importNominaExcel',[App\Http\Controllers\ImportController::class, 'NomminaExcel']);
+
 
 });
+
+
+// IMPORT PRUEBAS
+
+Route::get('/viewimport',[App\Http\Controllers\UsersController::class, 'index']);
+Route::post('/importpers',[App\Http\Controllers\UsersController::class, 'UpdateDataPers']);
+
+
+
+
+
+
+
+
 
 Route::get('/salir', function(){
     Auth::logout();

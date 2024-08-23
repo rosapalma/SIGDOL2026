@@ -122,7 +122,7 @@ class ReciboController extends Controller
             return Redirect::back()->with('error','No puede continuar, dado a que no ha definido ninguna autoridad, quien certificara dicho documento , consulte al administrador');
         }
         //CONSULTANDO NOMINAS...
-        $nominas= $personal->nominasExcel()->get();
+        $nominas= $personal->nominas()->get();
         if(!empty($nominas) && count($nominas) > 0){
             foreach($nominas as $nom){
                 if(($nom['mes'] == $mes_selc) && ($nom['anio'] == $anio_selc)) {

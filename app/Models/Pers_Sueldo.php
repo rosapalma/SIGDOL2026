@@ -14,6 +14,6 @@ class Pers_Sueldo extends Model
     
     public function empleados() 
     {
-        return $this->hasMany(Personal::class);
+        return $this->hasOne(Personal::class);
     }
 }
