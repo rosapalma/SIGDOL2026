@@ -6,17 +6,6 @@
     display: none !important;
   }
 }
-/* **********FOOTER******* */
-footer{
-  font-family: Helvetica, Sans-Serif;
-  color: #444444;
-  font-size: 16px;
-  background-color: #FAFAFA;
-  width:100%;   height: auto;
-  position: absolute; bottom: 0;
-  background-color: #61CE70;
-}
-
 .bg-body-tertiary {
   background-color: #050336;
   font-family: Arial, sans-serif;
@@ -35,11 +24,19 @@ footer{
  
 }
 .solicitar{
-  display: flex; 
   margin-top: 3%;
 }
 .solicitar-img{
-  cursor: pointer; border-radius: 40px; box-shadow: 0 15px 15px 0 #000000
+  cursor: pointer; border-radius: 40px; box-shadow: 0 15px 15px 0 #000000; width:50%
+}
+.flex-container {
+  display: flex;
+  flex-direction: row;
+}
+@media (max-width: 800px) {
+  .flex-container {
+    flex-direction: column;
+  }
 }
 @media screen and (min-width: 800px) {
   /* .container {

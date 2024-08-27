@@ -1,4 +1,5 @@
 <x-guest-layout>
+    @section('title','Accesar')
 
     <x-authentication-card>
         <x-slot name="logo">
@@ -44,5 +45,7 @@
                 </x-button>
             </div>
         </form>
+        <br><br>
+        <a href="{{ url('/register') }}" aling="left" class="display-6" >registrarme</a>
     </x-authentication-card>
 </x-guest-layout>

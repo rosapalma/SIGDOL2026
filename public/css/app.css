@@ -651,6 +651,7 @@ pre code {
   margin-left: auto;
 }
 
+
 @media (min-width: 576px) {
   .container-sm,
   .container {
@@ -5056,11 +5057,6 @@ input[type=button].btn-block {
 }
 
 .card {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  min-width: 0;
-  word-wrap: break-word;
   background-color: rgba(202, 204, 195, 0.678); ;
   background-clip: border-box;
   border: 1px solid rgba(0, 0, 0, 0.125);

@@ -35,8 +35,8 @@ return new class extends Migration
             $table->float('cappaoupel')->nullable();
             $table->float('total_deducciones')->nullable();
             $table->float('salario_neto')->nullable();
-            $table->float('1era_qna')->nullable();
-            $table->float('2da_qna')->nullable();
+            $table->float('primera_qna')->nullable();
+            $table->float('segunda_qna')->nullable();
             $table->float('bono_nocturno')->nullable();
             $table->float('beca')->nullable();
             $table->integer('mes')->nullable();

@@ -25,17 +25,17 @@
                         </x-nav-link>
                     </div>
                     <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                        <x-nav-link href="{{ route('users') }}" :active="request()->routeIs('users')">
+                        <x-nav-link href="" >
                             {{ __('users') }}
                         </x-nav-link>
                     </div>
                     <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                        <x-nav-link href="{{ route('users') }}" :active="request()->routeIs('users')">
+                        <x-nav-link href="" >
                             {{ __('Asignar Autoridad') }}
                         </x-nav-link>
                     </div>
                     <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                        <x-nav-link href="{{ route('users') }}" :active="request()->routeIs('users')">
+                        <x-nav-link href="" >
                             {{ __('Docs Generados') }}
                         </x-nav-link>
                     </div>
@@ -102,56 +102,51 @@
       
         <!-- Responsive Settings Options -->
         <div class="pt-4 pb-1 border-t border-gray-200">
-            <div class="flex items-center px-4">
-           
-
+           {{--  <div class="flex items-center px-4">
                 <div>
                     <div class="font-medium text-base text-gray-800">{{ Auth::user()->personal['name'] }}</div>
                     <div class="font-medium text-sm text-gray-500">{{ Auth::user()->email }}</div>
                 </div>
-            </div>
+            </div> --}}
 
-            <div class="mt-3 space-y-1">
+
+                {{-- NAV-LINK --}}            
+                    <x-responsive-nav-link href="{{ route('home') }}" :active="request()->routeIs('home')">
+                        {{ __('Inicio') }}
+                    </x-responsive-nav-link> 
+                {{-- no visibles en pantallas moviles --}}  
+               {{-- @if((Auth::user()->privilege != 3))      
+               
+                     <x-responsive-nav-link href="">
+                        {{ __('Import Data') }}
+                    </x-responsive-nav-link>
+
+                    <x-responsive-nav-link href="" >
+                        {{ __('users') }}
+                    </x-responsive-nav-link>
+
+                    <x-responsive-nav-link href="" >
+                        {{ __('Asignar Autoridad') }}
+                    </x-responsive-nav-link>
+
+                    <x-responsive-nav-link href="" >
+                        {{ __('Docs Generados') }}
+                    </x-responsive-nav-link> 
+                @endif--}}
+
                 <!-- Account Management -->
                 <x-responsive-nav-link href="{{ route('profile.show') }}" :active="request()->routeIs('profile.show')">
-                    {{ __('Perfil') }}
+                    {{ __('Mi Cuenta') }}
                 </x-responsive-nav-link>
 
                 <!-- Authentication -->
                 <form method="POST" action="{{ route('logout') }}" x-data>
                     @csrf
                     <x-responsive-nav-link href="{{ route('logout') }}"
-                                   @click.prevent="$root.submit();">
+                        @click.prevent="$root.submit();">
                         {{ __('Cerrar Seccion') }}
                     </x-responsive-nav-link>
                 </form>
-                {{-- NAV-LINK --}}            
-                    <x-responsive-nav-link href="{{ route('home') }}" :active="request()->routeIs('home')">
-                        {{ __('Inicio') }}
-                    </x-responsive-nav-link>     
-                @if((Auth::user()->privilege != 3))      
-                
-                    <x-responsive-nav-link href="{{ route('users') }}" :active="request()->routeIs('users')">
-                        {{ __('Import Data') }}
-                    </x-responsive-nav-link>
-               
-                
-                    <x-responsive-nav-link href="{{ route('users') }}" :active="request()->routeIs('users')">
-                        {{ __('users') }}
-                    </x-responsive-nav-link>
-               
-                
-                    <x-responsive-nav-link href="{{ route('users') }}" :active="request()->routeIs('users')">
-                        {{ __('Asignar Autoridad') }}
-                    </x-responsive-nav-link>
-               
-                 
-                    <x-responsive-nav-link href="{{ route('users') }}" :active="request()->routeIs('users')">
-                        {{ __('Docs Generados') }}
-                    </x-responsive-nav-link>
-                @endif
-               
-            </div>
         </div>
     </div>
 </nav>

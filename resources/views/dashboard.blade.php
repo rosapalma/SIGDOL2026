@@ -5,6 +5,6 @@
         </h2>
     </x-slot>
 
-  
+  {{-- vista sustituida x home --}}
 </x-app-layout>
 

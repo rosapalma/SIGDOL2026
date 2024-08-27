@@ -35,7 +35,7 @@ class PersonalSeeder extends Seeder
 
 
         DB::table('personals')->insert([
-            'cedula' => '11111111',
+            'cedula' => '20023324',
             'name' => 'Cesar',
             'last_name' => 'Moreno',
             'email' => 'moreno.cesar.ipm@upel.edu.ve',

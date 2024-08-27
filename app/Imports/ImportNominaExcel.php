@@ -50,8 +50,8 @@ class ImportNominaExcel implements ToCollection, WithHeadingRow, WithBatchInsert
                         $nomina->cappaoupel = $row['cappaoupel'];
                         $nomina->total_deducciones = $row['total_deducciones'];
                         $nomina->salario_neto = $row['salario_neto'];
-                        $nomina->1era_qna = $row['1ra_quincena'];
-                        $nomina->2da_qna = $row['2da_quincena'];
+                        $nomina->primera_qna = $row['1ra_quincena'];
+                        $nomina->segunda_qna = $row['2da_quincena'];
                         $nomina->bono_nocturno = $row['bono_nocturno'];
                         $nomina->beca = $row['beca'];
                         $nomina->mes = $row['mes'];

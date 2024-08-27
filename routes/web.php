@@ -32,10 +32,10 @@ Route::middleware([
     Route::get('/home', [HomeController::class, 'index'])->name('home');
     
 
-    Route::get('/users', function () {
-    $users = Auth::User();
-    return view('users', compact('users'));
-    })->name('users');
+    // Route::get('/users', function () {
+    // $users = Auth::User();
+    // return view('Administrar.AdmUsers.index', compact('users'));
+    // })->name('users');
 
     //SOLICITAR (modal) Y GENERAL Docs
     Route::post('/contancia-de-trabajo', [ConstanciaController::class, 'Const'])->name('GeneralConst');

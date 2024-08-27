@@ -1,4 +1,5 @@
 <x-guest-layout>
+    @section('title','Restablecer Contraseña')
     <x-authentication-card>
         <x-slot name="logo">
             <x-authentication-card-logo />
@@ -26,7 +27,7 @@
 
             <div class="flex items-center justify-end mt-4">
                 <x-button>
-                    {{ __('Enlace para restablecer contraseña de correo electrónico') }}
+                    {{ __('Enviar enlace para restablecer contraseña') }}
                 </x-button>
             </div>
         </form>

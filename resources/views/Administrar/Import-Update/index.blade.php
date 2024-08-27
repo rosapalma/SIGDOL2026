@@ -9,11 +9,12 @@
                             {{-- guia de imports --}}
                     <div class="display-5 text-center">vease Guía para importar datos desde Excel<br>
                     <a target="_blank" href="{{asset('Guia para importar Excel.pdf')}}">
-                      <span class="text-primary">clic aquí</span>
+                        <span class="text-primary">clic aquí</span>
                             {{-- <img src="{{asset('images/icons/PDF.png')}}" title="Guia para Importar Excel" class="pdf"> --}}
                     </a>
                     </div>
-                    <div class="flex" style="margin-right: 10%; margin: 1%;">
+                        <x-message/>
+                    <div class="flex" style="margin: 1%;">
                         <div style="margin-right: 10%;">
                             <a href="" data-bs-toggle="modal" data-bs-target="#UpDataModalPers" title="Importar Registros">
                                 <img src="{{asset('images/view-adm/ImpPers.png')}}"  style="cursor: pointer; border-radius: 10px; box-shadow: 0 15px 15px 0 #000000" >
@@ -22,10 +23,10 @@
                         </div>
 
                         <div>
-                          <a href="" data-bs-toggle="modal" data-bs-target="#ImportNominaExcel" title="Importar Registros">
-                            <img src="{{asset('images/view-adm/ImpNom.png')}}"  style="cursor: pointer; border-radius: 10px; box-shadow: 0 15px 15px 0 #000000" >
+                            <a href="" data-bs-toggle="modal" data-bs-target="#ImportNominaExcel" title="Importar Registros">
+                                <img src="{{asset('images/view-adm/ImpNom.png')}}"  style="cursor: pointer; border-radius: 10px; box-shadow: 0 15px 15px 0 #000000" >
                                 {{-- <span class="display-6 text-black">Importar Nómina de Empleados</span> --}}
-                          </a>
+                            </a>
                         </div>
                     </div>
                 </div>

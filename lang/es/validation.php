@@ -99,6 +99,7 @@ return [
         'file' => "El campo :attribute no debe ser mayor que :max kilobytes.",
         'numeric' => "El campo :attribute no debe ser mayor que :max.",
         'string' => "El campo :attribute no debe ser mayor que :max caracteres.",
+    ],
     'max_digits' => 'El campo :attribute no debe tener más de :max dígitos.',
     'mimes' => 'El campo :attribute debe ser un archivo con formato: :values.',
     'mimetypes' => 'El campo :attribute debe ser un archivo con formato: :values.',
@@ -136,7 +137,6 @@ return [
     'prohibits' => 'El campo :attribute prohibe que :other esté presente.',
     'regex' => 'El formato del campo :attribute no es válido.',
     'relatable' => 'Este :attribute no se puede asociar con este recurso',
-
     'required' => 'El campo :attribute es obligatorio.',
     'required_array_keys' => 'El campo :attribute debe contener entradas para: :values.',
     'required_if' => 'El campo :attribute es obligatorio cuando :other es :value.',
@@ -157,7 +157,7 @@ return [
         'numeric' => 'El tamaño de :attribute debe ser :size.',
         'string' => 'El campo :attribute debe contener :size caracteres.',
     ],
-    'starts_with' => 'El campo :attribute debe comenzar con uno de los siguientes valores: :values',
+    'starts_with' => 'El campo :attribute debe comenzar con uno de los siguientes valores: :values.',
     'string' => 'El campo :attribute debe ser una cadena de caracteres.',
     'throttle' => 'Demasiados intentos de acceso. Por favor intente nuevamente en :seconds segundos.',
     'throttled' => 'Por favor espere antes de intentar de nuevo.',
@@ -169,7 +169,7 @@ return [
     'uppercase' => 'El campo :attribute debe estar en mayúscula.',
     'url' => 'El campo :attribute debe ser una URL válida.',
     'user' => 'No encontramos ningún usuario con ese correo electrónico.',
-    'uuid' => 'El campo :attribute debe ser un UUID válido.'
+    'uuid' => 'El campo :attribute debe ser un UUID válido.',
 
     /*
     |--------------------------------------------------------------------------
@@ -181,6 +181,7 @@ return [
     | specify a specific custom language line for a given attribute rule.
     |
     */
+
 
     'custom' => [
         'attribute-name' => [

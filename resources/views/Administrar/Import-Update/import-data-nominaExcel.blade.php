@@ -24,7 +24,9 @@
                       <input type="checkbox" name="vaciarDB" value="">
                   </div> --}}
                   <BR>
-                  <button class="btn btn-success">Importar</button>
+                <x-button class="ms-4">
+                  {{ __('Importar') }}
+                </x-button>
           </form>
           @if (isset($errors) && $errors->any()) <!--validacion de BD desde el Import-->
               <div class="alert alert-danger" role="alert">
