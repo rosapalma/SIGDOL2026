@@ -1,4 +1,5 @@
 <x-app-layout>
+@section('title','SIGDOL')
 
   {{-- <x-slot name="page">
       </x-slot> --}}

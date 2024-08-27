@@ -1,4 +1,5 @@
 <x-app-layout>
+@section('title','Mi cuenta...')
     {{-- <x-slot name="page">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
             {{ __('Mi Cuenta') }}

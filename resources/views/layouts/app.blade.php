@@ -5,7 +5,9 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
-        <title>{{ config('app.name', 'SIGDOL') }}</title>
+        {{-- <title>{{ config('app.name', 'SIGDOL') }}</title> --}}
+         <title>@yield('title')</title>
+        <link rel="icon" type="image/png" href="{{asset('images/SIGDOL/Sistema de gestión-ico.ico')}}"  />
 
         <!-- Fonts -->
         {{-- <link rel="preconnect" href="https://fonts.bunny.net"> --}}
