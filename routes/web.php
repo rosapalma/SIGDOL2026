@@ -51,8 +51,8 @@ Route::middleware([
 
 // IMPORT PRUEBAS
 
-Route::get('/viewimport',[App\Http\Controllers\UsersController::class, 'index']);
-Route::post('/importpers',[App\Http\Controllers\UsersController::class, 'UpdateDataPers']);
+Route::get('/import',[App\Http\Controllers\UsersController::class, 'index']);
+Route::post('/importusers',[App\Http\Controllers\UsersController::class, 'import']);
 
 
 
