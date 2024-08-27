@@ -19,7 +19,7 @@ class ImportController extends Controller
 
     public function index() 
     {      
-        return view('import');
+        return view('Administrar.Import-Update.index');
     }
 
     public function UpdateDataPers(Request $request)
