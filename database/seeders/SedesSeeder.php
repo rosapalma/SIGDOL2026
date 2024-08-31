@@ -33,7 +33,7 @@ class SedesSeeder extends Seeder
         DB::table('sedes')->insert(
             ['codigo' => '0200',
             'name' => 'Instituto Pedagógico Antonio Lira Alcalá',
-            'ShortName'=>'IPM',
+            'abrev'=>'IPM',
             'tipo' => 'SEDE',
             'logo' => 'images/Logos/IPM.png',
             'url'=>'www.ipm.upel.edu.ve',
@@ -45,7 +45,7 @@ class SedesSeeder extends Seeder
         DB::table('sedes')->insert(
             ['codigo' => '0300',
             'name' => 'Instituto Pedagógico Antonio Lira Alcalá',
-            'ShortName'=>'Extension capayacual',
+            'abrev'=>'Extension capayacual',
             'tipo' => 'EXT',
             'logo' => 'images/Logos/IPM.png',
             'url'=>'www.ipm.upel.edu.ve',
@@ -57,7 +57,7 @@ class SedesSeeder extends Seeder
         DB::table('sedes')->insert(
             ['codigo' => '0400',
             'name' => 'Instituto Pedagógico de Barquisimeto',
-            'ShortName'=>'IPB',
+            'abrev'=>'IPB',
             'tipo'=> 'SEDE',
             'logo' => 'images/Logos/IPB.png',
             'city' => 'Barquisimeto',
