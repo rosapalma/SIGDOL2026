@@ -8,7 +8,7 @@ use App\Models\Sede;
 use App\Models\Personal;
 use App\Models\RecibosG;
 use App\Models\NominaExcel;
-use Request;
+use Illuminate\Http\Request; 
 use PDF;
 use DB;
 use Auth;
@@ -60,9 +60,10 @@ class ReciboController extends Controller
         // ]);
         //$cedula = 17708149;
         // $mes_selc = 02;
-        // $anio_selc = 2024;
-        $mes_selc = (int) $request->mes;
-        $anio_selc = (int) $request->anio;
+        // $anio_selc = 2024;ç
+        $cedula = $request->cedula;
+        $mes_selc = $request->mes;
+        $anio_selc = $request->anio;
         $user = $this->User();
         $sedeEmp=$this->Sede();
         $IdEmp = $user['personal_id'];

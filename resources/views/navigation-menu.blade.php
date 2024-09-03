@@ -20,7 +20,7 @@
                         </x-nav-link>
                     </div>
                     <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                        <x-nav-link href="{{ url('/viewimport') }}" :active="request()->routeIs('users')">
+                        <x-nav-link href="{{ route('viewimport') }}" :active="request()->routeIs('viewimport')">
                             {{ __('Import Data') }}
                         </x-nav-link>
                     </div>
@@ -34,8 +34,8 @@
                             {{ __('Asignar Autoridad') }}
                         </x-nav-link>
                     </div>
-                    <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                        <x-nav-link href="" >
+                    <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex" >
+                        <x-nav-link href="{{ route('ViewDocs') }}" :active="request()->routeIs('ViewDocs')">
                             {{ __('Docs Generados') }}
                         </x-nav-link>
                     </div>

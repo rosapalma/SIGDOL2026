@@ -24,7 +24,7 @@
             <div align="center">
               <select name="tipo"  class="form-select-lg mb-3" aria-label=".form-select-lg example" required>
                 <option value="">Tipo de Constancia.</option>
-                <option value="6">Básica</option>
+                <option value="1">Básica</option>
                 <option value="2">Con Sueldo Base</option>
                 <option value="3">Con Sueldo Integral</option>
                 <option value="4">Para Jubilado(a) || Pensionado</option>

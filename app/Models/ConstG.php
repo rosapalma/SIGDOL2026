@@ -16,6 +16,6 @@ class ConstG extends Model
 
     public function empleado()
     {
-    return $this->belongsTo(Personal::class);
+        return $this->belongsTo(Personal::class, 'personal_id');
     }
 }

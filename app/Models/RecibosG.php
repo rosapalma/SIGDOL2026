@@ -11,9 +11,10 @@ class RecibosG extends Model
     protected $fillable = ['codigo','fechaEmi','nomina_id','personal_id','user_id' ];
 
 
-    public function empleados() 
+    public function empleado() 
     {
-        return $this->hasMany(Personal::class);
+        return $this->belongsTo(Personal::class, 'personal_id');
     }
+
 
 }
