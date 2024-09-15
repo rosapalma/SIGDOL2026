@@ -1,5 +1,5 @@
 <x-guest-layout>
-    @section('title','Accesar')
+    @section('title','Acceder')
 
     <x-authentication-card>
         <x-slot name="logo">

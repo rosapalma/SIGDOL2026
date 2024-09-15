@@ -4,9 +4,9 @@
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     
         <div class="flex justify-between h-16">
-            @if((Auth::user()->privilege == 3))
+            {{-- @if((Auth::user()->privilege == 3))
                 <label class="display-5">{{ __('Bienvenido a nuestro portar... ') }}</label>
-            @endif
+            @endif --}}
             <div class="flex">
                 <!-- Logo -->
                 @if ((Auth::user()->privilege!=3))
@@ -25,8 +25,8 @@
                         </x-nav-link>
                     </div>
                     <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                        <x-nav-link href="" >
-                            {{ __('users') }}
+                        <x-nav-link href="{{ route('register-users') }}" :active="request()->routeIs('register-users')">
+                            {{ __('Users') }}
                         </x-nav-link>
                     </div>
                     <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">

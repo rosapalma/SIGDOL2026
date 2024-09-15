@@ -1,3 +1,4 @@
+{{-- PRUEBAS LARAVEL LIVEWIRE 11 --}}
 <div style="text-align: center">
 <br><br>
     <button class="btn btn-primary" wire:click="increment">+</button>

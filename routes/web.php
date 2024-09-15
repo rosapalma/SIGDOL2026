@@ -6,20 +6,20 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ConstanciaController;
 use App\Http\Controllers\ReciboController;
 use App\Http\Controllers\ImportController;
-use App\Http\Controllers\UsersController; // pruebas import
 
 use App\Livewire\ShowPosts;
 use App\Livewire\DocsGenerados;
+use App\Livewire\RegisterUser;
 
 use Illuminate\Http\Request;
 
 
 
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
-Route::redirect('/','login'); //al login directament
+Route::get('/', function () {
+    return view('welcome');
+});
+//Route::redirect('/','login'); //al login directament
 
 
 Route::middleware([
@@ -44,23 +44,15 @@ Route::middleware([
     Route::post('/importpers',[App\Http\Controllers\ImportController::class, 'UpdateDataPers']);
     Route::post('/importNominaExcel',[App\Http\Controllers\ImportController::class, 'NomminaExcel']);
 
-     // Route::get('/users', function () {
-    // $users = Auth::User();
-    // return view('Administrar.AdmUsers.index', compact('users'));
-    // })->name('users');
 
-    //  Documentos Generados/repostes------
-    // Route::get('/DocsGenerados',function(){
-    //     return view('Administrar.DocsGenerados.index');
-    // })->name('ViewDocs');
-
+    Route::get('/registro-usuarios',RegisterUser::class)->name('register-users');
     Route::get('/DocsGenerados',DocsGenerados::class)->name('ViewDocs');
 
 
 });
 
 
-// IMPORT PRUEBAS
+// PRUEBASSS
 
 Route::get('/now', function (){
     return view('Datatime');
@@ -69,8 +61,10 @@ Route::get('/now', function (){
 
 Route::get('/prueba',ShowPosts::class);
 
-Route::get('/import',[App\Http\Controllers\UsersController::class, 'index']);
-Route::post('/importusers',[App\Http\Controllers\UsersController::class, 'import']);
+Route::get('/salir', function(){
+    Auth::logout();
+    return Redirect::to('/')->with('msj', 'Gracias por visitarnos!.');
+});
 
 
 
