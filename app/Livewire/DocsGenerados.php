@@ -57,7 +57,7 @@ class DocsGenerados extends Component
                 $ExpConsul = ConstG::whereYear('fechaEmi', $this->anio)->where('typeConst','=',$this->tipo)->get();
             }
         }
-        $view = view('/docs-pdf')->with(compact('ExpConsul','list'));
+        $view = view('Administrar/DocsGenerados/docs-pdf')->with(compact('ExpConsul','list'));
         $html = $view->render();
         $pdf = PDF::loadHTML($html)->save(public_path() . '/Constancias-Recibos.pdf');
 

@@ -7,11 +7,8 @@
    <title>Document</title>
 </head>
 <style type="text/css">
-	body{
-		 background-image: url("images/Backs/docs/fond-simple.jpg");
-		}
-	.title{ font-weight: bold; font-size: 1.5rem; letter-spacing: 1px; font-variant:small-caps;text-transform:uppercase;
-	  align-content: center;}
+	body{ background-image: url("images/Backs/docs/fond-simple.jpg");	}
+	.title{ font-weight: bold; font-size: 1.5rem; letter-spacing: 1px; font-variant:small-caps;text-transform:uppercase; align-content: center;}
 	/*.clasdiv {margin-left: 3%; margin-right: 2.5%;}*/
 	.firma{ align-content: center; font-weight: bold; font-size: 1rem;}
    .text-bold{  font-weight: bold;        	}
@@ -19,19 +16,11 @@
    .text-mute{ color:  #c3b9b7; }
    /* table { border-collapse: collapse; border-color: black 1px solid;  margin-left: 20%; border-spacing: 10px 5px;} */
    /* table#space {  border-collapse: separate; border-spacing: 10px 5px; } */
-    table{ border: 0.5px solid  #222425; border-spacing: 0; width: 90%; margin-left: 12%;  }
-    th, td {
-    white-space: nowrap;
-    text-align: left;
-    vertical-align: top;
-    border: 1px solid #000;
-    border-spacing: 0;
-    }
-    th{ background-color: dimgray; text-align: center;}
-
+   table{ border: 0.5px solid  #222425; border-spacing: 0; width: 90%; margin-left: 12%;  }
+   th, td {  white-space: nowrap; text-align: left;vertical-align: top; border: 1px solid #000; border-spacing: 0; }
+   th{ background-color: dimgray; text-align: center;}
 </style>
 <body>
-
    <section  style="margin-top: 20%; ">
       <div>
          <p class="title" align="center">
@@ -58,7 +47,7 @@
             <tbody>
                <?php $nro= 0; ?>
                @foreach ($ExpConsul as $CG )
-                <?php $nro = $nro + 1; ?>
+               <?php $nro = $nro + 1; ?>
                <tr <?php if ($nro % 2 == 0){ echo $nro; ?> style="background-color: #dfd3d1" <?php } ?>>
                   <td style="width: 5%;text-align: center;"><?php echo $nro; ?></td>
                   <td>{{$CG->empleado['last_name']}}&nbsp;&nbsp;{{$CG->empleado['name']}}</td>
@@ -96,7 +85,7 @@
                @endforeach
             </tbody>
          </table>
-       @endif
+      @endif
       </div>
    </section>
 
