@@ -16,10 +16,10 @@ use Illuminate\Http\Request;
 
 
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+Route::redirect('/','login'); //al login directament
 
 
 Route::middleware([
