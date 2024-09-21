@@ -4,6 +4,7 @@ namespace App\Livewire;
 use App\Models\User;
 use App\Models\Personal;
 use Auth;
+use Session;
 use Hash;
 use Livewire\WithPagination;
 
@@ -32,6 +33,11 @@ class AdmUsers extends Component
         if($user->statud == 1){
             $user->statud = 0;
             $user->save();
+            if($user->id == Auth::User()->id){
+                Session::flush(); //ah cerrado su seccion
+                $this->mount();
+                return back()->with('change_user_find','su seccion se ha cerrado...');
+            }
         }else{
             $user->statud = 1;
             $user->save();

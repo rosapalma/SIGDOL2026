@@ -8,9 +8,9 @@
 
         <x-validation-errors class="mb-4" />
 
-        @if (session('status'))
-            <div class="mb-4 font-medium text-sm text-green-600">
-                {{ session('status') }}
+        @if (session('error'))
+            <div style="margin-top: 1%; color:red; text-align: center; font-style:italic" class="alert alert-danger">
+                {{ session('error') }}
             </div>
         @endif
 
