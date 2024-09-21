@@ -56,8 +56,7 @@
                      @if ($CG['typeConst']==1)Básica
                      @elseif ($CG['typeConst']==2)Con Sueldo Base
                      @elseif ($CG['typeConst']==3)Con Sueldo Integral
-                     {{-- @elseif ($CG['typeConst']==4)Para Jubilado(a) | Pensionado --}}
-                     @elseif ($CG['typeConst']==5)Para Sobreviviente
+                     {{-- @elseif ($CG['typeConst']==4)Para Sobreviviente --}}
                      @endif
                   </td>
                </tr>

@@ -1,4 +1,4 @@
-<div class="footer">
+<div class="footer footer-conte">
     <p style="flex-grow: 1; text-align: center; margin-left:3%;">© 2024 SIGDOL Unidad de Informática. Todos los Derechos Reservados, Dirección: Vía el Sur, Final Avenida Raúl Leoní, frente al C.C "Parque Morichal", Maturín, Estado Monagas'</p>
 
     <div class="child-f"  >

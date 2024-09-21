@@ -18,6 +18,7 @@ class DocsGenerados extends Component
     {
         $this->resetPage();
     }
+    
     public function render()
     {
         if ($this->list== 2){

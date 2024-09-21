@@ -10,6 +10,7 @@ use App\Http\Controllers\ImportController;
 use App\Livewire\ShowPosts;
 use App\Livewire\DocsGenerados;
 use App\Livewire\RegisterUser;
+use App\Livewire\AdmUsers;
 
 use Illuminate\Http\Request;
 
@@ -44,6 +45,7 @@ Route::middleware([
     Route::post('/importpers',[App\Http\Controllers\ImportController::class, 'UpdateDataPers']);
     Route::post('/importNominaExcel',[App\Http\Controllers\ImportController::class, 'NomminaExcel']);
 
+    Route::get('/administrar-usuarios', AdmUsers::class)->name('adm-users');
 
     Route::get('/registro-usuarios',RegisterUser::class)->name('register-users');
     Route::get('/DocsGenerados',DocsGenerados::class)->name('ViewDocs');

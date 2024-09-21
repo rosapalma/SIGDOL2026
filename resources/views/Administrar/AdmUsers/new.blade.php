@@ -4,21 +4,22 @@
 {{-- INVEST PRIVILEG --}}
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-6" style="background-color: rgba(242, 245, 241, 0.863);">
+        <div class="col-md-6 container-fond">
             <p class="card-header display-6 text-bold text-center">Nuevo Usuario </p>
+             <a href="{{ url('/administrar-usuarios') }}" style="float: right;">
+                <img src="{{asset('images/ICONS/close.png') }}" title="cancelar/salir" width="30" cursor: pointer;" >
+            </a>
             <div  style="padding:20px; ">
-                
-         
-                    @if (session('mensaje'))
-                        <div class="alert alert-success">
+                @if (session('mensaje'))
+                    <div class="alert alert-success">
                         {{ session('mensaje') }}
-                        </div>
-                    @endif
-                    @if (session('error'))
-                        <div class="alert alert-danger">
+                    </div>
+                @endif
+                @if (session('error'))
+                    <div class="alert alert-danger">
                         {{ session('error') }}
-                        </div>
-                    @endif
+                    </div>
+                @endif
                 
                 <!-- -------------CEDULA------------ -->
                 <div class="col-md-8">

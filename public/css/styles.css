@@ -21,13 +21,19 @@
 }
 .img-close{
   width: 40%;
- 
+}
+.img-btn-new{
+  width: 5%;
+  float: right;
 }
 .solicitar{
   margin-top: 3%;
 }
 .solicitar-img{
   cursor: pointer; border-radius: 40px; box-shadow: 0 15px 15px 0 #000000; width:50%
+}
+.container-fond{
+  background-color: rgba(242, 245, 241, 0.863);
 }
 .flex-container {
   display: flex;

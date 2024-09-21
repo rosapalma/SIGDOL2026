@@ -1,6 +1,4 @@
-<div aling="center">
-  <label class="display-5 text-center" >CONSTANCIAS DE TRABAJO</label>
-</div>
+<div class="display-5 text-center" >CONSTANCIAS DE TRABAJO</div>
 <table class="table table-striped">
   <thead class="thead-dark">
     <tr align="center">
@@ -17,8 +15,7 @@
         <td>@if ($CG['typeConst']==1)Básica
               @elseif ($CG['typeConst']==2)Con Sueldo Base
               @elseif ($CG['typeConst']==3)Con Sueldo Integral
-              @elseif ($CG['typeConst']==4)Para Jubilado(a) | Pensionado
-              {{-- @elseif ($CG['typeConst']==5)Para Sobreviviente --}}
+              {{-- @elseif ($CG['typeConst']==4)Para Sobreviviente --}}
             @endif</td>
       </tr>
     @endforeach
