@@ -1,7 +1,7 @@
     <div class="text-center">
         <label class="display-5" >RECIBOS DE PAGO</label>
     </div>
-    <table class="table table-striped">
+    <table class="table">
         <thead class="thead-dark">
             <tr align="center">
                 <th>Empleado</th>

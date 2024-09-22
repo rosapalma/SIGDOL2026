@@ -1,5 +1,5 @@
 <div class="display-5 text-center" >CONSTANCIAS DE TRABAJO</div>
-<table class="table table-striped">
+<table class="table">
   <thead class="thead-dark">
     <tr align="center">
       <th>Empleado</th>
