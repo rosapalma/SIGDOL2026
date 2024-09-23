@@ -11,7 +11,7 @@ use App\Livewire\ShowPosts;
 use App\Livewire\DocsGenerados;
 use App\Livewire\RegisterUser;
 use App\Livewire\AdmUsers;
-
+use App\Livewire\DefinirAutoridad;
 use Illuminate\Http\Request;
 
 
@@ -48,6 +48,7 @@ Route::middleware([
     Route::get('/administrar-usuarios', AdmUsers::class)->name('adm-users');
 
     Route::get('/registro-usuarios',RegisterUser::class)->name('register-users');
+    Route::get('/DefAutoridad',DefinirAutoridad::class)->name('autoridad');
     Route::get('/DocsGenerados',DocsGenerados::class)->name('ViewDocs');
 
 

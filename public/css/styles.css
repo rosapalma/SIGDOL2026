@@ -37,6 +37,7 @@
 }
 .container-fond{
   background-color: rgba(242, 245, 241, 0.863);
+  padding: 10px;
 }
 .flex-container {
   display: flex;
