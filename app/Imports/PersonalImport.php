@@ -102,6 +102,7 @@ class PersonalImport implements  ToCollection, WithHeadingRow, WithBatchInserts,
                 $emp->cedula = $row['cedula'];
                 $emp->name = $name;
                 $emp->last_name = $last_name;
+                $emp->email = $row['email'];
                 $emp->fec_ing =  Date::excelToDateTimeObject($row['fecha_de_ingreso']);
                 $emp->fec_egre =  $fec_egre;
                 $emp->sede_id = 2;
@@ -117,6 +118,7 @@ class PersonalImport implements  ToCollection, WithHeadingRow, WithBatchInserts,
                 'cedula' => $row['cedula'],
                 'name' => $name,
                 'last_name' => $last_name,
+                'email' => $row['email'],
                 'fec_ing'=>  Date::excelToDateTimeObject($row['fecha_de_ingreso']),
                 'fec_egre'=>  $fec_egre,
                 'sede_id'=>2,

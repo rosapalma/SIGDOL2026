@@ -12,12 +12,13 @@
             <div>
                 <x-label for="cedula" value="{{ __('Cédula Nº') }} "/>
                 <x-input id="cedula" type="text" exists:personals class=" block mt-1 w-full" name="cedula" value="{{ old('cedula') }}" placeholder="ej: 99898145" autofocus />
-                <small class="form-text text-muted">La cédula debe pertenecer a un registro de nuestra Base de Datos.</small>
+                <small class="form-text text-muted"> <b>Cédula</b> debe pertenecer a un registro de nuestra Base de Datos.</small>
             </div>
 
             <div class="mt-4">
                 <x-label for="email" value="{{ __('Email') }}" />
                 <x-input id="email" class="block mt-1 w-full" type="email" exists:personals name="email" :value="old('email')" required autocomplete="username" />
+                 <small class="form-text text-muted"><b>Nota:</b> El 'email' es su direccion de correo instatucional.</small>
             </div>
 
             <div class="mt-4">
