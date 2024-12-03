@@ -13,9 +13,9 @@ class BeneficiarioSeeder extends Seeder
      */
     public function run(): void
     {
-        DB::statement('SET FOREIGN_KEY_CHECKS=0;');
+       // DB::statement('SET FOREIGN_KEY_CHECKS=0;');
         DB::table('beneficiarios')->truncate();
-        DB::statement('SET FOREIGN_KEY_CHECKS=1;');
+       // DB::statement('SET FOREIGN_KEY_CHECKS=1;');
        
         DB::table('beneficiarios')->insert([
             'name' => 'Esther Victoria',

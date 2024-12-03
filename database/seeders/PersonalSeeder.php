@@ -15,9 +15,9 @@ class PersonalSeeder extends Seeder
     public function run(): void
     {
      
-        DB::statement('SET FOREIGN_KEY_CHECKS=0;');
+        //DB::statement('SET FOREIGN_KEY_CHECKS=0;');
         DB::table('personals')->truncate();
-        DB::statement('SET FOREIGN_KEY_CHECKS=1;'); 
+        //DB::statement('SET FOREIGN_KEY_CHECKS=1;'); 
 
         DB::table('personals')->insert([
             'cedula' => '17708149',

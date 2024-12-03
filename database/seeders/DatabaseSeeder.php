@@ -12,9 +12,9 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-       
+       //posgresql omite el DB::statement('SET FOREIGN_KEY_CHECKS=0 o 1 
          //Nota: en laravel 10 las tablas padres relacionadas con tablas foraneas, se omite el truncatetabla()
-       $this->call([
+      $this->call([
         SedesSeeder::class,
         TypepersSeeder::class,
         SpacesworkSeeder::class,
@@ -27,10 +27,10 @@ class DatabaseSeeder extends Seeder
         PersSueldoSeeder::class,
         AutoridadSeeder::class,
         NominaExcelSeeder::class,
-       // UserSeeder::class, HAY USUARIOS QUE PRIMERO DEBE SER IMPORTADOS
+        UserSeeder::class, // HAY USUARIOS QUE PRIMERO DEBE SER IMPORTADOS
         BeneficiarioSeeder::class,
 
-       ]);
+      ]);
 
     }
 }

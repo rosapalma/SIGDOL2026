@@ -14,9 +14,9 @@ class UserSeeder extends Seeder
      */
     public function run(): void
     {
-        DB::statement('SET FOREIGN_KEY_CHECKS=0;');
+        //DB::statement('SET FOREIGN_KEY_CHECKS=0;');
         DB::table('users')->truncate();
-        DB::statement('SET FOREIGN_KEY_CHECKS=1;');
+        //DB::statement('SET FOREIGN_KEY_CHECKS=1;');
 
         //usuario administrado
         DB::table('users')->insert([
@@ -29,25 +29,25 @@ class UserSeeder extends Seeder
             'remember_token' => Str::random(10),
 		]);
 
-           //usuario con privilegios
-        DB::table('users')->insert([
-            'personal_id'=> 2,
-			'email' => 'ugo.irama.ipm@upel.edu.ve',
-			'email_verified_at' => now(),
-            'privilege' => 2,
-            'password' => Hash::make('MORENOCESAR'),
-            'statud' => 1,
-            'remember_token' => Str::random(10),
-		]);
-           //usuario de recursos
-        DB::table('users')->insert([
-            'personal_id'=> 3,
-			'email' => 'melendez.jose.ipm@upel.edu.ve',
-			'email_verified_at' => now(),
-            'privilege' => 3,
-            'password' => Hash::make('IRAMALUGO'),
-            'statud' => 1,
-            'remember_token' => Str::random(10),
-		]);
+           //usuario con privilegios primero debe ser la data importada
+        // DB::table('users')->insert([
+        //     'personal_id'=> 2,
+		// 	'email' => 'ugo.irama.ipm@upel.edu.ve',
+		// 	'email_verified_at' => now(),
+        //     'privilege' => 2,
+        //     'password' => Hash::make('MORENOCESAR'),
+        //     'statud' => 1,
+        //     'remember_token' => Str::random(10),
+		// ]);
+        //    //usuario de recursos
+        // DB::table('users')->insert([
+        //     'personal_id'=> 3,
+		// 	'email' => 'melendez.jose.ipm@upel.edu.ve',
+		// 	'email_verified_at' => now(),
+        //     'privilege' => 3,
+        //     'password' => Hash::make('IRAMALUGO'),
+        //     'statud' => 1,
+        //     'remember_token' => Str::random(10),
+		//]);
     }
 }
