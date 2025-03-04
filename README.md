@@ -16,4 +16,7 @@ $ php artisan migrate
 
 $ php artisan db:seed
 
-$ php artisan serve (si se abre el servidor, http://127.0.0.1:8000, entonces hemos terminado y tenemos el sistema en ejecucion)
+$ php artisan serve y x ultimo
+
+$ abra un nuevo cmd/terminal y navegue hasta el directorio del proyecto, escriba alli npm run dev. Entonces hemos terminado y tenemos el sistema en ejecucion.
+  Ahora ya puede dirigirse a su navegador web y escribir http://127.0.0.1:8000, 
