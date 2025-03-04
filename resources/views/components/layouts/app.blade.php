@@ -24,16 +24,16 @@
         @livewireStyles
     </head>
     <body class="">
-    
+
         <x-header />
 
         <div class="">
             {{-- MENU Y USER --}}
                 @livewire('navigation-menu')
-            <!-- Page title -->        
+            <!-- Page title -->
                 {{-- <header class="bg-white shadow">
                     <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-                        {{ $page }} 
+                        {{ $page }}
                     </div>
                 </header> --}}
             <!-- Page Content -->
