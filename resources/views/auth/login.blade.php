@@ -14,6 +14,14 @@
             </div>
         @endif
 
+
+
+              {{-- <div class="fadeIn first">
+                  <h1>Iniciar Sección</h1>
+                <img src="{{asset('images/ICONS/loguear.png')}}" id="icon">
+              </div> --}}
+              <div class="tool">
+
         <form method="POST" action="{{ route('login') }}">
             @csrf
             <div>
@@ -37,15 +45,17 @@
                 @if (Route::has('password.request'))
                     <a class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" href="{{ route('password.request') }}">
                         {{ __('Olvido su contraseña?') }}
-                    </a>
+                    </a>&nbsp; &nbsp;
                 @endif
 
-                <x-button class="ms-4">
+                <x-button class="ms-4 bg-primary">
                     {{ __('Entrar') }}
                 </x-button>
             </div>
         </form>
-        <br><br>
-        <a href="{{ url('/register') }}" aling="left" class="display-6" >registrarme</a>
+
+        <br>
+        <a href="{{ url('/register') }}" aling="left" class="display-7 text-primary font-weight-bold"  >Registrarme</a>
+    </div>
     </x-authentication-card>
 </x-guest-layout>
