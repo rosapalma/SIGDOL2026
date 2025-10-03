@@ -32,7 +32,7 @@
 				&nbsp;&nbsp;&nbsp;Quien suscribe, Jefe de la Unidad de Personal del Instituto
 				Pedagógico de Maturín "Antonio Lira Alcalá", hace constar por medio de la
 				presente que el(la) ciudadano(a) <b class="text-bold text-uppercase">
-					{{$personal->last_name}} {{$personal->name}}</b>,
+					{{$personal->full_name}}</b>,
 					cédula de Identidad <b class="text-bold upercase">V-{{$personal->cedula}}</b>.
 
 				@if ($condicion->id == 1)  <!--ACTIVO -->

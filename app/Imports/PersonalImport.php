@@ -22,14 +22,12 @@ class PersonalImport implements  ToCollection, WithHeadingRow, WithBatchInserts,
     use Importable;
     private $numRows = 0;
     private $empleados;
-    private $cargo;
     private $tipo;
     private $condicionlabora;
 
     private $condicionlaboral;
     public function __construct(){
         $this->empleados = Personal::pluck('id', 'cedula'); //el paquete 'pluck' delimita el tiempo, estudiar 'Queued Reading' oara archivos grandes
-        $this->cargo= Cargo::pluck('id', 'name');
 
         $this->tipo = Typepers::pluck('id', 'abrev');
         $this->condicionlaboral = Condicionlaboral::pluck('id','abrev');
@@ -67,24 +65,13 @@ class PersonalImport implements  ToCollection, WithHeadingRow, WithBatchInserts,
                 $row['id']= 'DOC';  $CondLab = 'PENS';
             }
 
-            //------NOMBRE Y APELLIDO---------------
-            $str = $row['apellidos_y_nombres'];
-            $array= explode(",", $str);
-            $tam = count($array); //he de suponer seras 2 cadenas sepadas x una ',' (apellidos y nombres)
-            for($i=0; $i<$tam; $i++){
-                if($i==0){   $last_name=$array[$i]; }
-                if($i==1){  $name= $array[$i];   }
-            }
-
             //------FECHA DE EGRESO---------
             if ($row['fecha_de_jubilacion_o_pension']==''){
                 $fec_egre = null;
             }else{
                 $fec_egre=Date::excelToDateTimeObject($row['fecha_de_jubilacion_o_pension']);
             }
-            //--------CARGOS----------
-            // $row['cargo'] = string(row['cargo']);
-            $row['cargo'] = strtoupper($row['cargo']); //convierte a mayuz para comparar efectivamente
+            $row['cargo'] = strtoupper($row['cargo']);
             if (($row['cargo'] === 'SECRETARIA') || ($row['cargo'] === 'SECRETARIO')){
                 $row['cargo'] = 'SECRETARIA (O)';
             }else if (($row['cargo'] === 'SECRETARIA EJECUTIVA') || ($row['cargo'] === 'SECRETARIO EJECUTIVO')){
@@ -100,13 +87,12 @@ class PersonalImport implements  ToCollection, WithHeadingRow, WithBatchInserts,
             $emp= Personal::where('cedula','=',$row['cedula'])->first();
             if ($emp){
                 $emp->cedula = $row['cedula'];
-                $emp->name = $name;
-                $emp->last_name = $last_name;
+                $emp->full_name = $row['apellidos_y_nombres'];
                 $emp->email = $row['email'];
                 $emp->fec_ing =  Date::excelToDateTimeObject($row['fecha_de_ingreso']);
                 $emp->fec_egre =  $fec_egre;
                 $emp->sede_id = 2;
-                $emp->cargo_id = $this->cargo[$row['cargo']];
+                $emp->cargo = $row['cargo'];
                 $emp->jerarquia = $row['jerarquia'];
                 // $emp->tiempo_dedicacion = $row['tiempo_de_dedicacion'];
                 // $emp->porcentaje_jub_pens = $row['porcentaje_de_jubilacion_o_pension'];
@@ -116,13 +102,12 @@ class PersonalImport implements  ToCollection, WithHeadingRow, WithBatchInserts,
             }else{
                 Personal::create([
                 'cedula' => $row['cedula'],
-                'name' => $name,
-                'last_name' => $last_name,
+                'full_name' => $row['apellidos_y_nombres'],
+                'cargo' => $row['cargo'],
                 'email' => $row['email'],
                 'fec_ing'=>  Date::excelToDateTimeObject($row['fecha_de_ingreso']),
                 'fec_egre'=>  $fec_egre,
                 'sede_id'=>2,
-                'cargo_id' => $this->cargo[$row['cargo']],
                 'jerarquia' => $row['jerarquia'],
                 // 'tiempo_dedicacion' => $row['tiempo_de_dedicacion'],
                 // 'porcentaje_jub_pens' => $row['porcentaje_de_jubilacion_o_pension'],

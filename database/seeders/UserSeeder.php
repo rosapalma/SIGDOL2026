@@ -28,26 +28,5 @@ class UserSeeder extends Seeder
             'statud' => 1,
             'remember_token' => Str::random(10),
 		]);
-
-           //usuario con privilegios primero debe ser la data importada
-        // DB::table('users')->insert([
-        //     'personal_id'=> 2,
-		// 	'email' => 'ugo.irama.ipm@upel.edu.ve',
-		// 	'email_verified_at' => now(),
-        //     'privilege' => 2,
-        //     'password' => Hash::make('MORENOCESAR'),
-        //     'statud' => 1,
-        //     'remember_token' => Str::random(10),
-		// ]);
-        //    //usuario de recursos
-        // DB::table('users')->insert([
-        //     'personal_id'=> 3,
-		// 	'email' => 'melendez.jose.ipm@upel.edu.ve',
-		// 	'email_verified_at' => now(),
-        //     'privilege' => 3,
-        //     'password' => Hash::make('IRAMALUGO'),
-        //     'statud' => 1,
-        //     'remember_token' => Str::random(10),
-		//]);
     }
 }

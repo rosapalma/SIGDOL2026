@@ -21,8 +21,6 @@ class DatabaseSeeder extends Seeder
         CondicionlaboralSeeder::class,
         DeduccionSeeder::class,
         AsignacionSeeder::class,
-        GCargoSeeder::class,
-        CargoSeeder::class,
         PersonalSeeder::class,
         PersSueldoSeeder::class,
         AutoridadSeeder::class,

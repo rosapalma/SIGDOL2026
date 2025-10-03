@@ -102,12 +102,9 @@ class ConstanciaController extends Controller
                 return Redirect::back()->with('error','Sus Datos no se corresponde a la sede de inicio de sesión. Cada SEDE O INSTITUTO debe generar la constancia de trabajo de sus empleados. "verifique" e ¡intente de nuevo!');
             }
             $arraytypepers = $personal->typepers()->get();
-            $arraycargo = $personal->cargo()->get();
+            $cargo = $personal->cargo;
             foreach ($arraytypepers as $type) {
                 $typepers = $type['name'];
-            }
-            foreach ($arraycargo as $car) {
-                $cargo = $car['name'];
             }
               //*****************CONDICON LABORAL****************
             $condicion = DB::table('condicionlaborals')->where('id','=',$personal->condicionlaboral_id)->first();

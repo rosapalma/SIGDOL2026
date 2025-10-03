@@ -21,13 +21,12 @@ class PersonalSeeder extends Seeder
 
         DB::table('personals')->insert([
             'cedula' => '17708149',
-            'name' => 'ROSA VIRGINIA',
-            'last_name' => ' PALMA BRAVO',
+            'full_name' => 'PALMA BRAVO ROSA VIRGINIA',
+            'cargo' => 'Analista',
             'email' => 'virginia.palma.ipm@upel.edu.ve',
             'fec_ing' => '2014-05-05',
             'sexo' => 'F',
             'spacework_id' => 1,
-            'cargo_id'=>5,
             'typepers_id'=>2,
             'condicionlaboral_id'=>1,
             'sede_id'=>2,

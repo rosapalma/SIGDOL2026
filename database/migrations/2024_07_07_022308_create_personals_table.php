@@ -15,9 +15,8 @@ return new class extends Migration
             $table->engine = 'InnoDB';
             $table->bigIncrements('id');
             $table->integer('cedula')->unique();
-            $table->string('name');
-            $table->string('last_name');
-            // $table->string('nombres');
+            $table->string('full_name')->nullable();
+            $table->string('cargo');
             $table->string('email')->nullable();
             $table->date('fec_ing')->nullable();
             $table->date('fec_egre')->nullable();
@@ -25,7 +24,6 @@ return new class extends Migration
             $table->unsignedBigInteger('spacework_id')->nullable(); //dpto
             $table->unsignedBigInteger('condicionlaboral_id')->nullable();
             $table->unsignedBigInteger('typepers_id')->nullable();
-            $table->unsignedBigInteger('cargo_id')->nullable();
             $table->string('jerarquia')->nullable();
             $table->unsignedBigInteger('sede_id')->nullable();
             $table->timestamps();
@@ -34,7 +32,6 @@ return new class extends Migration
             $table->foreign('spacework_id')->references('id')->on('spacesworks');
             $table->foreign('condicionlaboral_id')->references('id')->on('condicionlaborals');
             $table->foreign('typepers_id')->references('id')->on('typepers');
-            $table->foreign('cargo_id')->references('id')->on('cargos');
             $table->foreign('sede_id')->references('id')->on('sedes');
         });
     }

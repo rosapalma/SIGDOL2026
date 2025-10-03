@@ -97,15 +97,11 @@ class ReciboController extends Controller
 
                 if($sedeEmp['id'] == $personal->sede_id){
                     $arraytypepers = $personal->typepers()->get();
-                    $arraycargo = $personal->cargo()->get();
+                    $cargo = $personal->cargo;
                     $arrayspacework = $personal->spacework()->get();
 
                     foreach ($arraytypepers as $type) {
                             $typepers=$type['name'];
-                    }
-                    foreach ($arraycargo as $car) {
-                            $cargo=$car['name'];
-                            // $nivel=$car['nivel'];
                     }
                     // foreach ($arrayspacework as $space) {
                     //         $spacework=$space['name'];
