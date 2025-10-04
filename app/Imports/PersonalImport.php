@@ -42,27 +42,39 @@ class PersonalImport implements  ToCollection, WithHeadingRow, WithBatchInserts,
            //Tipo de Personal - condicion laboral
              //*******administrativos**********
             if ($row['id'] == 20){
-                $row['id']= 'ADM';  $CondLab = 'ACT';
+                $row['id']= 'ADM';  
+                $CondLab = 'ACT';
             }else if ($row['id'] == 22){
-                $row['id']= 'ADM';  $CondLab = 'JUB';
+                $row['id']= 'ADM';  
+                $CondLab = 'JUB';
             }else if ($row['id'] == 24){
-                $row['id']= 'ADM';  $CondLab = 'PENS';
+                $row['id']= 'ADM';  
+                $CondLab = 'PENS';
+            }else if ($row['id'] == 19){
+                $row['id']= 'ADM';  
+                $CondLab = 'CONT';
             }
             //*******obreros**********
             if ($row['id'] == 15){
-                $row['id']= 'OBR';  $CondLab = 'ACT';
+                $row['id']= 'OBR'; 
+                $CondLab = 'ACT';
             }else if ($row['id'] == 16){
-                $row['id']= 'OBR';  $CondLab = 'JUB';
+                $row['id']= 'OBR';
+                $CondLab = 'JUB';
             }else if ($row['id'] == 17){
-                $row['id']= 'OBR';  $CondLab = 'PENS';
+                $row['id']= 'OBR';
+                $CondLab = 'PENS';
             }
               //*******docentes**********
             if ($row['id'] == 50){
-                $row['id']= 'DOC';  $CondLab = 'ACT';
+                $row['id']= 'DOC';
+                $CondLab = 'ACT';
             }else if ($row['id'] == 52){
-                $row['id']= 'DOC';  $CondLab = 'JUB';
+                $row['id']= 'DOC'; 
+                $CondLab = 'JUB';
             }else if ($row['id'] == 53){
-                $row['id']= 'DOC';  $CondLab = 'PENS';
+                $row['id']= 'DOC'; 
+                $CondLab = 'PENS';
             }
 
             //------FECHA DE EGRESO---------
@@ -71,18 +83,7 @@ class PersonalImport implements  ToCollection, WithHeadingRow, WithBatchInserts,
             }else{
                 $fec_egre=Date::excelToDateTimeObject($row['fecha_de_jubilacion_o_pension']);
             }
-            $row['cargo'] = strtoupper($row['cargo']);
-            if (($row['cargo'] === 'SECRETARIA') || ($row['cargo'] === 'SECRETARIO')){
-                $row['cargo'] = 'SECRETARIA (O)';
-            }else if (($row['cargo'] === 'SECRETARIA EJECUTIVA') || ($row['cargo'] === 'SECRETARIO EJECUTIVO')){
-                $row['cargo'] = 'SECRETARIA (O) EJECUTIVA (O)';
-            }else if(($row['cargo'] === 'SECRETARIA BILINGUE') || ($row['cargo'] === 'SECRETARIO BILINGUE')){
-                $row['cargo'] = 'SECRETARIA (O) BILINGUE';
-            }else if (($row['cargo'] === 'ENFERMERA') || ($row['cargo'] === 'ENFERMERO')){
-                $row['cargo'] = 'ENFERMERA (O)';
-            }else if (($row['cargo'] === 'ENFERMERA JEFE') || ($row['cargo'] === 'ENFERMERO JEFE')){
-                $row['cargo'] = 'ENFERMERA (O) JEFE';
-            }
+
               //ADD | UPDATE TABLE EMPLEADO
             $emp= Personal::where('cedula','=',$row['cedula'])->first();
             if ($emp){
@@ -93,9 +94,9 @@ class PersonalImport implements  ToCollection, WithHeadingRow, WithBatchInserts,
                 $emp->fec_egre =  $fec_egre;
                 $emp->sede_id = 2;
                 $emp->cargo = $row['cargo'];
+                $emp->dep_adsc = $row['dependencia_de_adscripcion'];
+                $emp->categoria = $row['categoria_academica'];
                 $emp->jerarquia = $row['jerarquia'];
-                // $emp->tiempo_dedicacion = $row['tiempo_de_dedicacion'];
-                // $emp->porcentaje_jub_pens = $row['porcentaje_de_jubilacion_o_pension'];
                 $emp->typepers_id = $this->tipo[$row['id']];
                 $emp->condicionlaboral_id = $this->condicionlaboral[$CondLab];
                 $emp->save();
@@ -104,13 +105,13 @@ class PersonalImport implements  ToCollection, WithHeadingRow, WithBatchInserts,
                 'cedula' => $row['cedula'],
                 'full_name' => $row['apellidos_y_nombres'],
                 'cargo' => $row['cargo'],
+                'dep_adsc' => $row['dependencia_de_adscripcion'],
+                'categoria' => $row['categoria_academica'],
                 'email' => $row['email'],
                 'fec_ing'=>  Date::excelToDateTimeObject($row['fecha_de_ingreso']),
                 'fec_egre'=>  $fec_egre,
                 'sede_id'=>2,
                 'jerarquia' => $row['jerarquia'],
-                // 'tiempo_dedicacion' => $row['tiempo_de_dedicacion'],
-                // 'porcentaje_jub_pens' => $row['porcentaje_de_jubilacion_o_pension'],
                 'typepers_id' => $this->tipo[$row['id']],
                 'condicionlaboral_id' => $this->condicionlaboral[$CondLab],
                 ]);

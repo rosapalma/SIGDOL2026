@@ -20,20 +20,22 @@
         <div align="center"  class="title2">Datos Personales | Laborales</div>
     </div>
     <div style="margin-left: 12%; font-weight:bold;  display-flex;">
-            <small style="text-transform: uppercase;">{{$personal->last_name}}&nbsp;{{$personal->name}}</small><br>
+            <small style="text-transform: uppercase;">{{$personal->full_name}}<br>
             <small><b>Cédula de Identidad:  {{$personal->cedula}}</b></small><br>
             {{-- <small><b>Dependencia </b> </small><br> --}}
             <small>Tipo de Personal: &nbsp;{{$typepers}}</small><br>
-            <small>Cargo:&nbsp;{{$cargo}}</small><br>
-			<small style="margin-left: 70%; margin-rigth:10%">Año: <?php echo $arraynomina['anio']; ?></small><small> &nbsp;&nbsp;&nbsp;<b>Mes: </b>
+            @if ($typepersid =! 1)
+                <small>Cargo:&nbsp;{{$cargo}}</small><br>
+            @endif           
+			<small style="margin-left: 65%; margin-rigth:10%">Año: <?php echo $arraynomina['anio']; ?></small><small> &nbsp;&nbsp;&nbsp;<b>Mes: </b>
                 <?php	$meses = array("Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre");
                     foreach ($meses as $key => $value) {
 						$key = $key+1;
 						if ($arraynomina['mes'] == $key){	echo $value;}
 					}
 				?></small>
-			<small style="margin-left: 70%">Fecha de emisión: <?php echo $fechaAct; ?></small><br>
-            <label style="margin-left: 70%">Cod. recibo: <?php echo $cod; ?></label>
+			<small style="margin-left: 65%">Fecha de emisión: <?php echo $fechaAct; ?></small><br>
+            <label style="margin-left: 65%">Cod. recibo: <?php echo $cod; ?></label>
     </div>
 
     <div align="center" class="title2">Relación de Pago</div>

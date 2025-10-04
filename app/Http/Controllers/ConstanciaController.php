@@ -102,10 +102,11 @@ class ConstanciaController extends Controller
                 return Redirect::back()->with('error','Sus Datos no se corresponde a la sede de inicio de sesión. Cada SEDE O INSTITUTO debe generar la constancia de trabajo de sus empleados. "verifique" e ¡intente de nuevo!');
             }
             $arraytypepers = $personal->typepers()->get();
-            $cargo = $personal->cargo;
             foreach ($arraytypepers as $type) {
                 $typepers = $type['name'];
+                $typepersid = $type['id'];
             }
+            $cargo = $personal->cargo;
               //*****************CONDICON LABORAL****************
             $condicion = DB::table('condicionlaborals')->where('id','=',$personal->condicionlaboral_id)->first();
         }else{
@@ -122,6 +123,9 @@ class ConstanciaController extends Controller
                 $statudContrato = false;
             }
         }
+        $buscar = Pers_Sueldo::where('personal_id','=',$personal->id)->first(); 
+        $dedicacion = $buscar->dedication;
+
         //EVALUACION SEGUN LA CONDICION LABORAL Y TYPO DE CONSTANCIA
      
         if ($tipoConst == 1){
@@ -250,7 +254,7 @@ class ConstanciaController extends Controller
         ]);
         $pdf = PDF::loadView('Solicitar.Download.PDF-ConstTrab', 
         compact('autoridad', 'personal','sedeEmp','condicion', 'tiemp',
-        'beneficiarios','typepers', 'cargo','tipoConst', 'ALetras',
+        'beneficiarios','typepers', 'typepersid','dedicacion','cargo','tipoConst', 'ALetras',
         'sueldo', 'suma_asig', 'suma_extra', 'neto', 'arraycontrato', 'statudContrato', 'cod'));
         return $pdf->download('document.pdf');
 

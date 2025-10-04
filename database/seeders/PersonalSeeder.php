@@ -27,7 +27,7 @@ class PersonalSeeder extends Seeder
             'fec_ing' => '2014-05-05',
             'sexo' => 'F',
             'spacework_id' => 1,
-            'typepers_id'=>2,
+            'typepers_id'=>3,
             'condicionlaboral_id'=>1,
             'sede_id'=>2,
         ],);

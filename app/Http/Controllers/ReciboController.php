@@ -6,6 +6,7 @@ namespace App\Http\Controllers;
 use App\Models\Autoridad;
 use App\Models\Sede;
 use App\Models\Personal;
+use App\Models\Pers_Sueldo;
 use App\Models\RecibosG;
 use App\Models\NominaExcel;
 use Illuminate\Http\Request; 
@@ -102,6 +103,7 @@ class ReciboController extends Controller
 
                     foreach ($arraytypepers as $type) {
                             $typepers=$type['name'];
+                            $typepersid = $type['id'];
                     }
                     // foreach ($arrayspacework as $space) {
                     //         $spacework=$space['name'];
@@ -109,6 +111,9 @@ class ReciboController extends Controller
                 }else{ //if (verifica sedes)
                     return Redirect::back()->with('error','El empleado no se corresponde a la sede de inicio de sesión. Cada SEDE O INSTITUTO debe generar la constancia de trabajo de sus empleados, "verifique" e ¡intente de nuevo!');
                 }
+                //DEDICATION
+                $buscar = Pers_Sueldo::where('personal_id','=',$personal->id)->first(); 
+                $dedicacion = $buscar->dedication;
 
             }//if personal
             else{
@@ -140,7 +145,7 @@ class ReciboController extends Controller
                 'user_id' => $user->id,
             ]);
 
-            $pdf = \PDF::loadView('Solicitar.Download.PDF-ReciboPago',compact('fechaAct','cod','autoridad','personal','typepers','cargo','arraynomina','sedeEmp'));
+            $pdf = \PDF::loadView('Solicitar.Download.PDF-ReciboPago',compact('fechaAct','cod','autoridad','personal','typepers','typepersid','cargo','dedicacion','arraynomina','sedeEmp'));
             return $pdf->download('Recido de pago.pdf');
 
                 //return view('Solicitar.Download.PDF-ReciboPago',compact('fechaAct','cod','autoridad','direc','phone','personal','typepers','cargo', 'arraynomina','beca'));

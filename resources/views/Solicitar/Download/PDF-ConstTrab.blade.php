@@ -46,12 +46,16 @@
 				@elseif ($condicion->id == 3 || $condicion->id == 4 || $condicion->id == 5 )  <!--JUBILADO, PENSIONADA O SOBREVIVIENTE -->
 					Laboró
 				@endif
-				en este instituto como miembro del personal <b>{{$typepers}}.</b>
-				Desempeñando el cargo de <b class="text-bold text-uppercase">{{$cargo}}</b>.
-                @if ($personal->jerarquia)
-                Actualmente delega funciones como <b class="text-bold text-uppercase">{{$personal->jerarquia}}.</b><br>
+				en este instituto como miembro del personal <b>{{$typepers}}</b>
+				@if ($typepersid == 1)
+					<b class="text-bold text-uppercase">{{$dedicacion}}</b>
+				@else
+					. Desempeñando el cargo de <b class="text-bold text-uppercase">{{$cargo}}</b>
 				@endif
-				Ingresando en fecha <b>{{$personal->fec_ing}}</b>
+                @if ($personal->jerarquia)
+                    . Actualmente delega funciones como <b class="text-bold text-uppercase">{{$personal->jerarquia}}.</b><br>
+				@endif
+				Ingresando en esta institucion, en fecha <b>{{$personal->fec_ing}}</b>
 				@if($personal->fec_egre)
 				, hasta <b>{{$personal->fec_egre}}</b>
 				@endif
