@@ -1,13 +1,26 @@
 
-<input type="text" wire:model="cedula"  wire:change="Shear"  placeholder="Cédula de Identidad" autofocus class="form-control text-bold text-primary">
-<h3 wire:ignore.self class="text-center text-success display-7">{{ $name }}&nbsp; {{ $last_name }}</h3>
-@error('cedula')
-	<div class="alert-danger">Indique Cedula</div>
-@enderror
+<div>
+    <!-- hacer etiqueta e input en una misma linea -->
+    <div class="flex">
+        <div class="formulario-container">
+            <label class="formulario-item text-center">NUEVO RESPONSABLE </label>
+        </div>
+    <div>
+        <input type="text" wire:model="cedula"  wire:change="Shear"  placeholder="Cédula de Identidad" autofocus class="text-center text-primary">
+    </div>
+    </div>
+
+         <h3 wire:ignore.self class="text-center text-success display-7">{{ $full_name }}</h3>
+        @error('cedula')
+        	<div class="alert-danger">Indique Cedula</div>
+        @enderror
+
+   
+
 
 <br>
                 
-<button class="btn  btn-lg btn-primary btn-block"  wire:click="Save" onclick="confirm('¿Está seguro?') || event.stopImmediatePropagation()">Guardar</button>
+<x-button    wire:click="Save" onclick="confirm('¿Está seguro?') || event.stopImmediatePropagation()">Guardar</x-button>
 
 @if (session('error'))
     <div class="text-danger">
@@ -15,3 +28,4 @@
     </div>
 @endif
 
+</div>

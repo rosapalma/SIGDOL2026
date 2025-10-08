@@ -2,7 +2,9 @@
     @section('title','Registro')
     <x-authentication-card>
         <x-slot name="logo">
-            <x-authentication-card-logo />
+            <x-title >
+                REGISTRO DE USUARIOS
+            </x-title>
         </x-slot>
 
         <x-validation-errors class="mb-4" />
@@ -10,25 +12,23 @@
         <form method="POST" action="{{ route('register') }}">
             @csrf
             <div>
-                <x-label for="cedula" value="{{ __('Cédula Nº') }} "/>
-                <x-input id="cedula" type="text" exists:personals class=" block mt-1 w-full" name="cedula" value="{{ old('cedula') }}" placeholder="ej: 99898145" autofocus />
-                <small class="form-text text-muted"> <b>Cédula</b> debe pertenecer a un registro de nuestra Base de Datos.</small>
+                
+                <x-input id="cedula" type="text" exists:personals class=" block mt-1 w-full" name="cedula" value="{{ old('cedula') }}" placeholder="CÉDULA" autofocus />
+            </div>
+
+            <div class="mt-4">                
+                <x-input id="email" class="block mt-1 w-full" type="email" exists:personals name="email" :value="old('email')" required autocomplete="email"  placeholder="CORREO INSTITUCIONAL"/>
+            </div>
+            <div class="mt-4">                
+                <x-input id="username" class="block mt-1 w-full" type="username"  name="username" :value="old('username')" required autocomplete="username"  placeholder="NOMBRE DE USUARIO"/>
             </div>
 
             <div class="mt-4">
-                <x-label for="email" value="{{ __('Email') }}" />
-                <x-input id="email" class="block mt-1 w-full" type="email" exists:personals name="email" :value="old('email')" required autocomplete="username" />
-                 <small class="form-text text-muted"><b>Nota:</b> El 'email' es su direccion de correo instatucional.</small>
+                <x-input id="password" class="block mt-1 w-full" type="password" name="password" required autocomplete="new-password"  placeholder="CONTRASEÑA"/>
             </div>
 
             <div class="mt-4">
-                <x-label for="password" value="{{ __('Contrasseña') }}" />
-                <x-input id="password" class="block mt-1 w-full" type="password" name="password" required autocomplete="new-password" />
-            </div>
-
-            <div class="mt-4">
-                <x-label for="password_confirmation" value="{{ __('Confirmar Contraseña') }}" />
-                <x-input id="password_confirmation" class="block mt-1 w-full" type="password" name="password_confirmation" required autocomplete="new-password" />
+                <x-input id="password_confirmation" class="block mt-1 w-full" type="password" name="password_confirmation" required autocomplete="new-password" placeholder="CONFIRMAR CONTRASEÑA" />
             </div>
 
             @if (Laravel\Jetstream\Jetstream::hasTermsAndPrivacyPolicyFeature())
@@ -50,11 +50,11 @@
 
             <div class="flex items-center justify-end mt-4">
                 <a class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" href="{{ route('login') }}">
-                    {{ __('Ya estas registrado?') }}
+                    {{ __('Ya estoy registrado') }}
                 </a>
 
-                <x-button class="ms-4">
-                    {{ __('Registrarme') }}
+                <x-button>
+                    {{ __('REGISTRARME') }}
                 </x-button>
             </div>
         </form>

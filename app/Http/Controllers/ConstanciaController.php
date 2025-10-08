@@ -229,7 +229,7 @@ class ConstanciaController extends Controller
         $cod =  'CONST-'.$sedeEmp->abrev.'-'.$anio.'-'.$this->Codigo();  //sede+Aano+codigo
 
         // TIEMPO DE SERVICIO
-        $TS =   $request->TS; 
+        $TS =   true; 
         $anio = Date('Y');
         if (!empty ($TS)){
             if (empty($personal->fec_egre) ) {

@@ -11,7 +11,7 @@
     <tbody>
         @foreach ($recibs as $RG )
             <tr align="center" >
-                <td><b>{{$RG->empleado['last_name']}}, {{$RG->empleado['name']}}</b></td>
+                <td><b>{{$RG->empleado['full_name']}}</b></td>
                 <td>{{$RG['fechaEmi']}}</td>
             </tr>
         @endforeach

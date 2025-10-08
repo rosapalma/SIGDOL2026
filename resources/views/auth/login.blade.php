@@ -7,37 +7,25 @@
         </x-slot>
 
         <x-validation-errors class="mb-4" />
-
-        @if (session('error'))
-            <div style="margin-top: 1%; color:red; text-align: center; font-style:italic" class="alert alert-danger">
-                {{ session('error') }}
-            </div>
-        @endif
-
-
-
-              {{-- <div class="fadeIn first">
-                  <h1>Iniciar Sección</h1>
-                <img src="{{asset('images/ICONS/loguear.png')}}" id="icon">
-              </div> --}}
-              <div class="tool">
+       
+        <div class="tool">
 
         <form method="POST" action="{{ route('login') }}">
             @csrf
             <div>
-                <x-label for="email" value="{{ __('Email') }}" />
+                <x-label for="email" value="{{ __('EMAIL') }}" />
                 <x-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus autocomplete="username" />
             </div>
 
             <div class="mt-4">
-                <x-label for="password" value="{{ __('Contraseña') }}" />
+                <x-label for="password" value="{{ __('CONTRASEÑA') }}" />
                 <x-input id="password" class="block mt-1 w-full" type="password" name="password" required autocomplete="current-password" />
             </div>
 
             <div class="block mt-4">
                 <label for="remember_me" class="flex items-center">
                     <x-checkbox id="remember_me" name="remember" />
-                    <span class="ms-2 text-sm text-gray-600">{{ __('Recordarme') }}</span>
+                    <span class="ms-2 text-sm text-gray-600">{{ __('RECORDARME') }}</span>
                 </label>
             </div>
 
@@ -48,14 +36,14 @@
                     </a>&nbsp; &nbsp;
                 @endif
 
-                <x-button class="ms-4 bg-primary">
-                    {{ __('Entrar') }}
+               <x-button>
+                    {{ __('ACCEDER') }}
                 </x-button>
             </div>
         </form>
 
         <br>
-        <a href="{{ url('/register') }}" aling="left" class="display-7 text-primary font-weight-bold"  >Registrarme</a>
+        <a href="{{ url('/register') }}" aling="left" class="display-7 text-primary font-weight-bold fst-italic"  >Registrarme</a>
     </div>
     </x-authentication-card>
 </x-guest-layout>

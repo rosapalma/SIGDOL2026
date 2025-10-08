@@ -19,9 +19,10 @@ return new class extends Migration
             $table->float('porcentaje_jub_pens')->nullable();
             $table->float('salario_base')->nullable();
             $table->float('salario_integral')->nullable();
-
-            $table->foreign('personal_id')->references('id')->on('personals');
             $table->timestamps();
+            $table->foreign('personal_id')->references('id')->on('personals');
+            
+            
         });
     }
 
@@ -30,6 +31,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('pers__sueldos');
+         Schema::dropIfExists('pers_sueldos');
     }
 };

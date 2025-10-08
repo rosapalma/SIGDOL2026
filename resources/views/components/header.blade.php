@@ -1,5 +1,5 @@
 {{-- @props(['style' => session('flash.bannerStyle', 'success'), 'message' => session('flash.banner')]) --}}
-<nav class=""  style="background: #B8BAB9;">
+<nav class=""  style="background: #0047bb;">
     <img src="{{ asset('images/UPEL.png')}}">
     <div class="" style="display:flex" >
         <div>      

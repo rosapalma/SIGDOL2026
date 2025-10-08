@@ -1,4 +1,4 @@
-<div style="padding-top:2%">
+<div style="padding-top:2%;" class="back-doc-generados" ><!--  -->
     @section('title','Docs. Generados')
         
     @if (Auth::user()->privilege < 3)
@@ -7,4 +7,5 @@
         <br><br><br>
         <p class="display-5">No esta autorizado a visitar este sitio</p>
     @endif
+ 
 </div>

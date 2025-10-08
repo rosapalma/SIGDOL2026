@@ -18,7 +18,7 @@ label{
 }
 
 .footer{
-    background-color: #050336;
+    background-color: #0047bb;
     width:100%;
     position: absolute;
     padding: 1em 0;
@@ -50,7 +50,7 @@ label{
     font-family: Helvetica, Sans-Serif;
     color: #444444;
     font-size: 16px;
-    background-color: #FAFAFA;
+    background-color: #e5e5e5;
     width:100%;   height: auto;
     position: absolute; bottom: 0;
     background-color: #61CE70;
@@ -59,24 +59,31 @@ label{
     font-family: Helvetica, Sans-Serif;
     color: #444444;
     font-size: 16px;
-    background-color: #FAFAFA;
+    background-color: #e5e5e5;
     width:100%;   height: auto;
     position: absolute; bottom: 0;
     background-color: #61CE70;
 }
 .img-auth{
     /* background-color: pink; */
-    background: url("/images/Backs/patio.jpg") ;
+    background-color:#e5e5e5;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
 }
 .img-login{
     /* background-color: pink; */
-    background: url("/images/Backs/ipm.jpg") ;
+    background: url("/images/backs/ipm.jpg") ;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
+}
+.back-autoridad{
+    /* background-color: pink; */
+    background: url("/images/backs/autoridad.png") ;
+}
+.back-doc-generados{
+  background: url("/images/backs/doc-generados.png");
 }
 .logo-view-home{
     width: 15%;

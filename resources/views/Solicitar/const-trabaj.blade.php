@@ -3,19 +3,12 @@
 <div class="modal fade" id="ConstModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
-      <div class="modal-header" align="center">
-        <h5 class="modal-title" id="exampleModalLabel">Solicitar Constancia de Trabajo</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
-          <img src="{{asset('images/ICONS/close.png')}}"  class="img-close"  align="right"title="Cerrar"></span>
-        </button>
-
-      </div>
+      <x-header-modal>
+        Solicitar Constancia de Trabajo   
+      </x-header-modal>
 
       <div class="modal-body">
-      
-  
-
-          <form method="POST" action="/contancia-de-trabajo" class="form-horizontal">
+        <form method="POST" action="/contancia-de-trabajo" class="form-horizontal">
             @csrf
       
             <div align="center">
@@ -28,13 +21,13 @@
                 <option value="2">Con Sueldo Base</option>
                 <option value="3">Con Sueldo Integral</option>
                 <option value="4">Para Jubilado(a) || Pensionado</option>
-                <option value="5">Para Sobreviviente</option>
+                <!-- <option value="5">Para Sobreviviente</option> -->
               </select>
             </div>
-            <div>
+          <!--   <div>
               <input type="checkbox" id="TS" name="TS"  class="check" value="1"/>
               <label style="margin-left:2%"><b>TIEMPO DE SERVICIO</b></label>
-            </div>
+            </div> -->
             <br> 
               <div class="form-group">
                 <div class="col-md-12 text-center">

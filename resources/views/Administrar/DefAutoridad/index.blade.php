@@ -1,16 +1,15 @@
-<div class="container" style="padding-top:2%">
-    <div class="row justify-content-center">
+    <div>
         <div class="container-fond">
-            <small class=" text-nowrap display-5 text-center title title-color">
+            <div class=" text-nowrap display-6 text-center title title-color">
                 @if($vacio)                
-                    No hay autoridad (jefe) asignado               
+                    NO HAS RESPONSABLE (AUTORIDAD) ASIGNADO               
                 @else
-                    <?php echo $searchNom['name'].' '.$searchNom['last_name']; ?>
+                <label class="display-6">Actual</label><BR>
+                    <?php echo $searchNom['full_name']; ?>
                 @endif
-            </small>
-            <div align="center">
-                <img src="{{ asset('images/ICONS/actualizar.png')}}"  wire:click="Update" title="Cambiar" style="cursor: pointer; width: 15%">
-            </div>
+            </div><br><br>
+                @include('Administrar.DefAutoridad.update')
+        </div>
             
 
             @if (session('mensaje'))
@@ -19,11 +18,6 @@
                 </div>
             @endif
 
-            @if ($UpdJefe)
-                @include('Administrar.DefAutoridad.update')
-            @endif
-
 
 		</div>
     </div>
-</div>

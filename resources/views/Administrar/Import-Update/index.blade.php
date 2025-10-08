@@ -1,30 +1,41 @@
 <x-app-layout>
 @section('title','Cargar|Actualizar Datos')
 
-<div class="container ">
-    <div class="row justify-content-center" >
-        <div class="col-md-8">
-            <div class="card">
-            {{-- guia de imports --}}
-                <div class="display-5 text-center">vease Guía para importar datos desde Excel<br>
-                    <a target="_blank" href="{{asset('Guia para importar Excel.pdf')}}">
-                        <span class="text-primary">clic aquí</span>
-                    </a>
-                </div>
+    <x-title style="margin-top: 2%;">
+        CARGAR | ACTUALIZAR REGISTROS
+    </x-title>               
                 <x-message/>
-                <div class="solicitar justify-content-center flex-container" >
-             
-                    <img src="{{asset('images/view-adm/ImpPers.png')}}"  data-bs-toggle="modal" data-bs-target="#UpDataModalPers" title="Importar Registros" class="img-modal" >
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    <img src="{{asset('images/view-adm/ImpNom.png')}}"  data-bs-toggle="modal" data-bs-target="#ImportNominaExcel" title="Importar Registros" class="img-modal" >
-                
-                </div>
+                <div class="justify-content-center"  style="display: flex; margin-left:20%; margin-right: 20%;" >
+                    <!-- PERSONAL -->
+                    <div  class="card row" align="center"> 
+                        <div class="col-md-8 fs-1 display-7" align="center" >
+                        <img src="{{asset('images/view-adm/ImpPers.png')}}" data-bs-toggle="modal" data-bs-target="#UpDataModalPers" title="Importar Registros" class="img-modal"> <span class="h3">IMPORTAR REGISTRO DE PERSONAL</span>
 
-            </div><br><br>
-        </div>
-    </div>
-</div>
+                         <x-sub-title >
+                            VER GUIA PARA IMPORTAR DATOS DESDE EXCEL
+                            <a target="_blank" href="{{asset('Guia para importar Excel.pdf')}}">
+                                <span class="text-primary">clic aquí</span>
+                            </a>
+                         </x-sub-title>
+                        </div>
+                    </div>
 
+                    <!-- NOMINA -->
+                    <div class="card row" align="center" style="margin-left: 10%">
+                        <div class="col-md-8 fs-1 display-7" >
+                            <img src="{{asset('images/view-adm/ImpNom.png')}}"  data-bs-toggle="modal" data-bs-target="#ImportNominaExcel" title="Importar Registros" class="img-modal">
+                            <span class="h3">IMPORTAR NOMINA DE EMPLEADOS</span>
+
+                            <x-sub-title >
+                                VER GUIA PARA IMPORTAR DATOS DESDE EXCEL
+                                 <a target="_blank" href="{{asset('Guia para importar Excel.pdf')}}">
+                                <span class="text-primary">clic aquí</span>
+                            </a>
+                           </x-sub-title>
+                           
+                        </div>
+                    </div>
+                </div>      
 
 </x-app-layout>
 

@@ -650,10 +650,10 @@ pre code {
 .container-sm {
   width: 100%;
   padding-right: 15px;
-  padding-left: 15px;
+  padding-left: 30px;
   margin-right: auto;
   margin-left: auto;
-  background-color: rgba(0, 0, 0, 0.2);
+  background-color: #0047bb;
   padding-top: 2%;
 
 }
@@ -694,10 +694,11 @@ pre code {
 }
 
 .row {
-  display: flex;
   flex-wrap: wrap;
-  margin-right: -15px;
-  margin-left: -15px;
+
+  /*display: flex;  
+  margin-right: 15px;
+  margin-left: 15px;*/
 }
 
 .no-gutters {
@@ -781,11 +782,10 @@ pre code {
 .col-3,
 .col-2,
 .col-1 {
-  position: relative;
+  
   width: 100%;
-  padding-right: 15px;
-  padding-left: 15px;
-  background-color: rgba(0, 0, 0, 0.2);
+  align: center;
+  background-color: #ffffff;
 }
 
 .col {
@@ -1853,7 +1853,8 @@ pre code {
 .table td {
   padding: 0.75rem;
   vertical-align: top;
-  border-top: 1px solid #5a5d61;
+  border-top: 1px solid #ffffff;
+  border-radius: 2px;
 }
 
 .table thead th {
@@ -2083,7 +2084,7 @@ pre code {
 }
 
 .table-hover .table-active:hover {
-  background-color: rgba(0, 0, 0, 0.075);
+  background-color:  #0047bb;
 }
 
 .table-hover .table-active:hover > td,
@@ -2093,7 +2094,7 @@ pre code {
 
 .table .thead-dark th {
   color: #fff;
-  background-color: #343a40;
+  background-color: #0047bb;
   border-color: #454d55;
 }
 
@@ -2757,7 +2758,7 @@ fieldset:disabled a.btn {
 .btn-primary {
   color: #fff;
   background-color: #3490dc;
-  border-color: #3490dc;
+  border-color: #0047bb;
 }
 
 
@@ -4839,6 +4840,9 @@ input[type=button].btn-block {
   .navbar-expand-lg > .container-xl {
     flex-wrap: nowrap;
   }
+  .container-table{
+    background-color: #ffffff;
+  }
 
   .navbar-expand-lg .navbar-nav-scroll {
     overflow: visible;
@@ -5066,7 +5070,7 @@ input[type=button].btn-block {
 }
 
 .card {
-  background-color: rgba(202, 204, 195, 0.678); ;
+  background-color: #ffffff; ;
   background-clip: border-box;
   border: 1px solid rgba(0, 0, 0, 0.125);
   border-radius: 0.25rem;
@@ -10885,7 +10889,7 @@ a.text-secondary:focus {
 }
 
 .text-success {
-  color: #38c172 !important;
+  color:  #ffffff  !important;
 }
 
 a.text-success:hover,
@@ -11063,6 +11067,7 @@ a.text-dark:focus {
   .table-bordered td {
     border: 1px solid #dee2e6 !important;
   }
+
 
   .table-dark {
     color: inherit;

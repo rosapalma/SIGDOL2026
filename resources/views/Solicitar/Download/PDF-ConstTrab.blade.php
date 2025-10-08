@@ -7,7 +7,8 @@
 
 
 <style type="text/css">
-	body{background-image: url("images/Backs/docs/fond.jpg");}
+
+	.borde-initial{background-image: url("images/report/borde-initial2.png");  }
 	.title{ font-weight: bold; font-size: 1.5rem; letter-spacing: 1px; font-variant:small-caps;text-transform:uppercase;align-content: center;}
 	/*.clasdiv {margin-left: 3%; margin-right: 2.5%;}*/
 	.firma{ align-content: center; font-weight: bold; font-size: 1rem;}
@@ -17,8 +18,10 @@
     .text-mute{ color:  #c3b9b7; }
 </style>
 
-<body>
+<body >
     <section>
+    	<div class="borde-initial"></div>
+    	
 		<div style="margin-top: 25%;">
 			<p class="title" align="center">
 				@if ($condicion->id == 1 || $condicion->id == 2)

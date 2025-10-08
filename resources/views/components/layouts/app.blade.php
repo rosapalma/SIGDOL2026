@@ -30,14 +30,8 @@
         <div class="">
             {{-- MENU Y USER --}}
                 @livewire('navigation-menu')
-            <!-- Page title -->
-                {{-- <header class="bg-white shadow">
-                    <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-                        {{ $page }}
-                    </div>
-                </header> --}}
             <!-- Page Content -->
-            <main class="imgHome">
+            <main class="">
                 {{ $slot }}
                 <BR>
             </main>

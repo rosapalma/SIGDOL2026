@@ -9,7 +9,7 @@ use Auth;
 
 class DefinirAutoridad extends Component
 {
-    public $UpdJefe, $cedula, $name, $last_name;
+    public $UpdJefe, $cedula, $full_name;
     // public $admin;
 	// public $mount, $jefedpto,  $cedula, $NewJefe, $exist;
 	// public $LastNameNewJefe, $NameNewJefe, $personal_id, $userSelec;
@@ -37,8 +37,7 @@ class DefinirAutoridad extends Component
     {
         $searchempleado = Personal::where('cedula','=',$this->cedula)->first();
         if($searchempleado){
-            $this->name = $searchempleado->name;
-            $this->last_name = $searchempleado->last_name;
+            $this->full_name = $searchempleado->full_name;
         }
     }
 
@@ -71,7 +70,7 @@ class DefinirAutoridad extends Component
             $AddNewjefe->save();
         }
 		$this->clear();
-		return back()->with('mensaje','Jefe de Unidad actualizado');
+		return back()->with('mensaje','Responsable de Unidad actualizado');
 
     }
 
@@ -80,8 +79,7 @@ class DefinirAutoridad extends Component
     public function clear(){
 		$this->cedula='';
 		$this->UpdJefe = false;
-		$this->name ='';
-        $this->last_name = '';
+		$this->full_name ='';
 	}
 
 }

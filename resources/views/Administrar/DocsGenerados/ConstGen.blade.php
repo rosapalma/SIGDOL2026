@@ -1,16 +1,17 @@
 <div class="display-5 text-center" >CONSTANCIAS DE TRABAJO</div>
-<table class="table">
+<div  class="" style="margin-left:0; margin-right: 10%;">
+<table class="table" >
   <thead class="thead-dark">
     <tr align="center">
-      <th>Empleado</th>
-      <th>En Fecha</th>
-      <th>Tipo de Constancia</th>
+      <th>NOMBRE</th>
+      <th>EN FECHA</th>
+      <th>TIPO DE CONSTANCIA</th>
     </tr>
   </thead>
   <tbody>
     @foreach ($conts as $CG )
       <tr align="center" >
-        <td><b>{{$CG->empleado['last_name']}}, {{$CG->empleado['name']}}</b></td>
+        <td><b>{{$CG->empleado['full_name']}}</b></td>
         <td>{{$CG['fechaEmi']}}</td>
         <td>@if ($CG['typeConst']==1)Básica
               @elseif ($CG['typeConst']==2)Con Sueldo Base
@@ -26,5 +27,7 @@
     {{ $conts->links() }}    
   </div>
 @endif
+</div>
+
 
 

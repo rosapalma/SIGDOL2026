@@ -1,11 +1,14 @@
-<div style="padding-top:2%">
+<div class="back-autoridad" >
+    <x-container-full>
     @section('title','Def. Autoridad')
         
     @if (Auth::user()->privilege == 1)
-         <p class="display-5 text-center">Autoridad Definida</p>
+         <x-title>ASIGNAR RESPONSABLE</x-title><br><br>
         @include("Administrar.DefAutoridad.index")
     @else
         <br><br><br>
-        <p class="display-5">No esta autorizado a visitar este sitio</p>
+        <p class="display-5">NO ESTA AUTORIZADO A VISITAR ESTA PAGINA</p>
     @endif
+    </x-container-full>
 </div>
+
