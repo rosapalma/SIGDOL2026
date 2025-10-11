@@ -123,40 +123,35 @@ class ReciboController extends Controller
         else{
             return Redirect::back()->with('error','No puede continuar, dado a que no ha definido ninguna autoridad, quien certificara dicho documento , consulte al administrador');
         }
-        //CONSULTANDO NOMINAS...
+        //CONSULTANDO NOMINAS PARA TRAER LA ID DE LA SELECCIONADA SEGUN MES-AÑO...
         $nominas= $personal->nominas()->get();
-        if(!empty($nominas) && count($nominas) > 0){
-            foreach($nominas as $nom){
-                if(($nom['mes'] == $mes_selc) && ($nom['anio'] == $anio_selc)) {
-                    $arraynomina = $nom;
-                    $idnomina = $nom->id;
+        if($nominas){
+            foreach($nominas as $nom){              
+                if(($nom['mes'] == $mes_selc) && ($nom['anio'] == $anio_selc)){
+                   $arraynomina = $nom;
+                   $idnomina = $nom->id;
+                   DB::table('recibos_g_s')->insert([
+                    'codigo' => $cod,
+                    'fechaEmi' => $fechaAct,
+                    'nomina_id' => $idnomina,
+                    'personal_id' =>$IdEmp,
+                    'user_id' => $user->id,
+                    ]);
                 }else{
-                    return Redirect::back()->with('error','Su solicitud no puede ser procesada, pueda que aun no se han cargado al sistema la nómina correspondiente al mes/año seleccionado. Debe esperar o consulte al administrador');
+                    return Redirect::back()->with('error','No ha sido cargada al sistema la nomina correspondien al mes/año seleccionado, consulte al administrador');
                 }
-            }
+            } //END FOREACH
+                   
         }else{
-            return Redirect::back()->with('error','No ha sido cargada al sistema la nomina correspondien al mes/año seleccionado, consulte al administrador');
+            return Redirect::back()->with('error','Aun NO tiene ninguna nomina registrada, consulte al administrador');
         }
-            DB::table('recibos_g_s')->insert([
-                'codigo' => $cod,
-                'fechaEmi' => $fechaAct,
-                'nomina_id' => $idnomina,
-                'personal_id' =>$IdEmp,
-                'user_id' => $user->id,
-            ]);
+        
+            
 
             $pdf = \PDF::loadView('Solicitar.Download.PDF-ReciboPago',compact('fechaAct','cod','autoridad','personal','typepers','typepersid','cargo','dedicacion','arraynomina','sedeEmp'));
             return $pdf->download('Recido de pago.pdf');
 
                 //return view('Solicitar.Download.PDF-ReciboPago',compact('fechaAct','cod','autoridad','direc','phone','personal','typepers','cargo', 'arraynomina','beca'));
-
-
-
-
-
-
-
-
 
     }
 

@@ -17,9 +17,13 @@ use Illuminate\Http\Request;
 
 
 
+
 Route::get('/', function () {
     return view('welcome');
 });
+
+
+
 //Route::redirect('/','login'); //al login directament
 
 
@@ -55,32 +59,11 @@ Route::middleware([
 });
 
 
-// PRUEBASSS
-
-Route::get('/now', function (){
-    return view('Datatime');
-    //now()->toDateTimeString();
-});
-
-Route::get('/prueba',ShowPosts::class);
-
 Route::get('/salir', function(){
     Auth::logout();
     return Redirect::to('/')->with('msj', 'Gracias por visitarnos!.');
 });
 
-
-
-
-
-
-
-
-
-Route::get('/salir', function(){
-    Auth::logout();
-    return Redirect::to('/')->with('msj', 'Gracias por visitarnos!.');
-});
 
 
 

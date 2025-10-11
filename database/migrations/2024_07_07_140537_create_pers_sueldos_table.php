@@ -21,8 +21,6 @@ return new class extends Migration
             $table->float('salario_integral')->nullable();
             $table->timestamps();
             $table->foreign('personal_id')->references('id')->on('personals');
-            
-            
         });
     }
 

@@ -16,13 +16,15 @@ return new class extends Migration
             $table->bigIncrements('id');
             $table->integer('cedula')->unique();
             $table->string('full_name')->nullable();
+            $table->string('sexo')->nullable();
             $table->string('cargo')->nullable();
             $table->string('dep_adsc')->nullable(); //dependencia de adscripcion
             $table->string('categoria')->nullable(); //categoria academica
             $table->string('email')->nullable();
             $table->date('fec_ing')->nullable();
             $table->date('fec_egre')->nullable();
-            $table->string('sexo')->nullable();
+            $table->string('dedication')->nullable();
+            $table->float('porcentaje_jub_pens')->nullable();            
             $table->unsignedBigInteger('spacework_id')->nullable(); //dpto
             $table->unsignedBigInteger('condicionlaboral_id')->nullable();
             $table->unsignedBigInteger('typepers_id')->nullable();

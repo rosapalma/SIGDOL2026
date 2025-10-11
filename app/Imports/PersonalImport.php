@@ -72,10 +72,11 @@ class PersonalImport implements  ToCollection, WithHeadingRow, WithBatchInserts,
             }else if ($row['id'] == 52){
                 $row['id']= 'DOC'; 
                 $CondLab = 'JUB';
-            }else if ($row['id'] == 53){
-                $row['id']= 'DOC'; 
-                $CondLab = 'PENS';
             }
+            // else if ($row['id'] == 53){
+            //     $row['id']= 'DOC'; 
+            //     $CondLab = 'PENS';
+            // }
 
             //------FECHA DE EGRESO---------
             if ($row['fecha_de_jubilacion_o_pension']==''){
@@ -92,6 +93,8 @@ class PersonalImport implements  ToCollection, WithHeadingRow, WithBatchInserts,
                 $emp->email = $row['email'];
                 $emp->fec_ing =  Date::excelToDateTimeObject($row['fecha_de_ingreso']);
                 $emp->fec_egre =  $fec_egre;
+                $emp->dedication = $row['tiempo_de_dedicacion'];
+                $emp->porcentaje_jub_pens = $row['porcentaje_de_jubilacion_o_pension'];
                 $emp->sede_id = 2;
                 $emp->cargo = $row['cargo'];
                 $emp->dep_adsc = $row['dependencia_de_adscripcion'];
@@ -110,6 +113,8 @@ class PersonalImport implements  ToCollection, WithHeadingRow, WithBatchInserts,
                 'email' => $row['email'],
                 'fec_ing'=>  Date::excelToDateTimeObject($row['fecha_de_ingreso']),
                 'fec_egre'=>  $fec_egre,
+                'dedication' => $row['tiempo_de_dedicacion'],
+                'porcentaje_jub_pens' => $row['porcentaje_de_jubilacion_o_pension'],
                 'sede_id'=>2,
                 'jerarquia' => $row['jerarquia'],
                 'typepers_id' => $this->tipo[$row['id']],
@@ -117,23 +122,23 @@ class PersonalImport implements  ToCollection, WithHeadingRow, WithBatchInserts,
                 ]);
             }
             //VUELVE A BUSCARLO PARA UPDATE O INSERT DEDICACION Y PORCENTAJE + ULTIMO SALARIO DEL EMPLEADOR YA ACTUALIZADOS SEGUN NOMINA
-            $emp= Personal::where('cedula','=',$row['cedula'])->first();
-            $emp_salario= Pers_Sueldo::where('personal_id','=',$emp->id)->first();
-            if ($emp_salario){
-                $emp_salario->dedication = $row['tiempo_de_dedicacion'];
-                $emp_salario->porcentaje_jub_pens = $row['porcentaje_de_jubilacion_o_pension'];
-                $emp_salario->salario_base = $row['salario_basico'];
-                $emp_salario->salario_integral = $row['salario_integral'];
-                $emp_salario->save();
-            }else{
-                Pers_Sueldo::create([
-                    'personal_id' => $emp->id,
-                    'dedication' => $row['tiempo_de_dedicacion'],
-                    '	porcentaje_jub_pens' => $row['porcentaje_de_jubilacion_o_pension'],
-                    'salario_base' => $row['salario_basico'],
-                    'salario_integral' => $row['salario_integral'],
-                ]);
-            }
+            // $emp= Personal::where('cedula','=',$row['cedula'])->first();
+            // $emp_salario= Pers_Sueldo::where('personal_id','=',$emp->id)->first();
+            // if ($emp_salario){
+            //     $emp_salario->dedication = $row['tiempo_de_dedicacion'];
+            //     $emp_salario->porcentaje_jub_pens = $row['porcentaje_de_jubilacion_o_pension'];
+            //     $emp_salario->salario_base = $row['salario_basico'];
+            //     $emp_salario->salario_integral = $row['salario_integral'];
+            //     $emp_salario->save();
+            // }else{
+            //     Pers_Sueldo::create([
+            //         'personal_id' => $emp->id,
+            //         'dedication' => $row['tiempo_de_dedicacion'],
+            //         'porcentaje_jub_pens' => $row['porcentaje_de_jubilacion_o_pension'],
+            //         'salario_base' => $row['salario_basico'],
+            //         'salario_integral' => $row['salario_integral'],
+            //     ]);
+            // }
 
 
             $emp='';

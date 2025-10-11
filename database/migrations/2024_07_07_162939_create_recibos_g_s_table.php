@@ -21,7 +21,7 @@ return new class extends Migration
             $table->unsignedBigInteger('user_id');
             $table->timestamps();
 
-            $table->foreign('nomina_id')->references('id')->on('nomina_excels');
+            $table->foreign('nomina_id')->references('id')->on('nomina_excels')->constrained()->onDelete('cascade');
             $table->foreign('personal_id')->references('id')->on('personals');
             $table->foreign('user_id')->references('id')->on('users');
 

@@ -22,11 +22,12 @@
     @endforeach
   </tbody>
 </table>
-@if($conts->count())
-  <div style="color:blue;">
+  @if($conts->count())
+  <div style="color:red;">
     {{ $conts->links() }}    
   </div>
 @endif
+
 </div>
 
 

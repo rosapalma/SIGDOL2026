@@ -22,9 +22,9 @@ class DatabaseSeeder extends Seeder
         DeduccionSeeder::class,
         AsignacionSeeder::class,
         PersonalSeeder::class,
-        PersSueldoSeeder::class,
+        //PersSueldoSeeder::class,
         AutoridadSeeder::class,
-        NominaExcelSeeder::class,
+       // NominaExcelSeeder::class,
         UserSeeder::class, // HAY USUARIOS QUE PRIMERO DEBE SER IMPORTADOS
         BeneficiarioSeeder::class,
 

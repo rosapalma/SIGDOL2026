@@ -7,29 +7,78 @@
    <title>Document</title>
 </head>
 <style type="text/css">
-	body{ background-image: url("images/Backs/docs/fond-simple.jpg");	}
-	.title{ font-weight: bold; font-size: 1.5rem; letter-spacing: 1px; font-variant:small-caps;text-transform:uppercase; align-content: center;}
-	/*.clasdiv {margin-left: 3%; margin-right: 2.5%;}*/
-	.firma{ align-content: center; font-weight: bold; font-size: 1rem;}
-   .text-bold{  font-weight: bold;        	}
-   .text-uppercase{ text-transform: uppercase; }
-   .text-mute{ color:  #c3b9b7; }
-   /* table { border-collapse: collapse; border-color: black 1px solid;  margin-left: 20%; border-spacing: 10px 5px;} */
-   /* table#space {  border-collapse: separate; border-spacing: 10px 5px; } */
-   table{ border: 0.5px solid  #222425; border-spacing: 0; width: 90%; margin-left: 12%;  }
-   th, td {  white-space: nowrap; text-align: left;vertical-align: top; border: 1px solid #000; border-spacing: 0; }
-   th{ background-color: dimgray; text-align: center;}
+	header{ 
+       background-image: url("images/backs/docs/arriba.png");
+       background-repeat: no-repeat;
+       width: 100%; 
+       height: 15%;
+       margin: 0;
+   }
+   footer {
+      background-image: url("images/backs/docs/abajo.png");
+      background-repeat: no-repeat; 
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      height: 40%; 
+      margin-top: auto;  
+    }
+	.title{ font-weight: bold; 
+      font-size: 1.5rem; 
+      letter-spacing: 1px;
+      font-variant:small-caps;
+      text-transform:uppercase; 
+      align-content: center;
+   }
+
+  
+   #firma{  
+     background-image: url("images/backs/docs/firma.png");
+     background-repeat: no-repeat;
+     margin-left: 50%;
+     margin-top: 10%;
+     width: 100%;
+     height: 20%;
+     }
+   .text-bold{  
+      font-weight: bold;        	
+   }
+   .text-uppercase{ 
+      text-transform: uppercase; 
+   }
+   .text-mute{ 
+      color:  #c3b9b7; 
+   }
+   table{ 
+      border: 0.5px solid  #222425; 
+      border-spacing: 0; 
+      width: 90%; 
+      margin-left: 12%;  
+   }
+   th, td {  
+      white-space: nowrap; 
+      text-align: left;
+      vertical-align: top; 
+      border: 1px solid #000; 
+      border-spacing: 0; 
+   }
+   th{ background-color: dimgray; 
+      text-align: center;
+   }
 </style>
 <body>
-   <section  style="margin-top: 20%; ">
-      <div>
-         <p class="title" align="center">
+   <header></header>
+   <section  style="margin-top: 0; ">
+      <div align="center">
+         <p class="title" >
             @if ($list== 1)
                CONSTANCIAS DE TRABAJO
             @else
                RECIBOS DE PAGO
             @endif
          </p>
+         <p  class="title2">Generados(as) por <B>SIGDOL</B></p>
+
       </div>
    <section>
    <section styles="">
@@ -88,7 +137,8 @@
       </div>
    </section>
 
-<h1></h1>
+  <div id="firma"></div>
+  <footer></footer>
 </body>
 </html>
 
