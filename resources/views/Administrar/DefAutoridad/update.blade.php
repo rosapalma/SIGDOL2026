@@ -14,13 +14,16 @@
         @error('cedula')
         	<div class="alert-danger">Indique Cedula</div>
         @enderror
+        <p>subir sello y firma</p>
 
    
 
 
 <br>
                 
-<x-button    wire:click="Save" onclick="confirm('¿Está seguro?') || event.stopImmediatePropagation()">Guardar</x-button>
+<x-button wire:click="Save" onclick="confirm('¿Está seguro?') || event.stopImmediatePropagation()">
+    {{ __('Registrar') }}
+</x-button>
 
 @if (session('error'))
     <div class="text-danger">

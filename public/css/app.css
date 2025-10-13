@@ -76,7 +76,7 @@ body {
   position: relative;
   padding-bottom: 5em;
   min-height: 100vh;
-
+  background-color: #e5e5e5;
 }
 
 [tabindex="-1"]:focus:not(:focus-visible) {
@@ -2757,7 +2757,7 @@ fieldset:disabled a.btn {
 
 .btn-primary {
   color: #fff;
-  background-color: #3490dc;
+  background-color: #0047bb;
   border-color: #0047bb;
 }
 
@@ -2923,14 +2923,14 @@ fieldset:disabled a.btn {
 
 .btn-warning {
   color: #212529;
-  background-color: #ffed4a;
+  background-color: #f5bf44;
   border-color: #ffed4a;
 }
 
 .btn-warning:hover {
   color: #212529;
   font-weight: bold;
-  background-color: #f5bf44 ;
+  background-color: ;
   border-color:   #c98f09 ;
 }
 
@@ -6832,6 +6832,7 @@ a.close.disabled {
 .popover-body {
   padding: 0.5rem 0.75rem;
   color: #212529;
+  
 }
 
 .carousel {

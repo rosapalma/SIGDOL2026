@@ -1,14 +1,12 @@
 <!-- desde componente register-user -->
 
 @if (Auth::user()->privilege == 1)
-{{-- INVEST PRIVILEG --}}
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-6 container-fond">
-            <p class="card-header display-6 text-bold text-center">Nuevo Usuario </p>
-             <a href="{{ url('/administrar-usuarios') }}" style="float: right;">
-                <img src="{{asset('images/ICONS/close.png') }}" title="cancelar/salir" width="30" cursor: pointer;" >
-            </a>
+<div class="container-borde-form">
+            <x-close></x-close>
+    <div class="justify-content-center">
+        <div class="">
+            <p class="title text-center">Nuevo Usuario </p>
+            
             <div  style="padding:20px; ">
                 @if (session('mensaje'))
                     <div class="alert alert-success">
@@ -26,56 +24,45 @@
                     <input type="text" wire:model="cedula"  class="form-control text-bold text-primary" align="center" autofocus placeholder="Cédula" onkeyUp="return ValNumero(this);" wire:change="verif">
                 </div>
             
-                <div align="center">
-                    <label class="display-6" style="background-color: rgba(130, 235, 186, 0.2);">{{$name}} {{$last_name}}</label>
+                <div>
+                    <label class="display-7" style="background-color: rgba(130, 235, 186, 0.2);">{{$full_name}}</label>
                 </div>
 
                 <!-- -------------EMAIL------------ --> 
                 <div class="col-md-8">
                     <input type="email" wire:model="email" wire:change="ValidEmail" class="form-control text-bold text-primary" placeholder="E-mail">
                 </div>
-                        <br>
-                        {{-- <label>&nbsp;&nbsp; Omitir la verificación de Email?
-                            <input type="checkbox" wire:name="VerifEmail"  class="check"/>
-                        </label> --}}
+                <br>
                 
 
  <!-- ------------PRIVILEGIO/ROL------------ -->
 
-                <div class="row mb-3" >
-                    <label class="col-md-4 col-form-label text-md-end">{{ __('Privilegio | Rol') }}</label>
-                    <div class="col-md-6">
-                        <select wire:model="privilege" class="col-md-8 col-form-label">
+                <div class="col-md-8">
+                    <select wire:model="privilege" class="form-control text-bold text-primary">
                             <option value="">rol/privilegio</option>
                             <option value="2">Usuario con privilegios</option>
                             <option value="3">Usuario de recursos</option>
                             <option value="1">Administrador</option>
                         </select>
-                    </div>
-                </div>
-
+                    </div><br>
 
 
 <!-- ------------PASSWORD/CONFIRMED------------ -->
-                <div class="row mb-3">
-                    <label for="password" class="col-md-4 col-form-label text-md-end">{{ __('Contraseña') }}</label>
-                    <div class="col-md-6">
-                        <input type="txt" wire:model="password" placeholder="Password"  class="form-control" required>
+                <div class="col-md-8">
+                    <input type="txt" wire:model="password" placeholder="Password"  class="form-control text-bold" required>
                         {{-- @error('password') <span class="text-danger text-center">{{ $message }}</span> @enderror --}}
-                    </div>
                 </div>
 
-
-                <div class="row mb-3">
-                    <label for="password-confirm" class="col-md-4 col-form-label text-md-end">{{ __('Confirmar Contraseña') }}</label>
-                    <div class="col-md-6">
-                        <input  type="txt" class="form-control" wire:model="password_confirmation" placeholder="Confirmar" required>
-                        @error('password_confirmation') <span class="text-danger text-center">{{ $message }}</span> @enderror
-                    </div>
-                </div> 
+                <div class="col-md-8">
+                    <input  type="txt" class="form-control text-bold text-primary" wire:model="password_confirmation" placeholder="Confirmar" required>
+                    @error('passwort-bold text-primary"d_confirmation') <span class="text-danger text-center">{{ $message }}</span> @enderror
+                </div> <br><br>
 
 <!--BTN -->
-    <button type="submit" class="btn btn-primary btn-block" wire:click="create()"> {{ __('Registrar') }}</button>
+<x-button wire:click="create()">
+    {{ __('Registrar') }}
+</x-button>
+
         </div>
         </div>
         </div>

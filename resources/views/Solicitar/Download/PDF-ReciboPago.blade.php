@@ -3,7 +3,8 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         <title>Recibo de pago</title>
-        <style type="text/css">
+    </head>
+     <style type="text/css">
             html {
               min-height: 100%;
               position: relative;
@@ -77,7 +78,6 @@
                   font-size: 1rem;
                 }
         </style>
-    </head>
 <body>
     <header></header>
     <div>
@@ -85,21 +85,22 @@
         <div align="center"  class="title2">Datos Personales | Laborales</div>
     </div>
     <!-- DATOS PERSONALE & LABORALES -->
-    <div class="contenedor-grid" >
-            <p style="text-transform: uppercase;">{{$personal->full_name}}</p>
-            <p><b>Cédula de Identidad:  {{$personal->cedula}}</b></p>
-            <p>Tipo de Personal: &nbsp;{{$typepers}}</p>            
-            <P style="text-wrap: balance;">Cargo:&nbsp;{{$cargo}}</P>
-            <p style="">Año: <?php echo $arraynomina['anio']; ?> &nbsp;&nbsp;&nbsp;<b>Mes: </b>
+    <div class="contenedor-grid">
+        <p style="text-transform: uppercase;">{{$personal->full_name}}</p>
+        <p><b>Cédula de Identidad:  {{$personal->cedula}}</b></p>
+        <p>Tipo de Personal: &nbsp;{{$typepers}}</p>            
+        <P style="text-wrap: balance;">Cargo:&nbsp;{{$cargo}}</P>
+        <p style="">Año: <?php echo $arraynomina['anio']; ?> &nbsp;&nbsp;&nbsp;<b>Mes: </b>
                 <?php   $meses = array("Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre");
-                    foreach ($meses as $key => $value) {
+            foreach ($meses as $key => $value) {
                         $key = $key+1;
                         if ($arraynomina['mes'] == $key){   echo $value;}
-                    }
-                ?>
-            </p>
+            }
+            ?>
+        </p>
             <p style="">Fecha de emisión: <?php echo $fechaAct; ?></p>
-            <p style="">Cod. recibo: <?php echo $cod; ?></p>		
+            <p style="">Cod. recibo: <?php echo $cod; ?></p>	
+       
     </div>
 
     <p align="center" class="title2">Relación de Pago</p>

@@ -55,15 +55,6 @@ label{
     position: absolute; bottom: 0;
     background-color: #61CE70;
 }
-.backg-adm{
-    font-family: Helvetica, Sans-Serif;
-    color: #444444;
-    font-size: 16px;
-    background-color: #e5e5e5;
-    width:100%;   height: auto;
-    position: absolute; bottom: 0;
-    background-color: #61CE70;
-}
 .img-auth{
     /* background-color: pink; */
     background-color:#e5e5e5;
@@ -80,10 +71,16 @@ label{
 }
 .back-autoridad{
     /* background-color: pink; */
-    background: url("/images/backs/autoridad.png") ;
+    background: url("/images/backs/autoridad.png");
+    background-repeat: no-repeat;
+}
+.back-usuarios{
+    background: url("/images/backs/usuarios.png");
+    background-repeat: no-repeat;
 }
 .back-doc-generados{
   background: url("/images/backs/doc-generados.png");
+  background-repeat: no-repeat;
 }
 .logo-view-home{
     width: 15%;

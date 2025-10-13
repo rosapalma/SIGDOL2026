@@ -1,6 +1,7 @@
     <div class="text-center">
         <label class="display-5" >RECIBOS DE PAGO</label>
     </div>
+    <div class="contenedor-tabla"  style="margin-left:0; margin-right: 10%;">
     <table class="table">
         <thead class="thead-dark">
             <tr align="center">
@@ -17,7 +18,13 @@
         @endforeach
     </tbody>
     </table>
-    @if($recibs->count())
-        <div style="color:blue;">     {{ $recibs->links() }}    </div>
+  
+
+</div>
+<BR>
+  <div style="color:red; float: left;">
+    @if($recibs->count())  
+       {{ $recibs->links() }}  
     @endif
+    </div>
 

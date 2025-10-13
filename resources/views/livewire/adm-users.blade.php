@@ -1,11 +1,11 @@
-<div style="padding-top:2%">
+<div style="padding-top:2%;" class="back-usuarios">
     @section('title','Administ. Users')
         
     @if (Auth::user()->privilege == 1)
-        <p class="display-5 text-center">USUARIOS REGISTRADOS</p>
+        <p class="title text-center">USUARIOS REGISTRADOS</p>
         @include("Administrar.AdmUsers.index")
     @else
         <br><br><br>
-        <p class="display-5">No esta autorizado a visitar este sitio</p>
+        <p class="title text-center">No esta autorizado a visitar este sitio</p>
     @endif
 </div>

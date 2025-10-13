@@ -29,7 +29,8 @@
 
     <x-slot name="actions">
      
-        <x-button>
+    
+        <x-button onclick="confirm('¿Está seguro?') || event.stopImmediatePropagation()">
             {{ __('Guardar') }}
         </x-button>
     </x-slot>

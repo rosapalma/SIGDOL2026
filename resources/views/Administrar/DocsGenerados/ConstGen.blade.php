@@ -1,5 +1,9 @@
-<div class="display-5 text-center" >CONSTANCIAS DE TRABAJO</div>
-<div  class="" style="margin-left:0; margin-right: 10%;">
+<div class="text-center">
+  <label class="display-5" >
+    CONSTANCIAS DE TRABAJO
+  </label>
+</div>
+<div  class="contenedor-tabla"  style="margin-left:0; margin-right: 10%;">
 <table class="table" >
   <thead class="thead-dark">
     <tr align="center">
@@ -22,12 +26,13 @@
     @endforeach
   </tbody>
 </table>
-  @if($conts->count())
-  <div style="color:red;">
-    {{ $conts->links() }}    
-  </div>
-@endif
 
+</div>
+<BR>
+<div style="color:red; float: left;">
+  @if($conts->count())  
+    {{ $conts->links() }}   
+@endif
 </div>
 
 

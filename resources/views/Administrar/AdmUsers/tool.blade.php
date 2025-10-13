@@ -19,7 +19,7 @@
 			    <td>
 				@foreach ($empls as $em)
 				    @if ($use->personal_id == $em->id)
-					    {{$em->name}}&nbsp;{{$em->last_name}}
+					    {{$em->full_name}}
 				    @endif
 				@endforeach
 				</td>
@@ -39,8 +39,10 @@
 					@else
 		    			<span class="text-muted"> Inactivo</span>
 					@endif
+					 @if  (Auth::user()->privilege==1)
 					<button title="Cambiar" style="cursor: pointer;"   class="btn btn-warning" onclick="confirm('¿Está seguro?') || event.stopImmediatePropagation()"
-                        wire:click="Statud({{$use->id}})">¿Cambiar?</button>
+                        wire:click="Statud({{$use->id}})">Cambiar?</button>
+                    @endif
 				</td>
 				</tr>
 	    @endforeach

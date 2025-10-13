@@ -11,17 +11,17 @@
 
         <form method="POST" action="{{ route('register') }}">
             @csrf
-            <div>
-                
+            <div align="center">
                 <x-input id="cedula" type="text" exists:personals class=" block mt-1 w-full" name="cedula" value="{{ old('cedula') }}" placeholder="CÉDULA" autofocus />
             </div>
 
             <div class="mt-4">                
-                <x-input id="email" class="block mt-1 w-full" type="email" exists:personals name="email" :value="old('email')" required autocomplete="email"  placeholder="CORREO INSTITUCIONAL"/>
+                <x-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autocomplete="email"  placeholder="CORREO ELECTRONICO"/>
             </div>
-            <div class="mt-4">                
+            
+           <!--  <div class="mt-4">                
                 <x-input id="username" class="block mt-1 w-full" type="username"  name="username" :value="old('username')" required autocomplete="username"  placeholder="NOMBRE DE USUARIO"/>
-            </div>
+            </div> -->
 
             <div class="mt-4">
                 <x-input id="password" class="block mt-1 w-full" type="password" name="password" required autocomplete="new-password"  placeholder="CONTRASEÑA"/>

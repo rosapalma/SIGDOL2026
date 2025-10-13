@@ -23,7 +23,7 @@ class CreateNewUser implements CreatesNewUsers
         $personal = Personal::where('cedula','=',$input['cedula'])->first();
         Validator::make($input, [
             'cedula' => ['required','exists:personals,cedula'],
-            'email' => ['required', 'email', 'exists:personals,email'],
+            'email' => ['required'],
             'password' => $this->passwordRules(),
         ])->validate();
 

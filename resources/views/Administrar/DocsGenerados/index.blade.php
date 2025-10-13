@@ -4,13 +4,11 @@
 </div><br><br>
 <div>
     @include('Administrar.DocsGenerados.filtrar')
-    <div class=" justify-content-center ">        
+</div>
+    <div class="justify-content-center">        
         <div class="container-borde">
             @if($list == 1)
                 @include('Administrar.DocsGenerados.ConstGen')
-                 <div style="float: right; margin-right: 7%;">
-               
-                 </div>
             @elseif($list == 2)
                 @include('Administrar.DocsGenerados.RecibGen')
             @endif
@@ -18,4 +16,3 @@
         </div> 
          <br><br>
     </div>
-</div>

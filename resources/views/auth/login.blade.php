@@ -12,21 +12,14 @@
 
         <form method="POST" action="{{ route('login') }}">
             @csrf
-            <div>
-                <x-label for="email" value="{{ __('EMAIL') }}" />
-                <x-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus autocomplete="username" />
+              <div>
+                <!-- <x-label for="email" value="{{ __('EMAIL') }}" /> -->
+                <x-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus autocomplete="username" placeholder="CORREO ELECTRONICO" />
             </div>
 
-            <div class="mt-4">
-                <x-label for="password" value="{{ __('CONTRASEÑA') }}" />
-                <x-input id="password" class="block mt-1 w-full" type="password" name="password" required autocomplete="current-password" />
-            </div>
-
-            <div class="block mt-4">
-                <label for="remember_me" class="flex items-center">
-                    <x-checkbox id="remember_me" name="remember" />
-                    <span class="ms-2 text-sm text-gray-600">{{ __('RECORDARME') }}</span>
-                </label>
+            <div class="mt-4"><!-- 
+                <x-label for="password" value="{{ __('CONTRASEÑA') }}" /> -->
+                <x-input id="password" class="block mt-1 w-full" type="password" name="password" required autocomplete="current-password" placeholder="CONTRASEÑA" />
             </div>
 
             <div class="flex items-center justify-end mt-4">

@@ -3,10 +3,11 @@
      
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     
-        <div class="flex justify-between h-16">
-            {{-- @if((Auth::user()->privilege == 3))
-                <label class="display-5">{{ __('Bienvenido a nuestro portar... ') }}</label>
-            @endif --}}
+        <div class="flex justify-between h-10">
+            @if((Auth::user()->privilege == 3))
+            <img src="{{asset('images/SIGDOL/Sistema de gestión.png')}}" style="width: 5%">
+            <label class="display-6 " style="color: #0047bb;">{{ __('Portal web para general documentación laboral SIGDOL ') }}</label>
+            @endif 
             <div class="flex">
                 <!-- Logo -->
                 @if ((Auth::user()->privilege!=3))
@@ -104,7 +105,7 @@
         <div class="pt-4 pb-1 border-t border-gray-200">
            {{--  <div class="flex items-center px-4">
                 <div>
-                    <div class="font-medium text-base text-gray-800">{{ Auth::user()->personal['name'] }}</div>
+                    <div class="font-medium text-base text-gray-800">{{ Auth::user()->personal['full_name'] }}</div>
                     <div class="font-medium text-sm text-gray-500">{{ Auth::user()->email }}</div>
                 </div>
             </div> --}}

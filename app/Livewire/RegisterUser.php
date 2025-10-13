@@ -13,7 +13,7 @@ use Carbon\Carbon;
 class RegisterUser extends Component
 {
     public  $users, $UserEmpl, $IdUserAuth, $VerifEmail,
-    $cedula, $name,  $last_name,$email, $IdEmpl, $empDBUser, $privilege, $password, $password_confirmation;
+    $cedula, $full_name, $email, $IdEmpl, $empDBUser, $privilege, $password, $password_confirmation;
 
     public function render()
     {
@@ -23,7 +23,7 @@ class RegisterUser extends Component
 
     protected $rules = [
         'cedula' => ['required','exists:personals,cedula'],
-        'email' => ['required', 'email', 'exists:personals,email', 'unique:users'],
+        'email' => ['required', 'email', 'unique:users'],
         'privilege' => ['required'],
         'password' => ['required', 'min:8', 'confirmed'],
     ];
@@ -32,8 +32,7 @@ class RegisterUser extends Component
         $emp = Personal::where('cedula','=',$this->cedula)->first();
         $this->emp = $emp;
         if ($emp)  {
-            $this->name = $emp['name'];
-            $this->last_name = $emp['last_name'];
+            $this->full_name = $emp['full_name'];
             $this->IdEmpl = $emp['id'];
             $empDBUser = User::where('personal_id', '=', $emp['id'])->first();
             if ($empDBUser){
@@ -77,8 +76,7 @@ class RegisterUser extends Component
 
     public function clear(){
         $this->cedula ='';
-        $this->name = '';
-        $this->last_name = '';
+        $this->full_name = '';
         $this->IdEmpl = '';
         $this->email = '';
         $this->privilege = '';
