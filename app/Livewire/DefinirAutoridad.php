@@ -3,17 +3,15 @@
 namespace App\Livewire;
 
 use Livewire\Component;
+use Livewire\WithFileUploads;
 use App\Models\Personal;
 use App\Models\Autoridad;
 use Auth;
 
 class DefinirAutoridad extends Component
 {
-    public $UpdJefe, $cedula, $full_name;
-    // public $admin;
-	// public $mount, $jefedpto,  $cedula, $NewJefe, $exist;
-	// public $LastNameNewJefe, $NameNewJefe, $personal_id, $userSelec;
-	// public $idUsers, $vacio;
+    use WithFileUploads;
+    public $UpdJefe, $cedula, $full_name, $autentication, $ruta;
 
     public function render()
     {
@@ -29,10 +27,6 @@ class DefinirAutoridad extends Component
         return view('livewire.definir-autoridad',['jefe'=>$jefe, 'searchNom'=>$searchNom, 'vacio'=>$vacio]);
     }
 
-    public function Update()
-    {
-        $this->UpdJefe = true;
-    }
     public function Shear()
     {
         $searchempleado = Personal::where('cedula','=',$this->cedula)->first();
@@ -41,11 +35,16 @@ class DefinirAutoridad extends Component
         }
     }
 
+ 
+
     public function Save()
     {   
         $this->validate(['cedula' => 'required|numeric']);
+        $this->validate(['autentication'=>'required|image|max:1024']);
+
         $searchempleado = Personal::where('cedula','=',$this->cedula)->first();
-        if ($searchempleado) {
+        if ($searchempleado) { 
+
             $Tochange=Autoridad::where('statud','=',1)->first(); //busca la fila del statud=1 y desactivalo
             if($Tochange){
                 $Tochange->update([
@@ -53,24 +52,19 @@ class DefinirAutoridad extends Component
                 ]);
                 $Tochange->save();
             }
-        }	    
-	    $search=Autoridad::where('personal_id','=',$searchempleado->id)->first();
-        if($search){ //si este empleado ya ha sido jefe anteriormente actualizalo
-            $search->update([
-                'statud' => 1,
-            ]);
-            $search->save();
-        }else{  //sino agregalo
-            $AddNewjefe = Autoridad::create([
-            'spacework_id' => $searchempleado->spacework_id,
-            'personal_id' => $searchempleado->id,
-            'statud' => 1,
-            ]);
+            $ruta = $this->autentication->store('autentication'); 
+            $this->ruta = $ruta;
 
-            $AddNewjefe->save();
+             $AddNewjefe = Autoridad::create([
+                'personal_id' => $searchempleado->id,
+                'autentication' => $this->ruta,
+                'statud' => 1,
+                ]);
+                $AddNewjefe->save(); 
+            //$this->clear();
+            //return back()->with('mensaje','Responsable de Unidad actualizado');   
         }
-		$this->clear();
-		return back()->with('mensaje','Responsable de Unidad actualizado');
+		
 
     }
 

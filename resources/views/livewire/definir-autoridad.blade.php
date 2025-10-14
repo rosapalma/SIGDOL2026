@@ -6,7 +6,13 @@
          @include("Administrar.DefAutoridad.index")
     @else
         <br><br>
-        <p class="display-5">NO ESTA AUTORIZADO A VISITAR ESTA PAGINA</p>
+        <div class="container">
+          <div class="row">
+            <div class="col-md-8">
+              <p class="text-break display-5">NO ESTA AUTORIZADO A VISITAR ESTA PAGINA</p>
+            </div>
+          </div>
+        </div>
     @endif
 </div>
 

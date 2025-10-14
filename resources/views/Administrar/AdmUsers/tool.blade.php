@@ -4,6 +4,7 @@
 @if (session('change_user_find'))
     <div class="alert alert-danger"> {{ session('change_user_find') }} </div>
 @endif
+<div class="contenedor-tabla">
 <table class="table">
 	<thead class="thead-dark">
         <tr align="center">
@@ -33,22 +34,23 @@
 					@endif
 				</td>
 
-				<td>
-					@if ($use->statud == 1)
-        				<span class="text-primary" > Activo</span>
-					@else
-		    			<span class="text-muted"> Inactivo</span>
-					@endif
-					 @if  (Auth::user()->privilege==1)
+			<td>
+				@if ($use->statud == 1)
+        			<span class="text-primary" > Activo</span>
+				@else
+		    		<span class="text-muted"> Inactivo</span>
+				@endif
+			    @if  (Auth::user()->privilege==1)
 					<button title="Cambiar" style="cursor: pointer;"   class="btn btn-warning" onclick="confirm('¿Está seguro?') || event.stopImmediatePropagation()"
                         wire:click="Statud({{$use->id}})">Cambiar?</button>
-                    @endif
-				</td>
-				</tr>
+                @endif
+			</td>
+			</tr>
 	    @endforeach
 
     </tbody>
     </table>
+</div>
     @if($users->count())
         <div style="color:blue;">
             {{ $users->links() }}    

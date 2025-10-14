@@ -31,14 +31,14 @@
               height: 15%; 
               margin-top: auto;  
             }
-            #firma{  
+       /*   #firma{  
               background-image: url("images/backs/docs/firma.png");
               background-repeat: no-repeat;
-              margin-left: 30%;
-              margin-top: 2%;
+              margin-top: 1%;
               width: 100%;
-              height: 20%;
-              }
+              height: 18%;
+              }*/
+           
 
             table{ 
                 border: 0.5px solid  #222425; 
@@ -266,8 +266,12 @@
     </div>
 @endif
 
-
-    <div id="firma"></div>
+<?php  $ruta = 'storage/'.$autentication; ?>
+      <div align="center">
+         <img src="<?php echo $ruta; ?>" alt="Vista previa de imagen"> <br>
+        <span  style="text-transform:uppercase">{{ $autoridadName }}</span><br>
+        <span style="">Jefe de la Unidad de Personal</span>
+    </div>
     <footer></footer>
 
 </body>

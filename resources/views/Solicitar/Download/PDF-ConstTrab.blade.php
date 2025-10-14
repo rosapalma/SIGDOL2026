@@ -152,6 +152,11 @@ footer {
 
  </div>
   <div id="firma"></div>
+     <div align="center">
+			{{-- <hr style="width: 30%"> --}}
+			<span style="text-transform:uppercase">{{ $autoridad }}</span><br>
+	 		<span style="">Jefe de la Unidad de Personal</span>
+	 	</div>
   <footer></footer>
 </body>
 </html>

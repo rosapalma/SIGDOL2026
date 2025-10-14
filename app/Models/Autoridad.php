@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Autoridad extends Model
 {
     use HasFactory;
-    protected $fillable = ['spacework_id', 'personal_id', 'statud'];
+    protected $fillable = ['spacework_id', 'personal_id', 'autentication','statud'];
 
 
     public function personal() 

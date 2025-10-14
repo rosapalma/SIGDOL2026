@@ -1,23 +1,23 @@
 
 <div>
     <!-- hacer etiqueta e input en una misma linea -->
-    <div class="flex">
-        <div class="formulario-container">
-            <label class="formulario-item text-center">NUEVO RESPONSABLE </label>
-        </div>
     <div>
-        <input type="text" wire:model="cedula"  wire:change="Shear"  placeholder="Cédula de Identidad" autofocus class="text-center text-primary">
-    </div>
-    </div>
+            <label class="formulario-item text-center">NUEVO RESPONSABLE </label><br>
+        
+            <input type="text" wire:model="cedula"  wire:change="Shear"  placeholder="Cédula de Identidad" autofocus class="text-center text-primary"><br>
+            <p wire:ignore.self class="text-info font-weight-bold display-7">{{ $full_name }}</p>
+            @error('cedula')
+                <div class="alert-danger">Indique Cedula</div>
+            @enderror
+    </div> <br><br>
+{{$ruta}}
+         
+        <div>
+            <label class="formulario-item text-center">SUBIR ARCHIVO DE AUTENTICACIÓN</label>
 
-         <h3 wire:ignore.self class="text-center text-success display-7">{{ $full_name }}</h3>
-        @error('cedula')
-        	<div class="alert-danger">Indique Cedula</div>
-        @enderror
-        <p>subir sello y firma</p>
-
-   
-
+            <input type="file" wire:model="autentication" accept="image/png, image/jpeg" />
+        </div>
+        <!-- <img src="{{ asset('storage/' . $ruta) }}" alt="Vista previa de imagen"> -->
 
 <br>
                 
@@ -30,5 +30,8 @@
         {{ session('error') }}
     </div>
 @endif
+
+
+
 
 </div>

@@ -47,13 +47,10 @@ class ConstanciaController extends Controller
         if ($JefeDpto){
             $arrayjefe = $JefeDpto->personal()->get();
             foreach ($arrayjefe as $je) {
-                $name=$je['name'];
-                $last=$je['last_name'];
+                $name=$je['full_name'];
             }
-            $autoridad = $last.' '. $name;
+            $autoridad = $name;
             return $autoridad;
-        }else{
-            return Redirect::back()->with('error','Disculpe, en este momento su solicitud no puede ser procesada.¡Le intivamos a intentarlo! o consulte al personal de la unidad');
         }
     }
 
@@ -77,9 +74,12 @@ class ConstanciaController extends Controller
             'cedula' => 'required',
             'tipo' => 'required'
         ]);
-        $tipoConst = $request->tipo;
 
-  
+        $autoridad = $this->Autoridad();
+        if (empty($autoridad)){
+              return Redirect::back()->with('error','Disculpe, en este momento su solicitud no puede ser procesada.¡Le intivamos a intentarlo! o consulte al personal de la unidad');
+        }
+        $tipoConst = $request->tipo;
             // 1--Basica
             // 2--Con sueldo Base
             // 3--Con sueldo integral
@@ -90,7 +90,6 @@ class ConstanciaController extends Controller
         $IdEmp = $user->personal_id;
         $privilegio = $user->privilege;
         $sedeEmp=$this->Sede();
-        $autoridad = $this->Autoridad();
         $personal = Personal::where('cedula','=',$request->cedula)->first();
         if ($personal){
             if ($privilegio == 3){

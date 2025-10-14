@@ -42,26 +42,35 @@ class ReciboController extends Controller
         if ($JefeDpto){
             $arrayjefe = $JefeDpto->Personal()->get();
             foreach ($arrayjefe as $je) {
-                $name=$je['name'];
-                $last=$je['last_name'];
+                $autoridad=$je['id'];
             }
-            $autoridad = $last.' '. $name;
-        }else{
-            $autoridad = false;
+            $autoridad= $autoridad;
+            return $autoridad;
         }
-        return $autoridad;
     }
 
     public function Recibo(Request $request)
     {
-        // $request->validate([
-        //    'cedula' => 'required',
-        //    'mes' => 'required',
-        //    'anio' => 'required'
-        // ]);
-        //$cedula = 17708149;
-        // $mes_selc = 02;
-        // $anio_selc = 2024;ç
+        $request->validate([
+            'cedula' => 'required',
+            'mes' => 'required',
+            'anio' => 'required'
+        ]);
+        //VERIFICANDO SI HAY AUTORIDAD ASIGNADO
+        $autoridad= $this->Autoridad();
+        if (empty($autoridad)){
+              return Redirect::back()->with('error','Disculpe, en este momento su solicitud no puede ser procesada.¡Le intivamos a intentarlo! o consulte al personal de la unidad');
+        }else{ //RECUPERA DATOS DE AUTORIDAD
+            $DatosPers=Personal::where('id','=',$autoridad)->first(); 
+            $autoridadName = $DatosPers->full_name;
+            $arrayautoridad = $DatosPers->jefe()->get();
+            foreach ($arrayautoridad as $aut){
+                $autentication = $aut['autentication'];
+            }
+            
+            
+        }
+
         $cedula = $request->cedula;
         $mes_selc = $request->mes;
         $anio_selc = $request->anio;
@@ -148,7 +157,7 @@ class ReciboController extends Controller
         
             
 
-            $pdf = \PDF::loadView('Solicitar.Download.PDF-ReciboPago',compact('fechaAct','cod','autoridad','personal','typepers','typepersid','cargo','dedicacion','arraynomina','sedeEmp'));
+            $pdf = \PDF::loadView('Solicitar.Download.PDF-ReciboPago',compact('fechaAct','cod','autoridadName','autentication','personal','typepers','typepersid','cargo','dedicacion','arraynomina','sedeEmp'));
             return $pdf->download('Recido de pago.pdf');
 
                 //return view('Solicitar.Download.PDF-ReciboPago',compact('fechaAct','cod','autoridad','direc','phone','personal','typepers','cargo', 'arraynomina','beca'));

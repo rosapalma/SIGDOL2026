@@ -24,7 +24,7 @@
   width: 20%;
 }
 .img-btn-new{
-  width: 5%;
+  width: 10%;
   float: right;
 }
 .img-modal{  cursor: pointer;;height:40%; }
@@ -60,6 +60,7 @@
 .container-fond{
   background-color: #e5e5e5;
   padding: 10px;
+  height: 70%;
 }
 .flex-container {
   display: flex;

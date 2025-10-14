@@ -14,8 +14,8 @@ return new class extends Migration
         Schema::create('autoridads', function (Blueprint $table) {
             $table->engine = 'InnoDB';            
             $table->bigIncrements('id');
-            $table->unsignedBigInteger('spacework_id'); //dpto
             $table->unsignedBigInteger('personal_id');
+            $table->string('autentication')->nullable();
             $table->boolean('statud'); //->default(false);
             $table->timestamps();
 
