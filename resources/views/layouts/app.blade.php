@@ -23,7 +23,7 @@
         <!-- Styles -->
         @livewireStyles
     </head>
-    <body class="img-auth">
+    <body class="">
 
         <x-header />
 

@@ -52,17 +52,18 @@ class DefinirAutoridad extends Component
                 ]);
                 $Tochange->save();
             }
-            $ruta = $this->autentication->store('autentication'); 
-            $this->ruta = $ruta;
+            $this->autentication->store('public/autenticaciones'); 
+            $ImgAut=$this->autentication->store(); 
+            //$this->ruta = $ruta;
 
              $AddNewjefe = Autoridad::create([
                 'personal_id' => $searchempleado->id,
-                'autentication' => $this->ruta,
+                'autentication' => $ImgAut,
                 'statud' => 1,
                 ]);
                 $AddNewjefe->save(); 
-            //$this->clear();
-            //return back()->with('mensaje','Responsable de Unidad actualizado');   
+            $this->clear();
+            return back()->with('mensaje','Responsable de Unidad actualizado');   
         }
 		
 
@@ -74,6 +75,8 @@ class DefinirAutoridad extends Component
 		$this->cedula='';
 		$this->UpdJefe = false;
 		$this->full_name ='';
+        $this->ruta = '';
+        $this->autentication = '';
 	}
 
 }

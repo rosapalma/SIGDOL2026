@@ -42,14 +42,14 @@ class ConstanciaController extends Controller
         return $fecha;
     }
 
-    public function Autoridad(){
+   public function Autoridad(){
         $JefeDpto = Autoridad::where('statud','=',1)->first(); //verifica si hay una autoridad activa
         if ($JefeDpto){
-            $arrayjefe = $JefeDpto->personal()->get();
+            $arrayjefe = $JefeDpto->Personal()->get();
             foreach ($arrayjefe as $je) {
-                $name=$je['full_name'];
+                $autoridad=$je['id'];
             }
-            $autoridad = $name;
+            $autoridad= $autoridad;
             return $autoridad;
         }
     }
@@ -75,9 +75,19 @@ class ConstanciaController extends Controller
             'tipo' => 'required'
         ]);
 
-        $autoridad = $this->Autoridad();
+            //VERIFICANDO SI HAY AUTORIDAD ASIGNADO
+        $autoridad= $this->Autoridad();
         if (empty($autoridad)){
               return Redirect::back()->with('error','Disculpe, en este momento su solicitud no puede ser procesada.¡Le intivamos a intentarlo! o consulte al personal de la unidad');
+        }else{ //RECUPERA DATOS DE AUTORIDAD
+            $DatosPers=Personal::where('id','=',$autoridad)->first(); 
+            $autoridadName = $DatosPers->full_name;
+            $arrayautoridad = $DatosPers->jefe()->get();
+            foreach ($arrayautoridad as $aut){
+                $autentication = $aut['autentication'];
+            }
+            
+            
         }
         $tipoConst = $request->tipo;
             // 1--Basica
@@ -252,29 +262,11 @@ class ConstanciaController extends Controller
             'user_id' => $user->id,
         ]);
         $pdf = PDF::loadView('Solicitar.Download.PDF-ConstTrab', 
-        compact('autoridad', 'personal','sedeEmp','condicion', 'tiemp',
+        compact('autoridadName','autentication', 'personal','sedeEmp','condicion', 'tiemp',
         'beneficiarios','typepers', 'typepersid','dedicacion','cargo','tipoConst', 'ALetras',
         'sueldo', 'suma_asig', 'suma_extra', 'neto', 'arraycontrato', 'statudContrato', 'cod'));
         return $pdf->download('document.pdf');
 
-
-
-
-
-
-           //  echo "<br><br><br><b>Tipo de Constancia: ",$user->id,"</b><br>";
-            // echo "Empleado: ", $personal->name, $personal->last_name;
-            // echo "<br> Tipo de personal: ", $personal->typepers('name')->get();
-            // echo "<br> Condicion laboral: ", $personal->condicionlaboral_id;
-            // echo "<br> suma de asignaciones: ", $suma_asig;
-            // echo "<br> Sueldo base: ",$sueldo;
-            // echo "<br> Total a pagar: ",$neto;
-            // //echo "<br> Tiempo de servicio: ",$tiemp;
-            // echo "<br> beneficiarios: ",$beneficiarios;
-            // echo "<br> array contrato bd: ",$arraycontrato;
-            // echo "<br> estatu del contrato: ", $statudContrato;
-            // echo "<br> Direccion de sede: ",$direc;
-            // echo "<br> Telefono: ",$phone;
 
 
 

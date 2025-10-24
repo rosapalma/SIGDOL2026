@@ -33,7 +33,6 @@
             <!-- Page Content -->
             <main class="">
                 {{ $slot }}
-                <BR>
             </main>
         </div>
 

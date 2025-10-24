@@ -5,6 +5,8 @@ namespace App\Livewire;
 use Livewire\Component;
 use App\Models\ConstG;
 use App\Models\RecibosG;
+use App\Models\Autoridad;
+use App\Models\Personal;
 use Livewire\WithPagination;
 use PDF;  //download
 
@@ -12,8 +14,7 @@ class DocsGenerados extends Component
 {
     use WithPagination;
     protected $paginationTheme = 'bootstrap';
-    public $list=1, $anio, $tipo,  $ExpConsul, $clik_button;
-
+    public $list=1, $anio, $tipo,  $ExpConsul, $clik_button, $autoridadName, $autoridad, $autentication;
     public function updatingSearch() //para cuando halla un filtrado (buscar)
     {
         $this->resetPage();
@@ -38,12 +39,23 @@ class DocsGenerados extends Component
             return view('livewire.docs-generados',['conts'=>$conts]);
         }
     }
+    public function Autoridad(){
+        $JefeDpto = Autoridad::where('statud','=',1)->first(); //verifica si hay una autoridad activa
+        if ($JefeDpto){
+            $arrayjefe = $JefeDpto->Personal()->get();
+            foreach ($arrayjefe as $je) {
+                $autoridad=$je['id'];
+            }
+            $autoridad= $autoridad;
+            return $autoridad;
+        }
+    }
 
    
     public function ExporConsul(){
         $list = $this->list;
         $clik_button = 1;
-        $this->clik_button= $clik_button;
+        $this->clik_button = $clik_button;
         if ($this->list== 2){
             $ExpConsul = RecibosG::get();
             if ($this->anio){
@@ -58,11 +70,24 @@ class DocsGenerados extends Component
                 $ExpConsul = ConstG::whereYear('fechaEmi', $this->anio)->where('typeConst','=',$this->tipo)->get();
             }
         }
-        $view = view('Administrar/DocsGenerados/docs-pdf')->with(compact('ExpConsul','list'));
-        $html = $view->render();
-        $pdf = PDF::loadHTML($html)->save(public_path() . '/Constancias-Recibos.pdf');
+        //AUTORIDAD
+              //VERIFICANDO SI HAY AUTORIDAD ASIGNADO
+        $autoridad = $this->Autoridad();
+        if ($autoridad){ //RECUPERA DATOS DE AUTORIDAD
+            $DatosPers=Personal::where('id','=',$autoridad)->first(); 
+            $autoridadName = $DatosPers->full_name;
+            $arrayautoridad = $DatosPers->jefe()->get();
+            foreach ($arrayautoridad as $aut){
+                $autentication = $aut['autentication'];
+            }     
+        }
+        //echo $autoridad;
 
-        return back();
+        $view = view('Administrar/DocsGenerados/docs-pdf')->with(compact('ExpConsul','list','autoridadName','autentication'));
+        $html = $view->render();
+        $pdf = PDF::loadHTML($html)->save(public_path() . '/Solicitudes Generadas.pdf');
+
+        // return back();
 
     }
 

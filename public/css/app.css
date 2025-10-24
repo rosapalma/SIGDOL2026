@@ -649,12 +649,14 @@ pre code {
 .container-md,
 .container-sm {
   width: 100%;
+  height: 70vh;
   padding-right: 15px;
   padding-left: 30px;
   margin-right: auto;
   margin-left: auto;
-  background-color: #0047bb;
+  background-color: #e5e5e5; 
   padding-top: 2%;
+
 
 }
 

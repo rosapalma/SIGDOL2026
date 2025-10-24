@@ -7,22 +7,32 @@
    <title>Document</title>
 </head>
 <style type="text/css">
-	header{ 
-       background-image: url("images/backs/docs/arriba.png");
-       background-repeat: no-repeat;
-       width: 100%; 
-       height: 15%;
-       margin: 0;
-   }
-   footer {
-      background-image: url("images/backs/docs/abajo.png");
-      background-repeat: no-repeat; 
-      position: absolute;
-      bottom: 0;
-      width: 100%;
-      height: 40%; 
-      margin-top: auto;  
-    }
+html {
+  min-height: 100%;
+  position: relative;
+}
+body {
+  margin: 0;
+  margin-bottom: 40px;
+}
+header {
+  background-image: url("images/backs/docs/arriba.png");
+  background-repeat: no-repeat;
+  width: 100%; 
+  height: 15%;
+  margin: 0;
+}
+
+    footer {
+  background-image: url("images/backs/docs/abajo.png");
+  background-repeat: no-repeat; 
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 15%; 
+  margin-top: auto;  
+}
+
 	.title{ font-weight: bold; 
       font-size: 1.5rem; 
       letter-spacing: 1px;
@@ -32,14 +42,14 @@
    }
 
   
-   #firma{  
+/*   #firma{  
      background-image: url("images/backs/docs/firma.png");
      background-repeat: no-repeat;
      margin-left: 50%;
      margin-top: 10%;
      width: 100%;
      height: 20%;
-     }
+     }*/
    .text-bold{  
       font-weight: bold;        	
    }
@@ -99,7 +109,7 @@
                <?php $nro = $nro + 1; ?>
                <tr <?php if ($nro % 2 == 0){ echo $nro; ?> style="background-color: #dfd3d1" <?php } ?>>
                   <td style="width: 5%;text-align: center;"><?php echo $nro; ?></td>
-                  <td>{{$CG->empleado['last_name']}}&nbsp;&nbsp;{{$CG->empleado['name']}}</td>
+                  <td>{{$CG->empleado['full_name']}}</td>
                   <td>{{$CG['fechaEmi']}}</td>
                   <td>
                      @if ($CG['typeConst']==1)Básica
@@ -136,9 +146,13 @@
       @endif
       </div>
    </section>
-
-  <div id="firma"></div>
-  <footer></footer>
+ <!-- AUTENTICACION -->
+      <div align="center">
+        <p><img src="storage/autenticaciones/<?php echo $autentication; ?>"></p>
+        <span  style="text-transform:uppercase">{{ $autoridadName }}</span><br>
+        <span style="">Jefe de la Unidad de Personal</span>
+    </div>
+    <footer></footer>
 </body>
 </html>
 

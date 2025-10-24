@@ -6,8 +6,8 @@
           Importar Nómina
         </x-header-modal>        
         <div class="modal-body">
-            <div class="text-danger display-6" aling="center" style="margin: 2%">
-                <small> Debes tener en cuenta que los datos personal ya deben estar previamente cargados en la base de datos. ya que ambas guardan una extrecha relación</small>
+            <div class="text-danger display-6" aling="center">
+                <small> Debes tener en cuenta que los datos del personal ya deben estar previamente cargados en la base de datos, ya que ambas guardan una estrecha relación.</small>
             </div>
             <form action="{{ url('/importNominaExcel') }}" method="POST" enctype="multipart/form-data">
                   @csrf

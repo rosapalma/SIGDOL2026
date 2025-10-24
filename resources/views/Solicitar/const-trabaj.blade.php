@@ -12,8 +12,9 @@
             @csrf
       
             <div align="center">
-              <input type="text" id="inputname" name="cedula"  class="" style="font-size: 2rem" onkeyUp="return ValNumero(this);" placeholder="Cédula de Identidad" autofocus required>
+              <input type="text" id="inputname" name="cedula"  class="form-control" style="font-size: 2rem" onkeyUp="return ValNumero(this);" placeholder="Cédula de Identidad" autofocus required>
             </div>  <br>
+
             <div align="center">
               <select name="tipo"  class="form-select-lg mb-3" aria-label=".form-select-lg example" required>
                 <option value="">Tipo de Constancia.</option>

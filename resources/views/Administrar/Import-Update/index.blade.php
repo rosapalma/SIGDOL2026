@@ -9,7 +9,7 @@
                     <!-- PERSONAL -->
                     <div  class="card row" align="center"> 
                         <div class="col-md-8 fs-1 display-7" align="center" >
-                        <img src="{{asset('images/Modals/ImpPers.png')}}" data-bs-toggle="modal" data-bs-target="#UpDataModalPers" title="Importar Registros" class="img-modal"> <span class="h3">IMPORTAR REGISTRO DE PERSONAL</span>
+                        <img src="{{asset('images/Modals/ImpPers.png')}}" data-bs-toggle="modal" data-bs-target="#UpDataModalPers" title="Importar Registros" class="img-modal"> <span class="h5">IMPORTAR REGISTRO DE PERSONAL</span>
 
                          <x-sub-title >
                             VER GUIA PARA IMPORTAR DATOS DESDE EXCEL
@@ -24,7 +24,7 @@
                     <div class="card row" align="center" style="margin-left: 10%">
                         <div class="col-md-8 fs-1 display-7" >
                             <img src="{{asset('images/Modals/ImpNom.png')}}"  data-bs-toggle="modal" data-bs-target="#ImportNominaExcel" title="Importar Registros" class="img-modal">
-                            <span class="h3">IMPORTAR NOMINA DE EMPLEADOS</span>
+                            <span class="h5">IMPORTAR NOMINA DE EMPLEADOS</span>
 
                             <x-sub-title >
                                 VER GUIA PARA IMPORTAR DATOS DESDE EXCEL

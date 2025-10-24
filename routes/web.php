@@ -50,7 +50,6 @@ Route::middleware([
     Route::post('/importNominaExcel',[App\Http\Controllers\ImportController::class, 'NomminaExcel']);
 
     Route::get('/administrar-usuarios', AdmUsers::class)->name('adm-users');
-
     Route::get('/registro-usuarios',RegisterUser::class)->name('register-users');
     Route::get('/DefAutoridad',DefinirAutoridad::class)->name('autoridad');
     Route::get('/DocsGenerados',DocsGenerados::class)->name('ViewDocs');

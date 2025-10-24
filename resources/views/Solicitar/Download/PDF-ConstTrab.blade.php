@@ -22,7 +22,8 @@ header {
   height: 15%;
   margin: 0;
 }
-    
+   
+
 #page-container {
   /*position: relative;*/
   /*min-height: 100vh;*/
@@ -43,14 +44,14 @@ footer {
   height: 15%; 
   margin-top: auto;  
 }
-#firma{  
+/*#firma{  
 	background-image: url("images/backs/docs/firma.png");
   background-repeat: no-repeat;
   margin-left: 30%;
   margin-top: 5%;
   width: 100%;
   height: 15%;
-  }
+  }*/
 
 	.title{ 
 		font-weight: bold; 
@@ -103,22 +104,20 @@ footer {
 				@elseif ($condicion->id == 3 || $condicion->id == 4) <!--JUB-PENS-->
 					Laboró
 				@endif
-				en este instituto como miembro del personal <b>{{$typepers}}</b>
+				en este instituto como miembro del personal <b class="text-bold text-uppercase">{{$typepers}}</b>
 				@if ($typepersid == 1)
 					<b class="text-bold text-uppercase">{{$dedicacion}}</b>
 				@else
 					. Desempeñando el cargo de <b class="text-bold text-uppercase">{{$cargo}}.</b>
 				@endif
-        @if (($personal->jerarquia) && ($personal->fec_egre))
-        	Con funciones como <b class="text-bold text-uppercase">{{$personal->jerarquia}}.</b><br>
-        @else
-            Actualmente delega funciones como <b class="text-bold text-uppercase">{{$personal->jerarquia}}.</b><br>
+        @if ($personal->jerarquia)
+        	Con funciones de<b class="text-bold text-uppercase">{{$personal->jerarquia}}.</b>
 				@endif
 				<!-- INGESO Y EGRESO -->
 				@if($personal->fec_egre)
-				  Ingresando en esta institucion, en fecha <b>{{$personal->fec_ing}},</b>hasta <b>{{$personal->fec_egre}}.</b>
+				  Ingresando en esta institucion, en fecha <b>{{$personal->fec_ing}}</b>, hasta <b>{{$personal->fec_egre}}.</b>
 				@else
-					Ingresando en esta institucion, en fecha <b>{{$personal->fec_ing}}.
+					Ingresando en esta institucion, en fecha <b>{{$personal->fec_ing}}</b>.
 				@endif
 				
 				<!-- SUELDO BASE & INTG -->
@@ -137,13 +136,13 @@ footer {
 				<br>
 				<!-- TIEMPO DE SERVICIO -->
 				@if ($tiemp)
-					<b>TIEMPO DE SERVICIO:
+					<br><b>TIEMPO DE SERVICIO:
 					<?php printf('%d año(s), %d mes(es)', $tiemp->y, $tiemp->m);?></b>
 				@endif
 				<!-- FECHAS DE EMISION -->
 				<br><br>
 				<?php setlocale(LC_TIME, 'es_ES.UTF-8');		//DEBERIA IMPRIMIR MES EN ESPAÑOL
-					echo 'Constancia que se expide a solicitud de la parte interesada en '.$sedeEmp->city.' a los '.strftime(" %d dias del mes de %B del %Y." ).'<br/>';
+					echo 'Constancia que se expide a solicitud de la parte interesada en '.$sedeEmp->city.' a los '.strftime(" %d dias del mes de %B del %Y." );
 				?>
       </p>
 			
@@ -151,13 +150,13 @@ footer {
    
 
  </div>
-  <div id="firma"></div>
-     <div align="center">
-			{{-- <hr style="width: 30%"> --}}
-			<span style="text-transform:uppercase">{{ $autoridad }}</span><br>
-	 		<span style="">Jefe de la Unidad de Personal</span>
-	 	</div>
-  <footer></footer>
+ <!-- AUTENTICACION -->
+      <div align="center">
+        <p><img src="storage/autenticaciones/<?php echo $autentication; ?>"></p>
+        <span  style="text-transform:uppercase">{{ $autoridadName }}</span><br>
+        <span style="">Jefe de la Unidad de Personal</span>
+    </div>
+    <footer></footer>
 </body>
 </html>
 

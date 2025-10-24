@@ -18,13 +18,6 @@
         @endforeach
     </tbody>
     </table>
-  
-
 </div>
-<BR>
-  <div style="color:red; float: left;">
-    @if($recibs->count())  
-       {{ $recibs->links() }}  
-    @endif
-    </div>
+
 

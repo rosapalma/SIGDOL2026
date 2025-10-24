@@ -88,7 +88,9 @@
     <div class="contenedor-grid">
         <p style="text-transform: uppercase;">{{$personal->full_name}}</p>
         <p><b>Cédula de Identidad:  {{$personal->cedula}}</b></p>
-        <p>Tipo de Personal: &nbsp;{{$typepers}}</p>            
+        @if($typepers > 1)
+            <p>Tipo de Personal: &nbsp;{{$typepers}}</p> 
+        @endif           
         <P style="text-wrap: balance;">Cargo:&nbsp;{{$cargo}}</P>
         <p style="">Año: <?php echo $arraynomina['anio']; ?> &nbsp;&nbsp;&nbsp;<b>Mes: </b>
                 <?php   $meses = array("Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre");
@@ -265,10 +267,9 @@
         </table>
     </div>
 @endif
-
-<?php  $ruta = 'storage/'.$autentication; ?>
+<!-- AUTENTICACION -->
       <div align="center">
-         <img src="<?php echo $ruta; ?>" alt="Vista previa de imagen"> <br>
+         <img src="storage/autenticaciones/<?php echo $autentication; ?>"> <br>
         <span  style="text-transform:uppercase">{{ $autoridadName }}</span><br>
         <span style="">Jefe de la Unidad de Personal</span>
     </div>

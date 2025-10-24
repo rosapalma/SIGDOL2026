@@ -1,19 +1,19 @@
 <nav x-data="{ open: false }" class="bg-white border-b border-gray-100">
     <!-- Primary Navigation Menu -->
      
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8" >
     
         <div class="flex justify-between h-10">
             @if((Auth::user()->privilege == 3))
-            <img src="{{asset('images/SIGDOL/Sistema de gestión.png')}}" style="width: 5%">
+            <img src="{{asset('images/SIGDOL/Sistema de gestión.png')}}" 
             <label class="display-6 " style="color: #0047bb;">{{ __('Portal web para general documentación laboral SIGDOL ') }}</label>
             @endif 
             <div class="flex">
                 <!-- Logo -->
                 @if ((Auth::user()->privilege!=3))
-                    <div class="shrink-0 flex items-center">
+                    <!-- <div class="shrink-0 flex items-center">
                         <x-application-mark class="block h-9 w-auto" />               
-                    </div>
+                    </div> -->
                     <!-- Navigation Links -->
                     <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                         <x-nav-link href="{{ route('home') }}" :active="request()->routeIs('home')">
@@ -22,12 +22,12 @@
                     </div>
                     <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                         <x-nav-link href="{{ route('viewimport') }}" :active="request()->routeIs('viewimport')">
-                            {{ __('Import Data') }}
+                            {{ __('Importar') }}
                         </x-nav-link>
                     </div>
                     <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                         <x-nav-link href="{{ route('adm-users') }}" :active="request()->routeIs('adm-users')">
-                            {{ __('Users') }}
+                            {{ __('Usuarios') }}
                         </x-nav-link>
                     </div>
                     <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
@@ -37,7 +37,7 @@
                     </div>
                     <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex" >
                         <x-nav-link href="{{ route('ViewDocs') }}" :active="request()->routeIs('ViewDocs')">
-                            {{ __('Docs Generados') }}
+                            {{ __('Documentos Generados') }}
                         </x-nav-link>
                     </div>
                 @endif

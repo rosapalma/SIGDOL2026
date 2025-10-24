@@ -1,10 +1,19 @@
 <!-- desde componente register-user -->
 
-@if (Auth::user()->privilege == 1)
-<div class="container-borde-form">
-            <x-close></x-close>
-    <div class="justify-content-center">
-        <p class="title text-center">Nuevo Usuario </p>
+    <x-authentication-card> 
+        @if (Auth::user()->privilege == 1)
+    @section('title','Registro')
+      <x-close></x-close>
+         <x-slot name="logo">
+                <x-title >
+                REGISTRO DE USUARIOS
+            </x-title>
+          
+        </x-slot>
+       
+
+  
+       
         
         <div  style="padding:20px; ">
             @if (session('mensaje'))
@@ -12,15 +21,11 @@
                     {{ session('mensaje') }}
                 </div>
             @endif
-            @if (session('error'))
-                <div class="alert alert-danger">
-                    {{ session('error') }}
-                </div>
-            @endif
+             <x-validation-errors class="mb-4" />
         </div>  
                 <!-- -------------CEDULA------------ -->
         <div class="col-md-8">
-                <input type="text" wire:model="cedula"  class="form-control text-bold text-primary" align="center" autofocus placeholder="Cédula" onkeyUp="return ValNumero(this);" wire:change="verif">
+                <input type="text" wire:model="cedula"  class="form-control text-bold text-primary" align="center" autofocus placeholder="Cédula" required onkeyUp="return ValNumero(this);" wire:change="verif">
         </div>
             
         <div>
@@ -29,7 +34,7 @@
 
             <!-- -------------EMAIL------------ --> 
         <div class="col-md-8">
-            <input type="email" wire:model="email" wire:change="ValidEmail" class="form-control text-bold text-primary" placeholder="E-mail">
+            <input type="email" wire:model="email" wire:change="ValidEmail" class="form-control text-bold text-primary" placeholder="E-mail" id="email" pattern=".+@example\.com" size="30" required >
         </div>
         <br>
              <!-- ------------PRIVILEGIO/ROL------------ -->
@@ -59,10 +64,9 @@
             {{ __('Registrar') }}
         </x-button>
 
-    </div>
-</div>
 
 @else
 <br><br><br>
 <p class="display-3 text-center">No esta autorizado a visitar este sitio</p>
 @endif
+    </x-authentication-card>

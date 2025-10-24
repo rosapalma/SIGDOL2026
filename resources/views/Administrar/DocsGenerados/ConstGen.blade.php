@@ -29,11 +29,7 @@
 
 </div>
 <BR>
-<div style="color:red; float: left;">
-  @if($conts->count())  
-    {{ $conts->links() }}   
-@endif
-</div>
+
 
 
 

@@ -12,7 +12,7 @@
         <form class="form-horizontal" method="post" action="/recibo-de-pago" name="formulario" id="Miform">
               {{ csrf_field() }}
            <div align="center" >
-            <input type="text"  name="cedula"  class="" style="font-size: 2rem" onkeyUp="return ValNumero(this);" placeholder="Cédula de Identidad" autofocus>
+            <input type="text"  name="cedula"  class="form-control" style="font-size: 2rem" onkeyUp="return ValNumero(this);" placeholder="Cédula de Identidad" autofocus>
            </div><br>
            <div align="center" required class="form-group">
              <select name="anio" class=" form-select-lg mb-3" aria-label=".form-select-lg example" >
