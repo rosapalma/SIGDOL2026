@@ -8,15 +8,22 @@ use Hash;
 use DateTime;
 use App\Models\User;
 use App\Models\Personal;
+use App\Models\ps;
 use Carbon\Carbon;
 
 class RegisterUser extends Component
 {
-    public  $users, $UserEmpl, $IdUserAuth, $VerifEmail,
-    $cedula, $full_name, $email, $IdEmpl, $empDBUser, $privilege, $password, $password_confirmation;
+    public  $users, $UserEmp, $IdUserAuth, $VerifEmail,$pss,
+    $cedula, $full_name, $email,$ps1_id,$ps2_id, $resp1,$resp2, $IdEmpl, $empDBUser, $privilege, $password, $password_confirmation;
+    function mount(){ 
+        $pss=ps::all(); 
+        $this->pss = $pss;
+    }
+        
 
     public function render()
     {
+
         return view('livewire.register-user');
     }
 
@@ -34,10 +41,6 @@ class RegisterUser extends Component
         if ($emp)  {
             $this->full_name = $emp['full_name'];
             $this->IdEmpl = $emp['id'];
-            $empDBUser = User::where('personal_id', '=', $emp['id'])->first();
-            if ($empDBUser){
-                return back()->with('error','Este empleado ya tiene un usuario registrado');
-            }
         }else{
             return back()->with('error','Esta persona NO se encuentra registrado');
         }
@@ -61,6 +64,10 @@ class RegisterUser extends Component
         $RegistUser = User::create([
             'personal_id' => $this->IdEmpl,
             'email' => $this->email,
+            'ps1_id' => $this->ps1_id,
+            'ps2_id' => $this->ps2_id,
+            'resp1' => Hash::make($this->resp1),
+            'resp2' => Hash::make($this->resp2),
             'password' => Hash::make($this->password),
             'privilege' => $this->privilege,
             'statud' => 1,
@@ -78,6 +85,8 @@ class RegisterUser extends Component
         $this->cedula ='';
         $this->full_name = '';
         $this->IdEmpl = '';
+        $this->ps ='';
+        $this->resp ='';
         $this->email = '';
         $this->privilege = '';
         $this->password = '';

@@ -9,17 +9,13 @@ return new class extends Migration
     /**
      * Run the migrations.
      */
+    //PREGUNTAS DE SEGURIDAD
     public function up(): void
     {
-        Schema::create('autoridads', function (Blueprint $table) {
+        Schema::create('ps', function (Blueprint $table) {
             $table->engine = 'InnoDB';            
             $table->bigIncrements('id');
-            $table->unsignedBigInteger('personal_id');
-            $table->string('autentication')->nullable();
-            $table->boolean('statud'); //->default(false);
-            $table->timestamps();
-            
-            $table->foreign('personal_id')->references('id')->on('personals');
+            $table->string('pregunta');
         });
     }
 
@@ -28,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('autoridads');
+        Schema::dropIfExists('ps');
     }
 };

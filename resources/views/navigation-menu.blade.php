@@ -5,7 +5,7 @@
     
         <div class="flex justify-between h-10">
             @if((Auth::user()->privilege == 3))
-            <img src="{{asset('images/SIGDOL/Sistema de gestión.png')}}" 
+            <img src="{{asset('images/SIGDOL/Sistema de gestión.png')}}" >
             <label class="display-6 " style="color: #0047bb;">{{ __('Portal web para general documentación laboral SIGDOL ') }}</label>
             @endif 
             <div class="flex">

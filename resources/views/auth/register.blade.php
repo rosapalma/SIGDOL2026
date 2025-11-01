@@ -22,14 +22,42 @@
            <!--  <div class="mt-4">                
                 <x-input id="username" class="block mt-1 w-full" type="username"  name="username" :value="old('username')" required autocomplete="username"  placeholder="NOMBRE DE USUARIO"/>
             </div> -->
+            <br>
+            <div class="container-ps" >
+                <select name="ps1" class="form-select-lg block mt-1 w-full" id="inputGroupSelect01" aria-label=".form-select-lg example" :value="old('ps1')" required>
+                     <option >PREGUNTA DE SEGURIDAD</option>
+                    <option value="1">Marco o modelo de tu primer auto</option>
+                    <option value="2">Nombre de tu primera mascota</option>
+                    <option value="3">Lugar favorito donde te gusta ir de vacaciones</option>
+                    <option>Deporte favorito</option>
+                    <option>Comida Favorita</option>
+                    <option>Nombre de tu mejor amigo(a) de la infancia</option>
+              </select>           
+                <input id="resp1" type="text"   name="resp1" required placeholder="RESPUESTA" class="form-control"/>
+            <hr>
+                 <select name="ps2" class="form-select-lg block mt-1 w-full" id="inputGroupSelect01" aria-label=".form-select-lg example" :value="old('ps2')" required>
+                    <option >PREGUNTA DE SEGURIDAD</option>
+                    <option value="1">Marco o modelo de tu primer auto</option>
+                    <option value="2">Nombre de tu primera mascota</option>
+                    <option value="3">Lugar favorito donde te gusta ir de vacaciones</option>
+                    <option>Deporte favorito</option>
+                    <option>Comida Favorita</option>
+                    <option>Nombre de tu mejor amigo(a) de la infancia</option>
+              </select>     
+                <x-input id="resp" type="text"   name="resp2" required placeholder="RESPUESTA" class="form-control" style="padding-top:0;"/>
+
+            </div>
+
+
 
             <div class="mt-4">
                 <x-input id="password" class="block mt-1 w-full" type="password" name="password" required autocomplete="new-password"  placeholder="CONTRASEÑA"/>
+                <label class="text-muted">
+                  Tu contraseña debe contener 8 o mas caracteres.
+                </label>
+                 <x-input id="password_confirmation" class="block mt-1 w-full" type="password" name="password_confirmation" required autocomplete="new-password" placeholder="CONFIRMAR CONTRASEÑA" />
             </div>
 
-            <div class="mt-4">
-                <x-input id="password_confirmation" class="block mt-1 w-full" type="password" name="password_confirmation" required autocomplete="new-password" placeholder="CONFIRMAR CONTRASEÑA" />
-            </div>
 
             @if (Laravel\Jetstream\Jetstream::hasTermsAndPrivacyPolicyFeature())
                 <div class="mt-4">

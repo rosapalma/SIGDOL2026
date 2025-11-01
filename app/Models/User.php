@@ -23,6 +23,10 @@ class User extends Authenticatable //implements MustVerifyEmail
     protected $fillable = [
         'personal_id',
         'email',
+        'ps1_id',
+        'ps2_id',
+        'resp1',
+        'resp2',
         'password',
         'statud',
         'privilege',
@@ -44,6 +48,10 @@ class User extends Authenticatable //implements MustVerifyEmail
     public function personal()
     {
         return $this->belongsTo(Personal::class);
+    }
+    public function ps()
+    {
+        return $this->hasMany(ps::class);
     }
 
     // public function sede()

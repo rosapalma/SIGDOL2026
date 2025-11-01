@@ -32,7 +32,8 @@
 .container-borde{
   margin-right: 15%; margin-left: 0;
   width: 60%;
-  height: auto;
+  height: 80vh;
+  overflow-y: auto;
   background-color: #e5e5e5;
   border: solid 10px #0047bb;
   border-start-end-radius: 20px;
@@ -88,4 +89,7 @@
 
 .formulario-item {
   margin-right: 2px; /* Espacio entre label e input */
+}
+.hidden-input{
+  visibility: hidden;
 }

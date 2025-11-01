@@ -34,13 +34,12 @@
             </div>
         </form>
 
-        <br>
-        @if (Route::has('password.request'))
-            <a class="underline" href="{{ route('password.request') }}">
+        <div class="center">
+            <a class="underline" href="{{ route('solicitar-email') }}" style="padding: 10%;">
                         {{ __('Olvido su contraseña?') }}
-            </a>
-        @endif 
-                &nbsp;&nbsp;&nbsp;&nbsp; <a href="{{ url('/register') }}" aling="left" class="display-7 text-primary font-weight-bold fst-italic"  >Registrarme</a>
+            </a>                 
+            <a href="{{ url('/register') }}" aling="left" class="display-7 text-primary font-weight-bold fst-italic"  >Registrarme</a>
+        </div>
     </div>
     </x-authentication-card>
 </x-guest-layout>

@@ -16,6 +16,10 @@ return new class extends Migration
             $table->bigIncrements('id');
             $table->unsignedBigInteger('personal_id');
             $table->string('email')->unique();
+            $table->unsignedBigInteger('ps1_id')->nullable();
+            $table->unsignedBigInteger('ps2_id')->nullable();
+            $table->string('resp1')->nullable();
+            $table->string('resp2')->nullable();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->integer('privilege');
@@ -27,6 +31,8 @@ return new class extends Migration
             $table->timestamps();
 
             $table->foreign('personal_id')->references('id')->on('personals');
+            $table->foreign('ps_id1')->references('id')->on('ps');
+            $table->foreign('ps_id2')->references('id')->on('ps');
         });
     }
 

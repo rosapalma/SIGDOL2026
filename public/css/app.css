@@ -659,6 +659,16 @@ pre code {
 
 
 }
+.container-ps {
+  width: 100%;
+  height: auto;
+  padding: 5%;;
+  background-color: #e5e5e5;
+  border: solid 1px #756A67;
+}
+.resp-ps{
+  margin-top: 0;
+}
 
 
 @media (min-width: 576px) {
@@ -2208,6 +2218,7 @@ pre code {
   border-radius: 0.25rem;
   transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
+
 
 
 

@@ -6,7 +6,9 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ConstanciaController;
 use App\Http\Controllers\ReciboController;
 use App\Http\Controllers\ImportController;
+use App\Http\Controllers\PSController;
 
+use App\Livewire\ResetPasswordComponent;
 use App\Livewire\ShowPosts;
 use App\Livewire\DocsGenerados;
 use App\Livewire\RegisterUser;
@@ -22,6 +24,11 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+//restablecer contraseña
+Route::get('/olvide-password', [PSController::class,'index'])->name('solicitar-email');
+Route::post('/my-perfil', [PSController::class, 'perfil'])->name('ver-perfil');
+Route::post('/verificando', [PSController::class, 'verif'])->name('verif');
+Route::post('/login', [PSController::class, 'reset'])->name('reset');
 
 
 //Route::redirect('/','login'); //al login directament
@@ -38,7 +45,6 @@ Route::middleware([
     
     Route::get('/home', [HomeController::class, 'index'])->name('home');
     
-
 
     // SOLICITAR 
     Route::post('/contancia-de-trabajo', [ConstanciaController::class, 'Const'])->name('GeneralConst');

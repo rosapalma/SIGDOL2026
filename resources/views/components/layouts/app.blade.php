@@ -29,9 +29,12 @@
 
         <div class="">
             {{-- MENU Y USER --}}
+            @if(Auth::user())
                 @livewire('navigation-menu')
+            @endif
             <!-- Page Content -->
             <main class="">
+
                 {{ $slot }}
             </main>
         </div>

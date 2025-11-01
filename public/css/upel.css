@@ -68,6 +68,7 @@ label{
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
+    height: auto;
 }
 .back-autoridad{
     /* background-color: pink; */
