@@ -31,8 +31,8 @@ return new class extends Migration
             $table->timestamps();
 
             $table->foreign('personal_id')->references('id')->on('personals');
-            $table->foreign('ps_id1')->references('id')->on('ps');
-            $table->foreign('ps_id2')->references('id')->on('ps');
+            $table->foreign('ps1_id')->references('id')->on('ps');
+            $table->foreign('ps2_id')->references('id')->on('ps');
         });
     }
 

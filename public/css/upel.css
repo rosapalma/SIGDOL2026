@@ -39,6 +39,10 @@ label{
         padding: 10px;
     }
 }
+.btn-user{
+    color: #ffffff;
+    background-color: #0047bb;
+}
 .child-f{
     flex-grow: 1; width: 40px;
 }

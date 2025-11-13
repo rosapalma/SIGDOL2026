@@ -6,6 +6,7 @@ use Livewire\Component;
 use Livewire\WithFileUploads;
 use App\Models\Personal;
 use App\Models\Autoridad;
+use App\Models\User;
 use Auth;
 
 class DefinirAutoridad extends Component
@@ -52,6 +53,15 @@ class DefinirAutoridad extends Component
                 ]);
                 $Tochange->save();
             }
+            //en dbUser quita privilegios
+               $User= User::where('personal_id','=',$searchempleado->id)->first();
+            if($User){
+                $User->update([
+                'privilege' => 3,
+                ]);
+                $User->save();
+            }
+
             $this->autentication->store('public/autenticaciones'); 
             $ImgAut=$this->autentication->store(); 
             //$this->ruta = $ruta;

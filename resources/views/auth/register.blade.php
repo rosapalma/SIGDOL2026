@@ -12,7 +12,7 @@
         <form method="POST" action="{{ route('register') }}">
             @csrf
             <div align="center">
-                <x-input id="cedula" type="text" exists:personals class=" block mt-1 w-full" name="cedula" value="{{ old('cedula') }}" placeholder="CÉDULA" autofocus />
+                <x-input id="cedula" type="text" exists:personals class=" block mt-1 w-full" name="cedula" value="{{ old('cedula') }}" placeholder="CÉDULA" required autofocus />
             </div>
 
             <div class="mt-4">                
@@ -25,26 +25,26 @@
             <br>
             <div class="container-ps" >
                 <select name="ps1" class="form-select-lg block mt-1 w-full" id="inputGroupSelect01" aria-label=".form-select-lg example" :value="old('ps1')" required>
-                     <option >PREGUNTA DE SEGURIDAD</option>
-                    <option value="1">Marco o modelo de tu primer auto</option>
-                    <option value="2">Nombre de tu primera mascota</option>
-                    <option value="3">Lugar favorito donde te gusta ir de vacaciones</option>
-                    <option>Deporte favorito</option>
-                    <option>Comida Favorita</option>
-                    <option>Nombre de tu mejor amigo(a) de la infancia</option>
+                    <option value="">PREGUNTA DE SEGURIDAD</option>
+                    <option value="1" {{ old('ps1') == 1 ? 'selected':''}}>Marca o Modelo de tu primer auto</option>
+                    <option value="2" {{ old('ps1') == 2 ? 'selected':''}}>Nombre de tu primera mascota</option>
+                    <option value="3" {{ old('ps1') == 3 ? 'selected':''}}>Lugar favorito donde te gusta ir de vacaciones</option>
+                    <option value="4" {{ old('ps1') == 4 ? 'selected':''}}>Deporte favorito</option>
+                    <option value="5" {{ old('ps1') == 5 ? 'selected':''}}>Comida Favorita</option>
+                    <option value="6" {{ old('ps1') == 6 ? 'selected':''}}>Nombre de tu mejor amigo(a) de la infancia</option>
               </select>           
-                <input id="resp1" type="text"   name="resp1" required placeholder="RESPUESTA" class="form-control"/>
+                <input id="resp1" type="text"   name="resp1" required placeholder="RESPUESTA" class="form-control" :value="old('resp1')"  />
             <hr>
                  <select name="ps2" class="form-select-lg block mt-1 w-full" id="inputGroupSelect01" aria-label=".form-select-lg example" :value="old('ps2')" required>
-                    <option >PREGUNTA DE SEGURIDAD</option>
-                    <option value="1">Marco o modelo de tu primer auto</option>
-                    <option value="2">Nombre de tu primera mascota</option>
-                    <option value="3">Lugar favorito donde te gusta ir de vacaciones</option>
-                    <option>Deporte favorito</option>
-                    <option>Comida Favorita</option>
-                    <option>Nombre de tu mejor amigo(a) de la infancia</option>
+                    <option value="">PREGUNTA DE SEGURIDAD</option>
+                    <option value="1" {{ old('ps2') == 1 ? 'selected':''}}>Marca o Modelo de tu primer auto</option>
+                    <option value="2" {{ old('ps2') == 2 ? 'selected':''}}>Nombre de tu primera mascota</option>
+                    <option value="3" {{ old('ps2') == 3 ? 'selected':''}}>Lugar favorito donde te gusta ir de vacaciones</option>
+                    <option value="4" {{ old('ps2') == 4 ? 'selected':''}}>Deporte favorito</option>
+                    <option value="5" {{ old('ps2') == 5 ? 'selected':''}}>Comida Favorita</option>
+                    <option value="6" {{ old('ps2') == 6 ? 'selected':''}}>Nombre de tu mejor amigo(a) de la infancia</option>
               </select>     
-                <x-input id="resp" type="text"   name="resp2" required placeholder="RESPUESTA" class="form-control" style="padding-top:0;"/>
+                <x-input id="resp2" type="text"   name="resp2" required placeholder="RESPUESTA" :value="old('resp2')" class="form-control" style="padding-top:0;"/>
 
             </div>
 

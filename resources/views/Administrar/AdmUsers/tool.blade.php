@@ -16,7 +16,7 @@
 	</thead>
 	<tbody>
     	@foreach($users as $use)
-	        <tr>
+	        <tr class="text-center">
 			    <td>
 				@foreach ($empls as $em)
 				    @if ($use->personal_id == $em->id)

@@ -5,10 +5,10 @@
     
         <div class="flex justify-between h-10">
             @if((Auth::user()->privilege == 3))
-            <img src="{{asset('images/SIGDOL/Sistema de gestión.png')}}" >
-            <label class="display-6 " style="color: #0047bb;">{{ __('Portal web para general documentación laboral SIGDOL ') }}</label>
+                <!-- <img src="{{asset('images/SIGDOL/Sistema de gestión.png')}}" > -->
+                <label class="display-6 " style="color: #0047bb; margin-left: 15%">{{ __('Portal web para general documentación laboral') }}</label>
             @endif 
-            <div class="flex">
+            <div class="flex" style="color: #0047bb; margin-left: 15%">
                 <!-- Logo -->
                 @if ((Auth::user()->privilege!=3))
                     <!-- <div class="shrink-0 flex items-center">
@@ -42,20 +42,19 @@
                     </div>
                 @endif
             </div>
-
             <div class="hidden sm:flex sm:items-center sm:ms-6">
                 <!-- Settings Dropdown -->
                 <div class="ms-3 relative">
                     <x-dropdown align="right" width="48">
                         <x-slot name="trigger">                           
-                                <span class="inline-flex rounded-md">
-                                    <button type="button" class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 bg-white hover:text-gray-700 focus:outline-none focus:bg-gray-50 active:bg-gray-50 transition ease-in-out duration-150">
-                                        <?php echo strtoupper (Auth::user()->personal['name']);?>
+                            <span class="inline-flex rounded-md">
+                                <button type="button" class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md transition ease-in-out duration-150 btn-user">
+                                        <?php echo strtoupper (Auth::user()->personal['full_name']);?>
                                         {{-- img para ver mi cuenta --}}
-                                        <svg class="ms-2 -me-0.5 h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-                                            <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
-                                        </svg>
-                                    </button>
+                                    <svg class="ms-2 -me-0.5 h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
+                                    </svg>
+                                </button>
                                 </span>
                         </x-slot>
 
