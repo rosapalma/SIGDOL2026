@@ -97,8 +97,8 @@ class PersonalImport implements  ToCollection, WithHeadingRow, WithBatchInserts,
                 $emp->porcentaje_jub_pens = $row['porcentaje_de_jubilacion_o_pension'];
                 $emp->sede_id = 2;
                 $emp->cargo = $row['cargo'];
-                $emp->dep_adsc = $row['dependencia_de_adscripcion'];
-                $emp->categoria = $row['categoria_academica'];
+                //$emp->dep_adsc = $row['dependencia_de_adscripcion'];
+                //$emp->categoria = $row['categoria_academica'];
                 $emp->jerarquia = $row['jerarquia'];
                 $emp->typepers_id = $this->tipo[$row['id']];
                 $emp->condicionlaboral_id = $this->condicionlaboral[$CondLab];
