@@ -33,7 +33,7 @@
                     <option value="5" {{ old('ps1') == 5 ? 'selected':''}}>Comida Favorita</option>
                     <option value="6" {{ old('ps1') == 6 ? 'selected':''}}>Nombre de tu mejor amigo(a) de la infancia</option>
               </select>           
-                <input id="resp1" type="text"   name="resp1" required placeholder="RESPUESTA" class="form-control" :value="old('resp1')"  />
+                <input id="resp1" type="text"   name="resp1" required placeholder="RESPUESTA" :value="old('resp1')" class="form-control"  />
             <hr>
                  <select name="ps2" class="form-select-lg block mt-1 w-full" id="inputGroupSelect01" aria-label=".form-select-lg example" :value="old('ps2')" required>
                     <option value="">PREGUNTA DE SEGURIDAD</option>

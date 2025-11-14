@@ -2,7 +2,6 @@
     @section('title','Administ. Users')
         
     @if (Auth::user()->privilege < 3)
-        <p class="title text-center">USUARIOS REGISTRADOS</p>
         @include("Administrar.AdmUsers.index")
     @else
         <br><br><br>

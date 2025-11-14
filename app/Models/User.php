@@ -22,6 +22,7 @@ class User extends Authenticatable //implements MustVerifyEmail
 
     protected $fillable = [
         'personal_id',
+        'cedula',
         'email',
         'ps1_id',
         'ps2_id',

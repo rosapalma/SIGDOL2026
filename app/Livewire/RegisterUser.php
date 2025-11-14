@@ -14,7 +14,7 @@ use Carbon\Carbon;
 class RegisterUser extends Component
 {
     public  $users, $UserEmp, $IdUserAuth, $VerifEmail,$pss,
-    $cedula, $full_name, $email,$ps1_id,$ps2_id, $resp1,$resp2, $IdEmpl, $empDBUser, $privilege, $password, $password_confirmation;
+    $cedula, $full_name, $email,$ps1,$ps2, $resp1,$resp2, $IdEmpl, $empDBUser, $privilege, $contraseña, $contraseña_confirmation;
     function mount(){ 
         $pss=ps::all(); 
         $this->pss = $pss;
@@ -29,10 +29,10 @@ class RegisterUser extends Component
 
 
     protected $rules = [
-        'cedula' => ['required','exists:personals,cedula'],
+        'cedula' => ['required','exists:personals,cedula','unique:users'],
         'email' => ['required', 'email', 'unique:users'],
         'privilege' => ['required'],
-        'password' => ['required', 'min:8', 'confirmed'],
+        'contraseña' => ['required', 'min:8', 'confirmed'],
     ];
 
     public function verif(){
@@ -42,33 +42,24 @@ class RegisterUser extends Component
             $this->full_name = $emp['full_name'];
             $this->IdEmpl = $emp['id'];
         }else{
-            return back()->with('error','Esta persona NO se encuentra registrado');
+            return back()->with('error','Esta persona NO se encuentra registrado en nuestra DB');
         }
     
     }
 
-    public function VerifUser(){
-        if ($this->validate()){
-            return back();
-        }
-    }
-    public function ValidEmail(){
-        if ($this->validate()){
-            return back();
-        }
-    }
     
 
     public function create(){
         $this->validate();    
         $RegistUser = User::create([
             'personal_id' => $this->IdEmpl,
+            'cedula' => $this->cedula,
             'email' => $this->email,
-            'ps1_id' => $this->ps1_id,
-            'ps2_id' => $this->ps2_id,
+            'ps1_id' => $this->ps1,
+            'ps2_id' => $this->ps2,
             'resp1' => Hash::make($this->resp1),
             'resp2' => Hash::make($this->resp2),
-            'password' => Hash::make($this->password),
+            'password' => Hash::make($this->contraseña),
             'privilege' => $this->privilege,
             'statud' => 1,
             'email_verified_at' =>  Carbon::now(),
@@ -85,12 +76,14 @@ class RegisterUser extends Component
         $this->cedula ='';
         $this->full_name = '';
         $this->IdEmpl = '';
-        $this->ps ='';
-        $this->resp ='';
         $this->email = '';
+        $this->ps1 ='';
+        $this->ps2 ='';
+        $this->resp1 ='';
+        $this->resp2 ='';
         $this->privilege = '';
-        $this->password = '';
-        $this->password_confirmation = '';
+        $this->contraseña = '';
+        $this->contraseña_confirmation = '';
     }
     
     function refresh(){
@@ -99,8 +92,8 @@ class RegisterUser extends Component
         $this->users = $users;
     }
     function ClearPassw(){
-        $this->password='';
-        $this->password_confirmation='';
+        $this->contraseña='';
+        $this->contraseña_confirmation='';
     }
     
 

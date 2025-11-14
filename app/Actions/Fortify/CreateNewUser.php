@@ -25,12 +25,8 @@ class CreateNewUser implements CreatesNewUsers
     {   
     
         $validator = Validator::make($input, [
-            'cedula' => ['required','exists:personals,cedula'],
+            'cedula' => ['required','exists:personals,cedula','unique:users'],
             'email' => ['required','email','unique:users'],
-            'ps1' => ['required'],
-            'ps2' => ['required'],
-            'resp1' => ['required'],
-            'resp2' => ['required'],
             'password' => $this->passwordRules(),
         ])->validate();
 
@@ -42,6 +38,7 @@ class CreateNewUser implements CreatesNewUsers
 
         return User::create([
             'personal_id' => $personal['id'],
+            'cedula'=> $input['cedula'],
             'email' => $input['email'],
             'ps1_id' => $input['ps1'],
             'ps2_id' => $input['ps2'],
