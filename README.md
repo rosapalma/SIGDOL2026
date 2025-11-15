@@ -1,6 +1,6 @@
 PASOS PARA INICIAR CLONAR EL REPOSITORIO
 
-$ git clone https://github.com/rosapalma/sigdol_L11
+$ git clone [https://github.com/rosapalma/sigdol_L11](https://github.com/rosapalma/sigdol-L11-2025)
 
 $ navegue desde una terminal hasta el directorio (cd directorio)
 
