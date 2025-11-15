@@ -11,7 +11,7 @@ class PSController extends Controller
 {
     public function index()
     {
-            return view('auth.olvide-password');    
+            return view('auth.update-psw.olvide-password');    
     }
 
     
@@ -34,7 +34,7 @@ class PSController extends Controller
                 $pregunta2 = $ps2->pregunta;  
                 $error = false;                              
                 
-                return view('auth.perfil', compact ('user','nombre','pregunta1','pregunta2','error')); 
+                return view('auth.update-psw.perfil', compact ('user','nombre','pregunta1','pregunta2','error')); 
             }
            
     }
@@ -51,7 +51,7 @@ class PSController extends Controller
         $resp1db= $user->resp1;         
         $resp2db= $user->resp2;
         if ((Hash::check($resp1 ,$resp1db)) and (Hash::check($resp2 ,$resp2db))) {
-              return view('auth.restablecer-password',compact('user'));
+              return view('auth.update-psw.restablecer-password',compact('user'));
         } else {
             //recuperar nombre de usuario
           $arraypersonal = $user->personal()->get();  
@@ -64,15 +64,16 @@ class PSController extends Controller
             $pregunta1 = $ps1->pregunta;
             $pregunta2 = $ps2->pregunta; 
             $error = true;
-            return view('auth.perfil', compact ('user','nombre','pregunta1','pregunta2','error')); 
+            //return view('auth.update-psw.perfil', compact ('user','nombre','pregunta1','pregunta2','error')); 
+            return back();
         } 
     }
 
-    public function reset(Request $request)
+    public function rest_psw(Request $request)
     {   
-             $request->validate([
-            'password' => ['required', 'min:8', 'confirmed'],
-        ]);
+            $request->validate([
+                'password' => ['required', 'min:8', 'confirmed'],
+            ]);
             $user = User::where('id','=',$request->user)->first(); 
             $user->update([               
                  'password' => Hash::make($request->password),

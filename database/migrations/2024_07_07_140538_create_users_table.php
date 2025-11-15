@@ -15,7 +15,7 @@ return new class extends Migration
             $table->engine = 'InnoDB';            
             $table->bigIncrements('id');
             $table->unsignedBigInteger('personal_id');
-            $table->integer('cedula')->unique(); //esta columna esta demas pero hace que emple tenga 1 solo usuareio
+            $table->string('cedula')->unique(); //esta columna esta demas pero hace que emple tenga 1 solo usuareio
             $table->string('email')->unique();
             $table->unsignedBigInteger('ps1_id')->nullable();
             $table->unsignedBigInteger('ps2_id')->nullable();

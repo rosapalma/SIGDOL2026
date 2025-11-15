@@ -7,7 +7,7 @@
 
         <x-validation-errors class="mb-4" />
 
-        <form method="POST" action="{{ route('reset') }}">
+        <form method="POST" action="{{ route('rest_psw') }}">
             @csrf
              <label class="text-muted">
                   Tu contraseña debe contener 8 o mas caracteres.
@@ -16,9 +16,12 @@
                 <x-label for="password" value="{{ __('Nueva Contraseña') }}" />
                 <x-input id="password" class="block mt-1 w-full" type="password" name="password" required autocomplete="new-password" />
             </div>
-            
+               <label class="text-muted">
+                  Tu contraseña debe contener 8 o mas caracteres.
+                </label>
             <div class="mt-4">
                 <x-label for="password_confirmation" value="{{ __('Confirmar Contraseña') }}" />
+                
                 <x-input id="password_confirmation" class="block mt-1 w-full" type="password" name="password_confirmation" required autocomplete="new-password" />
             </div>
             <div class="flex items-center justify-end mt-4">

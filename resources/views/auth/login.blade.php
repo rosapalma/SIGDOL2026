@@ -1,15 +1,20 @@
 <x-guest-layout>
-    @section('title','Acceder')
-
+    @section('title','SIGDOL -> Acceder')
     <x-authentication-card>
         <x-slot name="logo">
             <x-authentication-card-logo />
         </x-slot>
 
         <x-validation-errors class="mb-4" />
-       
-        <div class="tool">
 
+        @if (session('error'))
+            <div style="margin-top: 1%; color:red; text-align: center; font-style:italic" class="alert alert-danger">
+                {{ session('error') }}
+            </div>
+        @endif
+
+       
+    <div class="tool">
         <form method="POST" action="{{ route('login') }}">
             @csrf
               <div>
@@ -25,21 +30,14 @@
                 <x-button>
                     {{ __('ACCEDER') }}
                 </x-button></div>
- 
             <div>
-               
-
-
-             
-            </div>
+                         
         </form>
-
-        <div class="center">
-            <a class="underline" href="{{ route('solicitar-email') }}" style="padding: 10%;">
-                        {{ __('Olvido su contraseña?') }}
-            </a>                 
-            <a href="{{ url('/register') }}" aling="left" class="display-7 text-primary font-weight-bold fst-italic"  >Registrarme</a>
-        </div>
     </div>
+    <div class="center">
+        <a class="underline" href="{{ route('solicitar-email') }}" style="padding: 10%;"> {{ __('Olvido su contraseña?') }}   </a>                 
+        <a href="{{ url('/register') }}" aling="left" class="display-7 text-primary font-weight-bold fst-italic"  >Registrarme</a>
+    </div>
+
     </x-authentication-card>
 </x-guest-layout>

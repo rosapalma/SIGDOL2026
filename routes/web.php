@@ -20,18 +20,18 @@ use Illuminate\Http\Request;
 
 
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
 //restablecer contraseña
 Route::get('/olvide-password', [PSController::class,'index'])->name('solicitar-email');
 Route::post('/my-perfil', [PSController::class, 'perfil'])->name('ver-perfil');
 Route::post('/verificando', [PSController::class, 'verif'])->name('verif');
-Route::post('/login', [PSController::class, 'reset'])->name('reset');
+Route::post('/restableciendo-passw', [PSController::class, 'rest_psw'])->name('rest_psw');
 
 
-//Route::redirect('/','login'); //al login directament
+Route::redirect('/','login'); //al login directament
 
 
 Route::middleware([
