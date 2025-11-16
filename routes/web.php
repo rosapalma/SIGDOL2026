@@ -28,22 +28,6 @@ use Illuminate\Http\Request;
 Route::redirect('/','login'); //al login directament
 
 
-//FORGOT PASSWORD
-Route::get('/olvide-su-contraseña', [ForgotPassw::class,'index'])->name('forgot-passw');
-Route::post('/validando',[ForgotPassw::class,'SendEmail'])->name('SendEmail');
-Route::post('/valid-ps',[ForgotPassw::class,'VerifPS'])->name('VerifPS');
-Route::post('/restablecer-contraseña',[ForgotPassw::class,'UpdatePassw'])->name('UpdatePassw');
-
-
-//restablecer contraseña borrar
-// Route::get('/olvide-password', [PSController::class,'index'])->name('solicitar-email');
-// Route::post('/my-perfil', [PSController::class, 'perfil'])->name('ver-perfil');
-// Route::post('/verificando', [PSController::class, 'verif'])->name('verif');
-// Route::post('/restableciendo-passw', [PSController::class, 'rest_psw'])->name('rest_psw');
-
-
-
-
 
 Route::middleware([
     'auth:sanctum',
@@ -73,6 +57,16 @@ Route::middleware([
 
 
 });
+
+//FORGOT PASSWORD
+Route::get('/olvide-su-contraseña', [ForgotPassw::class,'index'])->name('forgot-passw');
+Route::post('/validando',[ForgotPassw::class,'SendEmail'])->name('SendEmail');
+Route::post('/valid-ps',[ForgotPassw::class,'VerifPS'])->name('VerifPS');
+Route::post('/restablecer-contraseña',[ForgotPassw::class,'UpdatePassw'])->name('UpdatePassw');
+
+
+
+
 
 
 Route::get('/salir', function(){
