@@ -17,10 +17,10 @@
 
             <x-validation-errors class="mb-4" />
 
-            <form method="POST" action="{{ route('ver-perfil')}}">
+            <form method="POST" action="{{ route('SendEmail')}}">
             @csrf
 
-                <x-input id="email" class="form-control" type="email" name="email" :value="old('email')" required autofocus autocomplete="username" placeholder="DIRECCION DE CORREO"/>
+                <x-input id="email" exists:users class="form-control" type="email" name="email" :value="old('email')" autofocus autocomplete="username" placeholder="DIRECCION DE CORREO"/>
                 <br><br>
                 <div align="center">
                     <x-button>{{ __('Enviar') }}</x-button>

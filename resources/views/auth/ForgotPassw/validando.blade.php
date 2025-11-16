@@ -6,7 +6,7 @@
         </x-slot>
 
         <div>
-            <form method="POST" action="{{ route('verif') }}" class="form-horizontal">
+            <form method="POST" action="{{ route('VerifPS')}}" class="form-horizontal">
                 @csrf
                 <div class="text-center">
                     <p class="display-6">{{$nombre}}</p>
@@ -21,12 +21,14 @@
 
                     <p class="">{{$pregunta1}}</p>
                     <input type="text" name="resp1" class="form-control" placeholder="TU RESPUESTA" autofocus>
+                        <br>
                         <hr>
+                        <br>
                      <p class="">{{$pregunta2}}</p>
                     <input type="text" name="resp2" class="form-control" placeholder="TU RESPUESTA" > 
 
                   
-
+                    <br><br>
                     <x-button >      {{ __('VALIDAR') }}      </x-button> 
                    
                 </div>  

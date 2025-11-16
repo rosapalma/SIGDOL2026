@@ -6,7 +6,9 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ConstanciaController;
 use App\Http\Controllers\ReciboController;
 use App\Http\Controllers\ImportController;
-use App\Http\Controllers\PSController;
+use App\Http\Controllers\ForgotPassw;
+//use App\Http\Controllers\PSController;
+
 
 use App\Livewire\ResetPasswordComponent;
 use App\Livewire\ShowPosts;
@@ -23,15 +25,24 @@ use Illuminate\Http\Request;
 // Route::get('/', function () {
 //     return view('welcome');
 // });
-
-//restablecer contraseña
-Route::get('/olvide-password', [PSController::class,'index'])->name('solicitar-email');
-Route::post('/my-perfil', [PSController::class, 'perfil'])->name('ver-perfil');
-Route::post('/verificando', [PSController::class, 'verif'])->name('verif');
-Route::post('/restableciendo-passw', [PSController::class, 'rest_psw'])->name('rest_psw');
-
-
 Route::redirect('/','login'); //al login directament
+
+
+//FORGOT PASSWORD
+Route::get('/olvide-su-contraseña', [ForgotPassw::class,'index'])->name('forgot-passw');
+Route::post('/validando',[ForgotPassw::class,'SendEmail'])->name('SendEmail');
+Route::post('/valid-ps',[ForgotPassw::class,'VerifPS'])->name('VerifPS');
+Route::post('/restablecer-contraseña',[ForgotPassw::class,'UpdatePassw'])->name('UpdatePassw');
+
+
+//restablecer contraseña borrar
+// Route::get('/olvide-password', [PSController::class,'index'])->name('solicitar-email');
+// Route::post('/my-perfil', [PSController::class, 'perfil'])->name('ver-perfil');
+// Route::post('/verificando', [PSController::class, 'verif'])->name('verif');
+// Route::post('/restableciendo-passw', [PSController::class, 'rest_psw'])->name('rest_psw');
+
+
+
 
 
 Route::middleware([

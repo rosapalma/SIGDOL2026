@@ -35,7 +35,7 @@
         </form>
     </div>
     <div class="center">
-        <a class="underline" href="{{ route('solicitar-email') }}" style="padding: 10%;"> {{ __('Olvido su contraseña?') }}   </a>                 
+        <a class="underline" href="{{ route('forgot-passw') }}" style="padding: 10%;"> {{ __('Olvido su contraseña?') }}   </a>                 
         <a href="{{ url('/register') }}" aling="left" class="display-7 text-primary font-weight-bold fst-italic"  >Registrarme</a>
     </div>
 

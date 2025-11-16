@@ -7,7 +7,7 @@
 
         <x-validation-errors class="mb-4" />
 
-        <form method="POST" action="{{ route('rest_psw') }}">
+        <form method="POST" action="{{ route('UpdatePassw') }}">
             @csrf
              <label class="text-muted">
                   Tu contraseña debe contener 8 o mas caracteres.
