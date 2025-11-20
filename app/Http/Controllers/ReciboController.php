@@ -121,8 +121,8 @@ class ReciboController extends Controller
                     return Redirect::back()->with('error','El empleado no se corresponde a la sede de inicio de sesión. Cada SEDE O INSTITUTO debe generar la constancia de trabajo de sus empleados, "verifique" e ¡intente de nuevo!');
                 }
                 //DEDICATION
-                $buscar = Pers_Sueldo::where('personal_id','=',$personal->id)->first(); 
-                $dedicacion = $buscar->dedication;
+               // $buscar = Pers_Sueldo::where('personal_id','=',$personal->id)->first(); 
+                $dedicacion = $personal->dedication;
 
             }//if personal
             else{
@@ -133,7 +133,7 @@ class ReciboController extends Controller
             return Redirect::back()->with('error','No puede continuar, dado a que no ha definido ninguna autoridad, quien certificara dicho documento , consulte al administrador');
         }
         //CONSULTANDO NOMINAS PARA TRAER LA ID DE LA SELECCIONADA SEGUN MES-AÑO...
-        $nominas= $personal->nominas()->get();
+        $nominas= $personal->nominas()->orderBy('id','desc')->get();
         if($nominas){
             foreach($nominas as $nom){              
                 if(($nom['mes'] == $mes_selc) && ($nom['anio'] == $anio_selc)){

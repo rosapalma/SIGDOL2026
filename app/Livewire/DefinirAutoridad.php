@@ -65,7 +65,6 @@ class DefinirAutoridad extends Component
             $this->autentication->store('public/autenticaciones'); 
             $ImgAut=$this->autentication->store(); 
             //$this->ruta = $ruta;
-
              $AddNewjefe = Autoridad::create([
                 'personal_id' => $searchempleado->id,
                 'autentication' => $ImgAut,

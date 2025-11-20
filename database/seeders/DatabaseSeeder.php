@@ -23,9 +23,9 @@ class DatabaseSeeder extends Seeder
         AsignacionSeeder::class,
         PersonalSeeder::class,
         //PersSueldoSeeder::class,
-        AutoridadSeeder::class,
+        //AutoridadSeeder::class,
        // NominaExcelSeeder::class,
-        PS::class, //preguntar de seguridad
+        PS::class, //preguntas de seguridad
         UserSeeder::class, // HAY USUARIOS QUE PRIMERO DEBE SER IMPORTADOS
         BeneficiarioSeeder::class,
 

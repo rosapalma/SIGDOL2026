@@ -1,6 +1,9 @@
 <div class="">
 
-     <x-title>ASIGNAR RESPONSABLE</x-title><br><br>
+    <x-title>ASIGNAR RESPONSABLE</x-title><br>  
+    @if (session('mensaje'))
+        <div class="alert alert-success">      {{ session('mensaje') }}    </div>
+    @endif<br>
     <div class="display-6 text-center title title-color">
          <div class="box">  
         @if($vacio)    
@@ -12,10 +15,5 @@
     </div>
     </div><br>
                 @include('Administrar.DefAutoridad.update')
-
-    @if (session('mensaje'))
-        <div class="alert alert-success">
-            {{ session('mensaje') }}
-        </div>
-    @endif
+  
 </div>

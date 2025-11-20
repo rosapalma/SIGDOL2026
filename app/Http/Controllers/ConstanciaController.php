@@ -8,6 +8,7 @@ use Illuminate\Support\Arr;
 use App\Models\Personal;
 use App\Models\Autoridad;
 use App\Models\Pers_Sueldo;
+use App\Models\NominaExcel;
 use App\Models\ConstG;
 use App\Models\Sede;
 use DB;
@@ -132,8 +133,8 @@ class ConstanciaController extends Controller
                 $statudContrato = false;
             }
         }
-        $buscar = Pers_Sueldo::where('personal_id','=',$personal->id)->first(); 
-        $dedicacion = $buscar->dedication;
+        //$buscar = Pers_Sueldo::where('personal_id','=',$personal->id)->first(); 
+        $dedicacion = $personal->dedication;
 
         //EVALUACION SEGUN LA CONDICION LABORAL Y TYPO DE CONSTANCIA
      
@@ -188,30 +189,31 @@ class ConstanciaController extends Controller
 
         // }
 
-
-
+//---------------------------------------
+// todo esto cambiara y tomara sueldo de nomina
+//************************
      
-             //CON SUELDO BASE
+        //CON SUELDO BASE
         if ($tipoConst == 2){
-            $sueldo  = Pers_Sueldo::where('personal_id','=',$personal->id)->first();
+            $sueldo  = NominaExcel::where('personal_id','=',$personal->id)->orderBy('id','desc')->first();
             if (empty($sueldo)){
-                return Redirect::back()->with('error','No tiene un sueldo definido.. "verifique" e ¡intente de nuevo!');
+               return Redirect::back()->with('error','No tiene un sueldo definido.. "verifique" e ¡intente de nuevo!');
             }
 
-            $monto= $sueldo['salario_base'];
-            $formatter = new NumeroALetras();
-            $ALetras= $formatter->toMoney($monto, 2, 'Bolivares', 'CENTIMOS');
+           $monto= $sueldo['salario_basico'];
+           $formatter = new NumeroALetras();
+           $ALetras= $formatter->toMoney($monto, 2, 'Bolivares', 'CENTIMOS');
         }
 
         //CON SUELDO INTEGRAL
         if ($tipoConst == 3){
-            $sueldo  = Pers_Sueldo::where('personal_id','=',$personal->id)->first();  //SUELDO ASIGNADO A ESA NOMINA DEL EMPLEADO
+            $sueldo = NominaExcel::where('personal_id','=',$personal->id)->orderBy('id','desc')->first();  //SUELDO ASIGNADO A ESA NOMINA DEL EMPLEADO
             if (empty($sueldo)){
                 return Redirect::back()->with('error','No tiene un sueldo definido.. "verifique" e ¡intente de nuevo!');
             }
-            $neto= $sueldo['salario_integral'];
+            echo $neto= $sueldo['salario_integral'];
             $formatter = new NumeroALetras();
-            $ALetras= $formatter->toMoney($neto, 2, 'Bolivares', 'CENTIMOS');
+            echo $ALetras= $formatter->toMoney($neto, 2, 'Bolivares', 'CENTIMOS');
         }
 
         //PA' JUBILADOS O PENSIONADOS
