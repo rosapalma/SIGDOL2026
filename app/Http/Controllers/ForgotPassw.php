@@ -36,6 +36,7 @@ class ForgotPassw extends Controller
                 $error = false;         
                 return view('auth.ForgotPassw.validando', compact ('user','nombre','pregunta1','pregunta2','error')); 
             }
+        return Redirect::back()->with('error','Formato de correo incorrecto !');
            
     }
 

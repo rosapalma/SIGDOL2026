@@ -8,8 +8,8 @@
       </x-header-modal>
 
        <div class="modal-body">
-{{-- {{ route('GeneralRecibo') }}" --}}
-        <form class="form-horizontal" method="post" action="/recibo-de-pago" name="formulario" id="Miform">
+{{-- " --}}
+        <form class="form-horizontal" method="post" action="{{ route('GeneralRecibo') }}" name="formulario" id="Miform">
               {{ csrf_field() }}
            <div align="center" >
             <input type="text"  name="cedula"  class="form-control" style="font-size: 2rem" onkeyUp="return ValNumero(this);" placeholder="Cédula de Identidad" autofocus>

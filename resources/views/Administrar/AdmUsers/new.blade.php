@@ -50,7 +50,7 @@
          <div class="container-ps" >
                 <select wire:model="ps1" class="form-select-lg block mt-1 w-full" id="inputGroupSelect01" aria-label=".form-select-lg example" :value="old('ps1')" required>
                      <option >PREGUNTA DE SEGURIDAD</option>
-                    <option value="1">Marco o modelo de tu primer auto</option>
+                    <option value="1">Marco de tu primer auto</option>
                     <option value="2">Nombre de tu primera mascota</option>
                     <option value="3">Lugar favorito donde te gusta ir de vacaciones</option>
                     <option>Deporte favorito</option>

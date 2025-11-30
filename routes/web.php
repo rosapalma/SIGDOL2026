@@ -59,10 +59,17 @@ Route::middleware([
 });
 
 //FORGOT PASSWORD
+
 Route::get('/olvide-su-contraseña', [ForgotPassw::class,'index'])->name('forgot-passw');
 Route::post('/validando',[ForgotPassw::class,'SendEmail'])->name('SendEmail');
 Route::post('/valid-ps',[ForgotPassw::class,'VerifPS'])->name('VerifPS');
 Route::post('/restablecer-contraseña',[ForgotPassw::class,'UpdatePassw'])->name('UpdatePassw');
+
+
+// Route::get('/olvide-su-contraseña', [ForgotPassw::class,'index'])->name('forgot-passw');
+// Route::post('/validando',[ForgotPassw::class,'SendEmail'])->name('SendEmail');
+// Route::post('/valid-ps',[ForgotPassw::class,'VerifPS'])->name('VerifPS');
+// Route::post('/restablecer-contraseña',[ForgotPassw::class,'UpdatePassw'])->name('UpdatePassw');
 
 
 

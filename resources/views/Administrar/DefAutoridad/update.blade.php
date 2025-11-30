@@ -15,7 +15,7 @@
         <div>
             <label class="formulario-item text-center">SUBIR ARCHIVO DE AUTENTICACIÓN</label>
 
-            <input type="file" wire:model="autentication" required accept="image/png, image/jpeg" />
+            <input type="file" wire:model="autentication" required accept="image/png" />
         </div>
         <!-- <img src="{{ asset('storage/' . $ruta) }}" alt="Vista previa de imagen"> -->
 

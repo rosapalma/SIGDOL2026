@@ -26,7 +26,7 @@
             <div class="container-ps" >
                 <select name="ps1" class="form-select-lg block mt-1 w-full" id="inputGroupSelect01" aria-label=".form-select-lg example" :value="old('ps1')" required>
                     <option value="">PREGUNTA DE SEGURIDAD</option>
-                    <option value="1" {{ old('ps1') == 1 ? 'selected':''}}>Marca o Modelo de tu primer auto</option>
+                    <option value="1" {{ old('ps1') == 1 ? 'selected':''}}>Marca de tu primer auto</option>
                     <option value="2" {{ old('ps1') == 2 ? 'selected':''}}>Nombre de tu primera mascota</option>
                     <option value="3" {{ old('ps1') == 3 ? 'selected':''}}>Lugar favorito donde te gusta ir de vacaciones</option>
                     <option value="4" {{ old('ps1') == 4 ? 'selected':''}}>Deporte favorito</option>

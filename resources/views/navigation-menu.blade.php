@@ -6,7 +6,7 @@
         <div class="flex justify-between h-10">
             @if((Auth::user()->privilege == 3))
                 <!-- <img src="{{asset('images/SIGDOL/Sistema de gestión.png')}}" > -->
-                <label class="display-6 " style="color: #0047bb; margin-left: 15%">{{ __('Portal web para general documentación laboral') }}</label>
+                <label class="display-6 text-center" style="color: #0047bb; padding-left: 5%">{{ __('Portal web para general documentación laboral') }}</label>
             @endif 
             <div class="flex" style="color: #0047bb; margin-left: 15%">
                 <!-- Logo -->
@@ -47,7 +47,7 @@
                 <div class="ms-3 relative">
                     <x-dropdown align="right" width="48">
                         <x-slot name="trigger">                           
-                            <span class="inline-flex rounded-md">
+                            <span class="inline-flex rounded-md text-end">
                                 <button type="button" class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md transition ease-in-out duration-150 btn-user">
                                         <?php echo strtoupper (Auth::user()->personal['full_name']);?>
                                         {{-- img para ver mi cuenta --}}
@@ -61,7 +61,7 @@
                         <x-slot name="content">
                             <!-- Account Management -->
                             <div class="block px-4 py-2 text-xs text-gray-400" align="center">
-                                {{ __('Mi uenta') }}
+                                {{ __('Mi Cuenta') }}
                             </div>
 
                             <x-dropdown-link href="{{ route('profile.show') }}">

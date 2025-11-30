@@ -22,7 +22,7 @@ class DatabaseSeeder extends Seeder
         DeduccionSeeder::class,
         AsignacionSeeder::class,
         PersonalSeeder::class,
-        //PersSueldoSeeder::class,
+        PersSueldoSeeder::class,
         //AutoridadSeeder::class,
        // NominaExcelSeeder::class,
         PS::class, //preguntas de seguridad

@@ -20,6 +20,9 @@
                 height: 15%;
                 margin: 0;
             }
+            div{
+                margin: 0;
+            }
         
         
             footer {
@@ -92,6 +95,7 @@
             <p>Tipo de Personal: &nbsp;{{$typepers}}</p> 
         @endif           
         <P style="text-wrap: balance;">Cargo:&nbsp;{{$cargo}}</P>
+        <div style="margin-left: 60%; margin-top: 0;">
         <p style="">Año: <?php echo $arraynomina['anio']; ?> &nbsp;&nbsp;&nbsp;<b>Mes: </b>
                 <?php   $meses = array("Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre");
             foreach ($meses as $key => $value) {
@@ -100,8 +104,10 @@
             }
             ?>
         </p>
+       
             <p style="">Fecha de emisión: <?php echo $fechaAct; ?></p>
             <p style="">Cod. recibo: <?php echo $cod; ?></p>	
+        </div>
        
     </div>
 

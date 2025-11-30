@@ -20,12 +20,12 @@
                 <div class="text-center display-6 text-dange">  
 
                     <p class="">{{$pregunta1}}</p>
-                    <input type="text" name="resp1" class="form-control" placeholder="TU RESPUESTA" autofocus>
+                    <input type="text" name="resp1" class="form-control" required placeholder="TU RESPUESTA" autofocus>
                         <br>
                         <hr>
                         <br>
                      <p class="">{{$pregunta2}}</p>
-                    <input type="text" name="resp2" class="form-control" placeholder="TU RESPUESTA" > 
+                    <input type="text" name="resp2" class="form-control" required placeholder="TU RESPUESTA" > 
 
                   
                     <br><br>
