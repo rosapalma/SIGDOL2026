@@ -14,7 +14,7 @@ class AdmUsers extends Component
 {
     use WithPagination;
     protected $paginationTheme = 'bootstrap';
-	public  $empls;
+	public  $empls, $mensaje;
 
     function mount(){	
         $empls = Personal::all();

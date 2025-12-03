@@ -4,6 +4,12 @@
   <div class="justify-content-center" >
  
     <div class="container-borde" > 
+        @if (session('mensaje'))
+          <div class="alert alert-success">
+            {{ session('mensaje') }}
+          </div>
+        @endif
+      
       <p class="title text-center">USUARIOS REGISTRADOS</p>
        @if  (Auth::user()->privilege==1)
       <a href="{{ url('/registro-usuarios') }}"  title="Nuevo Usuario" class="img-btn-new">

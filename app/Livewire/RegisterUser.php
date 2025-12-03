@@ -69,7 +69,8 @@ class RegisterUser extends Component
         $RegistUser->save();
         $this->clear();
         $this->refresh();
-        return back()->with('mensaje','Usuario Registrado con exito');
+        return redirect('/administrar-usuarios')->with('mensaje','Usuario Registrado con exito');
+        //return back()->with('mensaje','Usuario Registrado con exito');
     }
 
     public function clear(){

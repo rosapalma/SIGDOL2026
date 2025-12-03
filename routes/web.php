@@ -6,7 +6,6 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ConstanciaController;
 use App\Http\Controllers\ReciboController;
 use App\Http\Controllers\ImportController;
-use App\Http\Controllers\ForgotPassw;
 //use App\Http\Controllers\PSController;
 
 
@@ -17,6 +16,7 @@ use App\Livewire\RegisterUser;
 use App\Livewire\AdmUsers;
 use App\Livewire\DefinirAutoridad;
 use Illuminate\Http\Request;
+use App\Livewire\ForgotPassw;
 
 
 
@@ -59,18 +59,7 @@ Route::middleware([
 });
 
 //FORGOT PASSWORD
-
-Route::get('/olvide-su-contraseña', [ForgotPassw::class,'index'])->name('forgot-passw');
-Route::post('/validando',[ForgotPassw::class,'SendEmail'])->name('SendEmail');
-Route::post('/valid-ps',[ForgotPassw::class,'VerifPS'])->name('VerifPS');
-Route::post('/restablecer-contraseña',[ForgotPassw::class,'UpdatePassw'])->name('UpdatePassw');
-
-
-// Route::get('/olvide-su-contraseña', [ForgotPassw::class,'index'])->name('forgot-passw');
-// Route::post('/validando',[ForgotPassw::class,'SendEmail'])->name('SendEmail');
-// Route::post('/valid-ps',[ForgotPassw::class,'VerifPS'])->name('VerifPS');
-// Route::post('/restablecer-contraseña',[ForgotPassw::class,'UpdatePassw'])->name('UpdatePassw');
-
+Route::get('/forgot-passw',ForgotPassw::class)->name('restore-passw');
 
 
 
