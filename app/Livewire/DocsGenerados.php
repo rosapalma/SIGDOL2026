@@ -14,7 +14,7 @@ class DocsGenerados extends Component
 {
     use WithPagination;
     protected $paginationTheme = 'bootstrap';
-    public $list=1, $anio, $tipo,  $ExpConsul, $clik_button, $autoridadName, $autoridad, $autentication;
+    public $list=1, $anio, $tipo,  $ExpConsul, $clik_button, $autoridadName, $autoridad, $autentication, $impre;
     public function updatingSearch() //para cuando halla un filtrado (buscar)
     {
         $this->resetPage();
@@ -41,53 +41,54 @@ class DocsGenerados extends Component
     }
     public function Autoridad(){
         $JefeDpto = Autoridad::where('statud','=',1)->first(); //verifica si hay una autoridad activa
-        if ($JefeDpto){
-            $arrayjefe = $JefeDpto->Personal()->get();
-            foreach ($arrayjefe as $je) {
-                $autoridad=$je['id'];
-            }
-            $autoridad= $autoridad;
-            return $autoridad;
-        }
+        return $JefeDpto;
+
+        //    $JefeDpto = Autoridad::where('statud','=',1)->first(); //verifica si hay una autoridad activa
+        // if ($JefeDpto){
+        //     $arrayjefe = $JefeDpto->Personal()->get();
+        //     foreach ($arrayjefe as $je) {
+        //         $autoridad=$je['id']; //trae el ide del personal
+        //     }
+        //     $autoridad= $autoridad;
+        //     return $autoridad;
+        // }
     }
 
    
     public function ExporConsul(){
-        $list = $this->list;
-        $clik_button = 1;
-        $this->clik_button = $clik_button;
-        if ($this->list== 2){
-            $ExpConsul = RecibosG::get();
+ 
+       $list = $this->list;
+       //  $clik_button = 1;
+       //  $this->clik_button= $clik_button;
+         if ($this->list== 2){
+               $ExpConsul = RecibosG::get();
+               $this->impre=$ExpConsul;
             if ($this->anio){
                 $ExpConsul = RecibosG::whereYear('fechaEmi', $this->anio)->get();
+
+              
             }
-        }else{
+        }else{           
             $ExpConsul = ConstG::get();
             if ($this->anio){
-                $ExpConsul = ConstG::whereYear('fechaEmi', $this->anio)->get();
+                 $ExpConsul = ConstG::whereYear('fechaEmi', $this->anio)->get();
             }
             if ($this->tipo){
-                $ExpConsul = ConstG::whereYear('fechaEmi', $this->anio)->where('typeConst','=',$this->tipo)->get();
+                $ExpConsul = ConstG::whereYear('fechaEmi', $this->anio)->where('typeConst','=',$this->tipo)->get();               
             }
         }
-        //AUTORIDAD
-              //VERIFICANDO SI HAY AUTORIDAD ASIGNADO
-        $autoridad = $this->Autoridad();
-        if ($autoridad){ //RECUPERA DATOS DE AUTORIDAD
-            $DatosPers=Personal::where('id','=',$autoridad)->first(); 
-            $autoridadName = $DatosPers->full_name;
-            $arrayautoridad = $DatosPers->jefe()->get();
-            foreach ($arrayautoridad as $aut){
-                $autentication = $aut['autentication'];
-            }     
+        $Autoridad=$this->autoridad();
+        $arraypersonal = $Autoridad->personal()->get();  //nombre 
+        foreach ($arraypersonal as $pers) {
+            $autoridadName=$pers['full_name'];
         }
-        //echo $autoridad;
+        $autentication= $Autoridad->autentication; 
+        $this->impre=$autentication;
 
-        $view = view('Administrar/DocsGenerados/docs-pdf')->with(compact('ExpConsul','list','autoridadName','autentication'));
-        $html = $view->render();
-        $pdf = PDF::loadHTML($html)->save(public_path() . '/Solicitudes Generadas.pdf');
-
-        // return back();
+           $pdf = PDF::loadView('Administrar/DocsGenerados/docs-pdf',compact('ExpConsul','list','autoridadName','autentication'));
+        return response()->streamDownload(function () use($pdf) {
+            echo  $pdf->stream();
+        }, 'Solicitudes Generadas.pdf');
 
     }
 

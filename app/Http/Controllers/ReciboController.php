@@ -59,18 +59,15 @@ class ReciboController extends Controller
         //VERIFICANDO SI HAY AUTORIDAD ASIGNADO
         $autoridad= $this->Autoridad();
         if (empty($autoridad)){
-              return Redirect::back()->with('error','Disculpe, en este momento su solicitud no puede ser procesada.¡Le intivamos a intentarlo! o consulte al personal de la unidad');
+              return Redirect::back()->with('error','No puede continuar, dado a que no se ha definido quien certificara dicho documento. Le invitamos a intentarlo mas tarde , consulte al administrador');
         }else{ //RECUPERA DATOS DE AUTORIDAD
             $DatosPers=Personal::where('id','=',$autoridad)->first(); 
             $autoridadName = $DatosPers->full_name;
             $arrayautoridad = $DatosPers->jefe()->get();
             foreach ($arrayautoridad as $aut){
                 $autentication = $aut['autentication'];
-            }
-            
-            
+            }           
         }
-
         $cedula = $request->cedula;
         $mes_selc = $request->mes;
         $anio_selc = $request->anio;
@@ -94,43 +91,36 @@ class ReciboController extends Controller
 
         $autoridad = $this->Autoridad();
         //VALIDANDO Y PROCESANDO
-        if ($autoridad){
-            $personal = Personal::where('cedula','=',$cedula)->first(); 
-            if ($personal){
-                if ($privilegio == 3)  {
-                    //continua
-                    return $IdEmp;
-                    if($IdEmp != $personal->id) {
-                        return Redirect::back()->with('error','Sus cédula no correspoden al usuario de inicio de sesión; es decir, NO puede emitir documentación de otro Personal,  "verifique" e ¡intente de nuevo!');
-                    }
+        $personal = Personal::where('cedula','=',$cedula)->first(); 
+        if ($personal){
+            if ($privilegio == 3)  {
+                //continua
+                return $IdEmp;
+                if($IdEmp != $personal->id) {
+                    return Redirect::back()->with('error','Sus cédula no correspoden al usuario de inicio de sesión; es decir, NO puede emitir documentación de otro Personal,  "verifique" e ¡intente de nuevo!');
                 }
-
-                if($sedeEmp['id'] == $personal->sede_id){
-                    $arraytypepers = $personal->typepers()->get();
-                    $cargo = $personal->cargo;
-                    $arrayspacework = $personal->spacework()->get();
-
-                    foreach ($arraytypepers as $type) {
-                            $typepers=$type['name'];
-                            $typepersid = $type['id'];
-                    }
-                    // foreach ($arrayspacework as $space) {
-                    //         $spacework=$space['name'];
-                    // }
-                }else{ //if (verifica sedes)
-                    return Redirect::back()->with('error','El empleado no se corresponde a la sede de inicio de sesión. Cada SEDE O INSTITUTO debe generar la constancia de trabajo de sus empleados, "verifique" e ¡intente de nuevo!');
+            }
+            if($sedeEmp['id'] == $personal->sede_id){
+                $arraytypepers = $personal->typepers()->get();
+                $cargo = $personal->cargo;
+                $arrayspacework = $personal->spacework()->get();
+                foreach ($arraytypepers as $type) {
+                    $typepers=$type['name'];
+                    $typepersid = $type['id'];
                 }
+                // foreach ($arrayspacework as $space) {
+                //         $spacework=$space['name'];
+                // }
+            }else{ //if (verifica sedes)
+                return Redirect::back()->with('error','El empleado no se corresponde a la sede de inicio de sesión. Cada SEDE O INSTITUTO debe generar la constancia de trabajo de sus empleados, "verifique" e ¡intente de nuevo!');
+            }
                 //DEDICATION
                // $buscar = Pers_Sueldo::where('personal_id','=',$personal->id)->first(); 
-                $dedicacion = $personal->dedication;
+            $dedicacion = $personal->dedication;
 
-            }//if personal
-            else{
-                return Redirect::back()->with('error','Disculpe!, esta persona no se encuentra registrado, consulte al administrador');
-            }
-        }//if jefe
+        }//if personal
         else{
-            return Redirect::back()->with('error','No puede continuar, dado a que no ha definido ninguna autoridad, quien certificara dicho documento , consulte al administrador');
+            return Redirect::back()->with('error','Disculpe!, esta persona no se encuentra registrado, consulte al administrador');
         }
         //CONSULTANDO NOMINAS PARA TRAER LA ID DE LA SELECCIONADA SEGUN MES-AÑO...
         $nominas= $personal->nominas()->orderBy('id','desc')->get();
@@ -154,14 +144,8 @@ class ReciboController extends Controller
         }else{
             return Redirect::back()->with('error','Aun NO tiene ninguna nomina registrada, consulte al administrador');
         }
-        
-            
-
-            $pdf = \PDF::loadView('Solicitar.Download.PDF-ReciboPago',compact('fechaAct','cod','autoridadName','autentication','personal','typepers','typepersid','cargo','dedicacion','arraynomina','sedeEmp'));
-            return $pdf->download('Recido de pago.pdf');
-
-                //return view('Solicitar.Download.PDF-ReciboPago',compact('fechaAct','cod','autoridad','direc','phone','personal','typepers','cargo', 'arraynomina','beca'));
-
+        $pdf = \PDF::loadView('Solicitar.Download.PDF-ReciboPago',compact('fechaAct','cod','autoridadName','autentication','personal','typepers','typepersid','cargo','dedicacion','arraynomina','sedeEmp'));
+        return $pdf->download('Recido de pago.pdf');
     }
 
 }

@@ -10,11 +10,11 @@
         </label-ayuda>
        
         <div class="mt-4">
-            <x-input type="txt" wire:model="contraseña" placeholder="CONTRASEÑA"  class="form-control form-control-sm" required />             
+            <x-input type="txt" wire:model.live="contraseña" placeholder="CONTRASEÑA"  class="form-control form-control-sm" required />             
         </div>   
         
         <div class="mt-4">
-            <x-input  type="txt" class="form-control form-control-sm" wire:model="contraseña_confirmation" placeholder="CONFIRMAR" required />
+            <x-input  type="txt" class="form-control form-control-sm" wire:model.live="contraseña_confirmation" placeholder="CONFIRMAR" required />
         </div> <br>
 
 

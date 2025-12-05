@@ -274,8 +274,8 @@
     </div>
 @endif
 <!-- AUTENTICACION -->
-      <div align="center">
-         <img src="storage/autenticaciones/<?php echo $autentication; ?>"> <br>
+    <div align="center">
+        <img src="storage/autenticaciones/<?php echo $autentication; ?>"> <br>
         <span  style="text-transform:uppercase">{{ $autoridadName }}</span><br>
         <span style="">Jefe de la Unidad de Personal</span>
     </div>

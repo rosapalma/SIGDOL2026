@@ -44,18 +44,15 @@ Route::middleware([
     // SOLICITAR 
     Route::post('/contancia-de-trabajo', [ConstanciaController::class, 'Const'])->name('GeneralConst');
     Route::post('/recibo-de-pago', [ReciboController::class, 'Recibo'])->name('GeneralRecibo');
-    
     // IMPORT DATA
     Route::get('/viewimport',[App\Http\Controllers\ImportController::class, 'index'])->name('viewimport');
     Route::post('/importpers',[App\Http\Controllers\ImportController::class, 'UpdateDataPers']);
     Route::post('/importNominaExcel',[App\Http\Controllers\ImportController::class, 'NomminaExcel']);
-
+    //ADMINISTRAR
     Route::get('/administrar-usuarios', AdmUsers::class)->name('adm-users');
     Route::get('/registro-usuarios',RegisterUser::class)->name('register-users');
     Route::get('/DefAutoridad',DefinirAutoridad::class)->name('autoridad');
     Route::get('/DocsGenerados',DocsGenerados::class)->name('ViewDocs');
-
-
 });
 
 //FORGOT PASSWORD

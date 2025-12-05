@@ -11,11 +11,11 @@
     @endif
     <div class="text-center display-6 text-dange">  
         <p class="">{{$pregunta1}}</p>
-        <input type="text" wire:model="respuestaN1" class="form-control" placeholder="TU RESPUESTA" autofocus>
+        <input type="text" wire:model.live="respuestaN1" class="form-control" placeholder="TU RESPUESTA" autofocus>
         <br> 
         <p class="">{{$pregunta2}}</p>
-        <input type="text" wire:model="respuestaN2" class="form-control" placeholder="TU RESPUESTA" >
-        <input type="text" wire:model="user_id" class="hidden-input"  value="{{$user->id}}" >
+        <input type="text" wire:model.live="respuestaN2" class="form-control" placeholder="TU RESPUESTA" >
+        <input type="text" wire:model.live="user_id" class="hidden-input"  value="{{$user->id}}" >
         <br>
         <x-button wire:click="ValidarPS">
             {{ __('Validar') }}

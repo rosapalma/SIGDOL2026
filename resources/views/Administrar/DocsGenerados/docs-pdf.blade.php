@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
    <meta charset="UTF-8">
+   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-   <title>Document</title>
+   <title>Solicitudes Generadas</title>
 </head>
 <style type="text/css">
 html {
@@ -137,7 +139,7 @@ header {
                <?php $nro = $nro + 1; ?>
                <tr <?php if ($nro % 2 == 0){ echo $nro; ?> style="background-color: #dfd3d1" <?php } ?>>
                   <td style="width: 5%;text-align: center;"><?php echo $nro; ?></td>
-                  <td>{{$CG->empleado['last_name']}}&nbsp;&nbsp;{{$CG->empleado['name']}}</td>
+                  <td>{{$CG->empleado['full_name']}}</td>
                   <td>{{$CG['fechaEmi']}}</td>
                </tr>
                @endforeach
@@ -147,11 +149,11 @@ header {
       </div>
    </section>
  <!-- AUTENTICACION -->
-      <div align="center">
-        <p><img src="storage/autenticaciones/<?php echo $autentication; ?>"></p>
-        <span  style="text-transform:uppercase">{{ $autoridadName }}</span><br>
-        <span style="">Jefe de la Unidad de Personal</span>
-    </div>
+   <div align="center">
+     <img src="storage/autenticaciones/<?php echo $autentication; ?>"> <br>
+     <span  style="text-transform:uppercase">{{ $autoridadName }}</span><br>
+     <span style="">Jefe de la Unidad de Personal</span>
+   </div>
     <footer></footer>
 </body>
 </html>

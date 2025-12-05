@@ -7,5 +7,4 @@
         <br><br><br>
         <p class="display-5">No esta autorizado a visitar este sitio</p>
     @endif
- 
 </div>

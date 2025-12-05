@@ -6,25 +6,23 @@
     @include('Administrar.DocsGenerados.filtrar')
 </div>
     <div class="justify-content-center">        
-        <div class="container-borde">
+        <div class="container-borde"> 
             @if($list == 1)
                 @include('Administrar.DocsGenerados.ConstGen')
                   <div class="flex">
-                    <div>
+                    <div>                       
                         @if($conts->count())  
                            {{ $conts->links() }}  
                         @endif  
                     </div> 
                     <div style="margin-left: 40%;"> 
-                         @if($conts->count() > 0)  
-                           
-                            <a target="_blank" href="{{asset('Constancias-Recibos.pdf')}}" wire:click="ExporConsul" >
-                            <img src="{{ asset('images/ICONS/impress.png')}}"   width="50";  title="ver|imprimir"  style="cursor: pointer;">
-                        </a>
+                        @if($conts->count())  
+                          <button type="button" wire:click="ExporConsul">
+                                <img src="{{ asset('images/ICONS/impress.png')}}"   width="50";  title="ver|imprimir"  style="cursor: pointer;">
+                            </button>    
                         @endif  
                     </div>
                 </div>
-
             @elseif($list == 2)
                 @include('Administrar.DocsGenerados.RecibGen')
                 <div class="flex">
@@ -34,11 +32,10 @@
                         @endif  
                     </div> 
                     <div style="margin-left: 40%;"> 
-                         @if($recibs->count() > 0)  
-                           
-                            <a target="_blank" href="{{asset('Constancias-Recibos.pdf')}}" wire:click="ExporConsul" >
-                            <img src="{{ asset('images/ICONS/impress.png')}}"   width="50";  title="ver|imprimir"  style="cursor: pointer;">
-                        </a>
+                        @if($recibs->count()) 
+                            <button type="button" wire:click="ExporConsul">
+                                <img src="{{ asset('images/ICONS/impress.png')}}"   width="50";  title="ver|imprimir"  style="cursor: pointer;">
+                            </button>                                
                         @endif  
                     </div>
                 </div>
