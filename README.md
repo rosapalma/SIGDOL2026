@@ -16,7 +16,9 @@ $ php artisan migrate
 
 $ php artisan db:seed
 
+$ php artisan storage:link Para hacer público el almacenamiento en Laravel a la carpeta storage donde se cargar los archivos subidos
+
 $ php artisan serve y x ultimo
 
-$ abra un nuevo cmd/terminal y navegue hasta el directorio del proyecto, escriba alli npm run dev. Entonces hemos terminado y tenemos el sistema en ejecucion.
+Entonces hemos terminado y tenemos el sistema en ejecucion.
   Ahora ya puede dirigirse a su navegador web y escribir http://127.0.0.1:8000, 
