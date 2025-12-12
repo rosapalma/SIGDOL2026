@@ -29,7 +29,9 @@
 
         <div class="">
             {{-- MENU Y USER --}}
+            @if(Auth::user())
                 @livewire('navigation-menu')
+            @endif
             <!-- Page title -->
                 {{-- <header class="bg-white shadow">
                     <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
