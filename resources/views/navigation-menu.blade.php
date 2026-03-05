@@ -5,9 +5,16 @@
     
         <div class="flex justify-between h-10">
             @if((Auth::user()->privilege == 3))
+                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                    <x-nav-link href="{{ route('home') }}">
+                           <img src="{{asset('images/ICONS/home.png')}}" width="30">
+                    </x-nav-link>
+                </div>
                 <!-- <img src="{{asset('images/SIGDOL/Sistema de gestión.png')}}" > -->
                 <label class="display-6 text-center" style="color: #0047bb; padding-left: 5%">{{ __('Portal web para general documentación laboral') }}</label>
+
             @endif 
+
             <div class="flex" style="color: #0047bb; margin-left: 15%">
                 <!-- Logo -->
                 @if ((Auth::user()->privilege!=3))

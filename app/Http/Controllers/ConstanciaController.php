@@ -86,8 +86,7 @@ class ConstanciaController extends Controller
             $arrayautoridad = $DatosPers->jefe()->get();
             foreach ($arrayautoridad as $aut){
                 $autentication = $aut['autentication'];
-            }
-            
+            }    
             
         }
         $tipoConst = $request->tipo;

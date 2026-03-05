@@ -122,7 +122,7 @@ footer {
 				
 				<!-- SUELDO BASE & INTG -->
 				@if ($tipoConst == 2) <!-- con sueldo base -->
-					<?php $sueldo = $sueldo['salario_base'];?>
+					<?php $sueldo = $sueldo['salario_basico'];?>
 					Devengando un sueldo mensual de
 					<small class="text-bold text-uppercase"> {{ $ALetras }}</small>
 					<?php echo  '(Bs. '.number_format($sueldo,2).').';?>

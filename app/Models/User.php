@@ -32,6 +32,7 @@ class User extends Authenticatable //implements MustVerifyEmail
         'statud',
         'privilege',
         'user_created',
+        'user_update',
     ];
 
 

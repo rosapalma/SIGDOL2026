@@ -19,13 +19,13 @@
                          </x-sub-title>
                         </div>
                     </div>
-
+                    <div> 
+                          @livewire('delet-nomina-componet')
                     <!-- NOMINA -->
                     <div class="card row" align="center" style="margin-left: 10%">
                         <div class="col-md-8 fs-1 display-7" >
                             <img src="{{asset('images/Modals/ImpNom.png')}}"  data-bs-toggle="modal" data-bs-target="#ImportNominaExcel" title="Importar Registros" class="img-modal">
                             <span class="h5">IMPORTAR NOMINA DE EMPLEADOS</span>
-
                             <x-sub-title >
                                 VER GUIA PARA IMPORTAR DATOS DESDE EXCEL
                                  <a target="_blank" href="{{asset('Guia para importar Excel.pdf')}}">

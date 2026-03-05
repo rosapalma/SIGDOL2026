@@ -47,20 +47,20 @@ class DefinirAutoridad extends Component
         if ($searchempleado) { 
 
             $Tochange=Autoridad::where('statud','=',1)->first(); //busca la fila del statud=1 y desactivalo
-            if($Tochange){
+            if($Tochange){ //si existe autoridad anterior
                 $Tochange->update([
                 'statud' => 0,
                 ]);
-                $Tochange->save();
+                $Tochange->save(); 
+                //en dbUser quita privilegios 
+                $User= User::where('personal_id','=',$Tochange->personal_id)->first();
+                    $User->update([
+                    'privilege' => 3,
+                    ]);
+                    $User->save();
             }
-            //en dbUser quita privilegios
-               $User= User::where('personal_id','=',$searchempleado->id)->first();
-            if($User){
-                $User->update([
-                'privilege' => 3,
-                ]);
-                $User->save();
-            }
+            
+             
 
             $this->autentication->store('public/autenticaciones'); 
             $ImgAut=$this->autentication->store(); 

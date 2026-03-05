@@ -5,6 +5,8 @@
     <div class="alert alert-danger"> {{ session('change_user_find') }} </div>
 @endif
 <div class="contenedor-tabla">
+
+          
 <table class="table">
 	<thead class="thead-dark">
         <tr align="center">

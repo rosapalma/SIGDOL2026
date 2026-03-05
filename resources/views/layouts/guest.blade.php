@@ -17,7 +17,8 @@
         <link rel="stylesheet" type="text/css" href="{{asset('css/Sty-Modal.css')}}">
 
         <!-- Scripts -->
-        @vite(['resources/css/app.css', 'resources/js/app.js'])
+         @vite(['resources/css/app.css', 'resources/js/app.js'])
+         <!-- @vite(['resources/sass/app.scss', 'resources/js/app.js']) -->
 
         <!-- Styles -->
         @livewireStyles

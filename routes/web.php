@@ -17,6 +17,7 @@ use App\Livewire\AdmUsers;
 use App\Livewire\DefinirAutoridad;
 use Illuminate\Http\Request;
 use App\Livewire\ForgotPassw;
+use App\Livewire\DeletNominaComponet;
 
 
 
