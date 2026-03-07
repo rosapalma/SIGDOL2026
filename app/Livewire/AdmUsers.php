@@ -3,11 +3,11 @@
 namespace App\Livewire;
 use App\Models\User;
 use App\Models\Personal;
+use App\Models\AccionUser;
 use Auth;
 use Session;
 use Hash;
 use Livewire\WithPagination;
-
 use Livewire\Component;
 
 class AdmUsers extends Component
@@ -80,16 +80,29 @@ class AdmUsers extends Component
                 'privilege' => $this->privilege,
                 'user_update' =>  Auth::user()->id,
             ]);   
-            $UpdateUser->save();      
+            $UpdateUser->save(); 
+            //REGISTRA ACCION user
+            $RegistAccion = AccionUser::create([
+                'user_id' => Auth::User()->id,
+                'accion' => 'Actualiza privilegios user:'. $UpdateUser ->id,
+            ]);   
+            $RegistAccion->save();      
         }
+
         if($this->Actcont){ 
             $this->validate(['contraseña' => 'required', 'min:8', 'confirmed']);       
             $UpdateUser->update([
                 'password' => Hash::make($this->contraseña),
                 'user_update' =>  Auth::user()->id,
             ]); 
-            $UpdateUser->save();        
-        }        
+            $UpdateUser->save();
+            //REGISTRA ACCION user
+            $RegistAccion = AccionUser::create([
+                'user_id' => Auth::User()->id,
+                'accion' => 'Actualiza contraseña user:'. $UpdateUser ->id,
+            ]);   
+            $RegistAccion->save();          
+        }       
         $this->clear();
         $this->close();
         return back()->with('change_user','Usuario ahora actualizado');

@@ -30,7 +30,7 @@ class RegisterUser extends Component
 
     protected $rules = [
         'cedula' => ['required','exists:personals,cedula','unique:users'],
-        'email' => ['required', 'email', 'unique:users'],
+        'email' => ['required', 'email','ends_with:@upel.edu.ve','unique:users'],
         'privilege' => ['required'],
         'contraseña' => ['required', 'min:8', 'confirmed'],
     ];

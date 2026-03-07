@@ -7,6 +7,7 @@ use Livewire\WithFileUploads;
 use App\Models\Personal;
 use App\Models\Autoridad;
 use App\Models\User;
+use App\Models\AccionUser;
 use Auth;
 
 class DefinirAutoridad extends Component
@@ -45,7 +46,6 @@ class DefinirAutoridad extends Component
 
         $searchempleado = Personal::where('cedula','=',$this->cedula)->first();
         if ($searchempleado) { 
-
             $Tochange=Autoridad::where('statud','=',1)->first(); //busca la fila del statud=1 y desactivalo
             if($Tochange){ //si existe autoridad anterior
                 $Tochange->update([
@@ -59,18 +59,29 @@ class DefinirAutoridad extends Component
                     ]);
                     $User->save();
             }
-            
-             
-
             $this->autentication->store('public/autenticaciones'); 
             $ImgAut=$this->autentication->store(); 
             //$this->ruta = $ruta;
-             $AddNewjefe = Autoridad::create([
+            $AddNewjefe = Autoridad::create([
                 'personal_id' => $searchempleado->id,
                 'autentication' => $ImgAut,
                 'statud' => 1,
                 ]);
                 $AddNewjefe->save(); 
+
+                //en dbUser add privilegios 
+                $User = User::where('personal_id','=',$searchempleado->id)->first();
+                    $User->update([
+                    'privilege' => 1,
+                    ]);
+                $User->save();
+
+            //REGISTRA ACCION user 
+            $RegistAccion = AccionUser::create([
+                'user_id' => Auth::User()->id,
+                'accion' => 'change Autoridad, ahora personal_id: '.$searchempleado->id,
+            ]);
+            $RegistAccion->save();
             $this->clear();
             return back()->with('mensaje','Responsable de Unidad actualizado');   
         }

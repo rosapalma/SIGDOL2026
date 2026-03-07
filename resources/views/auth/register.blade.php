@@ -16,7 +16,7 @@
             </div>
 
             <div class="mt-4">                
-                <x-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autocomplete="email"  placeholder="CORREO ELECTRONICO"/>
+                <x-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autocomplete="email"  placeholder="CORREO INSTITUCIONAL"/>
             </div>
             
            <!--  <div class="mt-4">                

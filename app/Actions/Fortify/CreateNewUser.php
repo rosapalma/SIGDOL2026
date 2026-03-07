@@ -26,7 +26,7 @@ class CreateNewUser implements CreatesNewUsers
     
         $validator = Validator::make($input, [
             'cedula' => ['required','exists:personals,cedula','unique:users'],
-            'email' => ['required','email','unique:users'],
+            'email' => ['required','email', 'ends_with:@upel.edu.ve','unique:users'],
             'password' => $this->passwordRules(),
         ])->validate();
 

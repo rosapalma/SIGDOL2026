@@ -61,5 +61,10 @@ class User extends Authenticatable //implements MustVerifyEmail
     //     return $this->hasOneThrough(Personal::class, Sede::class);
     // }
 
+    public function Acciones() //nominas de excel con conceptos 
+    {
+        return $this->hasMany(AccionUser::class);
+    }
+
 
 }

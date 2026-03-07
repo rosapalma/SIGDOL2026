@@ -19,20 +19,20 @@
         <div>
 
             
-              
-            <input type="radio" wire:model.live="list" value="1">
+              <h4 class="text-lg mb-4">Elija una accion</h4>
+            <input type="radio" wire:model.live="accion" value="1">
                 <label for="css">Por personal</label><br>
-            <input type="radio"  wire:model.live="list" value="2" >
+            <input type="radio"  wire:model.live="accion" value="2" >
                 <label for="html">Por Mes|Año</label><br>
-            <input type="radio"  wire:model.live="list" value="3">
+            <input type="radio"  wire:model.live="accion" value="3">
                 <label for="html" wire:change="Todas" >Todas</label><br>
                     
         </div><br>
       
 
-        @if($list==1)
+        @if($accion==1)
 
-        <input type="text" wire:model.live="cedula"  wire:change="Shear"  placeholder="Cédula de Identidad" autofocus class="text-center text-primary">
+        <input type="text" wire:model.live="cedula"  wire:change="Shear" exists:personals   placeholder="Cédula de Identidad" autofocus class="text-center text-primary">
         <div wire:ignore.self class="text-info font-weight-bold display-7">
             {{$full_name}}
         </div>
@@ -48,11 +48,8 @@
         <?php echo 'Total: ', count($nominas);} ?>
 
         
-    </ol>
-       
-
-        </ul>
-        @elseif ($list==2)
+ 
+        @elseif ($accion==2)
             <div wire:ignore.self class="text-info font-weight-bold display-7">
                 <select wire:model.live="anio" class="form-select-lg mb-3" aria-label=".form-select-lg example" >
                     <option value="">Año</option>
@@ -81,7 +78,7 @@
            </div>
              <?php if (!is_null($nominas) && (is_array($nominas) || is_object($nominas))) {
                         echo '<b> Nomina(s) cargada(s): ', count($nominas),'<b>';} ?>
-        @elseif ($list==3)
+        @elseif ($accion==3)
               <?php if (!is_null($nominas) && (is_array($nominas) || is_object($nominas))) {
                         echo '<b> Nomina(s) cargada(s): ', count($nominas),'<b>';} ?>
         @endif

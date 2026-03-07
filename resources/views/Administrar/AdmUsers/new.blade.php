@@ -26,7 +26,7 @@
 
             <!-- -------------EMAIL------------ --> 
         <div class="col-md-8">
-            <input type="email" wire:model.live="email"  class="form-control text-bold text-primary" placeholder="E-MAIL" id="email" pattern=".+@example\.com" size="30" required >
+            <input type="email" wire:model.live="email"  class="form-control text-bold text-primary" placeholder="CORREO INSTITUCIONAL" id="email" pattern=".+@upel.edu.ve" size="30" required >
         </div>
         <br>
              <!-- ------------PRIVILEGIO/ROL------------ -->

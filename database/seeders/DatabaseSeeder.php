@@ -19,17 +19,29 @@ class DatabaseSeeder extends Seeder
         TypepersSeeder::class,
         SpacesworkSeeder::class,
         CondicionlaboralSeeder::class,
-        DeduccionSeeder::class,
-        AsignacionSeeder::class,
+        //DeduccionSeeder::class,
+        //AsignacionSeeder::class,
         PersonalSeeder::class,
-        PersSueldoSeeder::class,
+        //PersSueldoSeeder::class,
         //AutoridadSeeder::class,
        // NominaExcelSeeder::class,
         PS::class, //preguntas de seguridad
         UserSeeder::class, // HAY USUARIOS QUE PRIMERO DEBE SER IMPORTADOS
-        BeneficiarioSeeder::class,
+        //BeneficiarioSeeder::class,
 
       ]);
+
+
+       // // 1. Desactivar restricciones de claves foráneas
+       //  Schema::disableForeignKeyConstraints();
+
+       //  // 2. Vaciar las tablas deseadas
+       //  DB::table('A')->truncate();
+       //  DB::table('posts')->truncate();
+       //  DB::table('categories')->truncate();
+
+       //  // 3. Reactivar restricciones
+       //  Schema::enableForeignKeyConstraints();
 
     }
 }
