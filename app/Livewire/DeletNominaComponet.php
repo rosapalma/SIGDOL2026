@@ -23,6 +23,7 @@ class DeletNominaComponet extends Component
     // BUSCAR POR EMPLEADO
     public function Shear()
     {
+          $this->Nomina='';
         $searchempleado = Personal::where('cedula','=',$this->cedula)->first();
         if($searchempleado){ 
             $user = $searchempleado->user;
@@ -41,7 +42,7 @@ class DeletNominaComponet extends Component
          $this->nominas = $searchnominas;
          //fetchAll()
     }
-    public function Todas(){    
+    public function Todas(){  
         $searchnominas = NominaExcel::count();
         $this->nominas = $searchnominas;
          //fetchAll()
@@ -82,7 +83,7 @@ class DeletNominaComponet extends Component
                 DB::table('nomina_excels')->truncate(); //vaciar tabla
                  $RegistAccion = AccionUser::create([
             'user_id' => Auth::User()->id,
-            'accion' => 'Registro de nomina eliminados todos',
+            'accion' => 'Truncate tabla',
              ]); 
                 $this->clear();
                 session()->flash('mensaje', 'Todas la Nominas fueron eliminadas...');

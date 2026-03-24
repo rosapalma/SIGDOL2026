@@ -1,7 +1,8 @@
 <div>
-     <a wire:click="Editar" class="img-btn-new" title="Revertir cambios" >
+    @if  (Auth::user()->privilege==1)   
+         <a wire:click="Editar" class="img-btn-new" title="Revertir cambios" >
           <img src="{{asset('images/ICONS/editar.png')}}" ></a>
-
+    @endif
 
 @if($edita)
     <div class="fixed inset-0 flex items-center justify-center z-50">

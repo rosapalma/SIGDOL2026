@@ -29,6 +29,7 @@
   cursor: pointer;;height:40%; 
 }
 .img-modal{  cursor: pointer;;height:40%; }
+.img-modal-live{  cursor: pointer;;height:50% width:250%; }
 
 .container-borde{
   margin-right: 15%; margin-left: 0;

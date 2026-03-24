@@ -24,7 +24,7 @@ class TypepersSeeder extends Seeder
         DB::table('typepers')->insert(
             ['name' => 'Obrero' , 'abrev' => 'OBR'],
         );
-          DB::table('typepers')->insert(
+        DB::table('typepers')->insert(
             ['name' => 'Administrativo' , 'abrev' => 'ADM'],
         );
     }

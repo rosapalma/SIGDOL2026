@@ -12,8 +12,16 @@
             @csrf
       
             <div align="center">
+             @if (Auth::user()->privilege < 3)
               <input type="text" id="inputname" name="cedula"  class="form-control" style="font-size: 2rem" onkeyUp="return ValNumero(this);" placeholder="Cédula de Identidad" autofocus required>
-            </div>  <br>
+            @else 
+            <h2 class="display-6 title">  {{ Auth::user()->personal['full_name'] }}</h2>
+              <input type="text" id="inputname" name="cedula"  disabled class="form-control" style="font-size: 2rem" onkeyUp="return ValNumero(this);" value="{{ Auth::user()->personal['cedula'] }}" placeholder="Cédula de Identidad" autofocus required>
+              
+            
+            @endif
+          </div> 
+            <br>
 
             <div align="center">
               <select name="tipo"  class="form-select-lg mb-3" aria-label=".form-select-lg example" required>

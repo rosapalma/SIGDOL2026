@@ -25,6 +25,7 @@ return new class extends Migration
             $table->float('prima_antiguedad')->nullable();
             $table->float('prima_act_univ')->nullable();
             $table->float('prima_chofer')->nullable();
+            $table->float('prima_especializacion')->nullable();
             $table->float('tota_asignaciones')->nullable();
             $table->float('salario_integral')->nullable();
             $table->float('seguro_social')->nullable();
@@ -36,6 +37,8 @@ return new class extends Migration
             $table->float('total_deducciones')->nullable();
             $table->float('salario_neto')->nullable();
             $table->float('primera_qna')->nullable();
+            $table->float('aseta')->nullable();
+            $table->float('isrl')->nullable();
             $table->float('segunda_qna')->nullable();
             $table->float('bono_nocturno')->nullable();
             $table->float('beca')->nullable();

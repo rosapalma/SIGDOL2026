@@ -9,8 +9,8 @@ class NominaExcel extends Model
 {
     use HasFactory;
     protected $fillable = ['personal_id','salario_basico', 'prima_fliar','prima_por_hijos',
-    'prima_profe','prima_tsu','prima_maestria','prima_hijo_especial','prima_antiguedad','prima_act_univ', 'prima_chofer',
-    'tota_asignaciones','salario_integral','seguro_social','satiutecpri','pension_alimenticia',
+    'prima_profe','prima_tsu','prima_maestria','prima_hijo_especial','prima_antiguedad','prima_especializacion','prima_act_univ', 'prima_chofer',
+    'tota_asignaciones','salario_integral','seguro_social','aseta','isrl','satiutecpri','pension_alimenticia',
     'paro_forzoso','ley_politica','cappaoupel','total_deducciones','salario_neto','primera_qna','segunda_qna',
     'bono_nocturno','beca','mes','anio'];
     protected $table = 'nomina_excels';

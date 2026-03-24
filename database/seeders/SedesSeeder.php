@@ -45,7 +45,7 @@ class SedesSeeder extends Seeder
         DB::table('sedes')->insert(
             ['codigo' => '0300',
             'name' => 'Instituto Pedagógico Antonio Lira Alcalá',
-            'abrev'=>'Extension capayacual',
+            'abrev'=>'EXT-CAP',
             'tipo' => 'EXT',
             'logo' => 'images/Logos/IPM.png',
             'url'=>'www.ipm.upel.edu.ve',
