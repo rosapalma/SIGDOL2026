@@ -8,8 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Personal extends Model
 {
     use HasFactory;
-    protected $fillable = ['cedula','full_name','cargo','dep_adsc','categoria','email','fec_ing','fec_egre',
-    'sexo','spacework_id','condicionlaboral_id','typepers_id', 'jerarquia','sede_id'];
+    protected $fillable = ['cedula','full_name','cargo','dep_adsc','categoria','fec_ing','fec_egre','dedication','spacework_id','condicionlaboral_id','typepers_id', 'jerarquia','sede_id'];
 	protected $table = 'personals';
 	protected $primaryKey = 'id';
 

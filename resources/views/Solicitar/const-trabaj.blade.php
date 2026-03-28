@@ -16,9 +16,7 @@
               <input type="text" id="inputname" name="cedula"  class="form-control" style="font-size: 2rem" onkeyUp="return ValNumero(this);" placeholder="Cédula de Identidad" autofocus required>
             @else 
             <h2 class="display-6 title">  {{ Auth::user()->personal['full_name'] }}</h2>
-              <input type="text" id="inputname" name="cedula"  disabled class="form-control" style="font-size: 2rem" onkeyUp="return ValNumero(this);" value="{{ Auth::user()->personal['cedula'] }}" placeholder="Cédula de Identidad" autofocus required>
-              
-            
+              <input type="text" id="inputname" name="cedula"  disabled class="form-control" style="font-size: 2rem" onkeyUp="return ValNumero(this);" value="{{ Auth::user()->personal['cedula'] }}" placeholder="Cédula de Identidad" autofocus required>            
             @endif
           </div> 
             <br>

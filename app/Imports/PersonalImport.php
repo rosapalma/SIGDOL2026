@@ -90,15 +90,14 @@ class PersonalImport implements  ToCollection, WithHeadingRow, WithBatchInserts,
             if ($emp){
                 $emp->cedula = $row['cedula'];
                 $emp->full_name = $row['apellidos_y_nombres'];
-                $emp->email = $row['email'];
                 $emp->fec_ing =  Date::excelToDateTimeObject($row['fecha_de_ingreso']);
                 $emp->fec_egre =  $fec_egre;
                 $emp->dedication = $row['tiempo_de_dedicacion'];
                 $emp->porcentaje_jub_pens = $row['porcentaje_de_jubilacion_o_pension'];
                 $emp->sede_id = 2;
                 $emp->cargo = $row['cargo'];
-                //$emp->dep_adsc = $row['dependencia_de_adscripcion'];
-                //$emp->categoria = $row['categoria_academica'];
+                $emp->dep_adsc = $row['dependencia_de_adscripcion'];
+                $emp->categoria = $row['categoria_academica'];
                 $emp->jerarquia = $row['jerarquia'];
                 $emp->typepers_id = $this->tipo[$row['id']];
                 $emp->condicionlaboral_id = $this->condicionlaboral[$CondLab];

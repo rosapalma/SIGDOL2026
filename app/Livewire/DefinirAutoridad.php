@@ -54,10 +54,13 @@ class DefinirAutoridad extends Component
                 $Tochange->save(); 
                 //en dbUser quita privilegios 
                 $User= User::where('personal_id','=',$Tochange->personal_id)->first();
+                if($User){
                     $User->update([
                     'privilege' => 3,
                     ]);
                     $User->save();
+                }
+                    
             }
             $this->autentication->store('public/autenticaciones'); 
             $ImgAut=$this->autentication->store(); 
@@ -69,12 +72,12 @@ class DefinirAutoridad extends Component
                 ]);
                 $AddNewjefe->save(); 
 
-                //en dbUser add privilegios 
-                $User = User::where('personal_id','=',$searchempleado->id)->first();
-                    $User->update([
-                    'privilege' => 1,
-                    ]);
-                $User->save();
+                //en dbUser add privilegios automaticamente
+                // $User = User::where('personal_id','=',$searchempleado->id)->first();
+                //     $User->update([
+                //     'privilege' => 2,
+                //     ]);
+                // $User->save();
 
             //REGISTRA ACCION user 
             $RegistAccion = AccionUser::create([
