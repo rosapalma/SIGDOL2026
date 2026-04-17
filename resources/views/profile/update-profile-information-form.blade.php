@@ -6,9 +6,6 @@
                 <div class="display-7">
                     <?php echo  strtoupper (Auth::user()->personal['full_name']); ?>
                 </div>
-            </div><br>
-            <div><label class="label">Usuario -></label> 
-                    <?php echo  Auth::user()->usuario; ?>      
             </div>
         </div>
     </x-slot>

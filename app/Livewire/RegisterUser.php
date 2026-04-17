@@ -14,7 +14,7 @@ use Carbon\Carbon;
 class RegisterUser extends Component
 {
     public  $users, $UserEmp, $IdUserAuth, $VerifEmail,$pss,
-    $cedula, $full_name, $fecha_nac, $ps1,$ps2, $resp1,$resp2, $IdEmpl, $empDBUser, $privilege, $contraseña, $contraseña_confirmation;
+    $cedula, $full_name, $ps1,$ps2, $resp1,$resp2, $IdEmpl, $empDBUser, $privilege, $contraseña, $contraseña_confirmation;
     function mount(){ 
         $pss=ps::all(); 
         $this->pss = $pss;
@@ -30,7 +30,6 @@ class RegisterUser extends Component
 
     protected $rules = [
         'cedula' => ['required','exists:personals,cedula','unique:users'],
-        'fecha_nac'=> ['required'],
         //'email' => ['required', 'email','ends_with:@upel.edu.ve','unique:users'],
         'privilege' => ['required'],
         'contraseña' => ['required', 'min:8', 'confirmed'],
@@ -52,15 +51,10 @@ class RegisterUser extends Component
 
     public function create(){
         $this->validate();  
-        $fecha= $this->fecha_nac;
-        $mes= date("m", strtotime($fecha));
-        $anio= date("y", strtotime($fecha));
-        $usuario=$this->cedula.$mes.$anio;  
 
         $RegistUser = User::create([
             'personal_id' => $this->IdEmpl,
             'cedula' => $this->cedula,
-            'usuario' => $usuario,
             'ps1_id' => $this->ps1,
             'ps2_id' => $this->ps2,
             'resp1' => Hash::make($this->resp1),
@@ -83,7 +77,6 @@ class RegisterUser extends Component
         $this->cedula ='';
         $this->full_name = '';
         $this->IdEmpl = '';
-        $this->email = '';
         $this->ps1 ='';
         $this->ps2 ='';
         $this->resp1 ='';
