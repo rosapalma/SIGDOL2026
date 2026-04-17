@@ -14,9 +14,10 @@ return new class extends Migration
         Schema::create('users', function (Blueprint $table) {
             $table->engine = 'InnoDB';            
             $table->bigIncrements('id');
-            $table->unsignedBigInteger('personal_id'); //columna que trae la relacion
-            $table->string('cedula')->unique(); //esta columna esta demas pero hace que emple tenga 1 solo usuario
-            $table->string('email')->unique();
+            $table->unsignedBigInteger('personal_id')->unique(); //columna que trae la relacion
+            $table->string('cedula')->unique(); //para el AUTH
+            //$table->string('usuario')->nullable();
+            $table->string('email')->nullable();
             $table->unsignedBigInteger('ps1_id')->nullable();
             $table->unsignedBigInteger('ps2_id')->nullable();
             $table->string('resp1')->nullable();

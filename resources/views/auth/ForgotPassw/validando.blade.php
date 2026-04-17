@@ -1,7 +1,6 @@
 <div>
     <div class="text-center">
         <p class="display-6">{{$nombre}}</p>
-        <p class="display-7 fw-bold">{{$correo}}</p>
     </div><br>
     <x-validation-errors class="mb-4" />    
     @if($errorResp)

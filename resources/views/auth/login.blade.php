@@ -17,13 +17,13 @@
     <div class="tool">
         <form method="POST" action="{{ route('login') }}">
             @csrf
-              <div>
-                <!-- <x-label for="email" value="{{ __('EMAIL') }}" /> -->
-                <x-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus autocomplete="username" placeholder="CORREO ELECTRONICO" />
+            <div class="mt-4">
+                <!-- <x-label for="cedula" value="{{ __('cedula') }}" /> -->
+                <x-input id="cedula" class="block mt-1 w-full py-2" type="cedula" name="cedula" required autofocus  autocomplete="username" placeholder=" CEDULA" />
             </div>
 
-            <div class="mt-4"><!-- 
-                <x-label for="password" value="{{ __('CONTRASEÑA') }}" /> -->
+            <div class="mt-4">
+                <!--<x-label for="password" value="{{ __('CONTRASEÑA') }}" /> -->
                 <x-input id="password" class="block mt-1 w-full" type="password" name="password" required autocomplete="current-password" placeholder="CONTRASEÑA" />
             </div><br>
             <div align="center"> 

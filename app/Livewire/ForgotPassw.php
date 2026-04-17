@@ -12,7 +12,7 @@ use Auth;
 
 class ForgotPassw extends Component
 {
-    public $correo, $user, $user_id, $nombre, $pregunta1, $pregunta2, $errorResp, $respuestaN1, $respuestaN2, $resp1db, $resp2db, $contraseña, $contraseña_confirmation;
+    public $user, $user_id, $cedula, $nombre, $pregunta1, $pregunta2, $errorResp, $respuestaN1, $respuestaN2, $resp1db, $resp2db, $contraseña, $contraseña_confirmation;
     public $restorePsw=false;
 
     public function render()
@@ -24,13 +24,13 @@ class ForgotPassw extends Component
         'contraseña' => ['required', 'min:8', 'confirmed'],
     ];
 
-    public  function SendCorreo()
+    public  function SendUsuario()
     {
        $this->validate([
-                'correo' => ['required','email','exists:users,email',],
+                'cedula' => ['required','exists:users,cedula',],
             ]);
-        $user = User::where('email','=',$this->correo)->first();
-        $this->correo= $user->email;//email                 
+        $user = User::where('cedula','=',$this->cedula)->first();
+        $this->cedula= $user->cedula;               
         $arraypersonal = $user->personal()->get();  //nombre 
         foreach ($arraypersonal as $pers) {
             $this->nombre=$pers['full_name'];
@@ -74,7 +74,7 @@ class ForgotPassw extends Component
     }
 
         public function clear(){
-        $this->correo ='';
+        $this->cedula ='';
         $this->resp1db = '';
         $this->resp2db = '';
         $this->user_id='';

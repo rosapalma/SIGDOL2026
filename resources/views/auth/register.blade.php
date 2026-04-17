@@ -14,10 +14,14 @@
             <div align="center">
                 <x-input id="cedula" type="text" exists:personals class=" block mt-1 w-full" name="cedula" value="{{ old('cedula') }}" placeholder="CÉDULA" required autofocus />
             </div>
+         <!--    <div>
+                <label class="label-blue">FECHA DE NACIMIENTO:</label>              
+                <input type="date" name="fecha_nac" required class="form-control">
+            </div> -->
 
-            <div class="mt-4">                
-                <x-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autocomplete="email"  placeholder="CORREO INSTITUCIONAL"/>
-            </div>
+          <!--   <div class="mt-4">                
+                <x-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" autocomplete="email"  placeholder="EMAIL"/>
+            </div> -->
             
            <!--  <div class="mt-4">                
                 <x-input id="username" class="block mt-1 w-full" type="username"  name="username" :value="old('username')" required autocomplete="username"  placeholder="NOMBRE DE USUARIO"/>

@@ -16,6 +16,8 @@ return new class extends Migration
             $table->bigIncrements('id');
             $table->integer('cedula')->unique();
             $table->string('full_name')->nullable();
+            $table->string('sexo')->nullable();
+            $table->string('email')->nullable();
             $table->string('cargo')->nullable();
             $table->string('dep_adsc')->nullable(); //dependencia de adscripcion
             $table->string('categoria')->nullable(); //categoria academica

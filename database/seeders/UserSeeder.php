@@ -22,7 +22,7 @@ class UserSeeder extends Seeder
         DB::table('users')->insert([
             'personal_id'=> 1,
             'cedula' => 17708149,
-			'email' => 'virginia.palma.ipm@upel.edu.ve',
+           	'email' => 'virginia.palma.ipm@upel.edu.ve',
 			'email_verified_at' => now(),
             'ps1_id' => 5,
             'ps2_id' => 6,

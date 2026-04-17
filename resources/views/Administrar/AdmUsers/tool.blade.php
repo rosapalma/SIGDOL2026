@@ -11,7 +11,6 @@
 	<thead class="thead-dark">
         <tr align="center">
             <th>Nombre</th>
-            <th>Correo</th>
             <th>Privilegio</th>
             <th>Estatus</th>
         </tr>
@@ -26,7 +25,6 @@
 				    @endif
 				@endforeach
 				</td>
-				<td>{{$use->email}}</td>
 				<td>@if ($use->privilege == 1)
 						Usuario Administrador
 					@elseif ($use->privilege == 2)

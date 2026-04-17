@@ -25,9 +25,13 @@
         </div>
 
             <!-- -------------EMAIL------------ --> 
-        <div class="col-md-8">
+       <!--  <div class="col-md-8">
             <input type="email" wire:model.live="email"  class="form-control text-bold text-primary" placeholder="CORREO INSTITUCIONAL" id="email" pattern=".+@upel.edu.ve" size="30" required >
-        </div>
+        </div> --><label class="label-blue">FECHA DE NACIMIENTO:</label> 
+          <div class="col-md-8">
+                             
+                <input type="date" wire:model.live="fecha_nac" required class="form-control">
+            </div>
         <br>
              <!-- ------------PRIVILEGIO/ROL------------ -->
         <div class="col-md-8">
