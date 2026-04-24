@@ -5,8 +5,10 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Imports\PersonalImport;
 use App\Imports\ImportNominaExcel;
+use App\Imports\BeneficiariosImport;
 use Maatwebsite\Excel\Facades\Excel;
 use DB;
+use App\Models\Beneficiario;
 
 class ImportController extends Controller
 {
@@ -57,8 +59,15 @@ class ImportController extends Controller
         // }
         Excel::import(new ImportNominaExcel,request()->file('file'));
         return back()->with('mensaje','Las nóminas y sus respectivos conceptos han sido actualizados...');
+    }
 
-
+    public function BeneficiariosExcel(Request $request){   
+         if($request->has('vaciarDB')){
+                Beneficiario::truncate(); //vaciar tabla
+         
+        }  
+        Excel::import(new BeneficiariosImport,request()->file('file'));
+        return back()->with('mensaje','carga completada...');
     }
 
 

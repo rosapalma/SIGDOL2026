@@ -19,6 +19,15 @@ use Illuminate\Http\Request;
 use App\Livewire\ForgotPassw;
 use App\Livewire\DeletNominaComponet;
 
+use Barryvdh\DomPDF\Facade\Pdf;
+
+
+Route::get('/pdf', function (){
+    $faker = \Faker\Factory::create();
+    $pdf = \PDF::loadView('pdf',['fake' => $faker]);
+    return $pdf->stream();
+});
+
 
 
 
@@ -26,6 +35,11 @@ use App\Livewire\DeletNominaComponet;
 // Route::get('/', function () {
 //     return view('welcome');
 // });
+
+Route::get('/prueba', function () {
+    return view('prueba');
+});
+
 Route::redirect('/','login'); //al login directament
 
 
@@ -49,6 +63,7 @@ Route::middleware([
     Route::get('/viewimport',[App\Http\Controllers\ImportController::class, 'index'])->name('viewimport');
     Route::post('/importpers',[App\Http\Controllers\ImportController::class, 'UpdateDataPers']);
     Route::post('/importNominaExcel',[App\Http\Controllers\ImportController::class, 'NomminaExcel']);
+     Route::post('/importBeneficiarios',[App\Http\Controllers\ImportController::class, 'BeneficiariosExcel']);
     //ADMINISTRAR
     Route::get('/administrar-usuarios', AdmUsers::class)->name('adm-users');
     Route::get('/registro-usuarios',RegisterUser::class)->name('register-users');

@@ -5,15 +5,34 @@
         <title>Recibo de pago</title>
     </head>
      <style type="text/css">
-            html {   min-height: 100%;    position: relative;        }
-            body {  margin: 0;      margin-bottom: 40px;           }
-            header {       background-image: url("images/backs/docs/arriba.png");
-                background-repeat: no-repeat;  width: 100%;  height: 15%; margin: 0; }
-            div{   margin: 0;       }       
-            footer {          background-image: url("images/backs/docs/abajo.png");
+            html {
+              min-height: 100%;
+              position: relative;
+            }
+            body {
+              margin: 0;
+              margin-bottom: 40px;
+            }
+            header {
+                background-image: url("images/backs/docs/arriba.png");
+                background-repeat: no-repeat;
+                width: 100%; 
+                height: 15%;
+                margin: 0;
+            }
+            div{
+                margin: 0;
+            }
+        
+        
+            footer {
+              background-image: url("images/backs/docs/abajo.png");
               background-repeat: no-repeat; 
               position: absolute;
-              bottom: 0;  width: 100%;   height: 15%; margin-top: auto;  
+              bottom: 0;
+              width: 100%;
+              height: 15%; 
+              margin-top: auto;  
             }
        /*   #firma{  
               background-image: url("images/backs/docs/firma.png");
@@ -21,17 +40,47 @@
               margin-top: 1%;
               width: 100%;
               height: 18%;
-              }*/         
+              }*/
+           
 
-            table{    border: 0.5px solid  #222425;  width: 100%;         }
-            tr td{ font-weight: bold;  font-size: 0.7rem;   }
-            th{font-weight: bold; font-size: 0.8rem;         }
-            .title{  font-weight: bold;    font-size: 1.5rem; font-variant:small-caps;               text-transform:uppercase;    align-content: center;      }
-            .title2{ font-size: 1.5rem; color:  #8f9294;   margin-top: 0;         }
-            .bonif{  font-weight:bold;        font-size: 0.9rem;          }
-            .bonif-2{font-weight:bold;    font-size: 0.8rem;        }
-            .contenedor-grid {line-height: 0.2;font-weight: bold;  font-size: 1rem;}       
-    </style>
+            table{ 
+                border: 0.5px solid  #222425; 
+                width: 100%;
+                }
+            tr td{
+                font-weight: bold;
+                font-size: 0.7rem;
+            }
+            th{
+                font-weight: bold;
+                font-size: 0.8rem;
+            }
+            .title{
+                font-weight: bold; 
+                font-size: 1.5rem; 
+                font-variant:small-caps;
+                text-transform:uppercase;
+                align-content: center;
+            }
+            .title2{ 
+                font-size: 1.5rem; 
+                color:  #8f9294;
+                margin-top: 0;
+            }
+            .bonif{
+                font-weight:bold;
+                font-size: 0.9rem;
+            }
+            .bonif-2{
+                font-weight:bold;
+                font-size: 0.8rem;
+            }
+            .contenedor-grid {
+                  line-height: 0.2;
+                  font-weight: bold;
+                  font-size: 1rem;
+                }
+        </style>
 <body>
     <header></header>
     <div>
@@ -39,7 +88,6 @@
         <div align="center"  class="title2">Datos Personales | Laborales</div>
     </div>
     <!-- DATOS PERSONALE & LABORALES -->
-   
     <div class="contenedor-grid">
         <p style="text-transform: uppercase;">{{$personal->full_name}}</p>
         <p><b>Cédula de Identidad:  {{$personal->cedula}}</b></p>
@@ -47,7 +95,6 @@
             <p>Tipo de Personal: &nbsp;{{$typepers}}</p> 
         @endif           
         <P style="text-wrap: balance;">Cargo:&nbsp;{{$cargo}}</P>
-        
         <div style="margin-left: 60%; margin-top: 0;">
         <p style="">Año: <?php echo $arraynomina['anio']; ?> &nbsp;&nbsp;&nbsp;<b>Mes: </b>
                 <?php   $meses = array("Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre");
@@ -62,6 +109,7 @@
             <p style="">Cod. recibo: <?php echo $cod; ?></p>	
         </div>
        
+    </div>
 
     <p align="center" class="title2">Relación de Pago</p>
     <div style="margin-left:5%; margin-right: 5%; margin-top: 0;">
@@ -200,66 +248,65 @@
 
     <!-- CALCULO DE QNAs -->
 	<?php $neto = $Ttasign - $Ttdeduc;  $qna1 = $neto / 2; $qna2 = $neto / 2;   ?>
-    <!-- QUINCENAS  -->
-    <div align="center" style="background:    #63b4f3; margin-top:1%; margin-left: 10%; margin-right: 10%; width: 70%;">
-        <DIV>Neto: <?php echo $neto; ?></DIV>
-        <label style="padding-right: 10%">Primera quincena: <?php echo $qna1; ?></label>
-        <label>Segunda quincena: <?php echo $qna2; ?></label>
-    </div>
+<!-- QUINCENAS  -->
+<div align="center" style="background:    #63b4f3; margin-top:1%; margin-left: 10%; margin-right: 10%; width: 70%;">
+    <DIV>Neto: <?php echo $neto; ?></DIV>
+    <label style="padding-right: 10%">Primera quincena: <?php echo $qna1; ?></label>
+    <label>Segunda quincena: <?php echo $qna2; ?></label>
+</div>
 
-    @if ($arraynomina['beca'])
+@if ($arraynomina['beca'])
 
-        <div align="center" class="bonif">OTRAS BONIFICACIONES DEL MES</div>
-            <table>
-                <thead>
-                    <tr  style=" text-align: right; background:    #8ee6f1; border: 0.5px solid  red;  ">
-                        <th>Descripcion</th>
-                        <th>Monto</th>
-                    </tr>
+    <div align="center" class="bonif">OTRAS BONIFICACIONES DEL MES</div>
+        <table>
+            <thead>
+                <tr  style=" text-align: right; background:    #8ee6f1; border: 0.5px solid  red;  ">
+                    <th>Descripcion</th>
+                    <th>Monto</th>
+                </tr>
                 </thead>
                 <tbody>
                     <tr>
                         <th align="left"> Beca</th><th align="center"><?php  echo number_format($arraynomina['beca'],2);?></th>
                     </tr>
                 </tbody>
-            </table>
-        </div>
-    @endif
+        </table>
+    </div>
+@endif
 
-    @if (empty($beneficiarios))
-        <small class="text-bold text-uppercase" style="font-weight: bold"> No posee sobrevivientes</small>
-    @else
-        <div class="">
-            <small class="text-bold text-uppercase" style="font-weight: bold"> SOBREVIVIENTE(S)</small>
-            <table>
-                <thead>
-                    <tr style="background-color:#F2EEED;" >
-                        <th>Cedula</th>
-                        <th>Nombre Y Apellido</th>
-                        <th>Fecha Nac.</th>
-                        <th>Porcentaje</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach ($beneficiarios as $bene)
-                        <tr>
-                            <td style="text-align: center;">{{$bene->cedula}}</td>
-                            <td>{{$bene->full_name}}</td>
-                            <td style="text-align: center;">{{$bene->fec_nac}}</td>
-                            <td style=" text-align: center;">{{$bene->porcentaje}}%</td>
-                        </tr>
-                    @endforeach
-                </tbody>
-            </table>
-        </div>
-    @endif
-    <!-- AUTENTICACION -->
-        <div align="center">
-            <img src="storage/autenticaciones/<?php echo $autentication; ?>"> <br>
-            <span  style="text-transform:uppercase">{{ $autoridadName }}</span><br>
-            <span style="">Jefe de la Unidad de Personal</span>
-        </div>
-        <footer></footer>
+@if ($beneficiarios ) 
+                <br>
+                <div class="div-table">
+                <small class="text-bold text-uppercase" style="padding: 0"> BENEFICIARIO(S)</small>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Cedula</th>
+                                    <th>Nombre Y Apellido</th>
+                                    <th>Fecha Nac.</th>
+                                    <th>Porcentaje '%'</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach ($beneficiarios as $bene)
+                                    <tr>
+                                        <td>{{$bene->cedula}}</td>
+                                        <td>{{$bene->full_name}}</td>
+                                        <td>{{$bene->fec_nac}}</td>
+                                        <td style=" text-align: center;">{{$bene->porcentaje}}%</td>
+                                    </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+                    </div>
+                @endif
+<!-- AUTENTICACION -->
+    <div align="center">
+        <img src="storage/autenticaciones/<?php echo $autentication; ?>"> <br>
+        <span  style="text-transform:uppercase">{{ $autoridadName }}</span><br>
+        <span style="">Jefe de la Unidad de Personal</span>
+    </div>
+    <footer></footer>
 
 </body>
 </html>

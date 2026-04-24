@@ -11,3 +11,6 @@
         Control.value=Solo_Numerico(Control.value);
     }
 
+    function SelecBenef(){
+        
+    }

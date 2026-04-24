@@ -6,7 +6,7 @@ namespace App\Http\Controllers;
 use App\Models\Autoridad;
 use App\Models\Sede;
 use App\Models\Personal;
-use App\Models\Pers_Sueldo;
+use App\Models\Beneficiario;
 use App\Models\RecibosG;
 use App\Models\NominaExcel;
 use Illuminate\Http\Request; 
@@ -76,6 +76,7 @@ class ReciboController extends Controller
         $IdEmp = $user['personal_id'];
         $privilegio = $user->privilege;     
         $fechaAct = Date('Y-m-d');
+        $beneficiarios=0;
 
         //GENERANDO CODIGO
         $ult = RecibosG::all()->last(); // ultimo nro generado
@@ -115,12 +116,16 @@ class ReciboController extends Controller
                 return Redirect::back()->with('error','El empleado no se corresponde a la sede de inicio de sesión. Cada SEDE O INSTITUTO debe generar la constancia de trabajo de sus empleados, "verifique" e ¡intente de nuevo!');
             }
                 //DEDICATION
-               // $buscar = Pers_Sueldo::where('personal_id','=',$personal->id)->first(); 
+     
             $dedicacion = $personal->dedication;
 
         }//if personal
         else{
             return Redirect::back()->with('error','Disculpe!, esta persona no se encuentra registrado, consulte al administrador');
+        }
+        //SOBREVIVIENTE
+        if ($request->has('checkSobrev')) {
+            $beneficiarios = $personal->beneficiarios()->get(); 
         }
         //CONSULTANDO NOMINAS PARA TRAER LA ID DE LA SELECCIONADA SEGUN MES-AÑO...
         $nominas= $personal->nominas()->orderBy('id','desc')->get();
@@ -144,7 +149,7 @@ class ReciboController extends Controller
         }else{
             return Redirect::back()->with('error','Aun NO tiene ninguna nomina registrada, consulte al administrador');
         }
-        $pdf = \PDF::loadView('Solicitar.Download.PDF-ReciboPago',compact('fechaAct','cod','autoridadName','autentication','personal','typepers','typepersid','cargo','dedicacion','arraynomina','sedeEmp'));
+        $pdf = \PDF::loadView('Solicitar.Download.PDF-ReciboPago',compact('fechaAct','cod','autoridadName','autentication','personal','typepers','typepersid','cargo','dedicacion','arraynomina','sedeEmp','beneficiarios'));
         return $pdf->download('Recido de pago.pdf');
     }
 

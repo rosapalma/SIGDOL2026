@@ -19,7 +19,7 @@
             @csrf
             <div class="mt-4">
                 <!-- <x-label for="cedula" value="{{ __('cedula') }}" /> -->
-                <x-input id="cedula" class="block mt-1 w-full py-2" type="cedula" name="cedula" required autofocus  autocomplete="username" placeholder=" CEDULA" />
+                <x-input id="cedula" class="block mt-1 w-full py-2" type="cedula" name="cedula" required autofocus  autocomplete="username" placeholder=" CEDULA" style="padding-left: 12px;" />
             </div>
 
             <div class="mt-4">

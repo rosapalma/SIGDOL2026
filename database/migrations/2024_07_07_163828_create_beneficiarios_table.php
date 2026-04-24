@@ -14,12 +14,12 @@ return new class extends Migration
         Schema::create('beneficiarios', function (Blueprint $table) {
             $table->engine = 'InnoDB';
             $table->bigIncrements('id');
+            $table->unsignedBigInteger('personal_id');
             $table->integer('cedula')->nullable();
-            $table->string('name');
-            $table->string('last_name');
+            $table->string('full_name');
             $table->date('fec_nac')->nullable();
+            $table->integer('porcentaje')->nullable();
             $table->string('sexo')->nullable();
-            $table->unsignedBigInteger('personal_id')->nullable();
             $table->timestamps();
 
             $table->foreign('personal_id')->references('id')->on('personals');

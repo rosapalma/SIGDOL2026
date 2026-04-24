@@ -6,7 +6,6 @@ use Illuminate\Http\Request;
 use Illuminate\View\View;
 use Illuminate\Support\Arr;
 use App\Models\Personal;
-use App\Models\Beneficiario;
 use App\Models\Autoridad;
 use App\Models\Pers_Sueldo;
 use App\Models\NominaExcel;
@@ -90,8 +89,7 @@ class ConstanciaController extends Controller
             }    
             
         }
-        $tipo = $request->tipo;
-        $tipoConst = (int)$tipo;
+        $tipoConst = $request->tipo;
             // 1--Basica
             // 2--Con sueldo Base
             // 3--Con sueldo integral
@@ -137,9 +135,9 @@ class ConstanciaController extends Controller
         //$buscar = Pers_Sueldo::where('personal_id','=',$personal->id)->first(); 
         $dedicacion = $personal->dedication;
 
-       
-        //BASICA
-        if ($tipoConst == 1 ){ 
+        //EVALUACION SEGUN LA CONDICION LABORAL Y TYPO DE CONSTANCIA
+     
+        if ($tipoConst == 1){
             if ($personal->condicionlaboral_id <= 2){ //'ACTIVO/CONTRATADO'
                 if($personal->fec_egre){ 
                     return Redirect::back()->with('error','El empleado se encuentra con fecha  de jubilacion | pension / fecha de egreso, ya establecida. "consulte a la unidad" e ¡intente de nuevo!');
@@ -159,9 +157,7 @@ class ConstanciaController extends Controller
             $tiemp ='';
             $beneficiarios='';
             $arraycontrato='';
-            $statudContrato=''; 
-            $arraybenef ='';
-
+            $statudContrato='';  
     
                 // TIPO DE CONSTANCIA
                 // 1- Basica
@@ -170,6 +166,32 @@ class ConstanciaController extends Controller
                 // 4- Para Jubilado | pensionados
                 // 5- Para Sobreviviente
 
+      //¡¡esperando resp. 
+        //     $arraycontrato = $personal->contrato()->get()->last();  //busca a traves del modelo el ultimo contrato del empleado
+        //     if($arraycontrato){
+        //         $begin=$arraycontrato->begin; //INICIO CONTRATO
+        //         $end= $arraycontrato->end; //CULMINA
+        //         //comprobando si fecha de contrato ya ha pasado...
+        //         $fecha_actual = strtotime(date('Y-m-d'));
+        //         $hasta = strtotime($end);
+        //         if($fecha_actual > $hasta){
+        //            $statudContrato = false;
+        //             //return "La fecha ya ha pasado";
+        //         }else{
+        //             $statudContrato = true;
+        //             //return "Aun toca trabajar";
+        //         }
+        //     }else{ //si no hay datos en BD '$arraycontrato'
+        //         return Redirect::back()->with('error','El empleado se encuentra en condicion de '. 'CONTRATADO' . ' pero es imposible calcular su fecha de contrato "consulte con el administrador" e ¡intente de nuevo!');
+        //     }
+
+
+        // }
+
+//---------------------------------------
+// todo esto cambiara y tomara sueldo de nomina
+//************************
+     
         //CON SUELDO BASE
         if ($tipoConst == 2){
             $sueldo  = NominaExcel::where('personal_id','=',$personal->id)->orderBy('id','desc')->first();
@@ -183,7 +205,7 @@ class ConstanciaController extends Controller
         }
 
         //CON SUELDO INTEGRAL
-        if ($tipoConst >= 3){
+        if ($tipoConst == 3){
             $sueldo = NominaExcel::where('personal_id','=',$personal->id)->orderBy('id','desc')->first();  //SUELDO ASIGNADO A ESA NOMINA DEL EMPLEADO
             if (empty($sueldo)){
                 return Redirect::back()->with('error','No tiene un sueldo definido.. "verifique" e ¡intente de nuevo!');
@@ -201,9 +223,13 @@ class ConstanciaController extends Controller
         }
 
 
-        //SOBREVIVIENTE
+        //PA' SOBREVIVIENTE AUN X SER DEFINIDA
         if ($tipoConst == 5) {
-            $beneficiarios = $personal->beneficiarios()->get(); 
+            $beneficiarios = $personal->beneficiarios()->get(); //traer beneficiarios "consulta x eloquen"
+            if (empty($beneficiarios)){
+                $beneficiarios=false;
+            }
+            //ojo NO SE HA CARGADO DATOS DE BENEFICIARIOS PARA ESTE TIPO DE CONSTANCIA
         }
 
 
@@ -241,6 +267,11 @@ class ConstanciaController extends Controller
         'beneficiarios','typepers', 'typepersid','dedicacion','cargo','tipoConst', 'ALetras',
         'sueldo', 'suma_asig', 'suma_extra', 'neto', 'arraycontrato', 'statudContrato', 'cod'));
         return $pdf->download('document.pdf');
+
+
+
+
+
     }
 
 }
