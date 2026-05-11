@@ -34,6 +34,8 @@ class DefinirAutoridad extends Component
         $searchempleado = Personal::where('cedula','=',$this->cedula)->first();
         if($searchempleado){
             $this->full_name = $searchempleado->full_name;
+        }else{
+            return back()->with('error','Cedula no existe'); 
         }
     }
 

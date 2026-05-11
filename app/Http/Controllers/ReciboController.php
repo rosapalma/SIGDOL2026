@@ -76,7 +76,7 @@ class ReciboController extends Controller
         $IdEmp = $user['personal_id'];
         $privilegio = $user->privilege;     
         $fechaAct = Date('Y-m-d');
-        $beneficiarios=0;
+        $beneficiarios=[];
 
         //GENERANDO CODIGO
         $ult = RecibosG::all()->last(); // ultimo nro generado

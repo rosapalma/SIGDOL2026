@@ -139,17 +139,7 @@ class ConstanciaController extends Controller
 
        
         //BASICA
-        if ($tipoConst == 1 ){ 
-            if ($personal->condicionlaboral_id <= 2){ //'ACTIVO/CONTRATADO'
-                if($personal->fec_egre){ 
-                    return Redirect::back()->with('error','El empleado se encuentra con fecha  de jubilacion | pension / fecha de egreso, ya establecida. "consulte a la unidad" e ¡intente de nuevo!');
-                }
-            }elseif ($personal->condicionlaboral_id > 2){
-                if(empty($personal->fec_egre )){
-                    return Redirect::back()->with('error','El empleado se encuentra en condicion de jubilado | pensionado,  pero no tiene su fecha de egreso, establecida. "consulte a la unidad" e ¡intente de nuevo!');
-                }
-            }
-        }
+    
             //DECLARO VARIABLES
             $ALetras [] = ''; //conversion de numeros a letras
             $sueldo ='';
@@ -157,7 +147,7 @@ class ConstanciaController extends Controller
             $suma_extra = 0;
             $neto = '';
             $tiemp ='';
-            $beneficiarios='';
+            $beneficiarios=[];
             $arraycontrato='';
             $statudContrato=''; 
             $arraybenef ='';
@@ -188,9 +178,9 @@ class ConstanciaController extends Controller
             if (empty($sueldo)){
                 return Redirect::back()->with('error','No tiene un sueldo definido.. "verifique" e ¡intente de nuevo!');
             }
-            echo $neto= $sueldo['salario_integral'];
+            $neto= $sueldo['salario_integral'];
             $formatter = new NumeroALetras();
-            echo $ALetras= $formatter->toMoney($neto, 2, 'Bolivares', 'CENTIMOS');
+            $ALetras= $formatter->toMoney($neto, 2, 'Bolivares', 'CENTIMOS');
         }
 
         //PA' JUBILADOS O PENSIONADOS
@@ -203,7 +193,12 @@ class ConstanciaController extends Controller
 
         //SOBREVIVIENTE
         if ($tipoConst == 5) {
-            $beneficiarios = $personal->beneficiarios()->get(); 
+            if($personal->fec_egre){
+                return Redirect::back()->with('error','Aun no puede solicitar este tipo de constancia. "consulte a la unidad" e ¡intente de nuevo!');
+            }else{
+                $beneficiarios = $personal->beneficiarios()->get();
+            }
+                        
         }
 
 

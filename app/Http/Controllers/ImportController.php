@@ -26,6 +26,7 @@ class ImportController extends Controller
 
     public function UpdateDataPers(Request $request)
     {
+
         $request->validate([
             'file' => [
                 'required',
@@ -37,11 +38,18 @@ class ImportController extends Controller
 
         // if($request->has('vaciarDB')){
         //     DB::statement('SET FOREIGN_KEY_CHECKS = 0;');
+        //     //DB::table('personals')->truncate(); //vaciar tabla
         //     DB::table('personals')->truncate(); //vaciar tabla
-        //    // DB::table('emple_sueldos')->truncate(); //vaciar tabla
         // }
-        Excel::import(new PersonalImport,request()->file('file'));
-        return back()->with('mensaje','Registros de personal Actualizada');
+        set_time_limit(600);
+        try{
+            Excel::import(new PersonalImport,request()->file('file'));
+            return back()->with('mensaje','Registros de personal Actualizada');   
+        } catch(\Maatwebsite\Excel\Validators\ValidationException $e) {
+                $failure = $e->failures()[0]; 
+                return back()->withErrors("Error en fila {$failure->row()}: " . implode(', ', $failure->errors()));
+        }
+      
     }
 
     public function NomminaExcel(Request $request){
@@ -57,8 +65,15 @@ class ImportController extends Controller
         //     DB::statement('SET FOREIGN_KEY_CHECKS = 0;');
         //    DB::table('emple_conceptos')->truncate(); //vaciar tabla
         // }
-        Excel::import(new ImportNominaExcel,request()->file('file'));
-        return back()->with('mensaje','Las nóminas y sus respectivos conceptos han sido actualizados...');
+        set_time_limit(600);
+        try{
+             Excel::import(new ImportNominaExcel,request()->file('file'));
+            return back()->with('mensaje','Las nóminas y sus respectivos conceptos han sido actualizados...');
+        } catch(\Maatwebsite\Excel\Validators\ValidationException $e) {
+                $failure = $e->failures()[0]; 
+                return back()->withErrors("Error en fila {$failure->row()}: " . implode(', ', $failure->errors()));
+         }
+       
     }
 
     public function BeneficiariosExcel(Request $request){   
@@ -66,6 +81,7 @@ class ImportController extends Controller
                 Beneficiario::truncate(); //vaciar tabla
          
         }  
+        set_time_limit(600);
         Excel::import(new BeneficiariosImport,request()->file('file'));
         return back()->with('mensaje','carga completada...');
     }

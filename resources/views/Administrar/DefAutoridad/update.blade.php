@@ -6,11 +6,14 @@
         
             <input type="text" wire:model.live="cedula"  wire:change="Shear"  placeholder="Cédula de Identidad" autofocus class="text-center text-primary"><br>
             <p wire:ignore.self class="text-info font-weight-bold display-7">{{ $full_name }}</p>
-            @error('cedula')
-                <div class="alert-danger">Indique Cedula</div>
-            @enderror
-    </div> <br><br>
-{{$ruta}}
+    </div>
+
+    @if (session('error'))
+        <div class="text-danger">
+            {{ session('error') }}
+        </div>
+    @endif<br>
+
          
         <div>
             <label class="formulario-item text-center">SUBIR ARCHIVO DE AUTENTICACIÓN</label>
@@ -25,11 +28,7 @@
     {{ __('Registrar') }}
 </x-button>
 
-@if (session('error'))
-    <div class="text-danger">
-        {{ session('error') }}
-    </div>
-@endif
+
 
 
 

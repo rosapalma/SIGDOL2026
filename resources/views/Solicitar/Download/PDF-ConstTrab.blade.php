@@ -7,22 +7,47 @@
 
 
 <style type="text/css">
-html {
+/*html {
   min-height: 100%;
   position: relative;
 }
 body {
   margin: 0;
   margin-bottom: 40px;
-}
-header {
+}*/
+/*header {
   background-image: url("images/backs/docs/arriba.png");
   background-repeat: no-repeat;
   width: 100%; 
   height: 15%;
   margin: 0;
-}
-   
+}*/
+      @page {
+        margin: 100px 25px; /* Margen superior e inferior para dejar espacio al header/footer */
+    }
+
+    header {
+    	  background-image: url("images/backs/docs/arriba.png");
+    	  background-repeat: no-repeat;
+        position: fixed;
+        top: -60px;
+        left: 0px;
+        right: 0px;
+        height: 15%;
+        text-align: center;
+    }
+
+    footer {
+    	 	background-image: url("images/backs/docs/abajo.png");
+  			background-repeat: no-repeat; 
+        position: fixed; 
+        bottom: -40px; 
+        left: 0px; 
+        right: 0px;
+        height: 15%; 
+        text-align: center;
+        line-height: 35px;
+    } 
 
 #page-container {
   /*position: relative;*/
@@ -35,12 +60,12 @@ header {
 }
 
 th,td{
-  text-align: left;
+  text-align: center;
   padding: 3px;
 }
 .div-table{
 	margin-left: 5%;
- 	margin-right: 5%;
+	margin-right: 5%;
  	margin-top: 0;
 }
  table {
@@ -49,7 +74,7 @@ th,td{
   border-collapse: collapse ;
 }
 
-footer {
+/*footer {
   background-image: url("images/backs/docs/abajo.png");
   background-repeat: no-repeat; 
   position: absolute;
@@ -57,7 +82,7 @@ footer {
   width: 100%;
   height: 15%; 
   margin-top: auto;  
-}
+}*/
 /*#firma{  
 	background-image: url("images/backs/docs/firma.png");
   background-repeat: no-repeat;
@@ -74,10 +99,12 @@ footer {
 		font-variant:small-caps;
 		text-transform:uppercase;
 		align-content: center;
+		padding-top: 5%;
 	}
 	.content{
-		margin-top: 5%; 
+		margin-top: 10%; 
 		margin-left: 5%; 
+		margin-right: 5%;
 		text-align: justify;
 	}
   .text-bold{  
@@ -92,53 +119,40 @@ footer {
 </style>
 
 <body>
-	<header></header>
-  <div id="page-container"> 
-      
-   <div id="content-wrap">
-    	
-		<p class="title" align="center" ><BR>
-		@if($tipoConst <=3)
-				CONSTANCIA DE TRABAJO
+		<header></header>
+
+    <footer></footer>
+<main>
+
+<div id="page-container">       
+  <div id="content-wrap">    	
+		<p class="title" align="center" ><BR><br>
+		@if($personal->fec_egre)
+				CONSTANCIA
 		@else
-			CONSTANCIA
+			CONSTANCIA DE TRABAJO
 		@endif
 		</p>
-
     <p class="content">
-			&nbsp;&nbsp;Quien suscribe, Jefe de la Unidad de Personal del Instituto Pedagógico de Maturín "Antonio Lira Alcalá", hace constar por medio de la	presente que el(la) ciudadano(a) <b class="text-bold text-uppercase">{{$personal->full_name}}</b>,	cédula de Identidad <b class="text-bold upercase">V-{{$personal->cedula}}</b>.
-				@if ($condicion->id == 1)  <!--ACTIVO -->
-					Labora
-				@elseif ($condicion->id == 2)  <!-- CONTRATADO-->
-					@if ($statudContrato)
-						Labora, en condicion CONTRATADO(A)
-					@else
-						Laboró, en condicion DE CONTRATADO(A)
-					@endif
-				@elseif ($condicion->id == 3 || $condicion->id == 4) <!--JUB-PENS-->
-					Laboró
-				@endif
-				en este instituto como miembro del personal <b class="text-bold text-uppercase">{{$typepers}}</b>
-				@if ($typepersid == 1)
+			&nbsp;&nbsp;&nbsp;&nbsp;Quien suscribe, Jefe de la Unidad de Talento Humano del Instituto Pedagógico de Maturín, Núcleo de la Universidad Pedagógica Experimental Libertador, hago constar por medio de la	presente que el(la) ciudadano(a) <b class="text-bold text-uppercase">{{$personal->full_name}}</b>, titular de la	cédula de identidad <b class="text-bold upercase">V-{{$personal->cedula}}</b> es miembro del Personal <b class="text-bold text-uppercase">{{$typepers}} {{$condicion->name}} </b> de esta Universidad 
+			@if ($typepersid == 1)
+				, con la Categoria
 					<b class="text-bold text-uppercase">{{$dedicacion}}</b>
-				@else
-					. Desempeñando el cargo de <b class="text-bold text-uppercase">{{$cargo}}.</b>
-				@endif
+			@endif
+			. Desempeñando el cargo de <b class="text-bold text-uppercase">{{$cargo}}.</b>
+			
         @if ($personal->jerarquia)
         	Con funciones de<b class="text-bold text-uppercase">{{$personal->jerarquia}}.</b>
 				@endif
-				<!-- INGESO Y EGRESO -->
-				@if($personal->fec_egre)
-				  Ingresando en esta institucion, en fecha <b>{{$personal->fec_ing}}</b>, hasta <b>{{$personal->fec_egre}}.</b>
-				@else
-					Ingresando en esta institucion, en fecha <b>{{$personal->fec_ing}}</b>.
-				@endif
-				
+				<!-- INGESO Y EGRESO -->			
+				  Ingresando en esta institucion en fecha <b>{{$personal->fec_ing}}</b>	@if($personal->fec_egre)
+				  	al <b>{{$personal->fec_egre}}</b>
+				  @endif .
 				<!-- SUELDO BASE & INTG -->
 				@if ($tipoConst == 2) <!-- con sueldo base -->
 					<?php $sueldo = $sueldo['salario_basico'];?>
 					Devengando un sueldo mensual de
-					<small class="text-bold text-uppercase"> {{ $ALetras }}</small>
+					<small class="text-bold text-uppercase">{{ $ALetras }}</small>
 					<?php echo  '(Bs. '.number_format($sueldo,2).').';?>
 				@endif
 				@if ($tipoConst >= 3)  <!-- con sueldo integral -->
@@ -147,7 +161,7 @@ footer {
 					<small class="text-bold text-uppercase"> {{ $ALetras }}</small>
 					<?php echo ' (Bs. '.number_format($sueldo,2).').'; ?>
 				@endif
-				<br>
+				<br><br>
 				<!-- TIEMPO DE SERVICIO -->
 				@if ($tiemp)
 					<br><b>TIEMPO DE SERVICIO:
@@ -155,36 +169,40 @@ footer {
 				@endif
 				<!--SOBREVIVIENTE-->
 				@if ($tipoConst == 5 ) 
-				<br>
-				<div class="div-table">
-				<small class="text-bold text-uppercase" style="padding: 0"> BENEFICIARIO(S)</small>
-						<table>
-							<thead>
-								<tr>
-									<th>Cedula</th>
-									<th>Nombre Y Apellido</th>
-									<th>Fecha Nac.</th>
-									<th>Porcentaje '%'</th>
-								</tr>
-							</thead>
-							<tbody>
-								@foreach ($beneficiarios as $bene)
-									<tr>
-										<td>{{$bene->cedula}}</td>
-										<td>{{$bene->full_name}}</td>
-										<td>{{$bene->fec_nac}}</td>
-										<td style=" text-align: center;">{{$bene->porcentaje}}%</td>
+					@if(count($beneficiarios)==0)
+						 <small class="text-bold text-uppercase" style="font-weight: bold"> No posee sobrevivientes</small>  
+					@else
+						<div class="div-table">
+							<small class="text-bold text-uppercase" > SOBREVIVIENTE(S)</small>
+							<table>
+								<thead style="background-color:#F2EEED;">
+									<tr >
+										<th>Cedula</th>
+										<th>Nombre Y Apellido</th>
+										<th>Fecha Nac.</th>
+										<th>Porcentaje</th>
 									</tr>
-								@endforeach
-							</tbody>
-						</table>
-					</div>
+								</thead>
+								<tbody>
+									@foreach ($beneficiarios as $bene)
+										<tr>
+											<td style="text-align: center;">@if($bene->cedula){{$bene->cedula}}@else S/N @endif</td>
+											<td>{{$bene->full_name}}</td>
+											<td style="text-align: center;">{{$bene->fec_nac}}</td>
+											<td style=" text-align: center;">{{$bene->porcentaje}}%</td>
+										</tr>
+									@endforeach
+								</tbody>
+							</table>
+						</div>
+					@endif
 				@endif
 				<!-- FECHAS DE EMISION -->
-				<br><br>
+				<br><br><br>
+				<p style="margin-left: 5%;margin-right: 5%;"> Constancia que se expide a solicitud de la parte interesada en 
 				<?php setlocale(LC_TIME, 'es_ES.UTF-8');		//DEBERIA IMPRIMIR MES EN ESPAÑOL
-					echo 'Constancia que se expide a solicitud de la parte interesada en '.$sedeEmp->city.' a los '.strftime(" %d dias del mes de %B del %Y." );
-				?>
+					echo $sedeEmp->city.' a los '.strftime(" %d dias del mes de %B del %Y." );
+				?></p>
       </p>
 			
 	</div>
@@ -195,9 +213,22 @@ footer {
       <div align="center">
         <p><img src="storage/autenticaciones/<?php echo $autentication; ?>"></p>
         <span  style="text-transform:uppercase">{{ $autoridadName }}</span><br>
-        <span style="">Jefe de la Unidad de Personal</span>
-    </div>
-    <footer></footer>
+        <span style="">Jefe de Unidad de Talento Humano</span>
+   		</div>
+</main>
+
+    <script type="text/php">
+    if ( isset($pdf) ) {
+        // Obtener el objeto fontMetrics
+        $font = $fontMetrics->get_font("Arial", "Helvetica", "normal");        
+        // Configurar el tamaño de la fuente
+        $size = 10;
+        $pageText = 'Página {PAGE_NUM} de {PAGE_COUNT}';
+        
+        // Definir posición: x=500, y=800 (ajustar según el pie de página)
+        $pdf->page_text(500, 800, $pageText, $font, $size, array(0,0,0));
+    }
+</script>
 </body>
 </html>
 

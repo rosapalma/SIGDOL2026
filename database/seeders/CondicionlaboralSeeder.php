@@ -20,7 +20,7 @@ class CondicionlaboralSeeder extends Seeder
         
 
         DB::table('condicionlaborals')->insert(///fijo
-            ['name' => 'Activo','abrev' => 'ACT'], 
+            ['name' => 'Ordinario','abrev' => 'ORD'], 
         );
         DB::table('condicionlaborals')->insert(
             ['name' => 'Contratado','abrev' => 'CONT'], 
