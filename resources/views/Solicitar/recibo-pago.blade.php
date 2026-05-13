@@ -20,7 +20,7 @@
             @endif
            </div><br>
            <div align="center" required class="form-group">
-             <select name="anio" class=" form-select-lg mb-3" aria-label=".form-select-lg example" >
+             <select name="anio" class=" form-select-lg mb-3" aria-label=".form-select-lg example" required>
                 <option value="">Año</option>
                 <option value="2025">2025</option>
                 <option value="2026">2026</option>
@@ -30,7 +30,7 @@
                 <option value="2030">2030</option>
              </select>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
-                <select name="mes" class="form-select-lg mb-3" aria-label=".form-select-lg example" >
+                <select name="mes" class="form-select-lg mb-3" aria-label=".form-select-lg example" required>
                   <option value="">Mes</option>
                   <option value="1">Enero</option>
                   <option value="2">Febrero</option>

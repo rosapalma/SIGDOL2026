@@ -59,7 +59,7 @@ class ReciboController extends Controller
         //VERIFICANDO SI HAY AUTORIDAD ASIGNADO
         $autoridad= $this->Autoridad();
         if (empty($autoridad)){
-              return Redirect::back()->with('error','No puede continuar, dado a que no se ha definido quien certificara dicho documento. Le invitamos a intentarlo mas tarde , consulte al administrador');
+              return Redirect::back()->with('error','No puede continuar, dado a que no se ha definido quien certificará dicho documento. Le invitamos a intentarlo mas tarde , consulte al administrador');
         }else{ //RECUPERA DATOS DE AUTORIDAD
             $DatosPers=Personal::where('id','=',$autoridad)->first(); 
             $autoridadName = $DatosPers->full_name;
@@ -128,28 +128,34 @@ class ReciboController extends Controller
             $beneficiarios = $personal->beneficiarios()->get(); 
         }
         //CONSULTANDO NOMINAS PARA TRAER LA ID DE LA SELECCIONADA SEGUN MES-AÑO...
-        $nominas= $personal->nominas()->orderBy('id','desc')->get();
+        
+
+        $nominas= $personal->nominas()->orderBy('id','asc')->get();
         if($nominas){
             foreach($nominas as $nom){              
                 if(($nom['mes'] == $mes_selc) && ($nom['anio'] == $anio_selc)){
-                   $arraynomina = $nom;
-                   $idnomina = $nom->id;
-                   DB::table('recibos_g_s')->insert([
-                    'codigo' => $cod,
-                    'fechaEmi' => $fechaAct,
-                    'nomina_id' => $idnomina,
-                    'personal_id' =>$IdEmp,
-                    'user_id' => $user->id,
-                    ]);
+                   $nominasAnioMes = $nom; //nominas de año y mes
+                  
                 }else{
                     return Redirect::back()->with('error','No ha sido cargada al sistema la nomina correspondien al mes/año seleccionado, consulte al administrador');
                 }
             } //END FOREACH
+            $arraynomina = $nominasAnioMes;
+            $idnomina = $arraynomina->id;
+
+            // DB::table('recibos_g_s')->insert([
+            //         'codigo' => $cod,
+            //         'fechaEmi' => $fechaAct,
+            //         'nomina_id' => $idnomina,
+            //         'personal_id' =>$IdEmp,
+            //         'user_id' => $user->id,
+            //         ]);
                    
         }else{
             return Redirect::back()->with('error','Aun NO tiene ninguna nomina registrada, consulte al administrador');
         }
         $pdf = \PDF::loadView('Solicitar.Download.PDF-ReciboPago',compact('fechaAct','cod','autoridadName','autentication','personal','typepers','typepersid','cargo','dedicacion','arraynomina','sedeEmp','beneficiarios'));
+        //$pdf->setPaper('a4', 'landscape'); //horizontal
         return $pdf->download('Recido de pago.pdf');
     }
 
