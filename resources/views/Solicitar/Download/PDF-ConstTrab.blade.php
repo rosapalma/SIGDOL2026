@@ -169,6 +169,7 @@ th,td{
 				@endif
 				<!--SOBREVIVIENTE-->
 				@if ($tipoConst == 5 ) 
+					<br>
 					@if(count($beneficiarios)==0)
 						 <small class="text-bold text-uppercase" style="font-weight: bold"> No posee sobrevivientes</small>  
 					@else

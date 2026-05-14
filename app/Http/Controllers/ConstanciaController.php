@@ -186,17 +186,15 @@ class ConstanciaController extends Controller
         //PA' JUBILADOS O PENSIONADOS
         if ($tipoConst == 4) {
             if(empty($personal->fec_egre )){ //si tiene no registro manda error
-                return Redirect::back()->with('error','Debe tener registrar la fecha egreso (de jubilacion | pension). "consulte con el administrador" e ¡intente de nuevo!');
+                return Redirect::back()->with('error','Debe tener registrar la fecha egreso (de jubilacion | pension), es decir, su estatus aun es de ACTIVO. "consulte a la unidad" e ¡intente de nuevo!');
             }
         }
-
-
         //SOBREVIVIENTE
         if ($tipoConst == 5) {
             if($personal->fec_egre){
-                return Redirect::back()->with('error','Aun no puede solicitar este tipo de constancia. "consulte a la unidad" e ¡intente de nuevo!');
-            }else{
                 $beneficiarios = $personal->beneficiarios()->get();
+            }else{
+                return Redirect::back()->with('error','Aun no posee afiliación con sobrevivientes, no puede solicitar este tipo de constancia. "consulte a la unidad" e ¡intente de nuevo!'); 
             }
                         
         }

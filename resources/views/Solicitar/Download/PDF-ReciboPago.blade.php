@@ -86,7 +86,6 @@
     <!-- DATOS PERSONALE & LABORALES -->
 <main>
     <div class="contenedor-grid">
-        {{$personal->id}}<br>
         <p style="text-transform: uppercase;">{{$personal->full_name}}</p>
         <p><b>Cédula de Identidad:  {{$personal->cedula}}</b></p>
         @if($typepers > 1)
@@ -123,7 +122,7 @@
                         <tr>
                             <td><b><?php $number=1; $length = 3;
                              $string = substr(str_repeat(0, $length).$number, - $length);
-                            echo $codAsig='A'.$string;?></b>&nbsp;&nbsp;Salario Básico </td>
+                            echo $codAsig='A'.$string;?></b>&nbsp;&nbsp;SALARIO BÁSICO </td>
                             <td align="center"><?php  echo number_format($arraynomina['salario_basico'],2); $Ttasign = $arraynomina['salario_basico'] + $Ttasign;?></td>
                         </tr><?php $contA=$contA +1;?>
                     @endif
@@ -132,7 +131,7 @@
                         <tr>
                             <td ><b><?php $number=2; $length = 3;
                             $string = substr(str_repeat(0, $length).$number, - $length);
-                            echo $codAsig='A'.$string;?></b>&nbsp;&nbsp;Prima Familiar </td>
+                            echo $codAsig='A'.$string;?></b>&nbsp;&nbsp;PRIMA FLIAR. </td>
                             <td align="center"><?php echo number_format($arraynomina['prima_fliar'],2); $Ttasign = $arraynomina['prima_fliar'] + $Ttasign;?></td>
                         </tr><?php $contA=$contA +1;?>
                     @endif
@@ -140,7 +139,7 @@
                         <tr> 
                             <td><b><?php $number=3; $length = 3;
                             $string = substr(str_repeat(0, $length).$number, - $length);
-                            echo $codAsig='A'.$string;?></b>&nbsp;&nbsp;Prima por Hijos </td>
+                            echo $codAsig='A'.$string;?></b>&nbsp;&nbsp;PRIMA POR HIJO(s) </td>
                             <td align="center"><?php echo number_format($arraynomina['prima_hijos'],2); $Ttasign = $arraynomina['prima_hijos'] + $Ttasign;?></td>
                         </tr><?php $contA=$contA +1;?>
                     @endif
@@ -148,7 +147,7 @@
                         <tr>
                             <td><b><?php $number=4; $length = 3;
                                 $string = substr(str_repeat(0, $length).$number, - $length);
-                                echo $codAsig='A'.$string;?></b>&nbsp;&nbsp;Prima Profesional TS</td>
+                                echo $codAsig='A'.$string;?></b>&nbsp;&nbsp;PRIMA PROF. TSU</td>
                             <td align="center"><?php echo number_format($arraynomina['prima_tsu'],2); $Ttasign = $arraynomina['prima_tsu'] + $Ttasign;?></td>
                         </tr><?php $contA=$contA +1;?>
                     @endif
@@ -156,7 +155,7 @@
                         <tr>
                             <td><b><?php $number=5; $length = 3;
                             $string = substr(str_repeat(0, $length).$number, - $length);
-                            echo $codAsig='A'.$string;?></b>&nbsp;&nbsp;Prima pregrado</td>
+                            echo $codAsig='A'.$string;?></b>&nbsp;&nbsp;PrRIJMA PREGRADO</td>
                             <td align="center"><?php echo number_format($arraynomina['prima_pregrado'],2); $Ttasign = $arraynomina['prima_pregrado'] + $Ttasign;?></td>
                         </tr><?php $contA=$contA +1;?>
                     @endif
@@ -164,114 +163,114 @@
                     @if($arraynomina['prima_act_univ'])
                         <tr><td><b><?php $number=6; $length = 3;
                             $string = substr(str_repeat(0, $length).$number, - $length);
-                            echo $codAsig='A'.$string;?></b>&nbsp;&nbsp;Prima Act. Univ.</b></td>
+                            echo $codAsig='A'.$string;?></b>&nbsp;&nbsp;PRIMA ACT. UNIV.</b></td>
                             <td align="center"><?php echo number_format($arraynomina['prima_act_univ'],2); $Ttasign = $arraynomina['prima_act_univ'] + $Ttasign;?></td></tr><?php $contA=$contA +1;?>
                     @endif
                     @if($arraynomina['prima_maestria'])
                         <tr><td><b><?php $number=6; $length = 3;
                             $string = substr(str_repeat(0, $length).$number, - $length);
-                            echo $codAsig='A'.$string;?></b>&nbsp;&nbsp;Prima Maestria </b></td>
+                            echo $codAsig='A'.$string;?></b>&nbsp;&nbsp;PRIMA MAESTRIA </b></td>
                             <td align="center"><?php echo number_format($arraynomina['prima_maestria'],2); $Ttasign = $arraynomina['prima_maestria'] + $Ttasign;?></td></tr><?php $contA=$contA +1;?>
                     @endif
                     @if($arraynomina['prima_especializacion'])
                         <tr><td><b><?php $number=6; $length = 3;
                             $string = substr(str_repeat(0, $length).$number, - $length);
-                            echo $codAsig='A'.$string;?></b>&nbsp;&nbsp;Prima Especialización </b></td>
+                            echo $codAsig='A'.$string;?></b>&nbsp;&nbsp;PRIMA ESPECIALIZACIÓN </b></td>
                             <td align="center"><?php echo number_format($arraynomina['prima_especializacion'],2); $Ttasign = $arraynomina['prima_especializacion'] + $Ttasign;?></td></tr><?php $contA=$contA +1;?>
                     @endif
                     prima_especializacion
                     @if($arraynomina['prima_hijo_especial'] > 0)
                         <tr><td><b><?php $number=7; $length = 3;
                             $string = substr(str_repeat(0, $length).$number, - $length);
-                            echo $codAsig='A'.$string;?></b>&nbsp;&nbsp;Prima por hijo Especial</td>
+                            echo $codAsig='A'.$string;?></b>&nbsp;&nbsp;PRIMA POR HIJO ESPECIAL</td>
                             <td align="center"><?php echo number_format($arraynomina['prima_hijo_especial'],2); $Ttasign = $arraynomina['prima_hijo_especial'] + $Ttasign;?></td></tr><?php $contA=$contA +1;?>
                     @endif
                     @if($arraynomina['prima_antiguedad'] > 0)
                         <tr><td><b><?php $number=8; $length = 3;
                             $string = substr(str_repeat(0, $length).$number, - $length);
-                            echo $codAsig='A'.$string;?></b>&nbsp;&nbsp;Prima por Antiguedad</td>
+                            echo $codAsig='A'.$string;?></b>&nbsp;&nbsp;PRIMA POR ANTIGÜEDAD</td>
                             <td align="center"><?php echo number_format($arraynomina['prima_antiguedad'],2);$Ttasign = $arraynomina['prima_antiguedad'] + $Ttasign;?></td></tr><?php $contA=$contA +1;?>
                     @endif
                     @if($arraynomina['prima_chofer'] >0)
                         <tr><td><b><?php $number=10; $length = 3;
                             $string = substr(str_repeat(0, $length).$number, - $length);
-                            echo $codAsig='A'.$string;?></b>&nbsp;&nbsp;Prima de Chofer Universitaria</td>
+                            echo $codAsig='A'.$string;?></b>&nbsp;&nbsp;PRIMA DE CHOFER</td>
                             <td align="center"><?php echo number_format($arraynomina['prima_chofer'],2); $Ttasign = $arraynomina['prima_chofer'] + $Ttasign;?></td></tr><?php $contA=$contA +1;?>
                     @endif
                     @if($arraynomina['prima_titular'] >0)
                         <tr><td><b><?php $number=10; $length = 3;
                             $string = substr(str_repeat(0, $length).$number, - $length);
-                            echo $codAsig='A'.$string;?></b>&nbsp;&nbsp;Prima Titular</td>
+                            echo $codAsig='A'.$string;?></b>&nbsp;&nbsp;PRIMA TITULA</td>
                             <td align="center"><?php echo number_format($arraynomina['prima_titular'],2); $Ttasign = $arraynomina['prima_titular'] + $Ttasign;?></td></tr><?php $contA=$contA +1;?>
                     @endif
                     @if($arraynomina['doctorado'] >0)
                         <tr><td><b><?php $number=10; $length = 3;
                             $string = substr(str_repeat(0, $length).$number, - $length);
-                            echo $codAsig='A'.$string;?></b>&nbsp;&nbsp;Prima Doctorado</td>
+                            echo $codAsig='A'.$string;?></b>&nbsp;&nbsp;PRIMA DOCTORADO</td>
                             <td align="center"><?php echo number_format($arraynomina['doctorado'],2); $Ttasign = $arraynomina['doctorado'] + $Ttasign;?></td></tr><?php $contA=$contA +1;?>
                     @endif
                     <!--JERARQUIAS --->
                     @if($arraynomina['jerarquia_nivel1'] >0)
                         <tr><td><b><?php $number=10; $length = 3;
                             $string = substr(str_repeat(0, $length).$number, - $length);
-                            echo $codAsig='A'.$string;?></b>&nbsp;&nbsp;Prima Jerarquia nivel 1</td>
+                            echo $codAsig='A'.$string;?></b>&nbsp;&nbsp;PRIMA JERARQUÍA NIVEL 1</td>
                             <td align="center"><?php echo number_format($arraynomina['jerarquia_nivel1'],2); $Ttasign = $arraynomina['jerarquia_nivel1'] + $Ttasign;?></td></tr><?php $contA=$contA +1;?>
                     @endif
                     @if($arraynomina['jerarquia_nivel2'] >0)
                         <tr><td><b><?php $number=10; $length = 3;
                             $string = substr(str_repeat(0, $length).$number, - $length);
-                            echo $codAsig='A'.$string;?></b>&nbsp;&nbsp;Prima Jerarquia nivel 2</td>
+                            echo $codAsig='A'.$string;?></b>&nbsp;&nbsp;PRIMA JERARQUÍA NIVEL 2</td>
                             <td align="center"><?php echo number_format($arraynomina['jerarquia_nivel2'],2); $Ttasign = $arraynomina['jerarquia_nivel2'] + $Ttasign;?></td></tr><?php $contA=$contA +1;?>
                     @endif
                     @if($arraynomina['jerarquia_nivel3'] >0)
                         <tr><td><b><?php $number=10; $length = 3;
                             $string = substr(str_repeat(0, $length).$number, - $length);
-                            echo $codAsig='A'.$string;?></b>&nbsp;&nbsp;Prima Jerarquia nivel 3</td>
+                            echo $codAsig='A'.$string;?></b>&nbsp;&nbsp;PRIMA JERARQUÍA NIVEL 3</td>
                             <td align="center"><?php echo number_format($arraynomina['jerarquia_nivel3'],2); $Ttasign = $arraynomina['jerarquia_nivel3'] + $Ttasign;?></td>
                             </tr><?php $contA=$contA +1;?>
                     @endif
                     @if($arraynomina['jerarquia_nivel4'] >0)
                         <tr><td><b><?php $number=10; $length = 3;
                             $string = substr(str_repeat(0, $length).$number, - $length);
-                            echo $codAsig='A'.$string;?></b>&nbsp;&nbsp;Prima Jerarquia nivel 4</td>
+                            echo $codAsig='A'.$string;?></b>&nbsp;&nbsp;PRIMA JERARQUÍA NIVEL 4</td>
                             <td align="center"><?php echo number_format($arraynomina['jerarquia_nivel4'],2); $Ttasign = $arraynomina['jerarquia_nivel4'] + $Ttasign;?></td>
                                 </tr><?php $contA=$contA +1;?>
                     @endif
                     @if($arraynomina['jerarquia_nivel5'] >0)
                         <tr><td><b><?php $number=10; $length = 3;
                             $string = substr(str_repeat(0, $length).$number, - $length);
-                            echo $codAsig='A'.$string;?></b>&nbsp;&nbsp;Prima Jerarquia nivel 5</td>
+                            echo $codAsig='A'.$string;?></b>&nbsp;&nbsp;PRIMA JERARQUÍA NIVEL 5</td>
                             <td align="center"><?php echo number_format($arraynomina['jerarquia_nivel5'],2); $Ttasign = $arraynomina['jerarquia_nivel5'] + $Ttasign;?></td>
                             </tr><?php $contA=$contA +1;?>
                     @endif
                     @if($arraynomina['jerarquia_nivel6'] >0)
                         <tr><td><b><?php $number=10; $length = 3;
                             $string = substr(str_repeat(0, $length).$number, - $length);
-                            echo $codAsig='A'.$string;?></b>&nbsp;&nbsp;Prima Jerarquia nivel 6</td>
+                            echo $codAsig='A'.$string;?></b>&nbsp;&nbsp;PRIMA JERARQUÍA NIVEL 6</td>
                             <td align="center"><?php echo number_format($arraynomina['jerarquia_nivel6'],2); $Ttasign = $arraynomina['jerarquia_nivel6'] + $Ttasign;?></td></tr><?php $contA=$contA +1;?>
                     @endif
                     @if($arraynomina['jerarquia_nivel7'] >0)
                         <tr><td><b><?php $number=10; $length = 3;
                             $string = substr(str_repeat(0, $length).$number, - $length);
-                            echo $codAsig='A'.$string;?></b>&nbsp;&nbsp;Prima Jerarquia nivel 7</td>
+                            echo $codAsig='A'.$string;?></b>&nbsp;&nbsp;PRIMA JERARQUÍA NIVEL 7</td>
                             <td align="center"><?php echo number_format($arraynomina['jerarquia_nivel7'],2); $Ttasign = $arraynomina['jerarquia_nivel7'] + $Ttasign;?></td></tr><?php $contA=$contA +1;?>
                     @endif
                     @if($arraynomina['jerarquia_nivel8'] >0)
                         <tr><td><b><?php $number=10; $length = 3;
                             $string = substr(str_repeat(0, $length).$number, - $length);
-                            echo $codAsig='A'.$string;?></b>&nbsp;&nbsp;Prima Jerarquia nivel 8</td>
+                            echo $codAsig='A'.$string;?></b>&nbsp;&nbsp;PRIMA JERARQUÍA NIVEL 8</td>
                             <td align="center"><?php echo number_format($arraynomina['jerarquia_nivel8'],2); $Ttasign = $arraynomina['jerarquia_nivel8'] + $Ttasign;?></td></tr><?php $contA=$contA +1;?>
                     @endif
                     @if($arraynomina['jerarquia_nivel9'] >0)
                         <tr><td><b><?php $number=10; $length = 3;
                             $string = substr(str_repeat(0, $length).$number, - $length);
-                            echo $codAsig='A'.$string;?></b>&nbsp;&nbsp;Prima Jerarquia nivel 9</td>
+                            echo $codAsig='A'.$string;?></b>&nbsp;&nbsp;PRIMA JERARQUÍA NIVEL 9</td>
                             <td align="center"><?php echo number_format($arraynomina['jerarquia_nivel9'],2); $Ttasign = $arraynomina['jerarquia_nivel9'] + $Ttasign;?></td></tr><?php $contA=$contA +1;?>
                     @endif
                     @if($arraynomina['jerarquia_nivel10'] >0)
                         <tr><td><b><?php $number=10; $length = 3;
                             $string = substr(str_repeat(0, $length).$number, - $length);
-                            echo $codAsig='A'.$string;?></b>&nbsp;&nbsp;Prima Jerarquia nivel 10</td>
+                            echo $codAsig='A'.$string;?></b>&nbsp;&nbsp;PRIMA JERARQUÍA NIVEL 10</td>
                             <td align="center"><?php echo number_format($arraynomina['jerarquia_nivel10'],2); $Ttasign = $arraynomina['jerarquia_nivel10'] + $Ttasign;?></td></tr><?php $contA=$contA +1;?>
                     @endif
                         <tr><td align="right"><b>Total: <?php echo number_format($Ttasign,2); ?></b></td></tr>
@@ -292,21 +291,21 @@
                     @if($arraynomina['seguro_social'] > 0)
                         <tr> <td><b><?php $number=1; $length = 3;
                             $string = substr(str_repeat(0, $length).$number, - $length);
-                            echo $codAsig='D'.$string;?></b>&nbsp;&nbsp;Seguro Social</td>
+                            echo $codAsig='D'.$string;?></b>&nbsp;&nbsp;SEGURO SOCIAL</td>
                             <td align="center"><?php echo number_format($arraynomina['seguro_social'],2); $Ttdeduc = $arraynomina['seguro_social'] + $Ttdeduc;?></td></tr>
                              <?php $contD=$contD +1;?>
                     @endif
                     @if($arraynomina['aproupel_seccional'] > 0)
                             <tr><td><b><?php $number=2; $length = 3;
                                 $string = substr(str_repeat(0, $length).$number, - $length);
-                                echo $codAsig='D'.$string;?></b>&nbsp;&nbsp;SATIUTECPRI</td>
+                                echo $codAsig='D'.$string;?></b>&nbsp;&nbsp;APROUPEL SECCIONAL</td>
                             <td align="center"><?php echo number_format($arraynomina['aproupel_seccional'],2); $Ttdeduc = $arraynomina['aproupel_seccional'] + $Ttdeduc;?></td></tr>
                             <?php $contD=$contD +1; ?>
                     @endif
                     @if($arraynomina['aproupel_nacional'] > 0)
                             <tr><td><b><?php $number=2; $length = 3;
                                 $string = substr(str_repeat(0, $length).$number, - $length);
-                                echo $codAsig='D'.$string;?></b>&nbsp;&nbsp;SATIUTECPRI</td>
+                                echo $codAsig='D'.$string;?></b>&nbsp;&nbsp;APROUPEL NACIONAL</td>
                             <td align="center"><?php echo number_format($arraynomina['aproupel_nacional'],2); $Ttdeduc = $arraynomina['aproupel_nacional'] + $Ttdeduc;?></td></tr>
                             <?php $contD=$contD +1; ?>
                     @endif
@@ -320,21 +319,21 @@
                     @if($arraynomina['pensión_alimenticia'] > 0)
                         <tr><td><b><?php $number=3; $length = 3;
                             $string = substr(str_repeat(0, $length).$number, - $length);
-                            echo $codAsig='D'.$string;?></b>&nbsp;&nbsp;Pension Alimenticia</td>
+                            echo $codAsig='D'.$string;?></b>&nbsp;&nbsp;PENSIÓN ALIMENTICIA</td>
                                 <td align="center"><?php echo number_format($arraynomina['pension_alimenticia'],2); $Ttdeduc = $arraynomina['pension_alimenticia'] + $Ttdeduc;?></td></tr>
                                 <?php $contD=$contD +1; ?>
                     @endif
                     @if($arraynomina['paro_forzoso'])
                         <tr><td><b><?php $number=4; $length = 3;
                             $string = substr(str_repeat(0, $length).$number, - $length);
-                            echo $codAsig='D'.$string;?></b>&nbsp;&nbsp;Paro Forzoso</td>
+                            echo $codAsig='D'.$string;?></b>&nbsp;&nbsp;PARO FORSOZO</td>
                             <td align="center"><?php echo number_format($arraynomina['paro_forzoso'],2); $Ttdeduc = $arraynomina['paro_forzoso']+ $Ttdeduc;?></td></tr>
                             <?php $contD=$contD +1; ?>
                     @endif
                     @if($arraynomina['ley_politica'] > 0)
                         <tr><td><b><?php $number=5; $length = 3;
                             $string = substr(str_repeat(0, $length).$number, - $length);
-                            echo $codAsig='D'.$string;?></b>&nbsp;&nbsp;Ley de Politica Hab.</td>
+                            echo $codAsig='D'.$string;?></b>&nbsp;&nbsp;LEY DE POLITICA HAB.</td>
                             <td align="center"><?php echo number_format($arraynomina['ley_politica'],2); $Ttdeduc = $arraynomina['ley_politica'] + $Ttdeduc;?></td></tr>
                             <?php $contD=$contD +1; ?>
                     @endif
