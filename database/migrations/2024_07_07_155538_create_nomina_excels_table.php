@@ -41,18 +41,18 @@ return new class extends Migration
             $table->float('total_asignaciones')->nullable();
             $table->float('salario_integral')->nullable();
             $table->float('seguro_social')->nullable();
-            $table->float('capaupel')->nullable();
-            $table->float('pension_alimenticia')->nullable();
             $table->float('paro_forzoso')->nullable();
             $table->float('ley_politica')->nullable();
-            $table->float('cappaoupel')->nullable();
-            $table->float('aproupel_seccional')->nullable();
-            $table->float('aproupel_nacional')->nullable();
-            $table->float('asoprojupel_docente')->nullable();
-            $table->float('salario_neto')->nullable();
+            $table->float('capaupel_docentes')->nullable();       
+            $table->float('cappaoupel_adm_obr')->nullable();
+            $table->float('aproupel_seccional_docentes')->nullable();
+            $table->float('aproupel_nacional_docentes')->nullable();
+            $table->float('asoprojupel_doc_jub')->nullable(); 
             $table->float('aseta_adm')->nullable();
             $table->float('satiutecpri_obrero')->nullable();
+            $table->float('pension_alimenticia')->nullable();
             $table->float('fondo_ipp')->nullable();
+            $table->float('salario_neto')->nullable();        
             $table->float('islr')->nullable();            
             $table->float('total_deducciones')->nullable();
             $table->float('aporte_seguro_social')->nullable();
@@ -67,6 +67,7 @@ return new class extends Migration
             $table->float('beca')->nullable();
             $table->integer('mes')->nullable();
             $table->integer('anio')->nullable();
+
 
             $table->foreign('personal_id')->references('id')->on('personals');
             $table->timestamps();

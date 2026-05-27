@@ -134,18 +134,21 @@ th,td{
 		@endif
 		</p>
     <p class="content">
-			&nbsp;&nbsp;&nbsp;&nbsp;Quien suscribe, Jefe de la Unidad de Talento Humano del Instituto Pedagógico de Maturín, Núcleo de la Universidad Pedagógica Experimental Libertador, hago constar por medio de la	presente que el(la) ciudadano(a) <b class="text-bold text-uppercase">{{$personal->full_name}}</b>, titular de la	cédula de identidad <b class="text-bold upercase">V-{{$personal->cedula}}</b> es miembro del Personal <b class="text-bold text-uppercase">{{$typepers}} {{$condicion->name}} </b> de esta Universidad 
-			@if ($typepersid == 1)
-				, con la Categoria
-					<b class="text-bold text-uppercase">{{$dedicacion}}</b>
+			&nbsp;&nbsp;&nbsp;&nbsp;Quien suscribe, Jefe de la Unidad de Talento Humano del Instituto Pedagógico de Maturín, Núcleo de la Universidad Pedagógica Experimental Libertador, hago constar por medio de la	presente que el(la) ciudadano(a) <b class="text-bold text-uppercase">{{$personal->full_name}}</b>, titular de la	cédula de identidad <b class="text-bold upercase">V-{{$personal->cedula}}</b> es miembro del Personal <b class="text-bold text-uppercase">
+			@if (typepersid == 1) DOCENTE, con la Categoria
+					<b class="text-bold text-uppercase">{{$cargo}}</b>
+			@else 
+					{{$typepers}} {{$condicion->name}} </b> de esta Universidad. 
+					Desempeñando el cargo de <b class="text-bold text-uppercase">{{$cargo}}.</b>
 			@endif
-			. Desempeñando el cargo de <b class="text-bold text-uppercase">{{$cargo}}.</b>
+			
 			
         @if ($personal->jerarquia)
         	Con funciones de<b class="text-bold text-uppercase">{{$personal->jerarquia}}.</b>
 				@endif
 				<!-- INGESO Y EGRESO -->			
-				  Ingresando en esta institucion en fecha <b>{{$personal->fec_ing}}</b>	@if($personal->fec_egre)
+				  Ingresando en esta institucion en fecha <b>{{$personal->fec_ing}}</b>	
+				  @if($personal->fec_egre)
 				  	al <b>{{$personal->fec_egre}}</b>
 				  @endif .
 				<!-- SUELDO BASE & INTG -->

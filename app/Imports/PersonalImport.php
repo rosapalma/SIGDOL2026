@@ -44,7 +44,7 @@ class PersonalImport implements  ToCollection, WithHeadingRow, WithBatchInserts,
         foreach ($rows as $row)
         {
            //Tipo de Personal - condicion laboral
-             //*******administrativos**********
+             //*******administrativos ID 3**********
             if ($row['id'] == 20){
                 $tipepers= 3;
                 $CondLab = 1; //Activo
@@ -58,7 +58,7 @@ class PersonalImport implements  ToCollection, WithHeadingRow, WithBatchInserts,
                 $tipepers= 3; 
                 $CondLab = 2; //CONTR
             }
-            //*******obreros**********
+            //*******obreros ID 2**********
             if ($row['id'] == 15){
                 $tipepers = 2; 
                 $CondLab = 1; //ACT
@@ -68,17 +68,23 @@ class PersonalImport implements  ToCollection, WithHeadingRow, WithBatchInserts,
             }else if ($row['id'] == 17){
                 $tipepers= 2;
                 $CondLab = 4; // 'PENS';
+            }else if ($row['id'] == 18){
+                $tipepers= 2;
+                $CondLab = 2; // 'CONT';
             }
-              //*******docentes**********
+              //*******docentes ID 1**********
             if ($row['id'] == 50){
                 $tipepers = 1;
                 $CondLab = 1;//'ACT';
             }else if ($row['id'] == 52){
                 $tipepers = 1; 
                 $CondLab = 3;//'JUB';
-            }else if ($row['id'] == 54){
+            }else if ($row['id'] == 53){
                  $tipepers = 1; 
-                 $CondLab = 'PENS';
+                 $CondLab = 4; //PENS
+            }else if ($row['id'] == 56){
+                 $tipepers = 1; 
+                 $CondLab = 2; //CONT
             }
 
             //------FECHA DE EGRESO---------
@@ -87,18 +93,21 @@ class PersonalImport implements  ToCollection, WithHeadingRow, WithBatchInserts,
             // }else{
             //     $fec_egre = Date::excelToDateTimeObject((float)$row['fecha_de_egreso']);
             // }
-
-
-
-            $valor = $row['fecha_de_egreso'];
-            // Validamos que no sea nulo, ni cadena vacía, ni cero
-            if (!empty($valor) && $valor != 0) {
-                $fechaObjeto = Date::excelToDateTimeObject((float)$valor);
-                $fechaFormateada = $fechaObjeto->format('Y-m-d');
-            } else {
-                // Manejo de celda vacía: puedes dejarla como null o string vacío
-                $fechaFormateada = null; 
+            if ($row['fecha_de_egreso']){
+                 $egreso = Date::excelToDateTimeObject($row['fecha_de_egreso']);
+            }else{
+                $egreso = null;
             }
+
+            // $valor = $row['fecha_de_egreso'];
+            // // Validamos que no sea nulo, ni cadena vacía, ni cero
+            // if (!empty($valor) && $valor != 0) {
+            //     $fechaObjeto = Date::excelToDateTimeObject((float)$valor);
+            //     $fechaFormateada = $fechaObjeto->format('Y-m-d');
+            // } else {
+            //     // Manejo de celda vacía: puedes dejarla como null o string vacío
+            //     $fechaFormateada = null; 
+            // }
 
 
               //ADD | UPDATE TABLE EMPLEADO
@@ -107,15 +116,15 @@ class PersonalImport implements  ToCollection, WithHeadingRow, WithBatchInserts,
                 $emp->cedula = $row['cedula'];
                 $emp->full_name = $row['apellidos_y_nombres'];
                 $emp->fec_ing =  Date::excelToDateTimeObject((float)$row['fecha_de_ingreso']);
-                $emp->fec_egre = $fechaFormateada;
+                $emp->fec_egre = $egreso;
                 //$emp->fec_egre =  Date::excelToDateTimeObject((float)$row['fecha_de_egreso']);
                 $emp->dedication = $row['tiempo_de_dedicacion'];
                 //$emp->porcentaje_jub_pens = $row['porcentaje_de_jubilacion_o_pension'];
                 $emp->sede_id = 2;
                 $emp->cargo = $row['cargo'];
                 $emp->dep_adsc = $row['dependencia_de_adscripcion'];
-                $emp->categoria = $row['categoria_academica'];
-                $emp->jerarquia = $row['jerarquia'];
+               // $emp->categoria = $row['categoria_academica'];
+                $emp->jerarquia = $row['denominacion_cargo_de_jerarquia'];
                 $emp->typepers_id = $tipepers;
                 $emp->condicionlaboral_id = $CondLab;
                 $emp->save();
@@ -131,7 +140,7 @@ class PersonalImport implements  ToCollection, WithHeadingRow, WithBatchInserts,
                 'dedication' => $row['tiempo_de_dedicacion'],
                 //'porcentaje_jub_pens' => $row['porcentaje_de_jubilacion_o_pension'],
                 'sede_id'=>2,
-                'jerarquia' => $row['jerarquia'],
+                'jerarquia' => $row['denominacion_cargo_de_jerarquia'],
                 'typepers_id' => $tipepers,
                 'condicionlaboral_id' => $CondLab,
                 ]);
