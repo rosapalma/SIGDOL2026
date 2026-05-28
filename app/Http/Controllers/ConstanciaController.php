@@ -203,6 +203,7 @@ class ConstanciaController extends Controller
         //CREANDO CODIGO
         $fecha= $this->FechaAct();
         $anio = Date('Y');
+        //echo $this->Codigo();
         $cod =  'CONST-'.$sedeEmp->abrev.'-'.$anio.'-'.$this->Codigo();  //sede+Aano+codigo
 
         // TIEMPO DE SERVICIO
@@ -229,11 +230,12 @@ class ConstanciaController extends Controller
             'personal_id' => $personal->id,
             'user_id' => $user->id,
         ]);
-        $pdf = PDF::loadView('Solicitar.Download.PDF-ConstTrab', 
-        compact('autoridadName','autentication', 'personal','sedeEmp','condicion', 'tiemp',
-        'beneficiarios','typepers', 'typepersid','dedicacion','cargo','tipoConst', 'ALetras',
-        'sueldo', 'suma_asig', 'suma_extra', 'neto', 'arraycontrato', 'statudContrato', 'cod'));
-        return $pdf->download('document.pdf');
+
+        // $pdf = PDF::loadView('Solicitar.Download.PDF-ConstTrab', 
+        // compact('autoridadName','autentication', 'personal','sedeEmp','condicion', 'tiemp',
+        // 'beneficiarios','typepers', 'typepersid','dedicacion','cargo','tipoConst', 'ALetras',
+        // 'sueldo', 'suma_asig', 'suma_extra', 'neto', 'arraycontrato', 'statudContrato', 'cod'));
+        // return $pdf->download('document.pdf');
     }
 
 }

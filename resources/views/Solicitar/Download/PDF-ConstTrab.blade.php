@@ -135,8 +135,7 @@ th,td{
 		</p>
     <p class="content">
 			&nbsp;&nbsp;&nbsp;&nbsp;Quien suscribe, Jefe de la Unidad de Talento Humano del Instituto Pedagógico de Maturín, Núcleo de la Universidad Pedagógica Experimental Libertador, hago constar por medio de la	presente que el(la) ciudadano(a) <b class="text-bold text-uppercase">{{$personal->full_name}}</b>, titular de la	cédula de identidad <b class="text-bold upercase">V-{{$personal->cedula}}</b> es miembro del Personal <b class="text-bold text-uppercase">
-			@if (typepersid == 1) DOCENTE, con la Categoria
-					<b class="text-bold text-uppercase">{{$cargo}}</b>
+			@if ($typepersid == 1) DOCENTE {{$condicion->name}}</b>
 			@else 
 					{{$typepers}} {{$condicion->name}} </b> de esta Universidad. 
 					Desempeñando el cargo de <b class="text-bold text-uppercase">{{$cargo}}.</b>
@@ -144,23 +143,23 @@ th,td{
 			
 			
         @if ($personal->jerarquia)
-        	Con funciones de<b class="text-bold text-uppercase">{{$personal->jerarquia}}.</b>
+        	. Con funciones de <b class="text-bold text-uppercase">{{$personal->jerarquia}}.</b>
 				@endif
 				<!-- INGESO Y EGRESO -->			
-				  Ingresando en esta institucion en fecha <b>{{$personal->fec_ing}}</b>	
+				  . Ingresando en esta institucion en fecha <b>{{$personal->fec_ing}}</b>	
 				  @if($personal->fec_egre)
 				  	al <b>{{$personal->fec_egre}}</b>
-				  @endif .
+				  @endif
 				<!-- SUELDO BASE & INTG -->
 				@if ($tipoConst == 2) <!-- con sueldo base -->
 					<?php $sueldo = $sueldo['salario_basico'];?>
-					Devengando un sueldo mensual de
+					. Devengando un sueldo mensual de
 					<small class="text-bold text-uppercase">{{ $ALetras }}</small>
 					<?php echo  '(Bs. '.number_format($sueldo,2).').';?>
 				@endif
 				@if ($tipoConst >= 3)  <!-- con sueldo integral -->
                     <?php $sueldo = $sueldo['salario_integral'];?>
-					Con una remuneración mensual de
+					. Con una remuneración mensual de
 					<small class="text-bold text-uppercase"> {{ $ALetras }}</small>
 					<?php echo ' (Bs. '.number_format($sueldo,2).').'; ?>
 				@endif
@@ -173,9 +172,7 @@ th,td{
 				<!--SOBREVIVIENTE-->
 				@if ($tipoConst == 5 ) 
 					<br>
-					@if(count($beneficiarios)==0)
-						 <small class="text-bold text-uppercase" style="font-weight: bold"> No posee sobrevivientes</small>  
-					@else
+					@if(count($beneficiarios) > 0)
 						<div class="div-table">
 							<small class="text-bold text-uppercase" > SOBREVIVIENTE(S)</small>
 							<table>

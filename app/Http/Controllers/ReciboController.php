@@ -78,17 +78,23 @@ class ReciboController extends Controller
         $fechaAct = Date('Y-m-d');
         $beneficiarios=[];
 
+
+
+
         //GENERANDO CODIGO
         $ult = RecibosG::all()->last(); // ultimo nro generado
         if(!empty($ult)){ //si existe almenos un registro
-            $number = $ult->nro+1; //incremento
+            $number = $ult->id + 1; //incremento
         }else{
             $number = 1;
         }
         $anio = Date('y');
-        $length = 4;
+        $length = 6;
         $string = substr(str_repeat(0, $length).$number, - $length);
         $cod =  $sedeEmp['abrev'].'-'.$anio.'-'.$string; 
+
+
+
 
         $autoridad = $this->Autoridad();
         //VALIDANDO Y PROCESANDO
@@ -143,13 +149,13 @@ class ReciboController extends Controller
             $arraynomina = $nominasAnioMes;
             $idnomina = $arraynomina->id;
 
-            // DB::table('recibos_g_s')->insert([
-            //         'codigo' => $cod,
-            //         'fechaEmi' => $fechaAct,
-            //         'nomina_id' => $idnomina,
-            //         'personal_id' =>$IdEmp,
-            //         'user_id' => $user->id,
-            //         ]);
+            DB::table('recibos_g_s')->insert([
+                    'codigo' => $cod,
+                    'fechaEmi' => $fechaAct,
+                    'nomina_id' => $idnomina,
+                    'personal_id' =>$IdEmp,
+                    'user_id' => $user->id,
+                    ]);
                    
         }else{
             return Redirect::back()->with('error','Aun NO tiene ninguna nomina registrada, consulte al administrador');
