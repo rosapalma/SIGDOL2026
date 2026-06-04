@@ -41,7 +41,7 @@ class CreateNewUser implements CreatesNewUsers
         return User::create([
             'personal_id' => $personal['id'],
             'cedula'=> $input['cedula'],
-            'email' => $input['email'],
+           // 'email' => $input['email'],
             'ps1_id' => $input['ps1'],
             'ps2_id' => $input['ps2'],
             'resp1' => Hash::make($input['resp1']),

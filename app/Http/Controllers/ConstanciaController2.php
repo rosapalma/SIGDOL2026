@@ -73,6 +73,7 @@ class ConstanciaController extends Controller
     public function Const(Request $request)
     {
         $request->validate([
+            'cedula' => 'required',
             'tipo' => 'required'
         ]);
 
@@ -101,33 +102,44 @@ class ConstanciaController extends Controller
         $IdEmp = $user->personal_id;
         $privilegio = $user->privilege;
         $sedeEmp=$this->Sede();
-
-        if ($privilegio == 3){
-            $personal = Personal::where('id','=',$IdEmp)->first();  
-        }else{
-           $personal = Personal::where('cedula','=',$request->cedula)->first(); 
-           if (empty($personal)){
-                return Redirect::back()->with('error','El empleado no existe en nuestra DB, "verifique" e ¡intente de nuevo!');
-           }
-        }
-
-        $arraytypepers = $personal->typepers()->get();
-        foreach ($arraytypepers as $type) {
-            $typepers = $type['name'];
-            $typepersid = $type['id'];
-        }
-        $cargo = $personal->cargo;
+        $personal = Personal::where('cedula','=',$request->cedula)->first();
+        if ($personal){
+            if ($privilegio == 3){
+                if ($IdEmp != $personal->id) {
+                    return Redirect::back()->with('error','No puede emitir documentacion de otro empleado, "verifique" e ¡intente de nuevo!');
+                }
+            }
+            if($personal->sede_id != $sedeEmp->id){
+                return Redirect::back()->with('error','Sus Datos no se corresponde a la sede de inicio de sesión. Cada SEDE O INSTITUTO debe generar la constancia de trabajo de sus empleados. "verifique" e ¡intente de nuevo!');
+            }
+            $arraytypepers = $personal->typepers()->get();
+            foreach ($arraytypepers as $type) {
+                $typepers = $type['name'];
+                $typepersid = $type['id'];
+            }
+            $cargo = $personal->cargo;
               //*****************CONDICON LABORAL****************
-        $condicion = DB::table('condicionlaborals')->where('id','=',$personal->condicionlaboral_id)->first();
-        
+            $condicion = DB::table('condicionlaborals')->where('id','=',$personal->condicionlaboral_id)->first();
+        }else{
+            return Redirect::back()->with('error','El empleado no existe en nuestra DB, "verifique" e ¡intente de nuevo!');
+        }
 
         if(empty($personal->fec_ing )){ //si no tiene registro manda error
             return Redirect::back()->with('error','Esta persona se encuentra registrado en nuestra base de datos, pero no tiene "fecha de ingreso" registara. !consulte a la unidad correspondiente¡ e ¡intente de nuevo!');
         }
+        if ($personal->condicionlaboral_id == 2){     // CONTRATADO       //¿COMO SE DEFINEN ???
+            if(empty($personal->fec_egre )){
+                $statudContrato = true;
+            }else{
+                $statudContrato = false;
+            }
+        }
+        //$buscar = Pers_Sueldo::where('personal_id','=',$personal->id)->first(); 
         $dedicacion = $personal->dedication;
 
        
         //BASICA
+    
             //DECLARO VARIABLES
             $ALetras [] = ''; //conversion de numeros a letras
             $sueldo ='';
@@ -219,11 +231,11 @@ class ConstanciaController extends Controller
             'user_id' => $user->id,
         ]);
 
-        $pdf = PDF::loadView('Solicitar.Download.PDF-ConstTrab', 
-        compact('autoridadName','autentication', 'personal','sedeEmp','condicion', 'tiemp',
-        'beneficiarios','typepers', 'typepersid','dedicacion','cargo','tipoConst', 'ALetras',
-        'sueldo', 'suma_asig', 'suma_extra', 'neto', 'arraycontrato', 'statudContrato', 'cod'));
-        return $pdf->download('document.pdf');
+        // $pdf = PDF::loadView('Solicitar.Download.PDF-ConstTrab', 
+        // compact('autoridadName','autentication', 'personal','sedeEmp','condicion', 'tiemp',
+        // 'beneficiarios','typepers', 'typepersid','dedicacion','cargo','tipoConst', 'ALetras',
+        // 'sueldo', 'suma_asig', 'suma_extra', 'neto', 'arraycontrato', 'statudContrato', 'cod'));
+        // return $pdf->download('document.pdf');
     }
 
 }
