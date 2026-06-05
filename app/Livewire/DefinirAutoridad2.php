@@ -45,24 +45,52 @@ class DefinirAutoridad extends Component
     {   
         $this->validate(['cedula' => 'required|numeric|exists:personals,cedula']);
         $this->validate(['autentication'=>'required|image|max:1024']);    
-        $searchempleado = Personal::where('cedula','=',$this->cedula)->first(); 
-        //busca la fila del statud=1 y desactivalo
-        $Tochange=Autoridad::where('statud','=',1)->first(); 
-        if($Tochange){ //si existe autoridad anterior
-            $Tochange->update([
-                'statud' => 0,
+        $searchempleado = Personal::where('cedula','=',$this->cedula)->first();
+        //COMENTADA EN ASIGNAR PRIVILEGIOS A LA AUTORIDAD DE MANERA AUTOMATICA Y QUITAR AL ANTERIOR  YA QUE EXISTE EN MOD USUARIO DICHA OPCION
+        //$User = User::where('personal_id','=',$searchempleado->id)->first();
+
+       // if ($User){   
+            //busca la fila del statud=1 y desactivalo
+            $Tochange=Autoridad::where('statud','=',1)->first(); 
+            if($Tochange){ //si existe autoridad anterior
+                $Tochange->update([
+                    'statud' => 0,
+                ]);
+                $Tochange->save(); 
+                // quita privilegios a User
+                // $UserPriv= User::where('personal_id','=',$Tochange->personal_id)->first();
+                // if($UserPriv){
+                //     $UserPriv->update([
+                //         'privilege' => 3,
+                //     ]);
+                //     $UserPriv->save();
+                // }
+            }
+            //CAMBIA PRIVILEGIOS A USER
+            // $User->update([
+            //          'privilege' => 2,
+            //         ]);
+            // $User->save(); 
+            $this->autentication->store('public/autenticaciones'); 
+            $ImgAut=$this->autentication->store(); 
+            //$this->ruta = $ruta;
+            $AddNewjefe = Autoridad::create([
+                'personal_id' => $searchempleado->id,
+                'autentication' => $ImgAut,
+                'statud' => 1,
             ]);
-            $Tochange->save();        
-        }
-        $this->autentication->store('public/autenticaciones'); 
-        $ImgAut=$this->autentication->store(); 
-        //$this->ruta = $ruta;
-        $AddNewjefe = Autoridad::create([
-            'personal_id' => $searchempleado->id,
-            'autentication' => $ImgAut,
-            'statud' => 1,
-        ]);
-        $AddNewjefe->save();      
+            $AddNewjefe->save(); 
+
+       // }
+        // else{
+        //     return back()->with('error','Debe tener un usuario previamente creado, a quien asignarle privilegios');   
+        // }       
+
+
+
+
+
+     
                      
         
         //REGISTRA ACCION user 
