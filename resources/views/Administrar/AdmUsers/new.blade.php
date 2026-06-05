@@ -43,9 +43,9 @@
                     <option value="1">Marca de tu primer auto</option>
                     <option value="2">Nombre de tu primera mascota</option>
                     <option value="3">Lugar favorito donde te gusta ir de vacaciones</option>
-                    <option>Deporte favorito</option>
-                    <option>Comida Favorita</option>
-                    <option>Nombre de tu mejor amigo(a) de la infancia</option>
+                    <option value="4">Deporte favorito</option>
+                    <option value="5">Comida Favorita</option>
+                    <option value="6">Nombre de tu mejor amigo(a) de la infancia</option>
               </select>           
                 <input id="resp1" type="text"   wire:model.live="resp1" required placeholder="RESPUESTA" class="form-control"/>
 
@@ -55,9 +55,9 @@
                     <option value="1">Marca de tu primer auto</option>
                     <option value="2">Nombre de tu primera mascota</option>
                     <option value="3">Lugar favorito donde te gusta ir de vacaciones</option>
-                    <option>Deporte favorito</option>
-                    <option>Comida Favorita</option>
-                    <option>Nombre de tu mejor amigo(a) de la infancia</option>
+                    <option value="4">Deporte favorito</option>
+                    <option value="5">Comida Favorita</option>
+                    <option value="6">Nombre de tu mejor amigo(a) de la infancia</option>
               </select>     
                 <x-input id="resp" type="text"   wire:model.live="resp2" required placeholder="RESPUESTA" class="form-control" style="padding-top:0;"/>
 

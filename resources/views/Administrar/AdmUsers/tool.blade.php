@@ -1,9 +1,4 @@
-@if (session('change_user'))
-    <div class="alert alert-success"> {{ session('change_user') }} </div>
-@endif
-@if (session('change_user_find'))
-    <div class="alert alert-danger"> {{ session('change_user_find') }} </div>
-@endif
+
 <div class="contenedor-tabla">
 
           

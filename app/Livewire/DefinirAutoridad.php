@@ -13,7 +13,7 @@ use Auth;
 class DefinirAutoridad extends Component
 {
     use WithFileUploads;
-    public $UpdJefe, $cedula, $full_name, $autentication, $ruta;
+    public $UpdJefe, $cedula, $full_name, $autentication, $ruta, $User;
 
     public function render()
     {
@@ -43,27 +43,33 @@ class DefinirAutoridad extends Component
 
     public function Save()
     {   
-        $this->validate(['cedula' => 'required|numeric']);
-        $this->validate(['autentication'=>'required|image|max:1024']);
-
+        $this->validate(['cedula' => 'required|numeric|exists:personals,cedula']);
+        $this->validate(['autentication'=>'required|image|max:1024']);    
         $searchempleado = Personal::where('cedula','=',$this->cedula)->first();
-        if ($searchempleado) { 
-            $Tochange=Autoridad::where('statud','=',1)->first(); //busca la fila del statud=1 y desactivalo
+        $User = User::where('personal_id','=',$searchempleado->id)->first();
+
+        if ($User){   
+            //busca la fila del statud=1 y desactivalo
+            $Tochange=Autoridad::where('statud','=',1)->first(); 
             if($Tochange){ //si existe autoridad anterior
                 $Tochange->update([
-                'statud' => 0,
+                    'statud' => 0,
                 ]);
                 $Tochange->save(); 
-                //en dbUser quita privilegios 
-                $User= User::where('personal_id','=',$Tochange->personal_id)->first();
-                if($User){
-                    $User->update([
-                    'privilege' => 3,
+                // quita privilegios a User
+                $UserPriv= User::where('personal_id','=',$Tochange->personal_id)->first();
+                if($UserPriv){
+                    $UserPriv->update([
+                        'privilege' => 3,
                     ]);
-                    $User->save();
+                    $UserPriv->save();
                 }
-                    
             }
+            //CAMBIA PRIVILEGIOS A USER
+            $User->update([
+                     'privilege' => 2,
+                    ]);
+            $User->save(); 
             $this->autentication->store('public/autenticaciones'); 
             $ImgAut=$this->autentication->store(); 
             //$this->ruta = $ruta;
@@ -71,27 +77,28 @@ class DefinirAutoridad extends Component
                 'personal_id' => $searchempleado->id,
                 'autentication' => $ImgAut,
                 'statud' => 1,
-                ]);
-                $AddNewjefe->save(); 
-
-                //en dbUser add privilegios automaticamente
-                // $User = User::where('personal_id','=',$searchempleado->id)->first();
-                //     $User->update([
-                //     'privilege' => 2,
-                //     ]);
-                // $User->save();
-
-            //REGISTRA ACCION user 
-            $RegistAccion = AccionUser::create([
-                'user_id' => Auth::User()->id,
-                'accion' => 'change Autoridad, ahora personal_id: '.$searchempleado->id,
             ]);
-            $RegistAccion->save();
-            $this->clear();
-            return back()->with('mensaje','Responsable de Unidad actualizado');   
-        }
-		
+            $AddNewjefe->save(); 
 
+        }else{
+            return back()->with('error','Debe tener un usuario previamente creado, a quien asignarle privilegios');   
+        }       
+
+
+
+
+
+     
+                     
+        
+        //REGISTRA ACCION user 
+        $RegistAccion = AccionUser::create([
+            'user_id' => Auth::User()->id,
+            'accion' => 'change Autoridad, ahora personal_id: '.$searchempleado->id,
+        ]);
+        $RegistAccion->save();
+        $this->clear();
+        return back()->with('mensaje','Responsable de Unidad actualizado');                
     }
 
 
