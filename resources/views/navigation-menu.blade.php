@@ -11,7 +11,7 @@
                     </x-nav-link>
                 </div>
                 <!-- <img src="{{asset('images/SIGDOL/Sistema de gestión.png')}}" > -->
-                <label class="display-6 text-center" style="color: #0047bb; padding-left: 5%">{{ __('Portal web para general documentación laboral') }}</label>
+                <label class="display-6 text-center" style="color: #0047bb; padding-left: 5%">{{ __('Portal web para generar documentación laboral') }}</label>
 
             @endif 
 

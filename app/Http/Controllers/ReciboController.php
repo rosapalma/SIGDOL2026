@@ -52,7 +52,7 @@ class ReciboController extends Controller
     public function Recibo(Request $request)
     {
         $request->validate([
-            'cedula' => 'required',
+            //'cedula' => 'required',
             'mes' => 'required',
             'anio' => 'required'
         ]);
@@ -71,6 +71,7 @@ class ReciboController extends Controller
         $cedula = $request->cedula;
         $mes_selc = $request->mes;
         $anio_selc = $request->anio;
+        
         $user = $this->User();
         $sedeEmp=$this->Sede();
         $IdEmp = $user['personal_id'];
@@ -98,37 +99,27 @@ class ReciboController extends Controller
 
         $autoridad = $this->Autoridad();
         //VALIDANDO Y PROCESANDO
-        $personal = Personal::where('cedula','=',$cedula)->first(); 
-        if ($personal){
-            if ($privilegio == 3)  {
-                //continua
-                return $IdEmp;
-                if($IdEmp != $personal->id) {
-                    return Redirect::back()->with('error','Sus cédula no correspoden al usuario de inicio de sesión; es decir, NO puede emitir documentación de otro Personal,  "verifique" e ¡intente de nuevo!');
-                }
-            }
-            if($sedeEmp['id'] == $personal->sede_id){
-                $arraytypepers = $personal->typepers()->get();
-                $cargo = $personal->cargo;
-                $arrayspacework = $personal->spacework()->get();
-                foreach ($arraytypepers as $type) {
-                    $typepers=$type['name'];
-                    $typepersid = $type['id'];
-                }
-                // foreach ($arrayspacework as $space) {
-                //         $spacework=$space['name'];
-                // }
-            }else{ //if (verifica sedes)
-                return Redirect::back()->with('error','El empleado no se corresponde a la sede de inicio de sesión. Cada SEDE O INSTITUTO debe generar la constancia de trabajo de sus empleados, "verifique" e ¡intente de nuevo!');
-            }
-                //DEDICATION
-     
-            $dedicacion = $personal->dedication;
 
-        }//if personal
-        else{
-            return Redirect::back()->with('error','Disculpe!, esta persona no se encuentra registrado, consulte al administrador');
+
+        if ($privilegio == 3){
+            $personal = Personal::where('id','=',$IdEmp)->first();  
+        }else{
+           $personal = Personal::where('cedula','=',$request->cedula)->first(); 
+           if (empty($personal)){
+                return Redirect::back()->with('error','El empleado no existe en nuestra DB, "verifique" e ¡intente de nuevo!');
+           }
+          
+            
+          
         }
+        $arraytypepers = $personal->typepers()->get();
+        $cargo = $personal->cargo;
+        $arrayspacework = $personal->spacework()->get();
+        foreach ($arraytypepers as $type) {
+            $typepers=$type['name'];
+            $typepersid = $type['id'];
+        }
+        $dedicacion = $personal->dedication;
         //SOBREVIVIENTE
         if ($request->has('checkSobrev')) {
             $beneficiarios = $personal->beneficiarios()->get(); 
@@ -141,13 +132,13 @@ class ReciboController extends Controller
             foreach($nominas as $nom){              
                 if(($nom['mes'] == $mes_selc) && ($nom['anio'] == $anio_selc)){
                    $nominasAnioMes = $nom; //nominas de año y mes
-                  
+                   $arraynomina = $nominasAnioMes;
+                   $idnomina = $arraynomina->id;
                 }else{
                     return Redirect::back()->with('error','No ha sido cargada al sistema la nomina correspondien al mes/año seleccionado, consulte al administrador');
                 }
             } //END FOREACH
-            $arraynomina = $nominasAnioMes;
-            $idnomina = $arraynomina->id;
+            
 
             DB::table('recibos_g_s')->insert([
                     'codigo' => $cod,

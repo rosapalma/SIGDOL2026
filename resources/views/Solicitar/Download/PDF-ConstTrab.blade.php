@@ -138,12 +138,12 @@ th,td{
 			@if ($typepersid == 1) DOCENTE {{$condicion->name}}</b>
 			@else 
 					{{$typepers}} {{$condicion->name}} </b> de esta Universidad. 
-					Desempeñando el cargo de <b class="text-bold text-uppercase">{{$cargo}}.</b>
+					Desempeñando el cargo de <b class="text-bold text-uppercase">{{$cargo}}</b>
 			@endif
 			
 			
         @if ($personal->jerarquia)
-        	. Con funciones de <b class="text-bold text-uppercase">{{$personal->jerarquia}}.</b>
+        	. Con funciones de <b class="text-bold text-uppercase">{{$personal->jerarquia}}</b>
 				@endif
 				<!-- INGESO Y EGRESO -->			
 				  . Ingresando en esta institucion en fecha <b>{{$personal->fec_ing}}</b>	

@@ -110,7 +110,7 @@
                 <?php $contA=0?>
                 <table style="width: 100%" class="evitar-salto" ><?php $Ttasign=0; ?>
                     <thead>
-                    <tr  align="center" style="background: #7ffa7b; border: 0.5px solid  red;  ">
+                    <tr  align="center" style="background:  #009a44; border: 0.5px solid  red;  ">
                         <th class="">Asignacion(es)</th>
                         <th class="">Monto</th>
                     </tr>
@@ -267,7 +267,7 @@
         <div>
             <table style="width: 100%" class="evitar-salto"> 
                 <thead>
-                    <tr align="center" style="background:#d8d543; border: 0.5px solid  red;  ">
+                    <tr align="center" style="background:#e5e5e5; border: 0.5px solid  red;  ">
                         <th>Deducción(es)</th>
                         <th>Monto</th>
                     </tr>
@@ -399,17 +399,18 @@
     </div>
   
     <!-- QUINCENAS  -->
-    <div align="center" style="background:    #63b4f3; margin-top:1%; margin-left: 10%; margin-right: 10%; width: 70%;">
-        <DIV>Neto: {{$arraynomina['salario_neto']}}</DIV>
+    <div align="center" style=" margin-top:1%; margin-left: 10%; margin-right: 10%; width: 70%; font-weight: bold;">
+        <DIV> <b>Neto: {{$arraynomina['salario_neto']}}</b></DIV>
             <label style="padding-right: 10%">Primera quincena: {{$arraynomina['primera_qna']}}</label>
             <label>Segunda quincena: {{$arraynomina['segunda_qna']}}</label>
     </div>
         <!--BONIFICACIONES--> 
         @if ($arraynomina['beca'] || $arraynomina['bono_nocturno'])
+        <br>
             <div align="center" class="bonif">OTRAS BONIFICACIONES DEL MES</div>
                 <table class="evitar-salto">
                     <thead>
-                        <tr style=" text-align: right; background:    #8ee6f1; border: 0.5px solid  red;  ">
+                        <tr style=" text-align: right; background:    #0047bb; border: 0.5px solid  red; ">
                             <th>Descripcion</th>
                             <th>Monto</th>
                         </tr>
