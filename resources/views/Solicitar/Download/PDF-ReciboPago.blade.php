@@ -2,6 +2,7 @@
 <html lang="en">
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <link href="css/recibos-pdf.css" rel="stylesheet">
         <title>Recibo de pago</title>
     </head>
 <style type="text/css">
@@ -9,76 +10,21 @@
     body {  margin: 0;    padding: 0;          }
     @page { margin: 100px 25px;} /* Margen superior e inferior para dejar espacio al header/footer */
     header {  background-image: url("images/backs/docs/arriba.png");
-          background-repeat: no-repeat;
-        position: fixed;
-        top: -120px;
-        left: 0px;
-        right: 0px;
-        height: 15%;
-        text-align: center;
-    }
+          background-repeat: no-repeat; position: fixed; top: -120px;  left: 0px;  right: 0px;   height: 15%;   text-align: center;    }
 
-    footer {
-        height: 15%; 
-        background-image: url("images/backs/docs/abajo.png");
-        background-repeat: no-repeat;
-        position: fixed; 
-        bottom: -40px; 
-        left: 0px; 
-        right: 0px;
-        
-        text-align: center;
-        line-height: 35px;
-    } 
-       /*   #firma{  
-              background-image: url("images/backs/docs/firma.png");
-              background-repeat: no-repeat;
-              margin-top: 1%;
-              width: 100%;
-              height: 18%;
-              }*/
-           
-
-            table{ 
-                border: 0.5px solid  #222425; 
-                width: 100%;
-                }
-            tr td{
-                font-weight: bold;
-                font-size: 0.7rem;
-            }
-            th{
-                font-weight: bold;
-                font-size: 0.8rem;
-            }
-            .title{
-                font-weight: bold; 
-                font-size: 1.5rem; 
-                font-variant:small-caps;
-                text-transform:uppercase;
-                align-content: center;
-            }
-            .title2{ 
-                font-size: 1.5rem; 
-                color:  #8f9294;
-                margin-top: 0;
-            }
-            .bonif{
-                font-weight:bold;
-                font-size: 0.9rem;
-            }
-            .bonif-2{
-                font-weight:bold;
-                font-size: 0.8rem;
-            }
-            .contenedor-grid {
-                  line-height: 0.2;
-                  font-weight: bold;
-                  font-size: 1rem;
-                  display: flex;
-                }
-             .evitar-salto {    page-break-inside: avoid;  }
-        </style>
+    footer {  height: 15%;  background-image: url("images/backs/docs/abajo.png");    background-repeat: no-repeat; position: fixed;  bottom: -40px; left: 0px;   right: 0px;  text-align: center;line-height: 35px;   } 
+    /*   #firma{  background-image: url("images/backs/docs/firma.png");
+              background-repeat: no-repeat;    margin-top: 1%;    width: 100%;         height: 18%;     }*/
+    table{    border: 0.5px solid  #222425; width: 100%;           }
+    tr td{   font-weight: bold; font-size: 0.7rem;           }
+    th{   font-weight: bold; font-size: 0.8rem;           }
+    .title{   font-weight: bold;    font-size: 1.5rem; font-variant:small-caps; text-transform:uppercase;      align-content: center;           }
+    .title2{ font-size: 1.5rem;  color:  #8f9294;  margin-top: 0;        }
+    .bonif{   font-weight:bold;     font-size: 0.9rem;         }
+    .bonif-2{    font-weight:bold;     font-size: 0.8rem;        }
+    .contenedor-grid {   line-height: 0.2;   font-weight: bold;  font-size: 1rem;       display: flex;          }
+    .evitar-salto {    page-break-inside: avoid;  }
+</style>
 <body>
     <header></header>   
         <div align="center"  class="title">Recibo de pago</div>
@@ -258,7 +204,7 @@
                                 <td align="center"><?php echo number_format($arraynomina['jerarquia_nivel10'],2); ?></td>
                             </tr>
                         @endif
-                            <tr><td align="right"><b>Total: <?php echo number_format($Ttasign,2); ?></b></td></tr>
+                            <tr><td align="right"><b>Total: <?php echo number_format($arraynomina['salario_integral'],2); ?></b></td></tr>
                     </tbody>
                 </table>
         </div>
@@ -355,37 +301,6 @@
                         <tr>
                             <td>ISLR</td>
                             <td align="center"><?php echo number_format($arraynomina['islr'],2);?></td>
-                        </tr>
-                    @endif
-                    <!--APORTES -->
-                    @if($arraynomina['aporte_ley_politica'] > 0)
-                        <tr>
-                            <td>APORTE LEY D' POLÍTICA</td>
-                            <td align="center"><?php echo number_format($arraynomina['aporte_ley_politica'],2);?></td>
-                        </tr>
-                    @endif
-                    @if($arraynomina['aporte_paro_forzoso'] > 0)
-                        <tr>
-                            <td>APORTE PARO FORZOSO</td>
-                            <td align="center"><?php echo number_format($arraynomina['aporte_paro_forzoso'],2);?></td>
-                        </tr>
-                    @endif
-                    @if($arraynomina['aporte_cappaoupel'] > 0)
-                        <tr>
-                            <td>APORTE CAPPAOUPEL</td>
-                            <td align="center"><?php echo number_format($arraynomina['aporte_cappaoupel'],2);?></td>
-                        </tr>
-                    @endif
-                    @if($arraynomina['aporte_capaupel'] > 0)
-                        <tr>
-                            <td>APORTE CAPAUPEL</td>
-                            <td align="center"><?php echo number_format($arraynomina['aporte_capaupel'],2);?></td>
-                        </tr>
-                    @endif
-                    @if($arraynomina['aporte_fondo_ipp'] > 0)
-                        <tr>
-                            <td>APORTE FONDO IPP</td>
-                            <td align="center"><?php echo number_format($arraynomina['aporte_fondo_ipp'],2);?></td>
                         </tr>
                     @endif
                     <tr>
