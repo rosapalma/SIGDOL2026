@@ -179,9 +179,8 @@ class ConstanciaController extends Controller
         }
         //SOBREVIVIENTE
         if ($tipoConst == 5) {
-            if($personal->fec_egre){
-                $beneficiarios = $personal->beneficiarios()->get();
-            }else{
+            $beneficiarios = $personal->beneficiarios()->get();
+            if(empty($beneficiarios)){
                 return Redirect::back()->with('error','Aun no posee afiliación con sobrevivientes, no puede solicitar este tipo de constancia. "consulte a la unidad" e ¡intente de nuevo!'); 
             }
                         

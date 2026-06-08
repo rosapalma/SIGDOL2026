@@ -18,11 +18,12 @@ class BeneficiarioSeeder extends Seeder
        // DB::statement('SET FOREIGN_KEY_CHECKS=1;');
        
         DB::table('beneficiarios')->insert([
-            'name' => 'Esther Victoria',
-            'last_name' => 'Gonzalez Palma',
+            'personal_id'=>1,
+            'cedula' =>2000,
+            'full_name' => 'Esther Victoria Gonzalez Palma',
             'fec_nac' => '2023-01-20',
             'sexo' => 'F',
-            'personal_id' => '1',
+            'porcentaje' => '1',
         ],);
         
     }
