@@ -127,73 +127,54 @@ th,td{
 <div id="page-container">       
   <div id="content-wrap">    	
 		<p class="title" align="center" ><BR><br>
-			@if ($tipoConst == 5)
+		@if($personal->fec_egre)
 				CONSTANCIA
-			@else
-				@if($personal->fec_egre)
-						CONSTANCIA
-				@else
-					CONSTANCIA DE TRABAJO
-				@endif
-			@endif
+		@else
+			CONSTANCIA DE TRABAJO
+		@endif
 
 		</p>
     <p class="content">
-			&nbsp;&nbsp;&nbsp;&nbsp;Quien suscribe, Jefe de la Unidad de Talento Humano del Instituto Pedagógico de Maturín, Núcleo de la Universidad Pedagógica Experimental Libertador, hago constar por medio de la presente que el(la) ciudadano(a) <b class="text-bold text-uppercase">{{$personal->full_name}}</b>, titular de la	cédula de identidad <b class="text-bold upercase">V-{{$personal->cedula}}</b> es miembro del Personal <b class="text-bold text-uppercase">{{$typepers}}</b>
-			@if ($tipoConst != 5)	<!--VALIDAR QUE CONDICION LABORAL ESTE VACIA O NO X ACA VOY-->
-				@if ($condicion)
-					<b class="text-bold text-uppercase"> {{$condicion->name}} </b>
-				@endif
+			&nbsp;&nbsp;&nbsp;&nbsp;Quien suscribe, Jefe de la Unidad de Talento Humano del Instituto Pedagógico de Maturín, Núcleo de la Universidad Pedagógica Experimental Libertador, hago constar por medio de la	presente que el(la) ciudadano(a) <b class="text-bold text-uppercase">{{$personal->full_name}}</b>, titular de la	cédula de identidad <b class="text-bold upercase">V-{{$personal->cedula}}</b> es miembro del Personal <b class="text-bold text-uppercase">
+			@if ($typepersid == 1) DOCENTE {{$condicion->name}}</b>
+			@else 
+					{{$typepers}} {{$condicion->name}} </b> de esta Universidad. 
+					Desempeñando el cargo de <b class="text-bold text-uppercase">{{$cargo}}.</b>
 			@endif
-			de esta Universidad
-			@if ($typepersid == 1)
-				, con la Categoria de <b class="text-bold text-uppercase">{{$personal->categoria}} a {{$personal->dedication}}</b>	
-			@else <!--COMO SERIA EN CASO DE UN JUBILADO -->
-				. Desempeñando el cargo de <b class="text-bold text-uppercase">{{$cargo}}.</b>
-			@endif  
-						
-      @if ($personal->jerarquia)
+		
+			
+			
+        @if ($personal->jerarquia)
         	 Con funciones de <b class="text-bold text-uppercase">{{$personal->jerarquia}}.</b>
-			@endif
+				@endif
 				<!-- INGESO Y EGRESO -->			
-				   .Ingresando en esta institucion en fecha <b>{{$personal->fec_ing}}</b>	
+				   Ingresando en esta institucion en fecha <b>{{$personal->fec_ing}}</b>	
 				  @if($personal->fec_egre)
 				  	al <b>{{$personal->fec_egre}}</b>
 				  @endif
-				@if ($tipoConst == 5)
-				  Quedando como sobreviviente <b class="text-bold text-uppercase">{{$sobrev->full_name}}</b> titular de la cedula de identidad <b class="text-bold text-uppercase"> V-{{$sobrev->cedula}}</b>, devengando una Pension de Sobreviviente del {{$sobrev->porcentaje}}% de 
-				  <?php $sueldo = $sobrev['total_pension'];?> 
-				  <small class="text-bold text-uppercase">{{ $ALetras }}</small>
-					<?php echo  '(Bs. '.number_format($sueldo,2).').';?> 
-
-					@if ($sobrev->fec_pension)
- 						Fecha de pension {{$sobrev->fec_pension}}.
- 					@endif
+				  @if ($sobrev)
+ 						. Quedando como sobreviviente<b class="text-bold text-uppercase">{{$sobrev->full_name}}<b>titular de la cédula de identidad número <b>{{$sobrev->cedula}}, devengando una Pension de sobreviviente del {{$sobrev->porcentaje}} de
+ 							<?php $sueldo = $sobrev->total_asignaciones;?>
 				
-				@endif
+					@endif
 				<!-- SUELDO BASE & INTG -->
 				@if ($tipoConst == 2) <!-- con sueldo base -->
 					<?php $sueldo = $sueldo['salario_basico'];?>
 					. Devengando un sueldo mensual de
 					<small class="text-bold text-uppercase">{{ $ALetras }}</small>
-					<?php echo  '(Bs. '.number_format($sueldo,2).').';?>. 
+					<?php echo  '(Bs. '.number_format($sueldo,2).').';?>. Fecha de pension {{$sobrev->fec_pension}}
 				@endif
-				@if ($tipoConst == 3)  <!-- con sueldo integral -->
+				@if ($tipoConst >= 3)  <!-- con sueldo integral -->
                     <?php $sueldo = $sueldo['salario_integral'];?>
-					 Con una remuneración mensual de
+					. Con una remuneración mensual de
 					<small class="text-bold text-uppercase"> {{ $ALetras }}</small>
 					<?php echo ' (Bs. '.number_format($sueldo,2).').'; ?>
 				@endif
-				@if ($tipoConst == 4)  <!-- con sueldo integral -->
-                    <?php $sueldo = $sueldo['salario_integral'];?>
-					 Con una remuneración mensual de
-					<small class="text-bold text-uppercase"> {{ $ALetras }}</small>
-					<?php echo ' (Bs. '.number_format($sueldo,2).').'; ?>
-				@endif
+				<br><br>
 				<!-- TIEMPO DE SERVICIO -->
-				@if($tiemp > 0)
-					<br><br>TIEMPO DE SERVICIO: {{$tiemp}} años...</b>
-				@endif
+				<br><b>TIEMPO DE SERVICIO:
+					<?php printf('%d año(s), %d mes(es)', $tiemp->y, $tiemp->m);?></b>
+				
 				<!-- FECHAS DE EMISION -->
 				<br><br><br>
 				<p style="margin-left: 5%;margin-right: 5%;"> Constancia que se expide a solicitud de la parte interesada en 

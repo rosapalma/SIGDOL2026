@@ -31,8 +31,5 @@ class CondicionlaboralSeeder extends Seeder
         DB::table('condicionlaborals')->insert(
             ['name' => 'Pensionado','abrev' => 'PENS'],  
         );
-        DB::table('condicionlaborals')->insert(
-        ['name' => 'Sobreviviente','abrev' => 'SOBVI'],  
-        );
     }
 }

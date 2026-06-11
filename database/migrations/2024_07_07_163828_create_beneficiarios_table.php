@@ -16,11 +16,14 @@ return new class extends Migration
             $table->bigIncrements('id');
             $table->unsignedBigInteger('personal_id');
             $table->integer('cedula')->nullable();
-            $table->string('full_name');
+            $table->string('full_name')->nullable();
             $table->date('fec_nac')->nullable();
-            $table->integer('porcentaje')->nullable();
-            $table->string('sexo')->nullable();
+            $table->date('fec_pension')->nullable();
+            $table->float('porcentaje')->nullable();
+            $table->float('total_pension')->nullable(); //total del fallecido
             $table->timestamps();
+
+    
 
             $table->foreign('personal_id')->references('id')->on('personals');
         });

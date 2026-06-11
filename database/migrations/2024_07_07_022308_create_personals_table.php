@@ -14,21 +14,24 @@ return new class extends Migration
         Schema::create('personals', function (Blueprint $table) {
             $table->engine = 'InnoDB';
             $table->bigIncrements('id');
+            $table->string('nac');
             $table->integer('cedula')->unique();
             $table->string('full_name')->nullable();
             $table->string('sexo')->nullable();
-            $table->string('email')->nullable();
-            $table->string('cargo')->nullable();
-            $table->string('dep_adsc')->nullable(); //dependencia de adscripcion
-            $table->string('categoria')->nullable(); //categoria academica
+            $table->string('email')->nullable(); 
             $table->date('fec_ing')->nullable();
             $table->date('fec_egre')->nullable();
-            $table->string('dedication')->nullable();
-            $table->float('porcentaje_jub_pens')->nullable();            
+            $table->date('fec_fallecido')->nullable();
+            $table->string('cargo')->nullable();
+            $table->string('dep_adsc')->nullable(); //dependencia de adscripcion   
             $table->unsignedBigInteger('spacework_id')->nullable(); //dpto
             $table->unsignedBigInteger('condicionlaboral_id')->nullable();
             $table->unsignedBigInteger('typepers_id')->nullable();
             $table->text('jerarquia')->nullable();
+            $table->string('categoria')->nullable(); //categoria academica
+            $table->string('dedication')->nullable(); 
+            $table->string('anos_servicio')->nullable();
+            $table->float('porcentaje_jub_pens')->nullable(); 
             $table->unsignedBigInteger('sede_id')->nullable();
             $table->timestamps();
 

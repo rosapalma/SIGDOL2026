@@ -20,6 +20,7 @@ class PersonalSeeder extends Seeder
         //DB::statement('SET FOREIGN_KEY_CHECKS=1;'); 
 
         DB::table('personals')->insert([
+            'nac' => 'V',
             'cedula' => '17708149',
             'full_name' => 'PALMA BRAVO ROSA VIRGINIA',
             'cargo' => 'Analista',

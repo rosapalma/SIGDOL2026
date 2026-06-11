@@ -31,10 +31,11 @@
               </select>
             </div><br>
          
-<!-- 
           <div>
-              <input type="text" id="inputBenef" name="cedulaBenef"  class="form-control" style="font-size: 2rem" onkeyUp="return ValNumero(this);" placeholder="Cédula del Beneficiario">
-          </div> -->
+              <input type="text" id="inputBenef" name="cedulaBenef"  class="form-control" style="font-size: 2rem" onkeyUp="return ValNumero(this);" placeholder="cédula del sobreviviente">
+              <p id="resultadoNota"></p>
+          </div>
+
           <!--   <div>
               <input type="checkbox" id="TS" name="TS"  class="check" value="1"/>
               <label style="margin-left:2%"><b>TIEMPO DE SERVICIO</b></label>
@@ -57,7 +58,7 @@
 </div>    <!--close fade, id-->
 
 
-<!-- <script>
+<script>
 //USANDO EL SELECT
     inputBenef.style.display = 'none'; // Ocultar
 
@@ -68,10 +69,10 @@
         //alert("valor =" +valor);
         if (valor == 5){
             inputBenef.style.display = 'block'; // Mostrar
-           // alert("valor =" +valor);
         }else{
           inputBenef.style.display = 'none'; // Ocultar
+           document.getElementById("resultadoNota").innerHTML = "";
         }
         
     });
-</script> -->
+</script>

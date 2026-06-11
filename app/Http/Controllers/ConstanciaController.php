@@ -136,6 +136,7 @@ class ConstanciaController extends Controller
             $neto = '';
             $tiemp ='';
             $beneficiarios=[];
+            $sobrev = '';
             $arraycontrato='';
             $statudContrato=''; 
             $arraybenef ='';
@@ -161,7 +162,7 @@ class ConstanciaController extends Controller
         }
 
         //CON SUELDO INTEGRAL
-        if ($tipoConst >= 3){
+        if ($tipoConst == 3 || $tipoConst == 4){
             $sueldo = NominaExcel::where('personal_id','=',$personal->id)->orderBy('id','desc')->first();  //SUELDO ASIGNADO A ESA NOMINA DEL EMPLEADO
             if (empty($sueldo)){
                 return Redirect::back()->with('error','No tiene un sueldo definido.. "verifique" e ¡intente de nuevo!');
@@ -179,37 +180,47 @@ class ConstanciaController extends Controller
         }
         //SOBREVIVIENTE
         if ($tipoConst == 5) {
+            //preguntar si xq si deben tener fecha de egreso
             $beneficiarios = $personal->beneficiarios()->get();
-            if(empty($beneficiarios)){
+            $CountSobr = count($beneficiarios);
+            if(empty($CountSobr)){
                 return Redirect::back()->with('error','Aun no posee afiliación con sobrevivientes, no puede solicitar este tipo de constancia. "consulte a la unidad" e ¡intente de nuevo!'); 
+            }else{                
+                $sobrev = Beneficiario::where('cedula', '=',$request->cedulaBenef)->first();
+                $monto= $sobrev['total_pension'];
+                $formatter = new NumeroALetras();
+                $ALetras= $formatter->toMoney($monto, 2, 'Bolivares', 'CENTIMOS');
+                if (empty($sobrev)){
+                    return Redirect::back()->with('error','sus datos no corresponden a un sobreviviente. "consulte a la unidad" e ¡intente de nuevo!'); 
+                }
             }
-                        
-        }
+        }            
 
 
         //CREANDO CODIGO
-        $fecha= $this->FechaAct();
+       echo $fecha= $this->FechaAct();
         $anio = Date('Y');
         //echo $this->Codigo();
         $cod =  'CONST-'.$sedeEmp->abrev.'-'.$anio.'-'.$this->Codigo();  //sede+Aano+codigo
 
         // TIEMPO DE SERVICIO
         $TS =   true; 
-        $anio = Date('Y');
-        if (!empty ($TS)){
-            if (empty($personal->fec_egre) ) {
-                //   echo "trabaja aun desde hata fecha actual ";
-                $date_Act = $this->FechaAct(); //fecha actual
-                $fecha1 = new DateTime(date($personal->fec_ing));
-                $fecha2 = new DateTime(date($date_Act));
-                $tiemp = $fecha1->diff($fecha2);
-            }elseif ($personal->fec_egre){
-                //    echo "Ya no trabaja";
-                $fecha1 = new DateTime(date($personal->fec_ing));
-                $fecha2 = new DateTime(date($personal->fec_egre));
-                $tiemp = $fecha1->diff($fecha2);
-            }
-        }
+        // $anio = Date('Y');
+        // if (!empty ($TS)){
+        //     if (empty($personal->fec_egre) ) {
+        //         //   echo "trabaja aun desde hata fecha actual ";
+        //         $date_Act = $this->FechaAct(); //fecha actual
+        //         $fecha1 = new DateTime(date($personal->fec_ing));
+        //         $fecha2 = new DateTime(date($date_Act));
+        //         $tiemp = $fecha1->diff($fecha2);
+        //     }elseif ($personal->fec_egre){
+        //         //    echo "Ya no trabaja";
+        //         $fecha1 = new DateTime(date($personal->fec_ing));
+        //         $fecha2 = new DateTime(date($personal->fec_egre));
+        //         $tiemp = $fecha1->diff($fecha2);
+        //     }
+        // }
+        $tiemp = $personal->anos_servicio;
         DB::table('const_g_s')->insert([
             'codigo' => $cod,
             'fechaEmi' => $this->FechaAct(),
@@ -220,7 +231,7 @@ class ConstanciaController extends Controller
 
         $pdf = PDF::loadView('Solicitar.Download.PDF-ConstTrab', 
         compact('autoridadName','autentication', 'personal','sedeEmp','condicion', 'tiemp',
-        'beneficiarios','typepers', 'typepersid','dedicacion','cargo','tipoConst', 'ALetras',
+        'beneficiarios','sobrev','typepers', 'typepersid','dedicacion','cargo','tipoConst', 'ALetras',
         'sueldo', 'suma_asig', 'suma_extra', 'neto', 'arraycontrato', 'statudContrato', 'cod'));
         return $pdf->download('document.pdf');
     }

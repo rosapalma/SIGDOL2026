@@ -8,7 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class Beneficiario extends Model
 {
     use HasFactory;
-    protected $fillable = ['personal_id', 'cedula','full_name', 'fec_nac','sexo','porcentaje'];
+    protected $fillable = ['personal_id', 'cedula','full_name', 'fec_nac','porcentaje','fec_pension','total_pension'];
+
 
     public function empleados() 
     {

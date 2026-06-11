@@ -347,37 +347,6 @@
                 </table>
             </div>
         @endif 
-        <!--SOBREVIVIENTES-->
-        @if(count($beneficiarios) > 0)
-            <br> 
-            <small align="center" class="bonif" style="padding: 0"> <b>SOBREVIVIENTE(S)</b></small>
-                <div class="div-table">           
-                    <table class="">
-                        <thead>
-                            <tr style="background-color: #BAB9B8;">
-                                <th>CÉDULA</th>
-                                <th>NOMBRE Y APELLIDO</th>
-                                <th>FECHA NAC.</th>
-                                <th>PORCENTAJE</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach ($beneficiarios as $bene)
-                                <tr>
-                                    @if (empty($bene->cedula))}
-                                        <td style="text-align: center;">S/N</td>
-                                    @else
-                                        <td style="text-align: center;">{{$bene->cedula}}</td>
-                                    @endif
-                                    <td>{{$bene->full_name}}</td>
-                                    <td style="text-align: center;">{{$bene->fec_nac}}</td>
-                                    <td style=" text-align: center;">{{$bene->porcentaje}}%</td>
-                                </tr>
-                            @endforeach
-                        </tbody>
-                    </table>
-                </div>
-        @endif
         <br>
         <!-- AUTENTICACION -->    
         <div align="center">

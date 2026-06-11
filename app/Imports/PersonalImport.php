@@ -87,58 +87,51 @@ class PersonalImport implements  ToCollection, WithHeadingRow, WithBatchInserts,
                  $CondLab = 2; //CONT
             }
 
-            //------FECHA DE EGRESO---------
-            // if ($row['fecha_de_egreso']==''){
-            //     $fec_egre = null;
-            // }else{
-            //     $fec_egre = Date::excelToDateTimeObject((float)$row['fecha_de_egreso']);
-            // }
-            if ($row['fecha_de_egreso']){
-                 $egreso = Date::excelToDateTimeObject($row['fecha_de_egreso']);
-            }else{
-                $egreso = null;
+            //VALIDAR CELDAS DE FECHA
+            if (isset($row['fecha_de_ingreso']) && trim($row['fecha_de_ingreso']) !== '') {
+                $fechaIngreso = Date::excelToDateTimeObject((float)$row['fecha_de_ingreso']);
+            } else {
+                $fechaIngreso = null; 
+            }
+            if (isset($row['fecha_de_egreso']) && trim($row['fecha_de_egreso']) !== '') {
+                $egreso = Date::excelToDateTimeObject((float)$row['fecha_de_egreso']);
+            } else {
+                $egreso = null; 
             }
 
-            // $valor = $row['fecha_de_egreso'];
-            // // Validamos que no sea nulo, ni cadena vacía, ni cero
-            // if (!empty($valor) && $valor != 0) {
-            //     $fechaObjeto = Date::excelToDateTimeObject((float)$valor);
-            //     $fechaFormateada = $fechaObjeto->format('Y-m-d');
-            // } else {
-            //     // Manejo de celda vacía: puedes dejarla como null o string vacío
-            //     $fechaFormateada = null; 
-            // }
 
-
-              //ADD | UPDATE TABLE EMPLEADO
+            //ADD | UPDATE TABLE EMPLEADO
             $emp= Personal::where('cedula','=',$row['cedula'])->first();
             if ($emp){
+                $emp->nac = $row['n'];
                 $emp->cedula = $row['cedula'];
                 $emp->full_name = $row['apellidos_y_nombres'];
-                $emp->fec_ing =  Date::excelToDateTimeObject((float)$row['fecha_de_ingreso']);
+                $emp->fec_ing =  $fechaIngreso;
                 $emp->fec_egre = $egreso;
-                //$emp->fec_egre =  Date::excelToDateTimeObject((float)$row['fecha_de_egreso']);
                 $emp->dedication = $row['tiempo_de_dedicacion'];
-                //$emp->porcentaje_jub_pens = $row['porcentaje_de_jubilacion_o_pension'];
+                $emp->porcentaje_jub_pens = $row['porcentaje_de_jubilacion_o_pension'];
+                $emp->anos_servicio = $row['anos_de_servicio'];
                 $emp->sede_id = 2;
                 $emp->cargo = $row['cargo'];
                 $emp->dep_adsc = $row['dependencia_de_adscripcion'];
-               // $emp->categoria = $row['categoria_academica'];
+                $emp->categoria = $row['categoria_academica'];
                 $emp->jerarquia = $row['denominacion_cargo_de_jerarquia'];
                 $emp->typepers_id = $tipepers;
                 $emp->condicionlaboral_id = $CondLab;
                 $emp->save();
             }else{
                 Personal::create([
+                'nac' => $row['n'],
                 'cedula' => $row['cedula'],
                 'full_name' => $row['apellidos_y_nombres'],
                 'cargo' => $row['cargo'],
                 'dep_adsc' => $row['dependencia_de_adscripcion'],
-                //'categoria' => $row['categoria_academica'],
-                'fec_ing'=>  Date::excelToDateTimeObject((float)$row['fecha_de_ingreso']),
-                'fec_egre'=>  Date::excelToDateTimeObject((float)$row['fecha_de_egreso']),
+                'categoria' => $row['categoria_academica'],
+                'fec_ing'=>  $fechaIngreso,
+                'fec_egre'=>  $egreso,
                 'dedication' => $row['tiempo_de_dedicacion'],
-                //'porcentaje_jub_pens' => $row['porcentaje_de_jubilacion_o_pension'],
+                'porcentaje_jub_pens' => $row['porcentaje_de_jubilacion_o_pension'],
+                'anos_servicio' => $row['anos_de_servicio'],
                 'sede_id'=>2,
                 'jerarquia' => $row['denominacion_cargo_de_jerarquia'],
                 'typepers_id' => $tipepers,

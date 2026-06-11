@@ -19,11 +19,11 @@ class BeneficiarioSeeder extends Seeder
        
         DB::table('beneficiarios')->insert([
             'personal_id'=>1,
-            'cedula' =>2000,
+            'cedula' =>11111,
             'full_name' => 'Esther Victoria Gonzalez Palma',
             'fec_nac' => '2023-01-20',
-            'sexo' => 'F',
-            'porcentaje' => '1',
+            'porcentaje' => 50,
+            'fec_pension' => '2026-01-20',
         ],);
         
     }

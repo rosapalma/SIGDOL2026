@@ -45,14 +45,7 @@
                   <option value="11">Noviembre</option>
                   <option value="12">Diciembre</option>
                 </select>
-           </div>
-            <div>
-              Sobreviviente &nbsp;&nbsp;
-              <input type="checkbox" name="checkSobrev" value="">
-            </div>
-            <br>
-
-
+           </div><br>
            <div class="form-group">
               <x-button class="ms-4">
                     {{ __('Ver | Descargar | imprimir ') }}
