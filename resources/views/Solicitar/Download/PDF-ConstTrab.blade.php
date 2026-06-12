@@ -145,18 +145,18 @@ th,td{
 					<b class="text-bold text-uppercase"> {{$condicion->name}} </b>
 				@endif
 			@endif
-			de esta Universidad
+			de esta Universidad,
 			@if ($typepersid == 1)
-				, con la Categoria de <b class="text-bold text-uppercase">{{$personal->categoria}} a {{$personal->dedication}}</b>	
+				con la Categoria de <b class="text-bold text-uppercase">{{$personal->categoria}} a {{$personal->dedication}}</b>	
 			@else <!--COMO SERIA EN CASO DE UN JUBILADO -->
-				. Desempeñando el cargo de <b class="text-bold text-uppercase">{{$cargo}}.</b>
+				desempeñando el cargo de <b class="text-bold text-uppercase">{{$cargo}}.</b>
 			@endif  
 						
       @if ($personal->jerarquia)
         	 Con funciones de <b class="text-bold text-uppercase">{{$personal->jerarquia}}.</b>
 			@endif
 				<!-- INGESO Y EGRESO -->			
-				   .Ingresando en esta institucion en fecha <b>{{$personal->fec_ing}}</b>	
+				   Ingresando en esta institucion en fecha <b>{{$personal->fec_ing}}</b>	
 				  @if($personal->fec_egre)
 				  	al <b>{{$personal->fec_egre}}</b>
 				  @endif
@@ -192,7 +192,7 @@ th,td{
 				@endif
 				<!-- TIEMPO DE SERVICIO -->
 				@if($tiemp > 0)
-					<br><br>TIEMPO DE SERVICIO: {{$tiemp}} años...</b>
+					<br><br><b>TIEMPO DE SERVICIO: {{$tiemp}} años.</b>
 				@endif
 				<!-- FECHAS DE EMISION -->
 				<br><br><br>
