@@ -140,10 +140,9 @@ th,td{
 		</p>
     <p class="content">
 			&nbsp;&nbsp;&nbsp;&nbsp;Quien suscribe, Jefe de la Unidad de Talento Humano del Instituto Pedagógico de Maturín, Núcleo de la Universidad Pedagógica Experimental Libertador, hago constar por medio de la presente que el(la) ciudadano(a) <b class="text-bold text-uppercase">{{$personal->full_name}}</b>, titular de la	cédula de identidad <b class="text-bold upercase">V-{{$personal->cedula}}</b> es miembro del Personal <b class="text-bold text-uppercase">{{$typepers}}</b>
-			@if ($tipoConst != 5)	<!--VALIDAR QUE CONDICION LABORAL ESTE VACIA O NO X ACA VOY-->
-				@if ($condicion)
-					<b class="text-bold text-uppercase"> {{$condicion->name}} </b>
-				@endif
+		<!--VALIDAR QUE CONDICION LABORAL ESTE VACIA O NO X ACA VOY-->
+			@if ($condicion)
+				<b class="text-bold text-uppercase"> {{$condicion->name}} </b>
 			@endif
 			de esta Universidad,
 			@if ($typepersid == 1)

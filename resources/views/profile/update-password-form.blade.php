@@ -33,5 +33,8 @@
         <x-button onclick="confirm('¿Está seguro?') || event.stopImmediatePropagation()">
             {{ __('Guardar') }}
         </x-button>
+        <x-action-message class="me-3" on="saved">
+            <span class="text-green-800 font-bold">{{ __('¡Contraseña actualizada!') }}</span>
+        </x-action-message>
     </x-slot>
 </x-form-section>
