@@ -90,7 +90,7 @@ class AdmUsers extends Component
         }
 
         if($this->Actcont){ 
-            $this->validate(['contraseña' => 'required', 'min:8', 'confirmed']);       
+            $this->validate(['contraseña' => 'required|min:8|confirmed']);       
             $UpdateUser->update([
                 'password' => Hash::make($this->contraseña),
                 'user_update' =>  Auth::user()->id,

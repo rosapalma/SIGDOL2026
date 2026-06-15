@@ -112,6 +112,9 @@ class ReciboController extends Controller
             
           
         }
+        if($personal->condicion){
+            return Redirect::back()->with('error','No puede emitir este tipo de documentoción, consulte al administrador');
+        }
         $arraytypepers = $personal->typepers()->get();
         $cargo = $personal->cargo;
         $arrayspacework = $personal->spacework()->get();

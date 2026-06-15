@@ -32,6 +32,7 @@ return new class extends Migration
             $table->string('dedication')->nullable(); 
             $table->string('anos_servicio')->nullable();
             $table->float('porcentaje_jub_pens')->nullable(); 
+            $table->string('condicion')->nullable(); 
             $table->unsignedBigInteger('sede_id')->nullable();
             $table->timestamps();
 
