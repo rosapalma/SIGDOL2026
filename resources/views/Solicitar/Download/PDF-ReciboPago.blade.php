@@ -71,7 +71,7 @@
                           
                         @if ($arraynomina['prima_fliar'] > 0)
                             <tr>
-                                <td>PRIMA FLIAR. </td>
+                                <td>PRIMA FAMILIAR </td>
                                 <td align="center"><?php echo number_format($arraynomina['prima_fliar'],2); ?></td>
                             </tr>
                         @endif
