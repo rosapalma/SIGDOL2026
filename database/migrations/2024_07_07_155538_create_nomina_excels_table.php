@@ -36,7 +36,6 @@ return new class extends Migration
             $table->float('jerarquia_nivel8')->nullable();
             $table->float('jerarquia_nivel9')->nullable();
             $table->float('jerarquia_nivel10')->nullable();
-            $table->float('prima_titular')->nullable();
             $table->float('prima_chofer')->nullable();
             $table->float('prima_antiguedad')->nullable();
             $table->float('total_asignaciones')->nullable();
