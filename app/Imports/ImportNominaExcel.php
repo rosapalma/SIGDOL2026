@@ -59,7 +59,6 @@ class ImportNominaExcel implements ToCollection, WithHeadingRow, WithBatchInsert
                 'salario_integral' => $row['salario_integral'],
                 //***********deduciones********
                 'seguro_social' => $row['seguro_social'],
-                'paro_forzoso' => $row['paro_forzoso'],
                 'ley_politica' => $row['ley_de_politica'],
                 'capaupel_docentes' => $row['capaupel_docentes'],
                 'cappaoupel_adm_obr' => $row['cappaoupel_adm_obr'],
@@ -77,6 +76,7 @@ class ImportNominaExcel implements ToCollection, WithHeadingRow, WithBatchInsert
                 'segunda_qna' => $row['segunda_quincena'],
                 'bono_nocturno' => $row['bono_nocturno'],
                 'beca' => $row['beca'],
+                'pension_alimenticia'=>$row['pension_alimenticia'],
                 'mes' => $row['mes'],
                 'anio' => $row['anio'],
                

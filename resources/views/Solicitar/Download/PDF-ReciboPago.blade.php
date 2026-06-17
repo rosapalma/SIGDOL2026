@@ -324,18 +324,30 @@
                         </tr>
                     </thead>
                     <tbody>
-                            <tr>
+                           
                                 @if ($arraynomina['beca']>0)
+                                 <tr>
                                     <th align="left"> Beca</th>
                                     <th align="center"><?php  echo number_format($arraynomina['beca'],2);?></th>
+                                </tr>
                                 @endif
-                            </tr>
-                            <tr>
+                         
+                            
+                                @if ($arraynomina['pension_alimenticia']>0)
+                                <tr>
+                                    <th align="left"> Pensión alimenticia</th>
+                                    <th align="center"><?php  echo number_format($arraynomina['pension_alimenticia'],2);?></th>
+                                 </tr>
+                                @endif
+                           
+                            
                                 @if ($arraynomina['bono_nocturno']>0)
+                                <tr>
                                     <th align="left"> Bono Nocturno</th>
                                     <th align="center"><?php  echo number_format($arraynomina['bono_nocturno'],2);?></th>
+                                </tr>
                                 @endif
-                            </tr>
+                            
                     </tbody>
                 </table>
             </div>
