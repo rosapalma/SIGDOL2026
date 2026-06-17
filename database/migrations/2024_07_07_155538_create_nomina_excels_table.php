@@ -55,12 +55,6 @@ return new class extends Migration
             $table->float('salario_neto')->nullable();        
             $table->float('islr')->nullable();            
             $table->float('total_deducciones')->nullable();
-            $table->float('aporte_seguro_social')->nullable();
-            $table->float('aporte_ley_politica')->nullable();
-            $table->float('aporte_paro_forzoso')->nullable();
-            $table->float('aporte_cappaoupel')->nullable();
-            $table->float('aporte_capaupel')->nullable();
-            $table->float('aporte_fondo_ipp')->nullable();
             $table->float('primera_qna')->nullable();
             $table->float('segunda_qna')->nullable();
             $table->float('bono_nocturno')->nullable();

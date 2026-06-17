@@ -131,29 +131,32 @@ class ReciboController extends Controller
         
 
         $nominas= $personal->nominas()->orderBy('id','asc')->get();
-        if($nominas){
+        if(empty($nominas)){
+           return Redirect::back()->with('error','Aun NO tiene ninguna nomina registrada, consulte al administrador');
+        }else{
             foreach($nominas as $nom){              
                 if(($nom['mes'] == $mes_selc) && ($nom['anio'] == $anio_selc)){
                    $nominasAnioMes = $nom; //nominas de año y mes
                    $arraynomina = $nominasAnioMes;
                    $idnomina = $arraynomina->id;
-                }else{
-                    return Redirect::back()->with('error','No ha sido cargada al sistema la nomina correspondien al mes/año seleccionado, consulte al administrador');
                 }
             } //END FOREACH
-            
-
-            DB::table('recibos_g_s')->insert([
-                    'codigo' => $cod,
-                    'fechaEmi' => $fechaAct,
-                    'nomina_id' => $idnomina,
-                    'personal_id' =>$IdEmp,
-                    'user_id' => $user->id,
-                    ]);
-                   
-        }else{
-            return Redirect::back()->with('error','Aun NO tiene ninguna nomina registrada, consulte al administrador');
         }
+        if(empty($idnomina)){
+            return Redirect::back()->with('error','No ha sido cargada al sistema la nomina correspondien al mes/año seleccionado, consulte al administrador');
+        }else{
+            DB::table('recibos_g_s')->insert([
+            'codigo' => $cod,
+            'fechaEmi' => $fechaAct,
+            'nomina_id' => $idnomina,
+            'personal_id' =>$IdEmp,
+            'user_id' => $user->id,
+            ]);
+        }
+        
+    
+                   
+     
         $pdf = \PDF::loadView('Solicitar.Download.PDF-ReciboPago',compact('fechaAct','cod','autoridadName','autentication','personal','typepers','typepersid','cargo','dedicacion','arraynomina','sedeEmp','beneficiarios'));
         //$pdf->setPaper('a4', 'landscape'); //horizontal
         return $pdf->download('Recido de pago.pdf');

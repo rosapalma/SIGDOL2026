@@ -73,6 +73,7 @@ class ImportNominaExcel implements ToCollection, WithHeadingRow, WithBatchInsert
                 'islr' => $row['islr'],
                 'total_deducciones' => $row['total_deducciones'],
                 'salario_neto' => $row['salario_neto'],
+                'primera_qna' => $row['primera_quincena'],
                 'segunda_qna' => $row['segunda_quincena'],
                 'bono_nocturno' => $row['bono_nocturno'],
                 'beca' => $row['beca'],

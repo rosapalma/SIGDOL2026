@@ -74,7 +74,7 @@ class BeneficiariosImport implements ToCollection, WithHeadingRow, WithBatchInse
                     'categoria' => $row['categoria_academica'],
                     'dedication' => $row['tiempo_de_dedicacion'],
                     'porcentaje_jub_pens' => $row['porcentaje_de_jubilacion_o_pension'],
-                    'dedication' => $row['condicion'],
+                    'condicion' => $row['condicion'],
                     'sede_id'=>2,
                     'typepers_id' => $tipepers, 
                 ]);

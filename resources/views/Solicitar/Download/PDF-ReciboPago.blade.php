@@ -34,8 +34,7 @@
     <div class="contenedor-grid">
         <p style="text-transform: uppercase;">{{$personal->full_name}}</p>
         <p><b>Cédula de Identidad:  {{$personal->cedula}}</b></p>
-        
-            <p>Tipo de Personal: &nbsp;{{$typepers}}</p> 
+        <p>Tipo de Personal: &nbsp;{{$typepers}}</p> 
         @if ($typepersid > 1)         
             <P style="text-wrap: balance;">Cargo:&nbsp;{{$cargo}}</P>
         @endif
@@ -283,12 +282,6 @@
                         <tr>
                             <td>ASETA</td>
                             <td align="center"><?php echo number_format($arraynomina['aseta_adm'],2);?></td>
-                        </tr>
-                    @endif
-                    @if ($arraynomina['satiutecpri_obrero'] > 0)
-                        <tr>
-                            <td>SATIUTECPRI</td>
-                            <td align="center"><?php echo number_format($arraynomina['satiutecpri_obrero'],2);?></td>
                         </tr>
                     @endif
                     @if ($arraynomina['fondo_ipp'] > 0)
