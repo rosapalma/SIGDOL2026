@@ -242,7 +242,7 @@
                             <td align="center"><?php echo number_format($arraynomina['satiutecpri_obrero'],2); ?></td>
                         </tr>
                     @endif
-                    @if ($arraynomina['pensión_alimenticia'] > 0)
+                    @if ($arraynomina['pension_alimenticia'] > 0)
                         <tr>
                             <td>PENSIÓN ALIMENTICIA</td>
                             <td align="center"><?php echo number_format($arraynomina['pension_alimenticia'],2);?></td>
@@ -331,16 +331,7 @@
                                     <th align="center"><?php  echo number_format($arraynomina['beca'],2);?></th>
                                 </tr>
                                 @endif
-                         
-                            
-                                @if ($arraynomina['pension_alimenticia']>0)
-                                <tr>
-                                    <th align="left"> Pensión alimenticia</th>
-                                    <th align="center"><?php  echo number_format($arraynomina['pension_alimenticia'],2);?></th>
-                                 </tr>
-                                @endif
-                           
-                            
+
                                 @if ($arraynomina['bono_nocturno']>0)
                                 <tr>
                                     <th align="left"> Bono Nocturno</th>
