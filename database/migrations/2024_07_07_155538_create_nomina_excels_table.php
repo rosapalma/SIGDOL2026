@@ -20,6 +20,7 @@ return new class extends Migration
             $table->float('prima_act_univ')->nullable();
             $table->float('prima_pregrado')->nullable();
             $table->float('prima_tsu')->nullable();
+            $table->float('prima_titular')->nullable();
             $table->float('prima_maestria')->nullable();
             $table->float('prima_especializacion')->nullable();
             $table->float('prima_doctorado')->nullable();
@@ -35,7 +36,6 @@ return new class extends Migration
             $table->float('jerarquia_nivel8')->nullable();
             $table->float('jerarquia_nivel9')->nullable();
             $table->float('jerarquia_nivel10')->nullable();
-            $table->float('prima_titular')->nullable();
             $table->float('prima_chofer')->nullable();
             $table->float('prima_antiguedad')->nullable();
             $table->float('total_asignaciones')->nullable();

@@ -87,7 +87,7 @@
                                 <td align="center"><?php echo number_format($arraynomina['prima_tsu'],2);?></td>
                             </tr>
                         @endif
-                        @if ($arraynomina['prima_pregado'] > 0)
+                        @if ($arraynomina['prima_pregrado'] > 0)
                             <tr>
                                 <td>PRIMA PREGRADO</td>
                                 <td align="center"><?php echo number_format($arraynomina['prima_pregrado'],2);?></td>
@@ -138,7 +138,7 @@
                         @endif
                         @if ($arraynomina['prima_titular'] > 0)
                             <tr>
-                                <td>PRIMA TITULA</td>
+                                <td>PRIMA TITULAR</td>
                                 <td align="center"><?php echo number_format($arraynomina['prima_titular'],2); ?></td>
                             </tr>
                         @endif
