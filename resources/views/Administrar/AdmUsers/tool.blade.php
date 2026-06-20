@@ -35,7 +35,7 @@
 				@else
 		    		<span class="text-muted"> Inactivo</span>
 				@endif
-			    @if  (Auth::user()->privilege==1)
+			    @if  (Auth::user()->privilege < 3)
 					<button title="Cambiar" style="cursor: pointer;"   class="btn btn-warning" onclick="confirm('¿Está seguro?') || event.stopImmediatePropagation()"
                         wire:click="Statud({{$use->id}})">Cambiar?</button>
                 @endif

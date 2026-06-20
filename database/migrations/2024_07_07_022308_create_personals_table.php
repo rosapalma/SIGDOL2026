@@ -34,6 +34,7 @@ return new class extends Migration
             $table->float('porcentaje_jub_pens')->nullable(); 
             $table->string('condicion')->nullable(); 
             $table->unsignedBigInteger('sede_id')->nullable();
+            $table->integer('user_id')->nullable();
             $table->timestamps();
 
             //Relaciones

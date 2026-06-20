@@ -5,6 +5,7 @@ namespace App\Imports;
 use DateTime;
 use App\Models\Cargo;
 use App\Models\Personal;
+use App\Models\User;
 use App\Models\Typepers;
 use App\Models\Condicionlaboral;
 use App\Models\Pers_Sueldo;
@@ -17,6 +18,7 @@ use Maatwebsite\Excel\Concerns\WithValidation;
 use Maatwebsite\Excel\Concerns\WithBatchInserts;
 use Maatwebsite\Excel\Concerns\WithChunkReading;
 use Carbon\Carbon;
+use Auth;
 
 class PersonalImport implements  ToCollection, WithHeadingRow, WithBatchInserts, WithChunkReading, WithValidation
 {
@@ -26,11 +28,12 @@ class PersonalImport implements  ToCollection, WithHeadingRow, WithBatchInserts,
     //private $tipo;
     private $tipepers;
     private $CondLab;
-    private $condicionlabora;
+    private $user_id;
 
     private $condicionlaboral;
     public function __construct(){
         $this->empleados = Personal::pluck('id', 'cedula'); //el paquete 'pluck' delimita el tiempo, estudiar 'Queued Reading' oara archivos grandes
+        
 
         //$this->tipo = Typepers::pluck('id', 'abrev');
         //$this->condicionlaboral = Condicionlaboral::pluck('id','abrev');
@@ -40,6 +43,8 @@ class PersonalImport implements  ToCollection, WithHeadingRow, WithBatchInserts,
 
     public function collection(Collection $rows)
     {
+        $user = Auth::User();
+        $user_id = $user->id;
         
         foreach ($rows as $row)
         {
@@ -118,6 +123,7 @@ class PersonalImport implements  ToCollection, WithHeadingRow, WithBatchInserts,
                 $emp->jerarquia = $row['denominacion_cargo_de_jerarquia'];
                 $emp->typepers_id = $tipepers;
                 $emp->condicionlaboral_id = $CondLab;
+                $emp->user_id = $user_id;
                 $emp->save();
             }else{
                 Personal::create([
@@ -136,6 +142,7 @@ class PersonalImport implements  ToCollection, WithHeadingRow, WithBatchInserts,
                 'jerarquia' => $row['denominacion_cargo_de_jerarquia'],
                 'typepers_id' => $tipepers,
                 'condicionlaboral_id' => $CondLab,
+                'user_id' => $user_id,
                 ]);
             }
             $emp='';
