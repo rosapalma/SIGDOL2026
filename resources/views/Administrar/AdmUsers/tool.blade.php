@@ -1,6 +1,6 @@
 
 <div class="contenedor-tabla">
-
+@include('Administrar.AdmUsers.shear')
           
 <table class="table">
 	<thead class="thead-dark">
@@ -46,12 +46,7 @@
     </tbody>
     </table>
 </div>
-    @if($users->count())
-        <div style="color:blue;">
-            {{ $users->links() }}    
-        </div>
-    @endif
-<!--agregar paginacion y buscar-->
+   
 
 	<!--LLAMAR COMO Modals PARA CONFIRMAR -->
     @include("Administrar.AdmUsers.changeStatud")

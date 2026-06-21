@@ -1,5 +1,6 @@
 <?php
 
+
 namespace App\Livewire;
 use App\Models\User;
 use App\Models\Personal;
@@ -17,6 +18,7 @@ class AdmUsers extends Component
 	public  $empls, $mensaje;
     public $edita=false, $full_name, $cedula, $user, $email, $privilege, $IdEmpl, 
     $Actpriv, $Actcont, $contraseña, $contraseña_confirmation;
+    public $search = ''; // Propiedad pública que almacena el texto del buscador
 
     function mount(){	
         $empls = Personal::all();
@@ -25,9 +27,32 @@ class AdmUsers extends Component
 
     public function render()
     {
-        $users = User::paginate(10);
-        return view('livewire.adm-users', compact('users'));
+
+        // Filtra los usuarios buscando por nombre o email
+        $users = User::where('cedula', 'like', '%' . $this->search . '%')->get();
+        return view('livewire.adm-users', [
+            'users' => $users
+        ]);
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     protected $rules = [
         'cedula' => ['required','exists:personals,cedula'],
