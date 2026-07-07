@@ -6,16 +6,16 @@
         <div class="flex justify-between h-10">
             @if((Auth::user()->privilege == 3))
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                    <x-nav-link href="{{ route('home') }}">
+                    <x-nav-link href="{{ route('home') }}" class="{{ Route::is('home') ? 'hidden' : 'block' }}">
                            <img src="{{asset('images/ICONS/home.png')}}" width="30">
                     </x-nav-link>
                 </div>
                 <!-- <img src="{{asset('images/SIGDOL/Sistema de gestión.png')}}" > -->
-                <label class="display-6 text-center" style="color: #0047bb; padding-left: 5%">{{ __('Portal web para generar documentación laboral') }}</label>
+                <label class="display-6 text-center" style="color: #0047bb; ">{{ __('Portal web para generar documentación laboral') }}</label>
 
             @endif 
 
-            <div class="flex" style="color: #0047bb; margin-left: 15%">
+            <div class="flex" style="color: #0047bb;">
                 <!-- Logo -->
                 @if ((Auth::user()->privilege!=3))
                     <!-- <div class="shrink-0 flex items-center">
@@ -109,37 +109,18 @@
       
         <!-- Responsive Settings Options -->
         <div class="pt-4 pb-1 border-t border-gray-200">
-           {{--  <div class="flex items-center px-4">
+           <div class="flex items-center px-4">
                 <div>
                     <div class="font-medium text-base text-gray-800">{{ Auth::user()->personal['full_name'] }}</div>
-                    <div class="font-medium text-sm text-gray-500">{{ Auth::user()->email }}</div>
                 </div>
-            </div> --}}
-
+            </div> 
+        {{-- SOLO INICIO Y PERFIL visibles en pantallas moviles --}}  
 
                 {{-- NAV-LINK --}}            
                     <x-responsive-nav-link href="{{ route('home') }}" :active="request()->routeIs('home')">
                         {{ __('Inicio') }}
                     </x-responsive-nav-link> 
-                {{-- no visibles en pantallas moviles --}}  
-               {{-- @if((Auth::user()->privilege != 3))      
-               
-                     <x-responsive-nav-link href="">
-                        {{ __('Import Data') }}
-                    </x-responsive-nav-link>
-
-                    <x-responsive-nav-link href="" >
-                        {{ __('users') }}
-                    </x-responsive-nav-link>
-
-                    <x-responsive-nav-link href="" >
-                        {{ __('Asignar Autoridad') }}
-                    </x-responsive-nav-link>
-
-                    <x-responsive-nav-link href="" >
-                        {{ __('Docs Generados') }}
-                    </x-responsive-nav-link> 
-                @endif--}}
+                
 
                 <!-- Account Management -->
                 <x-responsive-nav-link href="{{ route('profile.show') }}" :active="request()->routeIs('profile.show')">

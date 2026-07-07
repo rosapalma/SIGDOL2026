@@ -18,7 +18,7 @@ class AdmUsers extends Component
 	public  $empls, $mensaje;
     public $edita=false, $full_name, $cedula, $user, $email, $privilege, $IdEmpl, 
     $Actpriv, $Actcont, $contraseña, $contraseña_confirmation;
-    public $search = ''; // Propiedad pública que almacena el texto del buscador
+    public $shearch = ''; // Propiedad pública que almacena el texto del buscador
 
     function mount(){	
         $empls = Personal::all();
@@ -27,9 +27,8 @@ class AdmUsers extends Component
 
     public function render()
     {
-
         // Filtra los usuarios buscando por nombre o email
-        $users = User::where('cedula', 'like', '%' . $this->search . '%')->get();
+        $users = User::where('cedula', 'like', '%' . $this->shearch . '%')->get();
         return view('livewire.adm-users', [
             'users' => $users
         ]);
