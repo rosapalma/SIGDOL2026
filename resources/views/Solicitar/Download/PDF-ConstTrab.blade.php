@@ -148,7 +148,7 @@ th,td{
 			@if ($typepersid == 1)
 				con la Categoria de <b class="text-bold text-uppercase">{{$personal->categoria}} a {{$personal->dedication}}</b>	
 			@else <!--COMO SERIA EN CASO DE UN JUBILADO -->
-				desempeñando el cargo de <b class="text-bold text-uppercase">@if($cargo) {{$cargo}} @else DOCENTE @endif.</b>
+				desempeñando el cargo de <b class="text-bold text-uppercase"> {{$cargo}}.</b>
 			@endif  
 						
       @if ($personal->jerarquia)
