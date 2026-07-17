@@ -15,11 +15,12 @@ return new class extends Migration
             $table->engine = 'InnoDB';
             $table->bigIncrements('id');
             $table->unsignedBigInteger('personal_id');
+            $table->string('nac');
             $table->integer('cedula')->nullable();
             $table->string('full_name')->nullable();
             $table->date('fec_nac')->nullable();
             $table->date('fec_pension')->nullable();
-            $table->float('porcentaje')->nullable();
+            $table->string('porcentaje')->nullable();
             $table->float('total_pension')->nullable(); //total del fallecido
             $table->timestamps();
 

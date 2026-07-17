@@ -89,6 +89,7 @@ class BeneficiariosImport implements ToCollection, WithHeadingRow, WithBatchInse
                     //ADD | UPDATE TABLE BENEFICIARIOS
                 if ($benef){
                     $benef->personal_id = $emp->id;
+                    $benef->nac = $row['nacionalidad_sobreviviente'];
                     $benef->cedula = $row['cedula_sobreviviente'];
                     $benef->full_name = $row['apellidos_y_nombres_sobreviviente'];
                     $benef->fec_pension = $fechafallecido;
@@ -100,6 +101,7 @@ class BeneficiariosImport implements ToCollection, WithHeadingRow, WithBatchInse
                     $empleado= Personal::where('cedula','=',$row['cedula_del_fallecido'])->first(); 
                     Beneficiario::create([
                     'personal_id' => $empleado->id,
+                    'nac' => $row['nacionalidad_sobreviviente'],
                     'cedula' => $row['cedula_sobreviviente'],
                     'full_name' => $row['apellidos_y_nombres_sobreviviente'],
                     'fec_pension' => $fechafallecido,

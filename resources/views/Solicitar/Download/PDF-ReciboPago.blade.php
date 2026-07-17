@@ -33,10 +33,10 @@
 <main>
     <div class="contenedor-grid">
         <p style="text-transform: uppercase;">{{$personal->full_name}}</p>
-        <p><b>Cédula de Identidad:  {{$personal->cedula}}</b></p>
+        <p><b>Cédula de Identidad:  {{$personal->nac}}-{{$personal->cedula}}</b></p>
         <p>Tipo de Personal: &nbsp;{{$typepers}}</p> 
         @if ($typepersid > 1)         
-            <P style="text-wrap: balance;">Cargo:&nbsp;{{$cargo}}</P>
+            <P style="text-wrap: balance;">Cargo:&nbsp;@if($cargo) {{$cargo}} @else DOCENTE @endif</P>
         @endif
         <p style="">Año: <?php echo $arraynomina['anio']; ?> &nbsp;|&nbsp;<b>Mes: </b>
                 <?php   $meses = array("Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre");

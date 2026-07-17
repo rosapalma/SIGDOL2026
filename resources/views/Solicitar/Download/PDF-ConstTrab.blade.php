@@ -139,7 +139,7 @@ th,td{
 
 		</p>
     <p class="content">
-			&nbsp;&nbsp;&nbsp;&nbsp;Quien suscribe, Jefe de la Unidad de Talento Humano del Instituto Pedagógico de Maturín, Núcleo de la Universidad Pedagógica Experimental Libertador, hago constar por medio de la presente que el(la) ciudadano(a) <b class="text-bold text-uppercase">{{$personal->full_name}}</b>, titular de la	cédula de identidad <b class="text-bold upercase">V-{{$personal->cedula}}</b> es miembro del Personal <b class="text-bold text-uppercase">{{$typepers}}</b>
+			&nbsp;&nbsp;&nbsp;&nbsp;Quien suscribe, Jefe de la Unidad de Talento Humano del Instituto Pedagógico de Maturín, Núcleo de la Universidad Pedagógica Experimental Libertador, hago constar por medio de la presente que el(la) ciudadano(a) <b class="text-bold text-uppercase">{{$personal->full_name}}</b>, titular de la	cédula de identidad <b class="text-bold upercase">{{$personal->nac}}-{{$personal->cedula}}</b> es miembro del Personal <b class="text-bold text-uppercase">{{$typepers}}</b>
 		<!--VALIDAR QUE CONDICION LABORAL ESTE VACIA O NO X ACA VOY-->
 			@if ($condicion)
 				<b class="text-bold text-uppercase"> {{$condicion->name}} </b>
@@ -148,7 +148,7 @@ th,td{
 			@if ($typepersid == 1)
 				con la Categoria de <b class="text-bold text-uppercase">{{$personal->categoria}} a {{$personal->dedication}}</b>	
 			@else <!--COMO SERIA EN CASO DE UN JUBILADO -->
-				desempeñando el cargo de <b class="text-bold text-uppercase">{{$cargo}}.</b>
+				desempeñando el cargo de <b class="text-bold text-uppercase">@if($cargo) {{$cargo}} @else DOCENTE @endif.</b>
 			@endif  
 						
       @if ($personal->jerarquia)
@@ -160,7 +160,7 @@ th,td{
 				  	al <b>{{$personal->fec_egre}}</b>
 				  @endif
 				@if ($tipoConst == 5)
-				  Quedando como sobreviviente <b class="text-bold text-uppercase">{{$sobrev->full_name}}</b> titular de la cedula de identidad <b class="text-bold text-uppercase"> V-{{$sobrev->cedula}}</b>, devengando una Pension de Sobreviviente del {{$sobrev->porcentaje}}% de 
+				  Quedando como sobreviviente <b class="text-bold text-uppercase">{{$sobrev->full_name}}</b> titular de la cedula de identidad <b class="text-bold text-uppercase"> {{$sobrev->nac}}-{{$sobrev->cedula}}</b>, devengando una Pension de Sobreviviente del <?php echo $sobrev->porcentaje * 100; ?>% de 
 				  <?php $sueldo = $sobrev['total_pension'];?> 
 				  <small class="text-bold text-uppercase">{{ $ALetras }}</small>
 					<?php echo  '(Bs. '.number_format($sueldo,2).').';?> 
