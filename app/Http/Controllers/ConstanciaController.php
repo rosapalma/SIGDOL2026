@@ -220,7 +220,7 @@ class ConstanciaController extends Controller
         //         $tiemp = $fecha1->diff($fecha2);
         //     }
         // }
-        $tiemp = $personal->anos_servicio;
+        $tiemp = $personal->anios_servicio;
         DB::table('const_g_s')->insert([
             'codigo' => $cod,
             'fechaEmi' => $this->FechaAct(),

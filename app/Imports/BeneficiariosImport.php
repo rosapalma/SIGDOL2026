@@ -68,7 +68,7 @@ class BeneficiariosImport implements ToCollection, WithHeadingRow, WithBatchInse
                     'fec_ing'=>  $fechaIngreso,
                     'fec_egre'=>  $fechaJubPens,
                     'fec_fallecido'=>  $fechafallecido,
-                    'anos_servicio' => $row['anos_de_servicio'],
+                    'anios_servicio' => $row['anios_de_servicio'],
                     'jerarquia' => $row['jerarquia'],
                     'cargo' => $row['cargo'],
                     'categoria' => $row['categoria_academica'],

@@ -115,7 +115,7 @@ class PersonalImport implements  ToCollection, WithHeadingRow, WithBatchInserts,
                 $emp->fec_egre = $egreso;
                 $emp->dedication = $row['tiempo_de_dedicacion'];
                 $emp->porcentaje_jub_pens = $row['porcentaje_de_jubilacion_o_pension'];
-                $emp->anos_servicio = $row['anos_de_servicio'];
+                $emp->anios_servicio = $row['anios_de_servicio'];
                 $emp->sede_id = 2;
                 $emp->cargo = $row['cargo'];
                 $emp->dep_adsc = $row['dependencia_de_adscripcion'];
@@ -137,7 +137,7 @@ class PersonalImport implements  ToCollection, WithHeadingRow, WithBatchInserts,
                 'fec_egre'=>  $egreso,
                 'dedication' => $row['tiempo_de_dedicacion'],
                 'porcentaje_jub_pens' => $row['porcentaje_de_jubilacion_o_pension'],
-                'anos_servicio' => $row['anos_de_servicio'],
+                'anios_servicio' => $row['anios_de_servicio'],
                 'sede_id'=>2,
                 'jerarquia' => $row['denominacion_cargo_de_jerarquia'],
                 'typepers_id' => $tipepers,

@@ -7,6 +7,7 @@ use App\Imports\PersonalImport;
 use App\Imports\ImportNominaExcel;
 use App\Imports\BeneficiariosImport;
 use Maatwebsite\Excel\Facades\Excel;
+use Illuminate\Support\Facades\Schema;
 use DB;
 use App\Models\Beneficiario;
 
@@ -36,11 +37,16 @@ class ImportController extends Controller
         // $path = $_FILES['file']['name'];
         // $name = pathinfo($path, PATHINFO_FILENAME);
 
-        // if($request->has('vaciarDB')){
-        //     DB::statement('SET FOREIGN_KEY_CHECKS = 0;');
-        //     //DB::table('personals')->truncate(); //vaciar tabla
-        //     DB::table('personals')->truncate(); //vaciar tabla
-        // }
+       // if($request->has('vaciarDB')){        
+          //  1. Desactiva las llaves foráneas de forma segura
+                //Schema::disableForeignKeyConstraints();
+          //  2. Limpias la tabla usando el Query Builder (ejemplo)
+              // DB::table('personals')->truncate();
+               //DB::table('nomina_excels')->truncate();
+           // 3. Vuelves a activarlas al finalizar
+                //Schema::enableForeignKeyConstraints();
+            //}
+
         set_time_limit(600);
         try{
             Excel::import(new PersonalImport,request()->file('file'));

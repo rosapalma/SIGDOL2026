@@ -30,7 +30,7 @@ return new class extends Migration
             $table->text('jerarquia')->nullable();
             $table->string('categoria')->nullable(); //categoria academica
             $table->string('dedication')->nullable(); 
-            $table->string('anos_servicio')->nullable();
+            $table->string('anios_servicio')->nullable();
             $table->float('porcentaje_jub_pens')->nullable(); 
             $table->string('condicion')->nullable(); 
             $table->unsignedBigInteger('sede_id')->nullable();
